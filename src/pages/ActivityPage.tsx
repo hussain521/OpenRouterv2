@@ -1,0 +1,13 @@
+import Navbar from "@/components/Navbar";
+import DashboardLayout from "@/components/DashboardLayout";
+
+export default function ActivityPage() {
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="sticky top-0 z-50 transition-all duration-300">
+        <Navbar />
+      </div>
+      <DashboardLayout title="Activity" />
+    </div>
+  );
+}
