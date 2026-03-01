@@ -22,10 +22,10 @@ export function ToggleRow({
   };
   
   return (
-    <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between cursor-pointer">
       <div className="max-w-xl">
-        <p className="text-[13px] font-medium text-gray-900">{title}</p>
-        <p className="mt-1 text-[12px] text-gray-500">{description}</p>
+        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">{title}</p>
+        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">{description}</p>
       </div>
       <div className="shrink-0">
         <Switch

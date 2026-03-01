@@ -14,7 +14,7 @@ export default function StepCard({
   children,
 }: StepCardProps) {
   return (
-    <div className="flex flex-col gap-3 md:gap-4">
+    <div className="flex flex-col gap-3 md:gap-4 cursor-pointer">
       {/* Step Header */}
       <div className="flex items-center gap-2 md:gap-3">
         <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 flex items-center justify-center text-xs md:text-sm font-semibold">

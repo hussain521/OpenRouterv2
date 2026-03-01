@@ -38,7 +38,7 @@ function SignInCard({
   };
 
   return (
-    <div className="relative w-full max-w-md rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-[0_18px_45px_rgba(15,23,42,0.22)]">
+    <div className="relative w-full max-w-md rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-[0_18px_45px_rgba(15,23,42,0.22)]">
       {/* Close button */}
       <button
         type="button"
@@ -145,7 +145,7 @@ function SignUpCard({
   };
 
   return (
-    <div className="relative w-full max-w-md rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-[0_18px_45px_rgba(15,23,42,0.22)]">
+    <div className="relative w-full max-w-md rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-[0_18px_45px_rgba(15,23,42,0.22)]">
       {/* Close button */}
       <button
         type="button"
@@ -315,17 +315,19 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="relative z-20 w-full bg-white dark:bg-gray-900">
+      <div className="relative z-20 w-full bg-white dark:bg-black">
         <div className="flex items-center justify-between px-4 py-4 md:px-10">
           {/* Logo + Search */}
           <div className="flex flex-1 items-center gap-3 md:gap-6">
-            <h1 className="text-lg font-semibold md:text-xl dark:text-white">OpenRouter</h1>
+            <h1 className="text-lg font-semibold md:text-xl dark:text-white">
+              OpenRouter
+            </h1>
 
             <div className="relative w-full max-w-[200px] md:max-w-[288px]">
               <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 dark:text-gray-500 md:text-base" />
               <Input
                 placeholder="Search"
-                className="h-9 w-full bg-gray-100 dark:bg-gray-800 dark:text-white pl-8 text-sm md:h-10 md:pl-10 md:text-base"
+                className="h-9 w-full bg-gray-100 dark:bg-black dark:text-white pl-8 text-sm md:h-10 md:pl-10 md:text-base"
               />
             </div>
           </div>
@@ -378,7 +380,7 @@ export default function Navbar() {
               </Button>
             ) : (
               <div className="relative ml-4">
-                <div className="flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 shadow-sm">
+                <div className="flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-2 py-1 shadow-sm">
                   <button
                     type="button"
                     onClick={() => setIsProfileOpen((prev) => !prev)}
@@ -400,7 +402,7 @@ export default function Navbar() {
                 </div>
 
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
+                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
                       onClick={() => {
@@ -451,22 +453,22 @@ export default function Navbar() {
                       <div className="flex items-center gap-1">
                         <button
                           type="button"
-                          onClick={() => theme === 'dark' && toggleTheme()}
+                          onClick={() => theme === "dark" && toggleTheme()}
                           className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
-                            theme === 'light'
-                              ? 'border-gray-600 bg-gray-100 text-gray-900'
-                              : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+                            theme === "light"
+                              ? "border-gray-600 bg-gray-100 text-gray-900"
+                              : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
                           }`}
                         >
                           <FiSun className="h-3.5 w-3.5" />
                         </button>
                         <button
                           type="button"
-                          onClick={() => theme === 'light' && toggleTheme()}
+                          onClick={() => theme === "light" && toggleTheme()}
                           className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
-                            theme === 'dark'
-                              ? 'border-gray-600 bg-gray-700 text-gray-100'
-                              : 'border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            theme === "dark"
+                              ? "border-gray-600 bg-gray-700 text-gray-100"
+                              : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
                           }`}
                         >
                           <FiMoon className="h-3.5 w-3.5" />
@@ -491,7 +493,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="flex flex-col gap-2 border-t dark:border-gray-700 bg-white dark:bg-gray-900 px-4 pb-4 lg:hidden">
+          <div className="flex flex-col gap-2 border-t dark:border-gray-700 bg-white dark:bg-black px-4 pb-4 lg:hidden">
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"

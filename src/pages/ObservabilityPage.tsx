@@ -3,7 +3,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 
 export default function ObservabilityPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
@@ -27,7 +27,7 @@ export function ObservabilitySettingsContent() {
               type="button"
               className="relative inline-flex h-4 w-7 items-center rounded-full border border-transparent bg-gray-200"
             >
-              <span className="absolute h-3 w-3 translate-x-[2px] rounded-full bg-white shadow transition-transform" />
+              <span className="absolute h-3 w-3 translate-x-[2px] rounded-full bg-white dark:bg-black shadow transition-transform" />
             </button>
           </div>
         </div>
@@ -49,7 +49,7 @@ export function ObservabilitySettingsContent() {
           Available
         </h3>
 
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <div className="divide-y divide-gray-100">
             {DESTINATIONS.map((d) => (
               <DestinationRow
@@ -69,7 +69,7 @@ export function ObservabilitySettingsContent() {
           <p className="font-medium text-gray-700">Send Feedback</p>
           <p>Let us know how we can improve!</p>
         </div>
-        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-4 py-1.5 text-[11px] font-medium text-gray-700 hover:bg-gray-50">
+        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white dark:bg-black px-4 py-1.5 text-[11px] font-medium text-gray-700 hover:bg-gray-50">
           Open
         </button>
       </section>
@@ -122,7 +122,7 @@ function DestinationRow({ name, iconBg, iconEmoji }: DestinationRowProps) {
         </div>
         <span className="text-[13px] text-gray-800">{name}</span>
       </div>
-      <button className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-3 py-1 text-[11px] font-medium text-gray-500 hover:bg-gray-50">
+      <button className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white dark:bg-black px-3 py-1 text-[11px] font-medium text-gray-500 hover:bg-gray-50">
         <span>Add Destination</span>
         <span className="text-base leading-none">+</span>
       </button>

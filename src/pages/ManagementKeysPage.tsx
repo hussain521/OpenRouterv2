@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ManagementKeysPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>

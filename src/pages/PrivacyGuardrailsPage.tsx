@@ -23,7 +23,7 @@ function Row({ title, description, actionLabel }: RowProps) {
         <p className="mt-1 text-[12px] text-gray-500">{description}</p>
       </div>
       <div className="shrink-0">
-        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 px-4 py-1.5 text-[11px] font-medium bg-white text-gray-700 hover:bg-gray-50">
+        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 px-4 py-1.5 text-[11px] font-medium bg-white dark:bg-black text-gray-700 hover:bg-gray-50">
           {actionLabel}
         </button>
       </div>
@@ -70,7 +70,7 @@ function PrivacyGuardrailsContent() {
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400">
           Data handling
         </h3>
-        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <ToggleRow
             title="Log requests for debugging"
             description="Store logs of requests and responses so you can inspect and debug issues later."
@@ -93,7 +93,7 @@ function PrivacyGuardrailsContent() {
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400">
           Safety filters
         </h3>
-        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <ToggleRow
             title="Block unsafe content"
             description="Filter prompts and responses that violate default safety policies."
@@ -133,7 +133,7 @@ function PrivacyGuardrailsContent() {
 
 export default function PrivacyGuardrailsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>

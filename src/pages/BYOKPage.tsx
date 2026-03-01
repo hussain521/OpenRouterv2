@@ -4,7 +4,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 
 export default function BYOKPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
@@ -24,7 +24,7 @@ export default function BYOKPage() {
               <input
                 type="text"
                 placeholder="Search providers..."
-                className="h-9 w-full rounded-full border border-gray-200 bg-gray-50 pl-9 pr-4 text-[13px] text-gray-700 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white focus:outline-none focus:ring-0"
+                className="h-9 w-full rounded-full border border-gray-200 bg-gray-50 pl-9 pr-4 text-[13px] text-gray-700 placeholder:text-gray-400 focus:border-gray-300 focus:bg-white dark:bg-black focus:outline-none focus:ring-0"
               />
             </div>
           </div>
@@ -33,7 +33,7 @@ export default function BYOKPage() {
           <section className="space-y-3">
             <h2 className="text-[13px] font-medium text-gray-500">Available</h2>
 
-            <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 bg-white text-[13px]">
+            <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 bg-white dark:bg-black text-[13px]">
               <div className="divide-y divide-gray-200">
                 <ProviderRow
                   name="AI21"

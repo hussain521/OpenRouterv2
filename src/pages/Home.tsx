@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
           isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100"

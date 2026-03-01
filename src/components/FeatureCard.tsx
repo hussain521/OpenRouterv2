@@ -17,7 +17,7 @@ export default function FeatureCard({
   href = "#",
 }: FeatureCardProps) {
   return (
-    <Card className="group rounded-2xl border bg-white dark:bg-gray-800 px-0 pt-0 hover:border-indigo-600 dark:hover:border-indigo-400 cursor-pointer transition-all duration-300 overflow-hidden">
+    <Card className="group rounded-2xl border bg-white dark:bg-black px-0 pt-0 hover:border-indigo-600 dark:hover:border-indigo-400 cursor-pointer transition-all duration-300 overflow-hidden">
       {/* Image Top Section */}
       <div className="h-40 sm:h-48 md:h-56 overflow-hidden border-b dark:border-gray-700">
         <img

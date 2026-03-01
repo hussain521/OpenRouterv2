@@ -8,17 +8,17 @@ interface InfoActionCardProps {
   className?: string;
 }
 
-export function InfoActionCard({ 
-  title, 
-  description, 
+export function InfoActionCard({
+  title,
+  description,
   action,
-  className 
+  className,
 }: InfoActionCardProps) {
   return (
-    <div 
+    <div
       className={cn(
-        "flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-4 text-[13px] text-gray-700 dark:text-gray-300 md:flex-row md:items-center",
-        className
+        "flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-6 py-4 text-[13px] text-gray-700 dark:text-gray-300 md:flex-row md:items-center cursor-pointer",
+        className,
       )}
     >
       <div className="max-w-2xl">
@@ -29,11 +29,7 @@ export function InfoActionCard({
           {description}
         </p>
       </div>
-      {action && (
-        <div className="flex items-center">
-          {action}
-        </div>
-      )}
+      {action && <div className="flex items-center">{action}</div>}
     </div>
   );
 }

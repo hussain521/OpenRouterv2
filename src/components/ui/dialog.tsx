@@ -9,7 +9,12 @@ interface DialogProps {
   className?: string;
 }
 
-export function Dialog({ open, onOpenChange, children, className }: DialogProps) {
+export function Dialog({
+  open,
+  onOpenChange,
+  children,
+  className,
+}: DialogProps) {
   // Lock body scroll while dialog is open
   useEffect(() => {
     if (!open) return;
@@ -25,7 +30,12 @@ export function Dialog({ open, onOpenChange, children, className }: DialogProps)
   if (!open) return null;
 
   return (
-    <div className={cn("fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/60 backdrop-blur-md", className)}>
+    <div
+      className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/80 backdrop-blur-md",
+        className,
+      )}
+    >
       {/* backdrop click to close */}
       <button
         type="button"
@@ -45,17 +55,17 @@ interface DialogContentProps {
   onClose?: () => void;
 }
 
-export function DialogContent({ 
-  children, 
-  className, 
+export function DialogContent({
+  children,
+  className,
   showCloseButton = true,
-  onClose 
+  onClose,
 }: DialogContentProps) {
   return (
-    <div 
+    <div
       className={cn(
-        "relative z-10 w-full max-w-md rounded-3xl border border-gray-100 dark:border-gray-700 bg-white/98 dark:bg-gray-800/98 p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]",
-        className
+        "relative z-10 w-full max-w-md rounded-3xl border border-gray-100 dark:border-gray-700 bg-white/98 dark:bg-black/98 p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]",
+        className,
       )}
     >
       {showCloseButton && (
@@ -79,11 +89,7 @@ interface DialogHeaderProps {
 }
 
 export function DialogHeader({ children, className }: DialogHeaderProps) {
-  return (
-    <div className={cn("flex justify-center", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("flex justify-center", className)}>{children}</div>;
 }
 
 interface DialogTitleProps {
@@ -93,7 +99,12 @@ interface DialogTitleProps {
 
 export function DialogTitle({ children, className }: DialogTitleProps) {
   return (
-    <h2 className={cn("text-[15px] font-medium text-gray-900 dark:text-gray-100", className)}>
+    <h2
+      className={cn(
+        "text-[15px] font-medium text-gray-900 dark:text-gray-100",
+        className,
+      )}
+    >
       {children}
     </h2>
   );
@@ -106,7 +117,12 @@ interface DialogBodyProps {
 
 export function DialogBody({ children, className }: DialogBodyProps) {
   return (
-    <div className={cn("space-y-4 text-[12px] text-gray-700 dark:text-gray-300", className)}>
+    <div
+      className={cn(
+        "space-y-4 text-[12px] text-gray-700 dark:text-gray-300",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -119,8 +135,6 @@ interface DialogFooterProps {
 
 export function DialogFooter({ children, className }: DialogFooterProps) {
   return (
-    <div className={cn("flex justify-end pt-4", className)}>
-      {children}
-    </div>
+    <div className={cn("flex justify-end pt-4", className)}>{children}</div>
   );
 }

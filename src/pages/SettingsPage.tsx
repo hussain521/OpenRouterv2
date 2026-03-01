@@ -15,7 +15,8 @@ function getSettingsTitle(pathname: string) {
   if (pathname === "/settings" || pathname.startsWith("/settings/account"))
     return "Account";
   if (pathname.startsWith("/settings/api-keys")) return "API Keys";
-  if (pathname.startsWith("/settings/management-keys")) return "Management Keys";
+  if (pathname.startsWith("/settings/management-keys"))
+    return "Management Keys";
   if (pathname.startsWith("/settings/privacy-guardrails"))
     return "Privacy & Guardrails";
   if (pathname.startsWith("/settings/byok")) return "BYOK";
@@ -43,7 +44,7 @@ export default function SettingsPage() {
   const isObservabilityPage = pathname.startsWith("/settings/observability");
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
@@ -63,7 +64,8 @@ export default function SettingsPage() {
             title="Create your first preset"
             description={
               <>
-                Presets are shortcuts for your system prompts and request parameters.{" "}
+                Presets are shortcuts for your system prompts and request
+                parameters.{" "}
                 <a href="#" className="text-[#6366F1] hover:underline">
                   Learn more.
                 </a>
@@ -110,7 +112,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Account
         </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <Row
             title="Profile"
             description="Name, email address, and basic account details."
@@ -135,7 +137,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Billing & team
         </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <Row
             title="Billing"
             description="Invoices, payment methods, and tax information."
@@ -154,7 +156,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Notifications
         </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
             title="Product updates"
             description="Occasional updates about new features and improvements."
@@ -191,8 +193,12 @@ function Row({ title, description, actionLabel, actionVariant }: RowProps) {
   return (
     <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
       <div className="max-w-xl">
-        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">{title}</p>
-        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">{description}</p>
+        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
+          {title}
+        </p>
+        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
+          {description}
+        </p>
       </div>
       <div className="shrink-0">
         <button
@@ -216,12 +222,16 @@ type ToggleRowProps = {
 
 function ToggleRow({ title, description, enabled = false }: ToggleRowProps) {
   const [isEnabled, setIsEnabled] = useState(enabled);
-  
+
   return (
     <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
       <div className="max-w-xl">
-        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">{title}</p>
-        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">{description}</p>
+        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
+          {title}
+        </p>
+        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
+          {description}
+        </p>
       </div>
       <div className="shrink-0">
         <Switch
@@ -238,10 +248,12 @@ function ApiKeysContent() {
   return (
     <div className="flex h-full items-center justify-center pt-10">
       <div className="flex flex-col items-center text-center space-y-3">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-500 text-2xl">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-50 dark:bg-black text-gray-400 dark:text-gray-500 text-2xl">
           <span>🔑</span>
         </div>
-        <h2 className="text-[15px] font-medium text-gray-900 dark:text-gray-100">No API keys yet</h2>
+        <h2 className="text-[15px] font-medium text-gray-900 dark:text-gray-100">
+          No API keys yet
+        </h2>
         <p className="max-w-sm text-[12px] text-gray-500 dark:text-gray-400">
           Create API keys to authenticate requests from your apps to OpenRouter.
         </p>
@@ -255,14 +267,15 @@ function ManagementKeysContent() {
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       <section>
-        <div className="flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-4 text-[13px] text-gray-700 dark:text-gray-300 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-6 py-4 text-[13px] text-gray-700 dark:text-gray-300 md:flex-row md:items-center">
           <div className="max-w-2xl">
             <h2 className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
               Management keys
             </h2>
             <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
               Create management keys to manage settings, permissions, and other
-              controls for this organization. These keys are meant for admins only.
+              controls for this organization. These keys are meant for admins
+              only.
             </p>
           </div>
           <button className="inline-flex items-center justify-center rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]">
@@ -283,8 +296,8 @@ function PrivacyGuardrailsContent() {
           Privacy & Guardrails
         </h2>
         <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
-          Configure how OpenRouter handles your data and applies safety filters for
-          requests made from this organization.
+          Configure how OpenRouter handles your data and applies safety filters
+          for requests made from this organization.
         </p>
       </section>
 
@@ -293,7 +306,7 @@ function PrivacyGuardrailsContent() {
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Data handling
         </h3>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
             title="Log requests for debugging"
             description="Store logs of requests and responses so you can inspect and debug issues later."
@@ -316,7 +329,7 @@ function PrivacyGuardrailsContent() {
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Safety filters
         </h3>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
             title="Block unsafe content"
             description="Filter prompts and responses that violate default safety policies."
@@ -378,9 +391,11 @@ function BYOKSettingsContent() {
 
       {/* Provider list */}
       <section className="space-y-3">
-        <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">Available</h2>
+        <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">
+          Available
+        </h2>
 
-        <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-[13px]">
+        <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             <BYOKProviderRow
               name="AI21"
@@ -469,20 +484,24 @@ function BYOKSettingsContent() {
           Key Priority and Fallback
         </h3>
         <div className="max-w-4xl space-y-3 leading-relaxed">
-          <p>OpenRouter always prioritizes using your provider keys when available.</p>
           <p>
-            By default, if your key encounters a rate limit or failure, OpenRouter will
-            fall back to using shared OpenRouter credits.
+            OpenRouter always prioritizes using your provider keys when
+            available.
           </p>
           <p>
-            You can configure individual keys with &quot;Always use this key&quot; to
-            prevent any fallback to OpenRouter credits. When this option is enabled,
-            OpenRouter will only use your key for requests to that provider. This may
-            result in rate limit errors if your key is exhausted, but ensures all
-            requests go through your account.
+            By default, if your key encounters a rate limit or failure,
+            OpenRouter will fall back to using shared OpenRouter credits.
           </p>
           <p>
-            If you wish to never use shared OpenRouter credits for a model, you must{" "}
+            You can configure individual keys with &quot;Always use this
+            key&quot; to prevent any fallback to OpenRouter credits. When this
+            option is enabled, OpenRouter will only use your key for requests to
+            that provider. This may result in rate limit errors if your key is
+            exhausted, but ensures all requests go through your account.
+          </p>
+          <p>
+            If you wish to never use shared OpenRouter credits for a model, you
+            must{" "}
             <strong className="font-medium text-gray-800 dark:text-gray-200">
               both specify &quot;Always use this key&quot; and pin the provider
             </strong>{" "}
@@ -524,7 +543,9 @@ function BYOKProviderRow({
         >
           {iconText || name.charAt(0)}
         </div>
-        <span className="text-[13px] text-gray-800 dark:text-gray-200">{name}</span>
+        <span className="text-[13px] text-gray-800 dark:text-gray-200">
+          {name}
+        </span>
       </div>
       <div className="flex items-center gap-3 text-[12px]">
         <span className="text-gray-400 dark:text-gray-500">{status}</span>

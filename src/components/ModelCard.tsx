@@ -20,17 +20,23 @@ export default function ModelCard({
   const isPositive = trend.startsWith("+");
 
   return (
-    <Card className="group rounded-2xl border dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition p-0">
+    <Card className="group rounded-2xl border dark:border-gray-700 bg-white dark:bg-black shadow-sm hover:shadow-md transition p-0 cursor-pointer">
       <CardContent className="p-4 md:p-6">
         {/* Top Info */}
         <div className="flex items-start gap-3 md:gap-4">
           <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
-            <img src={logo} alt={name} className="w-6 h-6 md:w-8 md:h-8 object-contain transition-transform duration-300 group-hover:rotate-45" />
+            <img
+              src={logo}
+              alt={name}
+              className="w-6 h-6 md:w-8 md:h-8 object-contain transition-transform duration-300 group-hover:rotate-45"
+            />
           </div>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-base md:text-lg truncate dark:text-white">{name}</h3>
+              <h3 className="font-semibold text-base md:text-lg truncate dark:text-white">
+                {name}
+              </h3>
               {badge && (
                 <span className="text-xs bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-2 py-0.5 rounded-md whitespace-nowrap">
                   {badge}
@@ -38,7 +44,9 @@ export default function ModelCard({
               )}
             </div>
 
-            <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5 md:mt-1">by {provider}</p>
+            <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5 md:mt-1">
+              by {provider}
+            </p>
           </div>
         </div>
 

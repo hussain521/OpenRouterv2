@@ -12,8 +12,10 @@ export default function ExploreCard({
   linkText,
 }: ExploreCardProps) {
   return (
-    <div className="h-full rounded-2xl border dark:border-gray-700 bg-white dark:bg-gray-800 p-4 md:p-6 shadow-sm hover:shadow-md transition flex flex-col">
-      <h3 className="font-semibold text-base md:text-lg dark:text-white">{title}</h3>
+    <div className="h-full rounded-2xl border dark:border-gray-700 bg-white dark:bg-black p-4 md:p-6 shadow-sm hover:shadow-md transition flex flex-col cursor-pointer">
+      <h3 className="font-semibold text-base md:text-lg dark:text-white">
+        {title}
+      </h3>
 
       <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-3 leading-relaxed flex-1">
         {description}

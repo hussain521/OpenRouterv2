@@ -6,7 +6,7 @@ import { Switch } from "@/components/ui/switch";
 
 export default function PluginsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
@@ -35,7 +35,7 @@ export function PluginsSettingsContent() {
 
       {/* Plugins list card */}
       <section>
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white text-[13px]">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:bg-black text-[13px]">
           <PluginRow
             name="Web Search"
             description="Augment LLM responses with real-time web search results"

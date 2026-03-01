@@ -11,7 +11,7 @@ import {
 
 export default function RoutingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
@@ -33,7 +33,7 @@ export function RoutingSettingsContent() {
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700">
       {/* Auto Router */}
-      <section className="rounded-2xl border border-gray-200 bg-white px-6 py-5">
+      <section className="rounded-2xl border border-gray-200 bg-white dark:bg-black px-6 py-5">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-10">
           {/* Left label / description */}
           <div className="md:w-56 space-y-1.5">
@@ -88,7 +88,7 @@ export function RoutingSettingsContent() {
                 <span className="relative inline-flex h-4 w-7 items-center rounded-full border border-transparent bg-gray-200 transition-colors">
                   <span
                     className={[
-                      "absolute h-3 w-3 rounded-full bg-white shadow transition-transform",
+                      "absolute h-3 w-3 rounded-full bg-white dark:bg-black shadow transition-transform",
                       preventOverrides ? "translate-x-[10px]" : "translate-x-[2px]",
                     ].join(" ")}
                   />
@@ -115,7 +115,7 @@ export function RoutingSettingsContent() {
       </section>
 
       {/* Default Provider Sort */}
-      <section className="rounded-2xl border border-gray-200 bg-white px-6 py-5 space-y-4">
+      <section className="rounded-2xl border border-gray-200 bg-white dark:bg-black px-6 py-5 space-y-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1.5">
             <h3 className="text-[13px] font-medium text-gray-900">
@@ -146,7 +146,7 @@ export function RoutingSettingsContent() {
       </section>
 
       {/* Default Model */}
-      <section className="rounded-2xl border border-gray-200 bg-white px-6 py-5 space-y-4">
+      <section className="rounded-2xl border border-gray-200 bg-white dark:bg-black px-6 py-5 space-y-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1.5">
             <h3 className="text-[13px] font-medium text-gray-900">Default Model</h3>

@@ -11,7 +11,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400">
           Account
         </h2>
-        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <SettingsRow
             title="Profile"
             description="Name, email address, and basic account details."
@@ -36,7 +36,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400">
           Billing & team
         </h2>
-        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <SettingsRow
             title="Billing"
             description="Invoices, payment methods, and tax information."
@@ -55,7 +55,7 @@ function AccountSettingsContent() {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400">
           Notifications
         </h2>
-        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+        <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white dark:bg-black">
           <ToggleRow
             title="Product updates"
             description="Occasional updates about new features and improvements."
@@ -78,7 +78,7 @@ function AccountSettingsContent() {
 
 export default function AccountSettingsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
