@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button";
 import { RoutingSettingsContent } from "@/pages/RoutingPage";
 import { PluginsSettingsContent } from "@/pages/PluginsPage";
 import { ObservabilitySettingsContent } from "@/pages/ObservabilityPage";
+import { AccountSettingsContent } from "@/pages/AccountSettingsPage";
+import { SettingsRow } from "@/components/settings/SettingsRow";
+import { ToggleRow } from "@/components/settings/ToggleRow";
 import { Switch } from "@/components/ui/switch";
 import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 
@@ -104,146 +107,6 @@ export default function SettingsPage() {
   );
 }
 
-function AccountSettingsContent() {
-  return (
-    <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
-      {/* Account section */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Account
-        </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
-          <Row
-            title="Profile"
-            description="Name, email address, and basic account details."
-            actionLabel="Manage"
-          />
-          <Row
-            title="Password"
-            description="Update your password and view security recommendations."
-            actionLabel="Change"
-          />
-          <Row
-            title="Two-factor authentication"
-            description="Protect your account with an extra layer of security."
-            actionLabel="Set up"
-            actionVariant="primary"
-          />
-        </div>
-      </section>
-
-      {/* Billing + team section */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Billing & team
-        </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
-          <Row
-            title="Billing"
-            description="Invoices, payment methods, and tax information."
-            actionLabel="Open billing"
-          />
-          <Row
-            title="Team"
-            description="Invite teammates and manage permissions."
-            actionLabel="Manage team"
-          />
-        </div>
-      </section>
-
-      {/* Notifications section */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Notifications
-        </h2>
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
-          <ToggleRow
-            title="Product updates"
-            description="Occasional updates about new features and improvements."
-            enabled
-          />
-          <ToggleRow
-            title="Billing alerts"
-            description="Emails when invoices are created or payments fail."
-            enabled
-          />
-          <ToggleRow
-            title="Usage alerts"
-            description="Get notified when usage or spend crosses thresholds."
-          />
-        </div>
-      </section>
-    </div>
-  );
-}
-
-type RowProps = {
-  title: string;
-  description: string;
-  actionLabel: string;
-  actionVariant?: "default" | "primary";
-};
-
-function Row({ title, description, actionLabel, actionVariant }: RowProps) {
-  const primary =
-    actionVariant === "primary"
-      ? "bg-[#4F46E5] text-white hover:bg-[#4338CA]"
-      : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600";
-
-  return (
-    <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
-      <div className="max-w-xl">
-        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
-          {title}
-        </p>
-        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
-          {description}
-        </p>
-      </div>
-      <div className="shrink-0">
-        <button
-          className={[
-            "inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 px-4 py-1.5 text-[11px] font-medium",
-            primary,
-          ].join(" ")}
-        >
-          {actionLabel}
-        </button>
-      </div>
-    </div>
-  );
-}
-
-type ToggleRowProps = {
-  title: string;
-  description: string;
-  enabled?: boolean;
-};
-
-function ToggleRow({ title, description, enabled = false }: ToggleRowProps) {
-  const [isEnabled, setIsEnabled] = useState(enabled);
-
-  return (
-    <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
-      <div className="max-w-xl">
-        <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
-          {title}
-        </p>
-        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
-          {description}
-        </p>
-      </div>
-      <div className="shrink-0">
-        <Switch
-          checked={isEnabled}
-          onCheckedChange={setIsEnabled}
-          className="data-[state=checked]:bg-[#4F46E5]"
-        />
-      </div>
-    </div>
-  );
-}
-
 function ApiKeysContent() {
   return (
     <div className="flex h-full items-center justify-center pt-10">
@@ -310,13 +173,13 @@ function PrivacyGuardrailsContent() {
           <ToggleRow
             title="Log requests for debugging"
             description="Store logs of requests and responses so you can inspect and debug issues later."
-            enabled
+            defaultEnabled
           />
           <ToggleRow
             title="Send data to model providers"
             description="Allow model providers to retain data for improving their models, where applicable."
           />
-          <Row
+          <SettingsRow
             title="Retention window"
             description="How long OpenRouter will retain logs and traces before automatic deletion."
             actionLabel="30 days"
@@ -333,7 +196,7 @@ function PrivacyGuardrailsContent() {
           <ToggleRow
             title="Block unsafe content"
             description="Filter prompts and responses that violate default safety policies."
-            enabled
+            defaultEnabled
           />
           <ToggleRow
             title="PII redaction"

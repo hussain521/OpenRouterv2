@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
-import { InfoActionCard } from "@/components/InfoActionCard";
-import { Button } from "@/components/ui/button";
+import { CreateManagementKeyDialog } from "@/components/CreateManagementKeyDialog";
 
 export default function ManagementKeysPage() {
   return (
@@ -10,19 +9,19 @@ export default function ManagementKeysPage() {
         <Navbar />
       </div>
       <DashboardLayout title="Management Keys">
-        <div className="pt-6">
-          <InfoActionCard
-            title="Management keys"
-            description="Create management keys to manage settings, permissions, and other controls for this organization. These keys are meant for admins only."
-            action={
-              <Button
-                size="sm"
-                className="rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]"
-              >
-                Create
-              </Button>
-            }
-          />
+        <div className="pt-6 border-b border-gray-200 dark:border-gray-800 pb-4 flex items-center justify-between gap-4">
+          <div className="flex-1" />
+          <CreateManagementKeyDialog />
+        </div>
+
+        <div className="pt-4 flex items-center gap-1.5 text-[13px] text-gray-500 dark:text-gray-400">
+          <span>
+            Create a management API key to perform administrative actions and
+            manage inference API keys programmatically
+          </span>
+          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 text-[11px] text-gray-400 dark:border-gray-600 dark:text-gray-500">
+            i
+          </span>
         </div>
       </DashboardLayout>
     </div>

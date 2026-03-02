@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface SettingsRowProps {
   title: string;
-  description: string;
+  description: ReactNode;
   action?: ReactNode;
   actionLabel?: string;
   actionVariant?: "default" | "primary";
@@ -27,7 +27,7 @@ export function SettingsRow({
     <div className="flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between">
       <div className="max-w-xl">
         <p className="text-[13px] font-medium text-gray-900 dark:text-gray-100">{title}</p>
-        <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">{description}</p>
+        <p className="mt-1 text-[13px] text-gray-500 dark:text-gray-400">{description}</p>
       </div>
       {(action || actionLabel) && (
         <div className="shrink-0">
@@ -36,7 +36,7 @@ export function SettingsRow({
               size="sm"
               onClick={onAction}
               className={cn(
-                "rounded-full border border-gray-200 dark:border-gray-600 px-4 py-1.5 text-[11px] font-medium",
+                "rounded-md border border-gray-200 dark:border-gray-600 px-4 py-1.5 text-[11px] font-medium",
                 buttonClasses
               )}
             >
