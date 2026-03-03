@@ -133,7 +133,7 @@ export default function CreditsPage() {
   const isBillingFormValid = billingName.trim() !== "" && billingAddress1.trim() !== "";
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>

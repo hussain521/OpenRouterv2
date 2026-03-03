@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default function PresetsPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <div className="sticky top-0 z-50 transition-all duration-300">
+      <div className="sticky top-0 z-50 transition-all duration-300 ">
         <Navbar />
       </div>
       <DashboardLayout title="Presets">
@@ -14,7 +14,7 @@ export default function PresetsPage() {
           title="Create your first preset"
           description={
             <>
-              Presets are shortcuts for your system prompts and request parameters.{" "}
+              Presets are shortcuts for your system prompts and request parameters. 
               <a href="#" className="text-[#6366F1] hover:underline">
                 Learn more.
               </a>

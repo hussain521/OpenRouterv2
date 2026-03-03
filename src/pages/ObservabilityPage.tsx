@@ -16,22 +16,22 @@ export default function ObservabilityPage() {
 
 export function ObservabilitySettingsContent() {
   return (
-    <div className="space-y-8 pt-4 text-[13px] text-gray-700">
+    <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       {/* Broadcast header */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-medium text-gray-900">Broadcast</h2>
-          <div className="flex items-center gap-2 text-[12px] text-gray-400">
+          <h2 className="text-sm font-medium text-gray-900 dark:text-gray-100">Broadcast</h2>
+          <div className="flex items-center gap-2 text-[12px] text-gray-400 dark:text-gray-500">
             <span>Disabled</span>
             <button
               type="button"
-              className="relative inline-flex h-4 w-7 items-center rounded-full border border-transparent bg-gray-200"
+              className="relative inline-flex h-4 w-7 items-center rounded-full border border-transparent bg-gray-200 dark:bg-gray-700"
             >
-              <span className="absolute h-3 w-3 translate-x-[2px] rounded-full bg-white dark:bg-black shadow transition-transform" />
+              <span className="absolute h-3 w-3 translate-x-[2px] rounded-full bg-white dark:bg-gray-300 shadow transition-transform" />
             </button>
           </div>
         </div>
-        <p className="max-w-2xl text-[12px] text-gray-500">
+        <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
           Automatically send traces from your requests to external observability
           platforms without additional instrumentation.&nbsp;
           <button
@@ -45,12 +45,12 @@ export function ObservabilitySettingsContent() {
 
       {/* Available destinations list */}
       <section className="space-y-3">
-        <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400">
+        <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
           Available
         </h3>
 
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:bg-black">
-          <div className="divide-y divide-gray-100">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
+          <div className="divide-y divide-gray-100 dark:divide-gray-700">
             {DESTINATIONS.map((d) => (
               <DestinationRow
                 key={d.name}
@@ -64,12 +64,12 @@ export function ObservabilitySettingsContent() {
       </section>
 
       {/* Footer feedback */}
-      <section className="flex items-center justify-between pt-4 text-[12px] text-gray-500">
+      <section className="flex items-center justify-between pt-4 text-[12px] text-gray-500 dark:text-gray-400">
         <div className="space-y-0.5">
-          <p className="font-medium text-gray-700">Send Feedback</p>
+          <p className="font-medium text-gray-700 dark:text-gray-300">Send Feedback</p>
           <p>Let us know how we can improve!</p>
         </div>
-        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white dark:bg-black px-4 py-1.5 text-[11px] font-medium text-gray-700 hover:bg-gray-50">
+        <button className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-1.5 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
           Open
         </button>
       </section>
@@ -110,7 +110,7 @@ type DestinationRowProps = {
 
 function DestinationRow({ name, iconBg, iconEmoji }: DestinationRowProps) {
   return (
-    <div className="flex items-center justify-between px-5 py-3 text-[13px] text-gray-700">
+    <div className="flex items-center justify-between px-5 py-3 text-[13px] text-gray-700 dark:text-gray-300">
       <div className="flex items-center gap-3">
         <div
           className={[
@@ -120,9 +120,9 @@ function DestinationRow({ name, iconBg, iconEmoji }: DestinationRowProps) {
         >
           <span className="leading-none">{iconEmoji}</span>
         </div>
-        <span className="text-[13px] text-gray-800">{name}</span>
+        <span className="text-[13px] text-gray-800 dark:text-gray-200">{name}</span>
       </div>
-      <button className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white dark:bg-black px-3 py-1 text-[11px] font-medium text-gray-500 hover:bg-gray-50">
+      <button className="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1 text-[11px] font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800">
         <span>Add Destination</span>
         <span className="text-base leading-none">+</span>
       </button>

@@ -19,14 +19,14 @@ export default function PluginsPage() {
 
 export function PluginsSettingsContent() {
   return (
-    <div className="space-y-6 pt-6 text-[13px] text-gray-700">
+    <div className="space-y-6 pt-6 text-[13px] text-gray-700 dark:text-gray-300">
       {/* Intro */}
       <section className="space-y-1">
-        <h2 className="text-[13px] font-medium text-gray-900">
+        <h2 className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
           Default Plugin Settings
         </h2>
-        <div className="flex items-center gap-1.5 text-[12px] text-gray-500">
-          <span className="flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 text-[10px] text-gray-400">
+        <div className="flex items-center gap-1.5 text-[12px] text-gray-500 dark:text-gray-400">
+          <span className="flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-[10px] text-gray-400 dark:text-gray-500">
             i
           </span>
           <span>Configure default plugin behavior for your API requests.</span>
@@ -35,7 +35,7 @@ export function PluginsSettingsContent() {
 
       {/* Plugins list card */}
       <section>
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:bg-black text-[13px]">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
           <PluginRow
             name="Web Search"
             description="Augment LLM responses with real-time web search results"
@@ -67,10 +67,10 @@ function PluginRow({ name, description, hasToggle }: PluginRowProps) {
   const [isEnabled, setIsEnabled] = useState(false);
   
   return (
-    <div className="flex items-center justify-between px-6 py-4 border-t first:border-t-0 border-gray-200">
+    <div className="flex items-center justify-between px-6 py-4 border-t first:border-t-0 border-gray-200 dark:border-gray-700">
       <div className="flex flex-col">
-        <span className="text-[13px] font-medium text-gray-900">{name}</span>
-        <span className="mt-0.5 text-[12px] text-gray-500">{description}</span>
+        <span className="text-[13px] font-medium text-gray-900 dark:text-gray-100">{name}</span>
+        <span className="mt-0.5 text-[12px] text-gray-500 dark:text-gray-400">{description}</span>
       </div>
       <div className="flex items-center gap-4">
         {hasToggle && (
@@ -82,7 +82,7 @@ function PluginRow({ name, description, hasToggle }: PluginRowProps) {
         )}
         <button
           type="button"
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600"
+          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300"
         >
           <SettingsIcon className="h-3.5 w-3.5" />
         </button>

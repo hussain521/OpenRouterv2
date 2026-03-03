@@ -28,7 +28,7 @@ export function AccountSettingsContent() {
     <div className="space-y-8 text-[14px] text-gray-500 dark:text-gray-300">
       <section className="space-y-4">
          
-        <div className="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 ">
           <SettingsRow
             title="User"
             description="Manage your login credentials, security settings, or delete your account."

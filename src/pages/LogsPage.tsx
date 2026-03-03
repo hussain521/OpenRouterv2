@@ -214,7 +214,7 @@ export default function LogsPage() {
         <div className="space-y-4 pt-4">
           {/* Date range + actions row */}
           <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-600 dark:text-gray-300">
+            <div className="flex flex-wrap items-center gap-2  text-[11px] text-gray-600 dark:text-gray-300">
               <div className="flex items-center gap-1">
                 <span className="mr-1 text-[10px] uppercase tracking-wide text-gray-400 dark:text-gray-500">
                   From
