@@ -1,12 +1,27 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { EmptyStateCard } from "@/components/EmptyStateCard";
 import { Button } from "@/components/ui/button";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function PresetsPage() {
+  usePageTitle("Presets");
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const handleCreatePreset = () => {
+    // Check if we're in settings path
+    if (location.pathname.includes('/settings/')) {
+      navigate('/settings/new-preset');
+    } else {
+      navigate('/new-preset');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <div className="sticky top-0 z-50 transition-all duration-300 ">
+      <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
       <DashboardLayout title="Presets">
@@ -14,7 +29,8 @@ export default function PresetsPage() {
           title="Create your first preset"
           description={
             <>
-              Presets are shortcuts for your system prompts and request parameters. 
+              Presets are shortcuts for your system prompts and request
+              parameters.{" "}
               <a href="#" className="text-[#6366F1] hover:underline">
                 Learn more.
               </a>
@@ -24,6 +40,7 @@ export default function PresetsPage() {
             <Button
               size="default"
               className="mt-3 rounded-md bg-[#6366F1] px-6 py-2 text-[13px] font-medium text-white hover:bg-[#4F46E5]"
+              onClick={handleCreatePreset}
             >
               Create Preset
             </Button>

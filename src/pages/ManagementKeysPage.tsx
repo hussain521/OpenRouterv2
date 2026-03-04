@@ -1,8 +1,18 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
-import { CreateManagementKeyDialog } from "@/components/CreateManagementKeyDialog";
+import { Button } from "@/components/ui/button";
+import { CreateManagementKeyDialog } from "@/components/dialogs";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ManagementKeysPage() {
+  usePageTitle("Management Keys");
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+     setDialogOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
@@ -11,7 +21,14 @@ export default function ManagementKeysPage() {
       <DashboardLayout title="Management Keys">
         <div className="pt-6 border-b border-gray-200 dark:border-gray-800 pb-4 flex items-center justify-between gap-4">
           <div className="flex-1" />
-          <CreateManagementKeyDialog />
+          <Button
+            type="button"
+            size="sm"
+            className="mt-2 rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]"
+            onClick={handleOpenDialog}
+          >
+            Create
+          </Button>
         </div>
 
         <div className="pt-4 flex items-center gap-1.5 text-[13px] text-gray-500 dark:text-gray-400">
@@ -23,6 +40,11 @@ export default function ManagementKeysPage() {
             i
           </span>
         </div>
+
+        <CreateManagementKeyDialog
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+        />
       </DashboardLayout>
     </div>
   );

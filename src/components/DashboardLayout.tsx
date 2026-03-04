@@ -23,6 +23,7 @@ import {
 type DashboardLayoutProps = {
   title: ReactNode;
   children?: ReactNode;
+  headerActions?: ReactNode;
 };
 
 function SidebarLink({
@@ -78,6 +79,7 @@ function SidebarSubLink({ to, label }: { to: string; label: string }) {
 export default function DashboardLayout({
   title,
   children,
+  headerActions,
 }: DashboardLayoutProps) {
   return (
     <div className="flex h-[calc(100vh-72px)] bg-white dark:bg-black overflow-hidden">
@@ -99,7 +101,9 @@ export default function DashboardLayout({
                 {title}
               </h1>
             </div>
-            <div className="flex items-center gap-2 text-xs"></div>
+            <div className="flex items-center gap-2 text-xs">
+              {headerActions}
+            </div>
           </header>
 
           {children ?? <DefaultActivityContent />}
@@ -253,7 +257,8 @@ function DefaultActivityContent() {
   const renderMetricDialog = (title: string, onClose: () => void) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/40 backdrop-blur-sm">
       <div className="relative w-[900px] max-w-[95vw] rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-black shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-        <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6 py-4 
+        ">
           <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
             {title}
           </div>

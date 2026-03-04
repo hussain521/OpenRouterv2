@@ -1,8 +1,73 @@
 import { Info, Search, SquarePen } from "lucide-react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function BYOKPage() {
+  usePageTitle("BYOK");
+  const [showAll, setShowAll] = useState(false);
+
+  // All providers data - simplified
+  const allProviders = [
+    { name: "AI21", iconColor: "bg-[#ff007a]", textColor: "text-white", iconText: "a" },
+    { name: "AionLabs", iconColor: "bg-[#e5e7eb]", textColor: "text-gray-700", iconText: "Ai" },
+    { name: "Alibaba Cloud Int.", iconColor: "bg-[#ff7a00]", textColor: "text-white", iconText: "↷" },
+    { name: "Amazon Bedrock", iconColor: "bg-[#232f3e]", textColor: "text-white", iconText: "aws" },
+    { name: "Anthropic", iconColor: "bg-[#f5f5e6]", textColor: "text-gray-900", iconText: "A" },
+    { name: "Arcee AI", iconColor: "bg-[#00bfa5]", textColor: "text-white", iconText: "A" },
+    { name: "AtlasCloud", iconColor: "bg-[#4f46e5]", textColor: "text-white", iconText: "A" },
+    { name: "Azure", iconColor: "bg-[#0078d4]", textColor: "text-white", iconText: "A" },
+    { name: "Baseten", iconColor: "bg-[#00c853]", textColor: "text-white", iconText: "⚡" },
+    { name: "Cerebras", iconColor: "bg-[#ff3d00]", textColor: "text-white", iconText: "C" },
+    { name: "Cloudflare", iconColor: "bg-[#f38020]", textColor: "text-white", iconText: "CF" },
+    { name: "Cohere", iconColor: "bg-[#39194d]", textColor: "text-white", iconText: "C" },
+    { name: "CoreWeave", iconColor: "bg-[#00d4ff]", textColor: "text-white", iconText: "CW" },
+    { name: "Databricks", iconColor: "bg-[#ff3621]", textColor: "text-white", iconText: "DB" },
+    { name: "DeepInfra", iconColor: "bg-[#7c3aed]", textColor: "text-white", iconText: "DI" },
+    { name: "DeepSeek", iconColor: "bg-[#00a8ff]", textColor: "text-white", iconText: "DS" },
+    { name: "Featherless", iconColor: "bg-[#22c55e]", textColor: "text-white", iconText: "F" },
+    { name: "Fireworks AI", iconColor: "bg-[#e11d48]", textColor: "text-white", iconText: "FW" },
+    { name: "Gemini", iconColor: "bg-[#4285f4]", textColor: "text-white", iconText: "G" },
+    { name: "GitHub Models", iconColor: "bg-[#24292e]", textColor: "text-white", iconText: "GH" },
+    { name: "Groq", iconColor: "bg-[#f97316]", textColor: "text-white", iconText: "G" },
+    { name: "Hugging Face", iconColor: "bg-[#ffcc00]", textColor: "text-gray-900", iconText: "🤗" },
+    { name: "Hyperbolic", iconColor: "bg-[#8b5cf6]", textColor: "text-white", iconText: "H" },
+    { name: "Inflection", iconColor: "bg-[#00bcd4]", textColor: "text-white", iconText: "Pi" },
+    { name: "Lambda", iconColor: "bg-[#00e676]", textColor: "text-white", iconText: "λ" },
+    { name: "Lepton AI", iconColor: "bg-[#10b981]", textColor: "text-white", iconText: "L" },
+    { name: "Llama.cpp", iconColor: "bg-[#8b4513]", textColor: "text-white", iconText: "🦙" },
+    { name: "Mancer", iconColor: "bg-[#ff00ff]", textColor: "text-white", iconText: "M" },
+    { name: "Mistral", iconColor: "bg-[#ff6b6b]", textColor: "text-white", iconText: "M" },
+    { name: "Modal", iconColor: "bg-[#000000]", textColor: "text-white", iconText: "M" },
+    { name: "Monster API", iconColor: "bg-[#9333ea]", textColor: "text-white", iconText: "👾" },
+    { name: "Nebius", iconColor: "bg-[#0ea5e9]", textColor: "text-white", iconText: "N" },
+    { name: "Novita", iconColor: "bg-[#ec4899]", textColor: "text-white", iconText: "N" },
+    { name: "OctoAI", iconColor: "bg-[#ff4500]", textColor: "text-white", iconText: "🐙" },
+    { name: "OpenAI", iconColor: "bg-[#10a37f]", textColor: "text-white", iconText: "OAI" },
+    { name: "Perplexity", iconColor: "bg-[#1e90ff]", textColor: "text-white", iconText: "P" },
+    { name: "Predibase", iconColor: "bg-[#6366f1]", textColor: "text-white", iconText: "PB" },
+    { name: "Recursal.ai", iconColor: "bg-[#059669]", textColor: "text-white", iconText: "R" },
+    { name: "Replicate", iconColor: "bg-[#000000]", textColor: "text-white", iconText: "R" },
+    { name: "Samba Nova", iconColor: "bg-[#ff5722]", textColor: "text-white", iconText: "SN" },
+    { name: "Scale", iconColor: "bg-[#5e72e4]", textColor: "text-white", iconText: "S" },
+    { name: "SiliconFlow", iconColor: "bg-[#00bfa5]", textColor: "text-white", iconText: "SF" },
+    { name: "Together", iconColor: "bg-[#0066ff]", textColor: "text-white", iconText: "T" },
+    { name: "VertexAI", iconColor: "bg-[#4285f4]", textColor: "text-white", iconText: "V" },
+    { name: "Voyage AI", iconColor: "bg-[#00c9ff]", textColor: "text-white", iconText: "V" },
+    { name: "Weight & Biases", iconColor: "bg-[#ffcc00]", textColor: "text-gray-900", iconText: "W&B" },
+    { name: "Workers AI", iconColor: "bg-[#f38020]", textColor: "text-white", iconText: "WA" },
+    { name: "xAI", iconColor: "bg-[#000000]", textColor: "text-white", iconText: "xAI" },
+    { name: "Yandex", iconColor: "bg-[#ffcc00]", textColor: "text-gray-900", iconText: "Я" },
+    { name: "Yi", iconColor: "bg-[#ff4500]", textColor: "text-white", iconText: "Yi" },
+    { name: "Zephyr", iconColor: "bg-[#7c3aed]", textColor: "text-white", iconText: "Z" },
+    { name: "Zhipu AI", iconColor: "bg-[#3b82f6]", textColor: "text-white", iconText: "智" },
+  ];
+
+  // Determine which providers to show
+  const displayedProviders = showAll ? allProviders : allProviders.slice(0, 10);
+  const remainingCount = allProviders.length - 10;
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
@@ -34,84 +99,25 @@ export default function BYOKPage() {
             <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">Available</h2>
 
             <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
-              <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                <ProviderRow
-                  name="AI21"
-                  status="Not configured"
-                  iconColor="bg-[#ff007a]"
-                  textColor="text-white"
-                  iconText="a"
-                />
-                <ProviderRow
-                  name="AionLabs"
-                  status="Not configured"
-                  iconColor="bg-[#e5e7eb]"
-                  textColor="text-gray-700"
-                  iconText="Ai"
-                />
-                <ProviderRow
-                  name="Alibaba Cloud Int."
-                  status="Not configured"
-                  iconColor="bg-[#ff7a00]"
-                  textColor="text-white"
-                  iconText="↷"
-                />
-                <ProviderRow
-                  name="Amazon Bedrock"
-                  status="Not configured"
-                  iconColor="bg-[#232f3e]"
-                  textColor="text-white"
-                  iconText="aws"
-                />
-                <ProviderRow
-                  name="Anthropic"
-                  status="Not configured"
-                  iconColor="bg-[#f5f5e6]"
-                  textColor="text-gray-900"
-                  iconText="A"
-                />
-                <ProviderRow
-                  name="Arcee AI"
-                  status="Not configured"
-                  iconColor="bg-[#00bfa5]"
-                  textColor="text-white"
-                  iconText="A"
-                />
-                <ProviderRow
-                  name="AtlasCloud"
-                  status="Not configured"
-                  iconColor="bg-[#4f46e5]"
-                  textColor="text-white"
-                  iconText="A"
-                />
-                <ProviderRow
-                  name="Azure"
-                  status="Not configured"
-                  iconColor="bg-[#0078d4]"
-                  textColor="text-white"
-                  iconText="A"
-                />
-                <ProviderRow
-                  name="Baseten"
-                  status="Not configured"
-                  iconColor="bg-[#00c853]"
-                  textColor="text-white"
-                  iconText="⚡"
-                />
-                <ProviderRow
-                  name="Cerebras"
-                  status="Not configured"
-                  iconColor="bg-[#ff3d00]"
-                  textColor="text-white"
-                  iconText="C"
-                />
+              <div className="divide-y divide-gray-200 dark:divide-gray-700" key={showAll ? 'all' : 'limited'}>
+                {displayedProviders.map((provider, index) => (
+                  <ProviderRow
+                    key={`${provider.name}-${index}`}
+                    name={provider.name}
+                    status="Not configured"
+                    iconColor={provider.iconColor}
+                    textColor={provider.textColor}
+                    iconText={provider.iconText}
+                  />
+                ))}
               </div>
 
               <button
                 type="button"
-                className="flex h-10 w-full items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-[12px] font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                onClick={() => setShowAll(!showAll)}
+                className="flex h-10 w-full items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-[12px] font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
               >
-                Show 44 more
+                {showAll ? 'Show less' : `Show ${remainingCount} more`}
               </button>
             </div>
           </section>

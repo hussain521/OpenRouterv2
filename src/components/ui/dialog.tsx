@@ -64,15 +64,15 @@ export function DialogContent({
   return (
     <div
       className={cn(
-        "relative z-10 w-full max-w-md rounded-3xl border border-gray-100 dark:border-gray-700 bg-white/98 dark:bg-black/98 p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]",
+        "relative z-10 w-full max-w-md rounded-3xl border border-gray-100 dark:border-gray-700 bg-white/98 dark:bg-black/98 pt-10 pb-7 px-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]",
         className,
       )}
     >
-      {showCloseButton && (
+      {showCloseButton && onClose && (
         <button
           type="button"
           aria-label="Close"
-          className="absolute right-4 top-4 inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white/90 dark:bg-gray-700/90 text-gray-400 dark:text-gray-500 shadow-sm hover:text-gray-600 dark:hover:text-gray-300"
+          className="absolute right-4 top-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white/90 dark:bg-gray-700/90 text-gray-400 dark:text-gray-500 shadow-sm hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
           onClick={onClose}
         >
           <X className="h-3.5 w-3.5" />
@@ -89,7 +89,7 @@ interface DialogHeaderProps {
 }
 
 export function DialogHeader({ children, className }: DialogHeaderProps) {
-  return <div className={cn("flex justify-center", className)}>{children}</div>;
+  return <div className={cn("flex justify-center pr-6", className)}>{children}</div>;
 }
 
 interface DialogTitleProps {

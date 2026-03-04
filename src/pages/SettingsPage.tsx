@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
-import { Info, Search, SquarePen } from "lucide-react";
+import { useLocation, NavLink, type NavLinkRenderProps, useNavigate } from "react-router-dom";
+import { Info, Search, SquarePen, Activity, FileText, CreditCard, Settings, ChevronDown, CircleDot } from "lucide-react";
 import { useState } from "react";
+import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { EmptyStateCard } from "@/components/EmptyStateCard";
@@ -8,11 +9,14 @@ import { Button } from "@/components/ui/button";
 import { RoutingSettingsContent } from "@/pages/RoutingPage";
 import { PluginsSettingsContent } from "@/pages/PluginsPage";
 import { ObservabilitySettingsContent } from "@/pages/ObservabilityPage";
+import NewDestinationPage from "@/components/observability/NewDestinationPage";
 import { AccountSettingsContent } from "@/pages/AccountSettingsPage";
 import { SettingsRow } from "@/components/settings/SettingsRow";
 import { ToggleRow } from "@/components/settings/ToggleRow";
 import { Switch } from "@/components/ui/switch";
 import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
+import { CreateManagementKeyDialog } from "@/components/dialogs";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 function getSettingsTitle(pathname: string) {
   if (pathname === "/settings" || pathname.startsWith("/settings/account"))
@@ -30,10 +34,22 @@ function getSettingsTitle(pathname: string) {
   return "Settings";
 }
 
+type DestinationConfig = {
+  name: string;
+  iconBg: string;
+  iconEmoji: string;
+};
+
 export default function SettingsPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const pathname = location.pathname;
   const title = getSettingsTitle(pathname);
+  const [observabilityDestination, setObservabilityDestination] = useState<DestinationConfig | null>(null);
+  const [managementDialogOpen, setManagementDialogOpen] = useState(false);
+  
+  // Use the page title hook
+  usePageTitle(title);
 
   const isAccountPage =
     pathname === "/settings" || pathname.startsWith("/settings/account");
@@ -46,12 +62,59 @@ export default function SettingsPage() {
   const isPluginsPage = pathname.startsWith("/settings/plugins");
   const isObservabilityPage = pathname.startsWith("/settings/observability");
 
+  // If we have an observability destination selected, render without DashboardLayout
+  if (isObservabilityPage && observabilityDestination) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-black">
+        <div className="sticky top-0 z-50 transition-all duration-300">
+          <Navbar />
+        </div>
+        <div className="flex h-[calc(100vh-72px)] bg-white dark:bg-black overflow-hidden">
+          {/* Sidebar */}
+          <aside className="w-60 border-r dark:border-gray-700 bg-gray-50/80 dark:bg-black h-full">
+            <div className="h-full px-3 py-4">
+              <nav className="space-y-4 text-sm">
+                <SimpleSidebarSections />
+              </nav>
+            </div>
+          </aside>
+          
+          {/* Main content - NewDestinationPage */}
+          <main className="flex-1 overflow-y-auto bg-white dark:bg-black px-10 py-8 scrollbar-hide">
+            <div className="mx-auto max-w-6xl">
+              <NewDestinationPage
+                destination={{
+                  name: observabilityDestination.name,
+                  iconEmoji: observabilityDestination.iconEmoji,
+                }}
+                onBack={() => setObservabilityDestination(null)}
+              />
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title={title}>
+      <DashboardLayout
+        title={title}
+        headerActions={
+          isManagementKeysPage ? (
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]"
+              onClick={() => setManagementDialogOpen(true)}
+            >
+              Create
+            </button>
+          ) : null
+        }
+      >
         {isAccountPage ? (
           <AccountSettingsContent />
         ) : isApiKeysPage ? (
@@ -78,6 +141,7 @@ export default function SettingsPage() {
               <Button
                 size="default"
                 className="mt-3 rounded-md bg-[#6366F1] px-6 py-2 text-[13px] font-medium text-white hover:bg-[#4F46E5]"
+                onClick={() => navigate("/presets")}
               >
                 Create Preset
               </Button>
@@ -89,7 +153,7 @@ export default function SettingsPage() {
         ) : isPluginsPage ? (
           <PluginsSettingsContent />
         ) : isObservabilityPage ? (
-          <ObservabilitySettingsContent />
+          <ObservabilitySettingsContent onSelectDestination={setObservabilityDestination} />
         ) : (
           <div className="space-y-4 text-sm text-gray-600">
             <p>
@@ -101,6 +165,13 @@ export default function SettingsPage() {
               replaced with the exact UI you want for each settings section.
             </p>
           </div>
+        )}
+
+        {isManagementKeysPage && (
+          <CreateManagementKeyDialog
+            open={managementDialogOpen}
+            onOpenChange={setManagementDialogOpen}
+          />
         )}
       </DashboardLayout>
     </div>
@@ -130,21 +201,11 @@ function ManagementKeysContent() {
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       <section>
-        <div className="flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-6 py-4 text-[13px] text-gray-700 dark:text-gray-300 md:flex-row md:items-center">
-          <div className="max-w-2xl">
-            <h2 className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
-              Management keys
-            </h2>
-            <p className="mt-1 text-[12px] text-gray-500 dark:text-gray-400">
-              Create management keys to manage settings, permissions, and other
-              controls for this organization. These keys are meant for admins
-              only.
-            </p>
-          </div>
-          <button className="inline-flex items-center justify-center rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]">
-            Create
-          </button>
-        </div>
+        <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
+          Create management keys to manage settings, permissions, and other
+          controls for this organization. These keys are meant for admins
+          only.
+        </p>
       </section>
     </div>
   );
@@ -417,5 +478,137 @@ function BYOKProviderRow({
         </span>
       </div>
     </button>
+  );
+}
+
+// Simple sidebar component for when NewDestinationPage is shown
+function SimpleSidebarSections() {
+  const location = useLocation();
+  const isInSettingsSection = location.pathname.startsWith("/settings");
+  const [isSettingsOpen, setIsSettingsOpen] = useState(() => {
+    return location.pathname.startsWith("/settings");
+  });
+
+  return (
+    <>
+      <div className="space-y-1">
+        <SidebarLink
+          to="/activity"
+          label="Activity"
+          icon={<Activity className="h-4 w-4" />}
+        />
+        <SidebarLink
+          to="/logs"
+          label="Logs"
+          icon={<FileText className="h-4 w-4" />}
+        />
+        <SidebarLink
+          to="/credits"
+          label="Credits"
+          icon={<CreditCard className="h-4 w-4" />}
+        />
+      </div>
+
+      <div className="space-y-1">
+        <button
+          type="button"
+          onClick={() => setIsSettingsOpen((prev) => !prev)}
+          className={[
+            "flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            isInSettingsSection
+              ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-l-4 border-l-[#6366F1] pl-2"
+              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-4 border-l-transparent pl-2",
+          ].join(" ")}
+        >
+          <span className="flex items-center gap-2">
+            <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
+              <Settings className="h-4 w-4" />
+            </span>
+            <span>Settings</span>
+          </span>
+          <span
+            className={[
+              "flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500 transition-transform",
+              isSettingsOpen ? "rotate-0" : "-rotate-90",
+            ].join(" ")}
+          >
+            <ChevronDown className="h-4 w-4" />
+          </span>
+        </button>
+
+        {isSettingsOpen && (
+          <div className="space-y-0.5">
+            <SidebarSubLink to="/settings/account" label="Account" />
+            <SidebarSubLink to="/settings/api-keys" label="API Keys" />
+            <SidebarSubLink
+              to="/settings/management-keys"
+              label="Management Keys"
+            />
+            <SidebarSubLink
+              to="/settings/privacy-guardrails"
+              label="Privacy & Guardrails"
+            />
+            <SidebarSubLink to="/settings/byok" label="BYOK" />
+            <SidebarSubLink to="/settings/presets" label="Presets" />
+            <SidebarSubLink to="/settings/routing" label="Routing" />
+            <SidebarSubLink to="/settings/plugins" label="Plugins" />
+            <SidebarSubLink
+              to="/settings/observability"
+              label="Observability"
+            />
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
+function SidebarLink({
+  to,
+  label,
+  icon,
+}: {
+  to: string;
+  label: string;
+  icon: ReactNode;
+}) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }: NavLinkRenderProps) =>
+        [
+          "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+          isActive
+            ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-medium border-l-2 border-l-[#6366F1] pl-6"
+            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-2 border-l-transparent pl-6",
+        ].join(" ")
+      }
+    >
+      <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
+        {icon}
+      </span>
+      <span>{label}</span>
+    </NavLink>
+  );
+}
+
+function SidebarSubLink({ to, label }: { to: string; label: string }) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }: NavLinkRenderProps) =>
+        [
+          "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors pl-7",
+          isActive
+            ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-l-4 border-l-[#6366F1] pl-2"
+            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-4 border-l-transparent pl-2",
+        ].join(" ")
+      }
+    >
+      <span className="flex h-3 w-3 items-center justify-center text-gray-300 dark:text-gray-600">
+        <CircleDot className="h-3 w-3" />
+      </span>
+      <span>{label}</span>
+    </NavLink>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Switch } from "@/components/ui/switch";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 type RowProps = {
   title: string;
@@ -132,6 +133,7 @@ function PrivacyGuardrailsContent() {
 }
 
 export default function PrivacyGuardrailsPage() {
+  usePageTitle("Privacy & Guardrails");
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">

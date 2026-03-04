@@ -1,5 +1,5 @@
-import { useState, useEffect, type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef, type FormEvent } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FiSearch,
   FiMenu,
@@ -11,8 +11,24 @@ import {
   FiEye,
   FiEyeOff,
   FiAlertCircle,
+  FiMonitor,
 } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import {
+  Activity,
+  FileText,
+  CreditCard,
+  Settings,
+  Home,
+  FileCode,
+  Shield,
+  Key,
+  Layers,
+  Route,
+  Puzzle,
+  Eye,
+  Package,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/context/ThemeContext";
@@ -33,6 +49,7 @@ function SignInCard({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    localStorage.setItem('isSignedIn', 'true');
     onSignedIn();
     onClose();
   };
@@ -140,6 +157,7 @@ function SignUpCard({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim() || password.length < 8 || !acceptedTerms) return;
+    localStorage.setItem('isSignedIn', 'true');
     onSignedUp();
     onClose();
   };
@@ -287,12 +305,39 @@ function SignUpCard({
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const { theme, themePreference, systemTheme, isSystemDarkMode, setThemePreference } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(() => {
+    // Check if user is signed in from localStorage
+    return localStorage.getItem('isSignedIn') === 'true';
+  });
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Map routes to icons
+  const getPageIcon = () => {
+    const pathname = location.pathname;
+    
+    if (pathname === '/') return <Home className="h-4 w-4" />;
+    if (pathname === '/activity') return <Activity className="h-4 w-4" />;
+    if (pathname === '/logs') return <FileText className="h-4 w-4" />;
+    if (pathname === '/credits') return <CreditCard className="h-4 w-4" />;
+    if (pathname.includes('/settings/account')) return <Settings className="h-4 w-4" />;
+    if (pathname.includes('/settings/api-keys')) return <Key className="h-4 w-4" />;
+    if (pathname.includes('/settings/management-keys')) return <Key className="h-4 w-4" />;
+    if (pathname.includes('/settings/privacy-guardrails')) return <Shield className="h-4 w-4" />;
+    if (pathname.includes('/settings/byok') || pathname === '/byok') return <FileCode className="h-4 w-4" />;
+    if (pathname.includes('/settings/presets') || pathname === '/presets' || pathname === '/new-preset') return <Layers className="h-4 w-4" />;
+    if (pathname.includes('/settings/routing') || pathname === '/routing') return <Route className="h-4 w-4" />;
+    if (pathname.includes('/settings/plugins')) return <Puzzle className="h-4 w-4" />;
+    if (pathname.includes('/settings/observability')) return <Eye className="h-4 w-4" />;
+    if (pathname.includes('/settings')) return <Settings className="h-4 w-4" />;
+    
+    return <Home className="h-4 w-4" />; // Default icon
+  };
 
   // Disable body scroll when auth dialog is open
   useEffect(() => {
@@ -305,6 +350,25 @@ export default function Navbar() {
       document.body.style.overflow = originalOverflow;
     };
   }, [authOpen]);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    if (isProfileOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [isProfileOpen]);
 
   const openAuth = (mode: AuthMode) => {
     setAuthMode(mode);
@@ -319,7 +383,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-4 py-4 md:px-10">
           {/* Logo + Search */}
           <div className="flex flex-1 items-center gap-3 md:gap-6">
-            <h1 className="text-lg font-semibold md:text-xl dark:text-white">
+            <h1
+              className="text-lg font-semibold md:text-xl dark:text-white cursor-pointer"
+              onClick={() => navigate("/")}
+            >
               OpenRouter
             </h1>
 
@@ -379,27 +446,30 @@ export default function Navbar() {
                 Sign in
               </Button>
             ) : (
-              <div className="relative ml-4">
-                <div className="flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-2 py-1 shadow-sm">
-                  <button
-                    type="button"
-                    onClick={() => setIsProfileOpen((prev) => !prev)}
-                    className="flex items-center justify-center rounded-full px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                  >
-                    <FiChevronDown className="h-3.5 w-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsProfileOpen((prev) => !prev)}
-                    className="flex items-center gap-1 border-l border-gray-200 dark:border-gray-700 pl-2 pr-1"
-                  >
-                    <img
-                      src="./Meta.png"
-                      alt=""
-                      className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold"
-                    />
-                  </button>
-                </div>
+              <div className="relative ml-4" ref={profileDropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsProfileOpen((prev) => !prev)}
+                  className="flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-2 py-1 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                   {/* Dropdown Arrow in the middle */}
+                  <div className="flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300">
+                    {isProfileOpen ? <FiChevronDown className="h-3.5 w-3.5" /> : <FiMenu className="h-3.5 w-3.5" />}
+                  </div>
+                  {/* Current Page Icon */}
+                  <div className="flex items-center justify-center text-gray-600 dark:text-gray-300">
+                    {getPageIcon()}
+                  </div>
+                  
+                 
+                  
+                  {/* User Avatar on the right */}
+                  <img
+                    src="./Meta.png"
+                    alt=""
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold"
+                  />
+                </button>
 
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
@@ -444,36 +514,71 @@ export default function Navbar() {
                       onClick={() => {
                         setIsSignedIn(false);
                         setIsProfileOpen(false);
+                        localStorage.removeItem('isSignedIn');
                       }}
                     >
                       Sign Out
                     </button>
-                    <div className="mt-1 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 px-4 pb-1 pt-2 text-xs text-gray-500 dark:text-gray-400">
-                      <span>Theme</span>
-                      <div className="flex items-center gap-1">
-                        <button
-                          type="button"
-                          onClick={() => theme === "dark" && toggleTheme()}
-                          className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
-                            theme === "light"
-                              ? "border-gray-600 bg-gray-100 text-gray-900"
-                              : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
-                          }`}
-                        >
-                          <FiSun className="h-3.5 w-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => theme === "light" && toggleTheme()}
-                          className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
-                            theme === "dark"
-                              ? "border-gray-600 bg-gray-700 text-gray-100"
-                              : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
-                          }`}
-                        >
-                          <FiMoon className="h-3.5 w-3.5" />
-                        </button>
+                    <div className="mt-1 flex flex-col gap-2 border-t border-gray-200 dark:border-gray-700 px-4 pb-1 pt-2">
+                      <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <span>الثيم</span>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            onClick={() => setThemePreference('light')}
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                              themePreference === "light"
+                                ? "border-gray-600 bg-gray-100 text-gray-900 shadow-sm"
+                                : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                            }`}
+                            title="وضع فاتح"
+                          >
+                            <FiSun className="h-3.5 w-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setThemePreference('system')}
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                              themePreference === "system"
+                                ? "border-gray-600 bg-gray-500 text-white shadow-sm"
+                                : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            }`}
+                            title="تلقائي حسب النظام"
+                          >
+                            <FiMonitor className="h-3.5 w-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setThemePreference('dark')}
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                              themePreference === "dark"
+                                ? "border-gray-600 bg-gray-700 text-gray-100 shadow-sm"
+                                : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            }`}
+                            title="وضع داكن"
+                          >
+                            <FiMoon className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
                       </div>
+                      {themePreference === 'system' && (
+                        <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400">
+                          <span>حالة النظام:</span>
+                          <span className="flex items-center gap-1">
+                            {isSystemDarkMode ? (
+                              <>
+                                <FiMoon className="h-3 w-3" />
+                                <span>داكن</span>
+                              </>
+                            ) : (
+                              <>
+                                <FiSun className="h-3 w-3" />
+                                <span>فاتح</span>
+                              </>
+                            )}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}

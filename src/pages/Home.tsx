@@ -11,10 +11,12 @@ import GettingStarted from "@/components/GettingStarted";
 import Footer from "@/components/Footer";
 import DashboardLayout from "@/components/DashboardLayout";
 import { useView } from "@/context/ViewContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { view } = useView();
+  usePageTitle("Home");
 
   useEffect(() => {
     const handleScroll = () => {
