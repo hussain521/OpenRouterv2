@@ -1,6 +1,7 @@
 import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useTranslation } from "react-i18next";
 
 interface BalanceCardProps {
   balance: number;
@@ -9,6 +10,8 @@ interface BalanceCardProps {
 }
 
 export function BalanceCard({ balance }: BalanceCardProps) {
+  const { t } = useTranslation();
+  
   return (
     <TooltipProvider>
       <div className="flex items-center justify-between overflow-hidden border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm   bg-gray-100 dark:bg-zinc-900 px-8 py-6">
@@ -30,7 +33,7 @@ export function BalanceCard({ balance }: BalanceCardProps) {
           </TooltipTrigger>
           <TooltipContent side="left">
             <p className="text-xs">
-              Current available balance in your OpenRouter account.
+              {t("credits.currentBalanceTooltip")}
             </p>
           </TooltipContent>
         </Tooltip>

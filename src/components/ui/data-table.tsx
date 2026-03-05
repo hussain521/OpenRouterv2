@@ -35,15 +35,19 @@ interface DataTableProps<T> {
   className?: string;
 }
 
+import { useTranslation } from "react-i18next";
+
 export function DataTable<T>({
   columns,
   data,
-  emptyMessage = "No results",
+  emptyMessage,
   currentPage = 1,
   totalPages = 1,
   onPageChange,
   className,
 }: DataTableProps<T>) {
+  const { t } = useTranslation();
+  const defaultEmptyMessage = emptyMessage || t("common.noResults");
   // Convert columns to react-table format
   const tableColumns: ColumnDef<T>[] = columns.map((column) => ({
     id: column.header,
@@ -221,7 +225,7 @@ export function DataTable<T>({
                     colSpan={columns.length}
                     className="px-4 py-8 text-center text-[11px] text-gray-400 dark:text-gray-600"
                   >
-                    {emptyMessage}
+                    {defaultEmptyMessage}
                   </td>
                 </tr>
               ) : (

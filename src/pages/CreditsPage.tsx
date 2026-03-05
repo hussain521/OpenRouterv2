@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { RefreshCw } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -65,7 +66,8 @@ const mockTransactions = [
 
 export default function CreditsPage() {
   const navigate = useNavigate();
-  usePageTitle("Credits");
+  const { t } = useTranslation();
+  usePageTitle(t("nav.credits"));
 
   const [balance, setBalance] = useState(94.75);
   const [autoTopUp, setAutoTopUp] = useState(false);
@@ -121,7 +123,7 @@ export default function CreditsPage() {
       <DashboardLayout
         title={
           <div className="flex items-center gap-2">
-            <span>Credits</span>
+            <span>{t("nav.credits")}</span>
             <button
               type="button"
               onClick={handleRefresh}

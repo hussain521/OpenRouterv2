@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface DialogProps {
   open: boolean;
@@ -15,6 +16,8 @@ export function Dialog({
   children,
   className,
 }: DialogProps) {
+  const { t } = useTranslation();
+  
   // Lock body scroll while dialog is open
   useEffect(() => {
     if (!open) return;
@@ -39,7 +42,7 @@ export function Dialog({
       {/* backdrop click to close */}
       <button
         type="button"
-        aria-label="Close"
+        aria-label={t("common.close")}
         className="absolute inset-0 h-full w-full cursor-default"
         onClick={() => onOpenChange(false)}
       />
@@ -61,6 +64,8 @@ export function DialogContent({
   showCloseButton = true,
   onClose,
 }: DialogContentProps) {
+  const { t } = useTranslation();
+  
   return (
     <div
       className={cn(
@@ -71,7 +76,7 @@ export function DialogContent({
       {showCloseButton && onClose && (
         <button
           type="button"
-          aria-label="Close"
+          aria-label={t("common.close")}
           className="absolute right-4 top-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white/90 dark:bg-gray-700/90 text-gray-400 dark:text-gray-500 shadow-sm hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
           onClick={onClose}
         >

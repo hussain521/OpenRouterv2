@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +15,7 @@ import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 import { CreateManagementKeyDialog } from "@/components/CreateManagementKeyDialog";
 
 export function DialogTestPage() {
+  const { t } = useTranslation();
   const [dialogs, setDialogs] = useState({
     billing: false,
     organization: false,
@@ -33,47 +35,47 @@ export function DialogTestPage() {
   };
 
   return (
-    <DashboardLayout title="Dialog Test">
+    <DashboardLayout title={t("dialogTest.pageTitle")}>
       <div className="p-8">
-        <h1 className="text-2xl font-semibold mb-8">Dialog Test Page</h1>
+        <h1 className="text-2xl font-semibold mb-8">{t("dialogTest.heading")}</h1>
         
         <div className="grid grid-cols-2 gap-4 max-w-4xl">
           {/* Test buttons */}
           <Button onClick={() => openDialog("billing")}>
-            Test Billing Address Dialog
+            {t("dialogTest.testBillingAddress")}
           </Button>
           
           <Button onClick={() => openDialog("organization")}>
-            Test Create Organization Dialog
+            {t("dialogTest.testCreateOrganization")}
           </Button>
           
           <Button onClick={() => openDialog("feedback")}>
-            Test Feedback Dialog
+            {t("dialogTest.testFeedback")}
           </Button>
           
           <Button onClick={() => openDialog("pdf")}>
-            Test PDF Inputs Dialog
+            {t("dialogTest.testPdfInputs")}
           </Button>
           
           <Button onClick={() => openDialog("reportFeedback")}>
-            Test Report Feedback Dialog
+            {t("dialogTest.testReportFeedback")}
           </Button>
           
           <Button onClick={() => openDialog("responseHealing")}>
-            Test Response Healing Dialog
+            {t("dialogTest.testResponseHealing")}
           </Button>
           
           <Button onClick={() => openDialog("webSearch")}>
-            Test Web Search Dialog
+            {t("dialogTest.testWebSearch")}
           </Button>
           
           <div className="flex items-center gap-2">
-            <span>API Key Dialog:</span>
+            <span>{t("dialogTest.apiKeyDialogLabel")}</span>
             <CreateApiKeyDialog />
           </div>
           
           <div className="flex items-center gap-2">
-            <span>Management Key Dialog:</span>
+            <span>{t("dialogTest.managementKeyDialogLabel")}</span>
             <CreateManagementKeyDialog />
           </div>
         </div>
@@ -83,7 +85,7 @@ export function DialogTestPage() {
           open={dialogs.billing}
           onOpenChange={(open) => !open && closeDialog("billing")}
           onComplete={() => {
-            console.log("Billing address completed");
+            console.log(t("dialogTest.billingAddressCompleted"));
             closeDialog("billing");
           }}
         />

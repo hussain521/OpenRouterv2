@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import TopBanner from "@/components/TopBanner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -16,7 +17,8 @@ import { usePageTitle } from "@/hooks/usePageTitle";
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { view } = useView();
-  usePageTitle("Home");
+  const { t } = useTranslation();
+  usePageTitle(t("nav.home"));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +56,7 @@ export default function Home() {
           <Footer />
         </>
       ) : (
-        <DashboardLayout title="Activity" />
+        <DashboardLayout title={t("nav.activity")} />
       )}
     </div>
   );

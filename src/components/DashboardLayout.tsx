@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
 
 type DashboardLayoutProps = {
   title: ReactNode;
@@ -81,10 +82,13 @@ export default function DashboardLayout({
   children,
   headerActions,
 }: DashboardLayoutProps) {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+  
   return (
     <div className="flex h-[calc(100vh-72px)] bg-white dark:bg-black overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-60 border-r dark:border-gray-700 bg-gray-50/80 dark:bg-black h-full">
+      <aside className={`w-60 ${isRTL ? 'border-l' : 'border-r'} dark:border-gray-700 bg-gray-50/80 dark:bg-black h-full`}>
         <div className="h-full px-3 py-4">
           <nav className="space-y-4 text-sm">
             <SidebarSections />
@@ -114,6 +118,7 @@ export default function DashboardLayout({
 }
 
 function SidebarSections() {
+  const { t } = useTranslation();
   const location = useLocation();
   const isInSettingsSection = location.pathname.startsWith("/settings");
   
@@ -127,17 +132,17 @@ function SidebarSections() {
       <div className="space-y-1">
         <SidebarLink
           to="/activity"
-          label="Activity"
+          label={t("nav.activity")}
           icon={<Activity className="h-4 w-4" />}
         />
         <SidebarLink
           to="/logs"
-          label="Logs"
+          label={t("dashboard.logs")}
           icon={<FileText className="h-4 w-4" />}
         />
         <SidebarLink
           to="/credits"
-          label="Credits"
+          label={t("nav.credits")}
           icon={<CreditCard className="h-4 w-4" />}
         />
       </div>
@@ -157,7 +162,7 @@ function SidebarSections() {
             <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
               <Settings className="h-4 w-4" />
             </span>
-            <span>Settings</span>
+            <span>{t("nav.settings")}</span>
           </span>
           <span
             className={[
@@ -171,23 +176,23 @@ function SidebarSections() {
 
         {isSettingsOpen && (
           <div className="space-y-0.5">
-            <SidebarSubLink to="/settings/account" label="Account" />
-            <SidebarSubLink to="/settings/api-keys" label="API Keys" />
+            <SidebarSubLink to="/settings/account" label={t("settings.account")} />
+            <SidebarSubLink to="/settings/api-keys" label={t("settings.apiKeys")} />
             <SidebarSubLink
               to="/settings/management-keys"
-              label="Management Keys"
+              label={t("settings.managementKeys")}
             />
             <SidebarSubLink
               to="/settings/privacy-guardrails"
-              label="Privacy & Guardrails"
+              label={t("settings.privacyGuardrails")}
             />
-            <SidebarSubLink to="/settings/byok" label="BYOK" />
-            <SidebarSubLink to="/settings/presets" label="Presets" />
-            <SidebarSubLink to="/settings/routing" label="Routing" />
-            <SidebarSubLink to="/settings/plugins" label="Plugins" />
+            <SidebarSubLink to="/settings/byok" label={t("settings.byok")} />
+            <SidebarSubLink to="/settings/presets" label={t("settings.presets")} />
+            <SidebarSubLink to="/settings/routing" label={t("settings.routing")} />
+            <SidebarSubLink to="/settings/plugins" label={t("settings.plugins")} />
             <SidebarSubLink
               to="/settings/observability"
-              label="Observability"
+              label={t("settings.observability")}
             />
           </div>
         )}
@@ -197,6 +202,7 @@ function SidebarSections() {
 }
 
 function DefaultActivityContent() {
+  const { t } = useTranslation();
   type SortColumn = "model" | "min" | "max" | "avg" | "sum";
 
   const [isSpendDialogOpen, setIsSpendDialogOpen] = useState(false);
@@ -270,7 +276,7 @@ function DefaultActivityContent() {
                 className="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 px-3 py-1 text-[11px] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 <span>
-                  {creditView === "credits" ? "OpenRouter Credits" : "USD ($)"}
+                  {creditView === "credits" ? t("dashboard.openRouterCredits") : t("dashboard.usd")}
                 </span>
                 <ChevronDown className="h-3 w-3" />
               </button>
@@ -285,7 +291,7 @@ function DefaultActivityContent() {
                     }}
                     className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
-                    OpenRouter Credits
+                    {t("dashboard.openRouterCredits")}
                   </button>
                   <button
                     type="button"
@@ -295,7 +301,7 @@ function DefaultActivityContent() {
                     }}
                     className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
-                    USD ($)
+                    {t("dashboard.usd")}
                   </button>
                 </div>
               )}
@@ -321,30 +327,30 @@ function DefaultActivityContent() {
               </div>
             </div>
             <p className="text-[13px] text-gray-500 dark:text-gray-400">
-              Not enough data to display yet.
+              {t("dashboard.notEnoughData")}
             </p>
           </div>
 
           <div className="mt-5 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/40">
             <div className="grid grid-cols-5 gap-px bg-transparent px-2 py-2 text-[11px] font-medium text-gray-500 dark:text-gray-400">
               <div className="rounded-full bg-white dark:bg-gray-700">
-                {renderSortLabel("Model", "model")}
+                {renderSortLabel(t("dashboard.model"), "model")}
               </div>
               <div className="rounded-full bg-white dark:bg-gray-700">
-                {renderSortLabel("Min ($)", "min")}
+                {renderSortLabel(t("dashboard.minPrice"), "min")}
               </div>
               <div className="rounded-full bg-white dark:bg-gray-700">
-                {renderSortLabel("Max ($)", "max")}
+                {renderSortLabel(t("dashboard.maxPrice"), "max")}
               </div>
               <div className="rounded-full bg-white dark:bg-gray-700">
-                {renderSortLabel("Avg ($)", "avg")}
+                {renderSortLabel(t("dashboard.avgPrice"), "avg")}
               </div>
               <div className="rounded-full bg-white dark:bg-gray-700">
-                {renderSortLabel("Sum ($)", "sum")}
+                {renderSortLabel(t("dashboard.sumPrice"), "sum")}
               </div>
             </div>
             <div className="px-4 py-6 text-center text-[12px] text-gray-400 dark:text-gray-500">
-              No rows to display.
+              {t("dashboard.noRows")}
             </div>
           </div>
         </div>
@@ -378,7 +384,7 @@ function DefaultActivityContent() {
     <div className="space-y-6 pt-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[13px] text-gray-500 dark:text-gray-400">
-          Your usage across models on OpenRouter.
+          {t("dashboard.usageDescription")}
         </p>
 
         {/* Filters row beside description */}
@@ -393,7 +399,7 @@ function DefaultActivityContent() {
             className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-600 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-300 dark:hover:bg-gray-700"
           >
             <Filter className="h-4 w-4" />
-            <span className="text-[13px]">Filters</span>
+            <span className="text-[13px]">{t("dashboard.filters")}</span>
           </button>
 
           {/* 1 Month select (time range) */}
@@ -406,12 +412,12 @@ function DefaultActivityContent() {
             <SelectTrigger className="h-8 rounded-full border border-gray-200 bg-white px-3 text-[13px] text-gray-600 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-200 dark:hover:bg-gray-700">
               <SelectValue placeholder="1 Month" />
             </SelectTrigger>
-            <SelectContent className="w-32 rounded-2xl border border-gray-200 bg-white p-0 text-[13px] shadow-lg dark:border-gray-700 dark:bg-black">
-              <SelectItem value="1_hour">1 Hour</SelectItem>
-              <SelectItem value="1_day">1 Day</SelectItem>
-              <SelectItem value="1_week">1 Week</SelectItem>
-              <SelectItem value="1_month">1 Month</SelectItem>
-              <SelectItem value="1_year">1 Year</SelectItem>
+            <SelectContent align="start" className="w-32 rounded-2xl border border-gray-200 bg-white p-0 text-[13px] shadow-lg dark:border-gray-700 dark:bg-black">
+              <SelectItem value="1_hour">{t("dashboard.timeRange.1hour")}</SelectItem>
+              <SelectItem value="1_day">{t("dashboard.timeRange.1day")}</SelectItem>
+              <SelectItem value="1_week">{t("dashboard.timeRange.1week")}</SelectItem>
+              <SelectItem value="1_month">{t("dashboard.timeRange.1month")}</SelectItem>
+              <SelectItem value="1_year">{t("dashboard.timeRange.1year")}</SelectItem>
             </SelectContent>
           </Select>
 
@@ -423,9 +429,9 @@ function DefaultActivityContent() {
             <SelectTrigger className="h-8 min-w-[120px] rounded-full border border-gray-200 bg-white px-3 text-[13px] text-gray-600 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-200 dark:hover:bg-gray-700">
               <SelectValue placeholder="By Model" />
             </SelectTrigger>
-            <SelectContent className="w-[140px] rounded-2xl border border-gray-200 bg-white p-0 text-[13px] shadow-lg dark:border-gray-700 dark:bg-black">
-              <SelectItem value="model">By Model</SelectItem>
-              <SelectItem value="api_key">By API Key</SelectItem>
+            <SelectContent align="start" className="w-[140px] rounded-2xl border border-gray-200 bg-white p-0 text-[13px] shadow-lg dark:border-gray-700 dark:bg-black">
+              <SelectItem value="model">{t("dashboard.byModel")}</SelectItem>
+              <SelectItem value="api_key">{t("dashboard.byApiKey")}</SelectItem>
             </SelectContent>
           </Select>
 
@@ -442,21 +448,21 @@ function DefaultActivityContent() {
             {isSettingsMenuOpen && (
               <div className="absolute right-0 top-[calc(100%+8px)] z-40 w-40 rounded-2xl border border-gray-200 bg-white py-2 text-[12px] text-gray-700 shadow-lg dark:border-gray-700 dark:bg-black dark:text-gray-200">
                 <div className="px-3 pb-1 text-[11px] font-medium text-gray-400 dark:text-gray-500">
-                  Export to…
+                  {t("dashboard.exportTo")}
                 </div>
                 <button
                   type="button"
                   className="flex w-full items-center gap-2 px-3 py-1.5 text-left hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   <FileText className="h-3.5 w-3.5 text-gray-400" />
-                  <span>CSV</span>
+                  <span>{t("dashboard.csv")}</span>
                 </button>
                 <button
                   type="button"
                   className="flex w-full items-center gap-2 px-3 py-1.5 text-left hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   <FileText className="h-3.5 w-3.5 text-gray-400" />
-                  <span>PDF</span>
+                  <span>{t("dashboard.pdf")}</span>
                 </button>
               </div>
             )}
@@ -473,7 +479,7 @@ function DefaultActivityContent() {
                     onClick={() => setIsModelsOpen((open) => !open)}
                     className="flex w-full items-center  justify-between rounded-2xl px-3 py-2 text-left text-[13px] font-medium text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700"
                   >
-                    <span>Models</span>
+                    <span>{t("dashboard.models")}</span>
                     <ChevronDown
                       className={[
                         "h-3.5 w-3.5 text-gray-400 transition-transform",
@@ -488,12 +494,12 @@ function DefaultActivityContent() {
                         <Search className="h-3.5 w-3.5" />
                         <input
                           type="text"
-                          placeholder="Search models"
+                          placeholder={t("dashboard.searchModels")}
                           className="w-full bg-transparent text-[12px] text-gray-700 outline-none placeholder:text-gray-400 dark:text-gray-200 dark:placeholder:text-gray-500"
                         />
                       </div>
                       <div className="rounded-xl bg-white px-2 py-1.5 text-[12px] text-gray-500 dark:bg-black dark:text-gray-400">
-                        No models found
+                        {t("dashboard.noModelsFound")}
                       </div>
                     </div>
                   )}
@@ -506,7 +512,7 @@ function DefaultActivityContent() {
                     onClick={() => setIsApiKeysOpen((open) => !open)}
                     className="flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-[13px] font-medium text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700"
                   >
-                    <span>API Keys</span>
+                    <span>{t("dashboard.apiKeys")}</span>
                     <ChevronDown
                       className={[
                         "h-3.5 w-3.5 text-gray-400 transition-transform",
@@ -521,12 +527,12 @@ function DefaultActivityContent() {
                         <Search className="h-3.5 w-3.5" />
                         <input
                           type="text"
-                          placeholder="Search API keys"
+                          placeholder={t("dashboard.searchApiKeys")}
                           className="w-full bg-transparent text-[12px] text-gray-700 outline-none placeholder:text-gray-400 dark:text-gray-200 dark:placeholder:text-gray-500"
                         />
                       </div>
                       <div className="rounded-xl bg-white px-2 py-1.5 text-[12px] text-gray-500 dark:bg-black dark:text-gray-400">
-                        No API keys found
+                        {t("dashboard.noApiKeysFound")}
                       </div>
                     </div>
                   )}
@@ -542,7 +548,7 @@ function DefaultActivityContent() {
         <Card className="border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-sm/10 rounded-2xl p-2 transition-shadow hover:shadow-lg dark:hover:shadow-[0_18px_45px_rgba(15,23,42,0.45)]">
           <CardHeader className="flex flex-row items-center justify-between px-5 pt-1 pb-0">
             <CardTitle className="text-[11px] font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-              Spend
+              {t("dashboard.spend")}
             </CardTitle>
             <button
               type="button"
@@ -560,7 +566,7 @@ function DefaultActivityContent() {
               <LuChartNoAxesColumnIncreasing className=" w-15 h-15 text-gray-400 dark:text-gray-500" />
 
               <p className="text-[11px] text-gray-400 dark:text-gray-500">
-                No data in this window
+                {t("dashboard.noDataInWindow")}
               </p>
             </div>
           </CardContent>
@@ -569,7 +575,7 @@ function DefaultActivityContent() {
         <Card className="border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-sm/10 rounded-2xl p-2 transition-shadow hover:shadow-lg dark:hover:shadow-[0_18px_45px_rgba(15,23,42,0.45)]">
           <CardHeader className="flex flex-row items-center justify-between px-5 pt-1 pb-0">
             <CardTitle className="text-[11px] font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-              Requests
+              {t("dashboard.requests")}
             </CardTitle>
             <button
               type="button"
@@ -587,7 +593,7 @@ function DefaultActivityContent() {
               <LuChartNoAxesColumnIncreasing className=" w-15 h-15 text-gray-400 dark:text-gray-500" />
 
               <p className="text-[11px] text-gray-400 dark:text-gray-500">
-                No data in this window
+                {t("dashboard.noDataInWindow")}
               </p>
             </div>
           </CardContent>
@@ -596,7 +602,7 @@ function DefaultActivityContent() {
         <Card className="border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-sm/10 rounded-2xl p-2 transition-shadow hover:shadow-lg dark:hover:shadow-[0_18px_45px_rgba(15,23,42,0.45)]">
           <CardHeader className="flex flex-row items-center justify-between px-5 pt-1 pb-0">
             <CardTitle className="text-[11px] font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-              Tokens
+              {t("dashboard.tokens")}
             </CardTitle>
             <button
               type="button"
@@ -614,7 +620,7 @@ function DefaultActivityContent() {
               <LuChartNoAxesColumnIncreasing className=" w-15 h-15 text-gray-400 dark:text-gray-500" />
 
               <p className="text-[11px] text-gray-400 dark:text-gray-500">
-                No data in this window
+                {t("dashboard.noDataInWindow")}
               </p>
             </div>
           </CardContent>
@@ -630,16 +636,15 @@ function DefaultActivityContent() {
             </div>
             <div>
               <p className="font-medium text-gray-900 dark:text-gray-100">
-                Want to go deeper?
+                {t("dashboard.wantToGoDeeper")}
               </p>
               <p className="text-[13px] text-gray-500 dark:text-gray-400">
-                Send your OpenRouter traces to observability tools with no code
-                changes, and more destinations with no code changes.
+                {t("dashboard.observabilityDescription")}
               </p>
             </div>
           </div>
           <button className="self-start rounded-full border border-gray-300 dark:border-gray-600 px-4 py-1.5 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 md:self-auto">
-            Check out Broadcast
+            {t("dashboard.checkOutBroadcast")}
           </button>
         </CardContent>
       </Card>
@@ -653,10 +658,10 @@ function DefaultActivityContent() {
             </div>
             <div>
               <p className="font-medium text-gray-900 dark:text-gray-100">
-                Logs have moved
+                {t("dashboard.logsHaveMoved")}
               </p>
               <p className="mt-1 text-[13px] text-gray-500 dark:text-gray-400">
-                Your API request logs now have their own dedicated page.
+                {t("dashboard.logsDescription")}
               </p>
             </div>
           </div>
@@ -668,13 +673,13 @@ function DefaultActivityContent() {
 
       {/* Spend / Requests / Tokens dialogs */}
       {isSpendDialogOpen &&
-        renderMetricDialog("Spend By Model", () => setIsSpendDialogOpen(false))}
+        renderMetricDialog(t("dashboard.spendByModel"), () => setIsSpendDialogOpen(false))}
       {isRequestsDialogOpen &&
-        renderMetricDialog("Requests By Model", () =>
+        renderMetricDialog(t("dashboard.requestsByModel"), () =>
           setIsRequestsDialogOpen(false),
         )}
       {isTokensDialogOpen &&
-        renderMetricDialog("Tokens By Model", () =>
+        renderMetricDialog(t("dashboard.tokensByModel"), () =>
           setIsTokensDialogOpen(false),
         )}
     </div>

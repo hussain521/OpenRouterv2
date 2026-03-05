@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import * as Popover from "@radix-ui/react-popover";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface DatePickerProps {
   date?: Date;
@@ -13,8 +14,9 @@ interface DatePickerProps {
 export function DatePicker({
   date,
   onSelect,
-  placeholder = "Pick a date",
+  placeholder,
 }: DatePickerProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
     date,
@@ -70,7 +72,7 @@ export function DatePicker({
           <CalendarIcon className="h-3 w-3 text-gray-400 dark:text-gray-500" />
           {selectedDate
             ? format(selectedDate, "MM/dd/yyyy hh:mm a")
-            : placeholder}
+            : placeholder || t("datePicker.pickDate")}
         </button>
       </Popover.Trigger>
       <Popover.Portal>
@@ -121,7 +123,15 @@ export function DatePicker({
               </button>
             </div>
             <div className="grid grid-cols-7 gap-1 text-center text-xs">
-              {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
+              {[
+                t("datePicker.weekdays.sun"),
+                t("datePicker.weekdays.mon"),
+                t("datePicker.weekdays.tue"),
+                t("datePicker.weekdays.wed"),
+                t("datePicker.weekdays.thu"),
+                t("datePicker.weekdays.fri"),
+                t("datePicker.weekdays.sat")
+              ].map((day) => (
                 <div
                   key={day}
                   className="p-1 font-medium text-gray-500 dark:text-gray-400"
@@ -173,7 +183,7 @@ export function DatePicker({
                   }}
                   className="px-2 py-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded"
                 >
-                  Now
+                  {t("datePicker.now")}
                 </button>
               </div>
             </div>

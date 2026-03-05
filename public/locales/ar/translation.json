@@ -1,0 +1,1032 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "activity": "النشاط",
+    "credits": "الرصيد",
+    "apiKeys": "مفاتيح واجهة البرمجة",
+    "settings": "الإعدادات",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "dashboard": "لوحة التحكم",
+    "language": "اللغة",
+    "search": "بحث",
+    "chat": "محادثة",
+    "rankings": "التصنيفات",
+    "enterprise": "المؤسسة",
+    "pricing": "الأسعار",
+    "docs": "المستندات",
+    "logs": "السجلات",
+    "theme": "المظهر",
+    "lightMode": "الوضع الفاتح",
+    "systemDefault": "افتراضي النظام",
+    "darkMode": "الوضع الداكن",
+    "systemStatus": "حالة النظام:",
+    "dark": "داكن",
+    "light": "فاتح"
+  },
+  "hero": {
+    "title": "مرحباً بك في OpenRouter",
+    "subtitle": "واجهة برمجية موحدة لنماذج الذكاء الاصطناعي",
+    "getStarted": "ابدأ الآن",
+    "unifiedInterface": "الواجهة الموحدة لنماذج اللغة الكبيرة",
+    "better": "أفضل",
+    "prices": "أسعار",
+    "uptime": "وقت التشغيل",
+    "noSubscriptions": "بدون اشتراكات",
+    "getApiKey": "احصل على مفتاح API",
+    "exploreModels": "استكشف النماذج"
+  },
+  "features": {
+    "title": "المميزات",
+    "explore": "استكشف",
+    "agents": "الوكلاء",
+    "models": "النماذج",
+    "oneApi": {
+      "title": "واجهة برمجية واحدة لأي نموذج",
+      "description": "الوصول إلى جميع النماذج الرئيسية من خلال واجهة موحدة واحدة. تعمل مجموعة تطوير البرمجيات OpenAI من الصندوق.",
+      "linkText": "تصفح الكل"
+    },
+    "availability": {
+      "title": "توافر أعلى",
+      "description": "نماذج ذكاء اصطناعي موثوقة عبر بنيتنا التحتية الموزعة. التحول إلى مزودين آخرين عندما ينقطع أحدهم.",
+      "linkText": "اعرف المزيد"
+    },
+    "performance": {
+      "title": "السعر والأداء",
+      "description": "حافظ على التكاليف تحت السيطرة دون التضحية بالسرعة. يعمل OpenRouter على الحافة لأقل زمن انتقال.",
+      "linkText": "اعرف المزيد"
+    },
+    "dataPolicies": {
+      "title": "سياسات البيانات المخصصة",
+      "description": "احمِ مؤسستك بسياسات بيانات دقيقة. تأكد من أن المطالبات تذهب فقط إلى المزودين الموثوقين.",
+      "linkText": "عرض المستندات"
+    }
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجاح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "create": "إنشاء",
+    "back": "رجوع",
+    "next": "التالي",
+    "search": "بحث",
+    "submit": "إرسال",
+    "continue": "متابعة",
+    "or": "أو",
+    "by": "بواسطة",
+    "viewAll": "عرض الكل",
+    "new": "جديد",
+    "name": "الاسم",
+    "na": "غير متاح",
+    "daily": "يومي",
+    "weekly": "أسبوعي",
+    "monthly": "شهري",
+    "upload": "رفع",
+    "add": "إضافة",
+    "default": "افتراضي",
+    "clear": "مسح",
+    "select": "اختر...",
+    "comingSoon": "قريباً",
+    "remove": "إزالة",
+    "configure": "تكوين",
+    "learnMore": "اعرف المزيد",
+    "model": "النموذج",
+    "close": "إغلاق",
+    "info": "م",
+    "uploadIcon": "⬆",
+    "maxChars": "{{max}}",
+    "noResults": "لم يتم العثور على نتائج",
+    "closeButton": "إغلاق",
+    "toggleMenu": "تبديل القائمة",
+    "pagination": "ترقيم الصفحات",
+    "aiProviderLogo": "شعار مزود الذكاء الاصطناعي"
+  },
+  "footer": {
+    "copyright": "© 2026 OpenRouter. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "product": {
+      "title": "المنتج",
+      "chat": "محادثة",
+      "rankings": "التصنيفات",
+      "models": "النماذج",
+      "providers": "المزودون",
+      "pricing": "الأسعار",
+      "enterprise": "المؤسسة"
+    },
+    "company": {
+      "title": "الشركة",
+      "about": "حول",
+      "announcements": "الإعلانات",
+      "careers": "الوظائف",
+      "hiring": "التوظيف",
+      "privacy": "الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "support": "الدعم",
+      "stateOfAI": "حالة الذكاء الاصطناعي",
+      "worksWithOR": "يعمل مع OR"
+    },
+    "developer": {
+      "title": "المطور",
+      "documentation": "التوثيق",
+      "apiReference": "مرجع واجهة البرمجة",
+      "sdk": "مجموعة تطوير البرمجيات",
+      "status": "الحالة"
+    },
+    "connect": {
+      "title": "تواصل",
+      "discord": "ديسكورد",
+      "github": "جيت هب",
+      "linkedin": "لينكد إن",
+      "x": "إكس",
+      "youtube": "يوتيوب"
+    }
+  },
+  "signIn": {
+    "title": "تسجيل الدخول إلى OpenRouter",
+    "subtitle": "مرحباً بعودتك! يرجى تسجيل الدخول للمتابعة",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "usePasskey": "استخدم مفتاح المرور بدلاً من ذلك",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "signUpLink": "سجل الآن"
+  },
+  "signUp": {
+    "title": "إنشاء حسابك",
+    "subtitle": "مرحباً! يرجى ملء التفاصيل للبدء.",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "showPassword": "إظهار كلمة المرور",
+    "passwordError": "يجب أن تحتوي كلمة المرور على 8 أحرف أو أكثر.",
+    "agreeText": "أوافق على",
+    "termsOfService": "شروط الخدمة",
+    "privacyPolicy": "سياسة الخصوصية",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "signInLink": "تسجيل الدخول"
+  },
+  "banner": {
+    "observabilityMessage": "أرسل التتبعات إلى منصات المراقبة المفضلة لديك مع البث (الآن متاح عمومياً). ←"
+  },
+  "stats": {
+    "monthlyTokens": "الرموز الشهرية",
+    "globalUsers": "المستخدمون العالميون",
+    "activeProviders": "المزودون النشطون",
+    "models": "النماذج"
+  },
+  "gettingStarted": {
+    "step1": {
+      "title": "التسجيل",
+      "description": "أنشئ حسابًا للبدء. يمكنك إعداد منظمة لفريقك لاحقًا."
+    },
+    "step2": {
+      "title": "شراء الرصيد",
+      "description": "يمكن استخدام الرصيد مع أي نموذج أو مزود."
+    },
+    "step3": {
+      "title": "احصل على مفتاح واجهة البرمجة",
+      "description": "أنشئ مفتاح واجهة البرمجة وابدأ في إرسال الطلبات. متوافق تمامًا مع OpenAI."
+    }
+  },
+  "modelCard": {
+    "tokens": "الرموز",
+    "weeklyTrend": "الاتجاه الأسبوعي"
+  },
+  "featuredAgents": {
+    "title": "الوكلاء المميزون",
+    "subtitle": "أكثر من 250 ألف تطبيق يستخدم OpenRouter مع أكثر من 4.2 مليون مستخدم عالمياً",
+    "openai": {
+      "description": "أسهل طريقة للانتقال من الفكرة إلى التطبيق"
+    },
+    "gemini": {
+      "description": "وكيل الذكاء الاصطناعي للمطورين"
+    },
+    "meta": {
+      "description": "كل ما تحتاجه لتطوير الوكلاء"
+    }
+  },
+  "featuredModels": {
+    "title": "النماذج المميزة",
+    "subtitle": "أكثر من 300 نموذج نشط على أكثر من 60 مزود"
+  },
+  "explore": {
+    "models": {
+      "title": "استكشف النماذج",
+      "description": "اكتشف نماذج الذكاء الاصطناعي عبر مجموعتنا، من جميع المختبرات والمزودين الرئيسيين.",
+      "linkText": "عرض النماذج"
+    },
+    "rankings": {
+      "title": "تصنيفات النماذج والتطبيقات",
+      "description": "استكشف استخدام الرموز عبر النماذج والمختبرات والتطبيقات العامة.",
+      "linkText": "عرض التصنيفات"
+    }
+  },
+  "announcements": {
+    "title": "الإعلانات الحديثة",
+    "items": {
+      "nemo": {
+        "title": "النماذج القابلة للتقطير وخطوط أنابيب البيانات الاصطناعية مع NeMo Data Designer",
+        "description": "كيفية إنشاء سير عمل بيانات اصطناعية آمنة الترخيص لتخصص النموذج."
+      },
+      "responseHealing": {
+        "title": "معالجة الاستجابة: تقليل عيوب جيسون بنسبة تزيد عن 80%",
+        "description": "نطلق اليوم ميزة معالجة الاستجابة الجديدة..."
+      },
+      "aiReport": {
+        "title": "تقرير حالة الذكاء الاصطناعي 2025",
+        "description": "نقدم تقرير حالة الذكاء الاصطناعي 2025..."
+      }
+    }
+  },
+  "apiKeys": {
+    "createKey": "إنشاء مفتاح",
+    "namePlaceholder": "مثال: \"مفتاح الدردشة الآلية\"",
+    "creditLimit": "حد الرصيد (اختياري)",
+    "creditLimitPlaceholder": "اتركه فارغاً للحصول على رصيد غير محدود",
+    "resetLimit": "إعادة تعيين الحد كل...",
+    "selectResetFrequency": "اختر تكرار إعادة التعيين",
+    "expiration": "انتهاء الصلاحية",
+    "selectExpiration": "اختر انتهاء الصلاحية",
+    "noExpiration": "بدون انتهاء صلاحية",
+    "in7Days": "خلال 7 أيام",
+    "in30Days": "خلال 30 يومًا",
+    "in90Days": "خلال 90 يومًا"
+  },
+  "apiKeysPage": {
+    "emptyState": {
+      "title": "لا توجد مفاتيح واجهة برمجة حتى الآن",
+      "description": "أنشئ مفاتيح واجهة البرمجة لمصادقة الطلبات من تطبيقاتك إلى OpenRouter."
+    }
+  },
+  "managementKeys": {
+    "createTitle": "إنشاء مفتاح إدارة",
+    "namePlaceholder": "مثال: \"مفتاح الإدارة\"",
+    "contentDescription": "أنشئ مفاتيح إدارة لإدارة الإعدادات والأذونات وعناصر التحكم الأخرى لهذه المنظمة. هذه المفاتيح مخصصة للمسؤولين فقط.",
+    "description": "أنشئ مفاتيح إدارة لإدارة الإعدادات والأذونات وعناصر التحكم الأخرى لهذه المنظمة. هذه المفاتيح مخصصة للمسؤولين فقط."
+  },
+  "dashboard": {
+    "logs": "السجلات",
+    "notEnoughData": "لا توجد بيانات كافية للعرض حتى الآن.",
+    "model": "النموذج",
+    "minPrice": "الحد الأدنى ($)",
+    "maxPrice": "الحد الأقصى ($)",
+    "avgPrice": "المتوسط ($)",
+    "sumPrice": "المجموع ($)",
+    "noRows": "لا توجد صفوف للعرض.",
+    "usageDescription": "استخدامك عبر النماذج على OpenRouter.",
+    "filters": "المرشحات",
+    "timeRange": {
+      "1hour": "ساعة واحدة",
+      "1day": "يوم واحد",
+      "1week": "أسبوع واحد",
+      "1month": "شهر واحد",
+      "1year": "سنة واحدة"
+    },
+    "byModel": "حسب النموذج",
+    "byApiKey": "حسب مفتاح واجهة البرمجة",
+    "exportTo": "تصدير إلى...",
+    "csv": "ملف قيم مفصولة بفواصل",
+    "pdf": "ملف المستند المحمول",
+    "models": "النماذج",
+    "searchModels": "البحث عن النماذج",
+    "noModelsFound": "لم يتم العثور على نماذج",
+    "apiKeys": "مفاتيح واجهة البرمجة",
+    "searchApiKeys": "البحث عن مفاتيح واجهة البرمجة",
+    "noApiKeysFound": "لم يتم العثور على مفاتيح واجهة البرمجة",
+    "spend": "الإنفاق",
+    "requests": "الطلبات",
+    "tokens": "الرموز",
+    "noDataInWindow": "لا توجد بيانات في هذه النافذة",
+    "wantToGoDeeper": "هل تريد التعمق أكثر؟",
+    "observabilityDescription": "أرسل تتبعات OpenRouter إلى أدوات المراقبة بدون تغييرات في الكود، والمزيد من الوجهات بدون تغييرات في الكود.",
+    "checkOutBroadcast": "تحقق من البث",
+    "logsHaveMoved": "تم نقل السجلات",
+    "logsDescription": "سجلات طلبات واجهة البرمجة الخاصة بك لديها الآن صفحة مخصصة خاصة بها.",
+    "openRouterCredits": "رصيد OpenRouter",
+    "usd": "دولار أمريكي ($)",
+    "spendByModel": "الإنفاق حسب النموذج",
+    "requestsByModel": "الطلبات حسب النموذج",
+    "tokensByModel": "الرموز حسب النموذج"
+  },
+  "settings": {
+    "account": "الحساب",
+    "apiKeys": "مفاتيح واجهة البرمجة",
+    "managementKeys": "مفاتيح الإدارة",
+    "privacyGuardrails": "الخصوصية والحواجز",
+    "byok": "استخدم مفتاحك الخاص",
+    "presets": "الإعدادات المسبقة",
+    "routing": "التوجيه",
+    "plugins": "الإضافات",
+    "observability": "المراقبة",
+    "placeholder": "هذه صفحة نموذجية لقسم {{section}}."
+  },
+  "accountSettings": {
+    "user": {
+      "title": "المستخدم",
+      "description": "إدارة إعدادات حسابك الشخصي وتفضيلاتك",
+      "action": "تعديل الملف الشخصي"
+    },
+    "organization": {
+      "title": "المنظمة",
+      "description": "إنشاء وإدارة المنظمات لفريقك",
+      "action": "إنشاء منظمة"
+    },
+    "accountType": {
+      "title": "نوع الحساب",
+      "description": "يحدد نوع حسابك وصولك إلى الميزات والحدود.",
+      "learnMore": "اعرف المزيد",
+      "selfServe": "الخدمة الذاتية"
+    },
+    "chatroomColor": {
+      "title": "لون غرفة الدردشة",
+      "description": "اختر سمة لونية لواجهة الدردشة الخاصة بك",
+      "default": "افتراضي",
+      "purple": "بنفسجي",
+      "green": "أخضر"
+    },
+    "defaultPreset": {
+      "title": "الإعداد المسبق الافتراضي",
+      "description": "حدد إعدادًا مسبقًا افتراضيًا للمحادثات الجديدة",
+      "none": "بدون",
+      "creative": "إبداعي",
+      "balanced": "متوازن",
+      "focused": "مركز"
+    },
+    "analyticsToggle": {
+      "title": "التحليلات",
+      "description": "شارك بيانات الاستخدام المجهولة للمساعدة في تحسين المنصة"
+    },
+    "notifications": {
+      "title": "الإشعارات"
+    },
+    "lowBalanceAlerts": {
+      "title": "تنبيهات الرصيد المنخفض",
+      "description": "احصل على إشعار عندما يكون رصيدك منخفضاً"
+    },
+    "creditThreshold": {
+      "title": "حد الرصيد",
+      "description": "تعيين حد الرصيد لتنبيهات الرصيد المنخفض"
+    },
+    "chatCompletionNotifications": {
+      "title": "إشعارات إكمال الدردشة",
+      "description": "احصل على إشعار عند انتهاء إكمال الدردشة طويل المدى"
+    },
+    "ignoredProviders": {
+      "title": "المزودون المتجاهلون",
+      "description": "استبعاد مزودين محددين من الاستخدام في الطلبات",
+      "action": "تكوين"
+    },
+    "defaultProviderSort": {
+      "title": "ترتيب المزود الافتراضي",
+      "description": "تعيين ترتيب الفرز الافتراضي لاختيار المزود",
+      "action": "تكوين"
+    }
+  },
+  "credits": {
+    "currentBalanceTooltip": "الرصيد المتاح الحالي في حساب OpenRouter الخاص بك.",
+    "buyCredits": "شراء رصيد",
+    "useCrypto": "استخدام العملة المشفرة",
+    "addCredits": "إضافة رصيد",
+    "viewUsage": "عرض الاستخدام",
+    "needInvoicing": "هل تحتاج إلى الفواتير؟",
+    "contactSales": "اتصل بالمبيعات للحصول على خطة المؤسسة",
+    "autoTopUp": "التعبئة التلقائية",
+    "autoTopUpDescription": "إضافة رصيد تلقائياً عندما يكون الرصيد منخفضاً",
+    "autoTopUpActive": "التعبئة التلقائية نشطة",
+    "autoTopUpActiveDescription": "سيتم إضافة الرصيد تلقائياً عندما ينخفض رصيدك عن 10 دولارات.",
+    "addPaymentMethod": "إضافة طريقة دفع",
+    "paymentMethodRequired": "لتفعيل التعبئة التلقائية، ستحتاج إلى طريقة دفع تدعم الشحن دون اتصال.",
+    "recentTransactions": "المعاملات الأخيرة",
+    "transactions": {
+      "date": "التاريخ",
+      "description": "الوصف",
+      "amount": "المبلغ",
+      "balance": "الرصيد",
+      "dateTooltip": "تاريخ المعاملة",
+      "descriptionTooltip": "وصف المعاملة",
+      "amountTooltip": "مبلغ المعاملة (موجب للائتمانات، سالب للمدينات)",
+      "balanceTooltip": "رصيد الحساب بعد هذه المعاملة",
+      "all": "الكل",
+      "credits": "الائتمانات",
+      "debits": "المدينات",
+      "noResults": "لا توجد نتائج"
+    }
+  },
+  "billing": {
+    "addBillingAddress": "إضافة عنوان الفوترة",
+    "fullName": "الاسم الكامل",
+    "fullNamePlaceholder": "الاسم الكامل",
+    "countryOrRegion": "البلد أو المنطقة",
+    "selectCountry": "اختر البلد",
+    "addressLine1": "السطر الأول من العنوان",
+    "streetAddressPlaceholder": "عنوان الشارع",
+    "addressRequired": "عنوان الفوترة",
+    "required": "مطلوب",
+    "toVerifyIdentity": "للتحقق من هويتك والمساعدة في منع الاحتيال.",
+    "completeAddressDetails": "أكمل تفاصيل العنوان للمتابعة"
+  },
+  "countries": {
+    "unitedStates": "الولايات المتحدة",
+    "unitedKingdom": "المملكة المتحدة",
+    "germany": "ألمانيا",
+    "france": "فرنسا",
+    "canada": "كندا"
+  },
+  "organization": {
+    "createOrganization": "إنشاء منظمة",
+    "logo": "الشعار",
+    "logoRecommendation": "الحجم الموصى به 1:1، حتى 10 ميجابايت.",
+    "namePlaceholder": "اسم المنظمة"
+  },
+  "feedback": {
+    "sendFeedback": "إرسال ملاحظات",
+    "placeholder": "أخبرنا عن تجربتك أو ما يمكننا تحسينه...",
+    "sendFeedback": "إرسال التعليقات",
+    "placeholder": "أخبرنا برأيك..."
+  },
+  "modelSelection": {
+    "selectModels": "اختر النماذج",
+    "searchModels": "البحث عن النماذج",
+    "input": "المدخلات",
+    "output": "المخرجات",
+    "free": "مجاني",
+    "hideUnavailable": "إخفاء غير المتاح",
+    "unavailable": "غير متاح",
+    "noModelsMatch": "لا توجد نماذج تطابق المرشحات.",
+    "selectModelForDetails": "اختر نموذجًا على اليسار لرؤية التفاصيل."
+  },
+  "webSearch": {
+    "configureTitle": "تكوين البحث على الويب",
+    "description": "تعزيز استجابات نموذج اللغة الكبير بنتائج البحث على الويب في الوقت الفعلي",
+    "learnMore": "اعرف المزيد",
+    "searchEngine": "محرك البحث",
+    "selectEngine": "اختر المحرك",
+    "native": "أصلي",
+    "exa": "إيكسا",
+    "engineDescription": "اختر محرك البحث المراد استخدامه. يستخدم الأصلي البحث المدمج للمزود عند توفره.",
+    "maxResults": "الحد الأقصى للنتائج",
+    "maxResultsDescription": "الحد الأقصى لعدد نتائج البحث المراد تضمينها (1-20). راجع المستندات للقيمة الافتراضية.",
+    "searchPrompt": "موجه البحث",
+    "searchPromptDescription": "موجه مخصص يتم حقنه بنتائج البحث. الافتراضي يوجه النموذج لدمج النتائج والاستشهاد بالمصادر باستخدام روابط markdown.",
+    "preventOverrides": "منع التجاوزات"
+  },
+  "observability": {
+    "newDestination": "وجهة {{name}} جديدة",
+    "connection": "الاتصال",
+    "connectionDescription": "تكوين بيانات الاعتماد ونقطة النهاية. اختبر الاتصال قبل الحفظ.",
+    "nameTooltip": "اسم ودي لتحديد هذه الوجهة",
+    "apiKey": "مفتاح واجهة البرمجة",
+    "apiKeyTooltip": "مفتاح واجهة برمجة Arize الخاص بك للمصادقة",
+    "spaceKey": "مفتاح المساحة",
+    "spaceKeyTooltip": "مفتاح المساحة حيث سيتم إرسال التتبعات",
+    "modelId": "معرف النموذج",
+    "modelIdTooltip": "معرف النموذج لتصنيف التتبع",
+    "baseUrl": "عنوان URL الأساسي (اختياري)",
+    "baseUrlTooltip": "عنوان URL مخصص لنقطة النهاية للنشر المستضاف ذاتيًا",
+    "headers": "الرؤوس (اختياري)",
+    "headersTooltip": "رؤوس بروتوكول نقل النص الفائق إضافية بتنسيق جيسون",
+    "testConnection": "اختبار الاتصال",
+    "sendTrace": "إرسال التتبع",
+    "privacy": "الخصوصية",
+    "privacyDescription": "تحكم في البيانات المرسلة إلى هذه الوجهة.",
+    "privacyMode": "وضع الخصوصية",
+    "privacyModeDescription": "عند التمكين، يستبعد بيانات المطالبة والإكمال من التتبعات.",
+    "sampling": "أخذ العينات",
+    "samplingDescription": "تحكم في النسبة المئوية للتتبعات المرسلة إلى هذه الوجهة.",
+    "rate": "المعدل",
+    "rateTooltip": "معدل أخذ العينات بين 0 و 1 (مثال: 0.5 = 50% من التتبعات)",
+    "apiKeyFilter": "مرشح مفتاح واجهة البرمجة",
+    "apiKeyFilterDescription": "ترشيح التتبعات حسب مفتاح واجهة البرمجة اختياريًا.",
+    "apiKeyFilterOptional": "مرشح مفتاح واجهة البرمجة (اختياري)",
+    "apiKeyFilterTooltip": "إرسال التتبعات فقط من مفاتيح واجهة البرمجة محددة",
+    "selectApiKeys": "اختر مفاتيح واجهة البرمجة",
+    "filterRules": "قواعد التصفية",
+    "filterRulesDescription": "إرسال التتبعات التي تطابق معايير محددة فقط.",
+    "noFilterRules": "لم يتم تكوين قواعد تصفية. سيتم إرسال جميع التتبعات إلى هذه الوجهة.",
+    "allMatch": "تطابق الكل (AND)",
+    "anyMatch": "تطابق أي (OR)",
+    "field": "الحقل",
+    "model": "النموذج",
+    "operator": "المشغل",
+    "equals": "يساوي",
+    "notEquals": "لا يساوي",
+    "addRule": "إضافة قاعدة",
+    "addFilterRule": "إضافة قاعدة تصفية",
+    "broadcast": {
+      "description": "أرسل التتبعات إلى منصات المراقبة المفضلة لديك للمراقبة وتصحيح الأخطاء.",
+      "datadog": "مراقبة الأداء وتتبع الطلبات",
+      "arize": "مراقبة ورصد التعلم الآلي",
+      "helicone": "منصة مراقبة نماذج اللغة الكبيرة",
+      "braintrust": "منصة تطوير منتجات الذكاء الاصطناعي",
+      "langfuse": "منصة هندسة نماذج اللغة الكبيرة مفتوحة المصدر",
+      "weights": "مراقبة وتقييم نماذج اللغة الكبيرة"
+    },
+    "destinations": {
+      "title": "الوجهات",
+      "datadog": "داتادوج",
+      "arize": "أرايز",
+      "helicone": "هيليكون",
+      "braintrust": "برين ترست",
+      "langfuse": "لانجفيوز",
+      "weights": "ويتس آند بايسيز",
+      "addNew": "إضافة جديد"
+    },
+    "status": {
+      "active": "نشط"
+    },
+    "filterRules": "قواعد التصفية",
+    "enabled": "مفعّل",
+    "disabled": "معطل",
+    "broadcast": {
+      "title": "البث",
+      "description": "إرسال التتبعات إلى منصات المراقبة المفضلة لديك بدون تغيير في الكود."
+    },
+    "learnMore": "تعرف على المزيد",
+    "available": "متاح",
+    "sendFeedback": "إرسال ملاحظات",
+    "feedbackDescription": "أخبرنا عن الوجهات التي تود رؤيتها مضافة.",
+    "open": "فتح",
+    "addDestination": "إضافة وجهة"
+  },
+  "byok": {
+    "subtitle": "استخدم مفاتيح واجهة البرمجة الخاصة بمزودك على OpenRouter",
+    "searchPlaceholder": "البحث عن المزودين...",
+    "available": "متاح",
+    "notConfigured": "غير مُكوّن",
+    "showMore": "عرض {{count}} إضافي",
+    "showLess": "اظهار اقل",
+    "keyPriority": {
+      "title": "أولوية المفتاح والبديل",
+      "priorityDesc": "يعطي OpenRouter دائمًا الأولوية لاستخدام مفاتيح المزود الخاصة بك عند توفرها.",
+      "fallbackDesc": "بشكل افتراضي، إذا واجه مفتاحك حد معدل أو فشل، سيرجع OpenRouter إلى استخدام رصيد OpenRouter المشترك.",
+      "alwaysUseDesc": "يمكنك تكوين المفاتيح الفردية مع \"استخدم هذا المفتاح دائمًا\" لمنع أي رجوع إلى رصيد OpenRouter. عند تمكين هذا الخيار، سيستخدم OpenRouter مفتاحك فقط للطلبات إلى ذلك المزود. قد يؤدي هذا إلى أخطاء حد المعدل إذا نفد مفتاحك، ولكنه يضمن مرور جميع الطلبات عبر حسابك.",
+      "neverUseCreditsDesc1": "إذا كنت ترغب في عدم استخدام رصيد OpenRouter المشترك أبدًا لنموذج ما، يجب عليك",
+      "neverUseCreditsDesc2": "تحديد \"استخدم هذا المفتاح دائمًا\" وتثبيت المزود",
+      "neverUseCreditsDesc3": "من خلال تحديده كـ",
+      "yourOnlyProvider": "مزودك الوحيد",
+      "neverUseCreditsDesc4": "عند تقديم الطلب."
+    }
+  },
+  "dialogs": {
+    "test": {
+      "title": "صفحة اختبار الحوارات",
+      "openCreateApiKey": "فتح حوار إنشاء مفتاح واجهة البرمجة",
+      "openCreateManagementKey": "فتح حوار إنشاء مفتاح الإدارة",
+      "openCreateOrganization": "فتح حوار إنشاء منظمة",
+      "openPdfInputs": "فتح حوار مدخلات ملف المستند المحمول",
+      "openBillingAddress": "فتح حوار عنوان الفوترة",
+      "openModelSelection": "فتح حوار اختيار النموذج",
+      "openWebSearch": "فتح حوار البحث على الويب",
+      "openResponseHealing": "فتح حوار معالجة الاستجابة",
+      "openFeedback": "فتح حوار التعليقات",
+      "openReportFeedback": "فتح حوار الإبلاغ عن التعليقات"
+    }
+  },
+  "logsPage": {
+    
+    "filters": {
+      "dates": "التواريخ",
+      "models": "النماذج",
+      "statuses": "الحالات"
+    },
+    "dateRanges": {
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "last7Days": "آخر 7 أيام",
+      "last30Days": "آخر 30 يومًا",
+      "thisMonth": "هذا الشهر",
+      "lastMonth": "الشهر الماضي"
+    },
+    "searchPlaceholder": "البحث في السجلات...",
+    "showTraceId": "إظهار معرف التتبع",
+    "requestDetails": {
+      "title": "تفاصيل الطلب",
+      "close": "إغلاق"
+    },
+    "noLogs": {
+      "title": "لم يتم العثور على سجلات",
+      "description": "اضبط المرشحات أو معايير البحث للعثور على السجلات."
+    },
+    "filterBy": "تصفية حسب",
+    "dateRange": "النطاق الزمني",
+    "allMethods": "جميع الطرق",
+    "method": "الطريقة",
+    "status": "الحالة",
+    "allStatuses": "جميع الحالات",
+    "from": "من",
+    "to": "إلى",
+    "selectStartDate": "اختر تاريخ البداية",
+    "selectEndDate": "اختر تاريخ النهاية",
+    "models": "النماذج",
+    "searchModels": "البحث عن النماذج",
+    "allModels": "جميع النماذج",
+    "noModelsFound": "لم يتم العثور على نماذج",
+    "providers": "المزودون",
+    "searchProviders": "البحث عن المزودين",
+    "allProviders": "جميع المزودين",
+    "noProvidersFound": "لم يتم العثور على مزودين",
+    "apiKeys": "مفاتيح واجهة البرمجة",
+    "searchApiKeys": "البحث عن مفاتيح واجهة البرمجة",
+    "allApiKeys": "جميع مفاتيح واجهة البرمجة",
+    "noApiKeysFound": "لم يتم العثور على مفاتيح واجهة البرمجة",
+    "filters": "المرشحات",
+    "reportFeedback": "الإبلاغ عن ملاحظات",
+    "export": "تصدير",
+    "emptyMessage": "لا توجد سجلات لعرضها",
+    "columns": {
+      "timestampTooltip": "الوقت الذي تم فيه تقديم الطلب",
+      "providerModel": "المزود/النموذج",
+      "providerModelTooltip": "المزود والنموذج المستخدم لهذا الطلب",
+      "app": "التطبيق",
+        "id": "المعرف",
+      "timestamp": "الطابع الزمني",
+      "model": "النموذج",
+      "status": "الحالة",
+      "latency": "زمن الاستجابة",
+      "cost": "التكلفة",
+      "method": "الطريقة",
+      "actions": "الإجراءات",
+      
+      "appTooltip": "التطبيق الذي قدم هذا الطلب",
+      "tokens": "الرموز",
+      "tokensTooltip": "إجمالي عدد الرموز المعالجة",
+      "costTooltip": "تكلفة هذا الطلب بالدولار الأمريكي",
+      "speed": "السرعة",
+      "speedTooltip": "سرعة المعالجة بالرموز في الثانية",
+      "finish": "النهاية",
+      "finishTooltip": "كيفية انتهاء الطلب (توقف، طول، انتهاء الوقت)",
+      "actionsTooltip": "الإجراءات المتاحة لإدخال السجل هذا"
+    },
+    "app": "التطبيق",
+    "key": "المفتاح",
+    "finish": {
+      "stop": "توقف",
+      "length": "طول",
+      "timeout": "انتهاء الوقت"
+    },
+    "actions": {
+      "view": "عرض"
+    }
+  },
+  "plugins": {
+    "defaultSettings": {
+      "title": "الإعدادات الافتراضية",
+      "description": "تكوين الإعدادات الافتراضية للمكونات الإضافية التي ستنطبق على جميع الطلبات"
+    },
+    "webSearch": {
+      "title": "البحث على الويب",
+      "description": "تمكين البحث على الويب في الوقت الفعلي لتعزيز استجابات نماذج اللغة الكبيرة بالمعلومات الحالية."
+    },
+    "pdfInputs": {
+      "title": "مدخلات ملف المستند المحمول",
+      "description": "تحليل واستخراج المحتوى من ملفات المستند المحمول المحملة"
+    },
+    "responseHealing": {
+      "title": "معالجة الاستجابة",
+      "description": "إصلاح استجابات جيسون التالفة من نماذج اللغة الكبيرة تلقائيًا"
+    },
+    "structuredData": {
+      "title": "استخراج البيانات المنظمة",
+      "description": "استخراج البيانات المنظمة من النص غير المنظم باستخدام نماذج اللغة الكبيرة."
+    }
+  },
+  "presets": {
+    "emptyState": {
+      "title": "أنشئ إعدادك المسبق الأول",
+      "description": "الإعدادات المسبقة هي اختصارات لمطالبات النظام ومعاملات الطلب الخاصة بك.",
+      "learnMore": "اعرف المزيد."
+    },
+    "createPreset": "إنشاء إعداد مسبق",
+    "newPreset": "إعداد مسبق جديد",
+    "name": "اسم الإعداد المسبق",
+    "description": "الوصف (اختياري)",
+    "descriptionHelper": "مفيد للبحث وفهم ما يفعله هذا الإعداد المسبق",
+    "configuration": {
+      "title": "التكوين",
+      "systemPrompt": "مطالبة النظام",
+      "systemPromptHelper": "تعيين سلوك وشخصية المساعد",
+      "modelSelection": {
+        "title": "اختيار النموذج",
+        "mode": "الوضع",
+        "dynamic": "ديناميكي (اختيار أفضل نموذج تلقائيًا)",
+        "fixed": "ثابت (استخدام نماذج محددة)",
+        "fixedHelper": "اختر نموذجًا واحدًا أو أكثر لهذا الإعداد المسبق"
+      },
+      "parameters": {
+        "title": "المعاملات",
+        "temperature": "درجة الحرارة",
+        "maxTokens": "الحد الأقصى للرموز",
+        "topP": "Top P",
+        "topK": "Top K",
+        "frequencyPenalty": "عقوبة التكرار",
+        "presencePenalty": "عقوبة الحضور",
+        "seed": "البذرة"
+      },
+      "features": {
+        "title": "المميزات",
+        "streaming": "تمكين البث",
+        "json": "وضع جيسون",
+        "byok": "السماح باستخدام مفتاحك الخاص"
+      },
+      "providerSettings": {
+        "title": "إعدادات المزود",
+        "preferredProviders": "المزودون المفضلون",
+        "fallbackProviders": "المزودون البديلون"
+      },
+      "savePreset": "حفظ الإعداد المسبق"
+    },
+    "new": {
+      "pageTitle": "إعداد مسبق جديد",
+      "savePreset": "حفظ الإعداد المسبق",
+      "basicInfo": {
+        "title": "المعلومات الأساسية",
+        "description": "أعط إعدادك المسبق اسمًا ووصفًا للمساعدة في تحديده لاحقًا."
+      },
+      "name": {
+        "label": "الاسم",
+        "placeholder": "مثال: \"كاتب إبداعي\""
+      },
+      "slug": {
+        "label": "المعرف",
+        "placeholder": "مثال: \"creative-writer\""
+      },
+      "description": {
+        "label": "الوصف",
+        "placeholder": "صف ما هو هذا الإعداد المسبق ومتى يجب استخدامه"
+      },
+      "systemPrompt": {
+        "title": "موجه النظام",
+        "placeholder": "أدخل موجه النظام الذي سيوجه سلوك المساعد..."
+      },
+      "models": {
+        "title": "النماذج",
+        "selection": {
+          "title": "اختيار النموذج",
+          "description": "اختر النماذج التي يمكن استخدامها مع هذا الإعداد المسبق."
+        },
+        "addModel": "إضافة نموذج"
+      },
+      "providerRouting": {
+        "title": "توجيه المزود",
+        "description": "تكوين كيفية توجيه الطلبات إلى مزودين مختلفين.",
+        "includePreferences": "تضمين تفضيلات المزود",
+        "sort": {
+          "description": "ترتيب المزودين حسب مقياس معين (مثل السعر، السرعة)"
+        },
+        "dataCollection": {
+          "description": "التحكم في إعدادات جمع البيانات لهذا الإعداد المسبق"
+        },
+        "order": {
+          "description": "إعطاء الأولوية لهؤلاء المزودين بالترتيب عند توجيه الطلبات"
+        },
+        "only": {
+          "description": "استخدام هؤلاء المزودين فقط (قائمة حصرية)"
+        },
+        "ignore": {
+          "description": "عدم استخدام هؤلاء المزودين أبدًا"
+        },
+        "quantizations": {
+          "title": "التكميم",
+          "description": "حدد مستويات التكميم المقبولة"
+        }
+      },
+      "allSelected": "تم تحديد الكل",
+      "selectAll": "تحديد الكل",
+      "maxPrice": {
+        "title": "السعر الأقصى",
+        "description": "تعيين حدود السعر الأقصى لكل مليون رمز مميز",
+        "prompt": "الموجه",
+        "completion": "الإكمال"
+      },
+      "preferredMinThroughput": {
+        "title": "الحد الأدنى المفضل للإنتاجية",
+        "description": "الحد الأدنى من الرموز المميزة في الثانية عند نسب مئوية مختلفة"
+      },
+      "preferredMaxLatency": {
+        "title": "الحد الأقصى المفضل للتأخير",
+        "description": "الحد الأقصى للتأخير بالثواني عند نسب مئوية مختلفة"
+      },
+      "allowFallbacks": {
+        "label": "السماح بالبدائل",
+        "description": "السماح بالرجوع إلى نماذج أخرى إذا فشلت النماذج المفضلة"
+      },
+      "requireParameters": {
+        "label": "تتطلب معلمات",
+        "description": "تتطلب وجود جميع المعلمات في الطلبات"
+      },
+      "parameters": {
+        "title": "المعلمات",
+        "description": "تعيين القيم الافتراضية لمعلمات التوليد",
+        "temperature": {
+          "label": "درجة الحرارة",
+          "help": "يتحكم في العشوائية: أقل = أكثر تركيزًا، أعلى = أكثر إبداعًا"
+        },
+        "topP": {
+          "label": "Top P",
+          "help": "بديل لدرجة الحرارة، يتحكم في التنوع"
+        },
+        "topK": {
+          "label": "Top K",
+          "help": "يحد من المفردات إلى أعلى K رموز"
+        },
+        "frequencyPenalty": {
+          "label": "عقوبة التكرار",
+          "help": "يقلل من تكرار الكلمات المستخدمة بكثرة"
+        },
+        "presencePenalty": {
+          "label": "عقوبة الوجود",
+          "help": "يقلل من تكرار أي كلمات مستخدمة"
+        },
+        "repetitionPenalty": {
+          "label": "عقوبة التكرار",
+          "help": "معلمة بديلة للتحكم في التكرار"
+        },
+        "maxTokens": {
+          "label": "الحد الأقصى للرموز",
+          "help": "الطول الأقصى للاستجابة المولدة"
+        },
+        "seed": {
+          "label": "البذرة",
+          "help": "للحصول على مخرجات قابلة للتكرار (عند الدعم)"
+        }
+      },
+      "include": "تضمين",
+      "exclude": "استبعاد",
+      "reasoning": {
+        "title": "التفكير المنطقي",
+        "description": "تكوين إعدادات التفكير المنطقي وسلسلة الأفكار",
+        "enable": {
+          "label": "تمكين التفكير المنطقي",
+          "description": "السماح للنماذج باستخدام قدرات التفكير المنطقي عند توفرها"
+        },
+        "effort": {
+          "label": "جهد التفكير المنطقي",
+          "description": "التحكم في مقدار جهد التفكير المنطقي (منخفض، متوسط، عالي)",
+          "placeholder": "متوسط"
+        },
+        "maxTokens": {
+          "label": "الحد الأقصى لرموز التفكير المنطقي",
+          "description": "الحد الأقصى من الرموز المسموح بها لعملية التفكير المنطقي"
+        },
+        "exclude": {
+          "label": "استبعاد التفكير المنطقي من المخرجات",
+          "description": "إخفاء عملية التفكير المنطقي من الاستجابة النهائية"
+        }
+      }
+    }
+  },
+  "privacyGuardrails": {
+    "description": "تكوين كيفية تعامل OpenRouter مع بياناتك وتطبيق مرشحات الأمان للطلبات المقدمة من هذه المنظمة.",
+    "dataHandling": {
+      "title": "معالجة البيانات",
+      "logRequests": {
+        "title": "تسجيل الطلبات لتصحيح الأخطاء",
+        "description": "تخزين سجلات الطلبات والاستجابات حتى تتمكن من فحص المشكلات وتصحيحها لاحقًا."
+      },
+      "sendData": {
+        "title": "إرسال البيانات إلى مزودي النماذج",
+        "description": "السماح لمزودي النماذج بالاحتفاظ بالبيانات لتحسين نماذجهم، حيث ينطبق ذلك."
+      },
+      "retention": {
+        "title": "نافذة الاحتفاظ",
+        "description": "المدة التي سيحتفظ بها OpenRouter بالسجلات والتتبعات قبل الحذف التلقائي.",
+        "days": "{{days}} يوم"
+      }
+    },
+    "safetyFilters": {
+      "title": "مرشحات الأمان",
+      "blockUnsafe": {
+        "title": "حظر المحتوى غير الآمن",
+        "description": "تصفية المطالبات والاستجابات التي تنتهك سياسات الأمان الافتراضية."
+      },
+      "piiRedaction": {
+        "title": "حجب المعلومات الشخصية",
+        "description": "حجب الأنواع الشائعة من المعلومات الشخصية تلقائيًا في السجلات."
+      },
+      "strictGuardrails": {
+        "title": "حواجز محتوى صارمة",
+        "description": "تطبيق قواعد اعتدال أكثر صرامة لحالات الاستخدام عالية المخاطر."
+      }
+    },
+    "resetToDefaults": "إعادة تعيين إلى الافتراضي",
+    "changesApplyNote": "تنطبق التغييرات على الطلبات الجديدة فقط.",
+    "saveChanges": "حفظ التغييرات"
+  },
+  "routing": {
+    "autoRouter": {
+      "title": "التوجيه التلقائي",
+      "description": "دع OpenRouter يختار أفضل نموذج تلقائيًا لكل طلب.",
+      "settings": "إعدادات التوجيه التلقائي",
+      "routeDescription": "قم بالتوجيه",
+      "learnMore": "لاختيار النموذج الأفضل تلقائيًا لكل طلب. تعرف على المزيد.",
+      "allowedModels": {
+        "label": "النماذج المسموح بها",
+        "help": "استخدم مطابقة الأنماط (مثل anthropic/*) للسماح بعدة نماذج. نمط واحد لكل سطر."
+      },
+      "modelsMatched": "{{count}} نموذج متطابق",
+      "preventOverrides": "منع التجاوزات لكل طلب",
+      "preventOverridesTooltip": "تعطيل التغييرات لكل طلب على إعدادات الموجه التلقائي هذه."
+    },
+    "providerSort": {
+      "title": "ترتيب المزودين",
+      "description": "اختر كيفية ترتيب OpenRouter للمزودين",
+      "chooseDescription": "اختر المعايير التي يستخدمها OpenRouter لترتيب المزودين لكل نموذج.",
+      "defaultDescription": "بشكل افتراضي، يوازن OpenRouter بين مزيج من السعر والأداء ووقت التشغيل والجودة.",
+      "learnMore": "تعرف على المزيد.",
+      "balanced": "متوازن",
+      "lowestPrice": "أقل سعر",
+      "highestUptime": "أعلى وقت تشغيل",
+      "preferredProviders": "المزودون المفضلون",
+      "preferredProvidersHelper": "سيعطي OpenRouter الأولوية لهؤلاء المزودين عند اختيار النماذج",
+      "fallbackProviders": "المزودون البديلون",
+      "fallbackProvidersHelper": "يُستخدم عندما يكون المزودون المفضلون غير متاحين"
+    },
+    "defaultModel": {
+      "title": "النموذج الافتراضي",
+      "description": "تعيين نموذج احتياطي للطلبات",
+      "appsDescription": "يمكن للتطبيقات إرسال إكمالات الدردشة دون تحديد نموذج وسيختار OpenRouter واحدًا.",
+      "fallbackDescription": "يُستخدم النموذج الاحتياطي عندما لا يُسمح للتطبيق باستخدام أي نموذج متاح.",
+      "noDefault": "بدون افتراضي",
+      "modelOverrides": "تجاوزات النموذج",
+      "modelOverridesHelper": "ربط النماذج المطلوبة بنماذج مختلفة. مفيد للاختبار أو الترحيل.",
+      "originalModelTitle": "النموذج الأصلي",
+      "overrideModelTitle": "النموذج البديل",
+      "removeOverride": "إزالة التجاوز",
+      "addOverride": "إضافة تجاوز"
+    }
+  },
+  "datePicker": {
+    "weekdays": {
+      "sun": "ح",
+      "mon": "ن",
+      "tue": "ث",
+      "wed": "ر",
+      "thu": "خ",
+      "fri": "ج",
+      "sat": "س"
+    },
+    "pickDate": "اختر تاريخاً",
+    "now": "الآن"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "morePages": "المزيد من الصفحات"
+  },
+  "dataTable": {
+    "empty": "(فارغ)"
+  },
+  "feedback": {
+    "reportFeedback": {
+      "title": "الإبلاغ عن تعليق",
+      "model": "النموذج",
+      "category": "الفئة",
+      "categoryPlaceholder": "اختر فئة",
+      "selectCategory": "اختر فئة",
+      "categoryGeneral": "تعليق عام",
+      "categoryBug": "تقرير خطأ",
+      "categoryFeature": "طلب ميزة",
+      "categoryImprovement": "اقتراح تحسين",
+      "comment": "تعليق (اختياري)",
+      "commentPlaceholder": "قدم تفاصيل إضافية حول تعليقاتك...",
+      "generationId": "معرف التوليد",
+      "generationIdPlaceholder": "أدخل معرف التوليد",
+      "description": "أبلغ عن المشاكل مع أجيال نماذج محددة لمساعدتنا في تحسين الجودة.",
+      "categories": {
+        "incorrectOutput": "مخرجات غير صحيحة",
+        "safety": "مخاوف أمنية",
+        "performance": "مشكلة في الأداء",
+        "other": "أخرى"
+      }
+    }
+  },
+  "pdfInputs": {
+    "title": "تكوين مدخلات ملف المستند المحمول",
+    "description": "تحليل واستخراج المحتوى من ملفات المستند المحمول المحملة",
+    "pdfParserEngine": "محرك تحليل ملف المستند المحمول",
+    "selectParserEngine": "اختر محرك التحليل",
+    "defaultMistralOcr": "افتراضي (التعرف البصري على الأحرف Mistral)",
+    "parserEngineDescription": "اختر محرك تحليل ملف المستند المحمول. يوفر التعرف البصري على الأحرف Mistral أفضل جودة ولكن له تكلفة.",
+    "preventOverrides": "منع التجاوزات",
+    "preventOverridesDescription": "تعطيل تغييرات لكل طلب لإعدادات إدخال ملف المستند المحمول هذه."
+  },
+  "responseHealing": {
+    "title": "تكوين معالجة الاستجابة",
+    "description": "إصلاح استجابات جيسون المعيبة تلقائياً من نماذج اللغة الكبيرة",
+    "preventOverrides": "منع التجاوزات",
+    "preventOverridesDescription": "تعطيل تغييرات لكل طلب لإعدادات معالجة الاستجابة هذه."
+  },
+  "modelDescriptions": {
+    "aion2": "Aion-2.0 هو نموذج مشتق من DeepSeek V3.2 محسّن للعب الأدوار الغامرة ورواية القصص. يتميز بشكل خاص في إدخال التوتر والأزمات والصراعات في القصص، مما يجعل الروايات أكثر جذباً.",
+    "geminiProPreview": "نسخة المعاينة من Gemini 3.1 Pro لمهام التفكير المنطقي المتقدمة والبرمجة والفهم متعدد الوسائط.",
+    "claudeSonnet": "نموذج Claude متوازن مع قدرات قوية على التفكير المنطقي ودعم السياق الطويل وأوقات استجابة سريعة مناسبة لمجموعة واسعة من حالات استخدام المساعد.",
+    "qwenPlus": "نموذج Qwen3.5 للأغراض العامة، محدث 2026-02-15، مع قدرات متعددة اللغات قوية وأداء تنافسي في البرمجة ومعايير الدردشة.",
+    "glm5": "أحدث نموذج من سلسلة GLM مع فهم قوي للصينية والإنجليزية، محسّن للدردشة والمهام كثيفة المعرفة."
+  }
+}

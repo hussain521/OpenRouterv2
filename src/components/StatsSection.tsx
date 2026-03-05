@@ -1,9 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 export default function StatsSection() {
+  const { t } = useTranslation();
+  
   const stats = [
-    { value: "30T", label: "Monthly Tokens" },
-    { value: "5M+", label: "Global Users" },
-    { value: "60+", label: "Active Providers" },
-    { value: "300+", label: "Models", highlight: true },
+    { value: "30T", label: t("stats.monthlyTokens") },
+    { value: "5M+", label: t("stats.globalUsers") },
+    { value: "60+", label: t("stats.activeProviders") },
+    { value: "300+", label: t("stats.models"), highlight: true },
   ];
 
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,10 +27,11 @@ const QUANTIZATION_OPTIONS = ["int4", "int8", "fp4", "fp6", "fp8", "bf16", "fp32
 type ProviderSectionKey = "order" | "only" | "ignore";
 
 export default function NewPresetPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [modelsDialogOpen, setModelsDialogOpen] = useState(false);
-  usePageTitle("New Preset");
+  usePageTitle(t("presets.new.pageTitle"));
 
   // Provider routing state
   const [includeProviderPrefs, setIncludeProviderPrefs] = useState(false);
@@ -109,10 +111,10 @@ export default function NewPresetPage() {
               <ArrowLeft className="w-5 h-5" />
             </Button>
             <h1 className="text-[22px] font-semibold  text-gray-900 dark:text-gray-100 tracking-tight">
-              New Preset
+              {t("presets.new.pageTitle")}
             </h1>
           </div>
-          <Button className="rounded-xl px-6">Save Preset</Button>
+          <Button className="rounded-xl px-6">{t("presets.new.savePreset")}</Button>
         </div>
         <div className="space-y-8 mt-8">
             {/* Basic Info */}
@@ -120,27 +122,27 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Info className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">Basic Info</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.basicInfo.title")}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Preset name and description for identification and organization.
+                  {t("presets.new.basicInfo.description")}
                 </p>
               </div>
 
               <div className="md:col-span-2 space-y-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Name</label>
-                  <Input placeholder="Enter preset name" />
+                  <label className="text-sm font-medium">{t("presets.new.name.label")}</label>
+                  <Input placeholder={t("presets.new.name.placeholder")} />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Slug</label>
-                  <Input placeholder="enter-preset-slug" />
+                  <label className="text-sm font-medium">{t("presets.new.slug.label")}</label>
+                  <Input placeholder={t("presets.new.slug.placeholder")} />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Description</label>
-                  <Textarea placeholder="Short description..." rows={3} />
+                  <label className="text-sm font-medium">{t("presets.new.description.label")}</label>
+                  <Textarea placeholder={t("presets.new.description.placeholder")} rows={3} />
                 </div>
               </div>
             </div>
@@ -152,11 +154,11 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">System Prompt</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.systemPrompt.title")}</h2>
                 </div>
               </div>
               <div className="md:col-span-2">
-                <Textarea placeholder="Write system prompt..." rows={4} />
+                <Textarea placeholder={t("presets.new.systemPrompt.placeholder")} rows={4} />
               </div>
             </div>
 
@@ -167,17 +169,15 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Bot className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">Models</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.models.title")}</h2>
                 </div>
               </div>
 
               <div className="md:col-span-2 space-y-4">
                 <div className="space-y-1">
-                  <h3 className="font-medium">Model Selection (Optional)</h3>
+                  <h3 className="font-medium">{t("presets.new.models.selection.title")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Specify which model(s) this preset should use. Leave empty to
-                    allow any model. If multiple models are selected, they will be
-                    used as fallbacks.
+                    {t("presets.new.models.selection.description")}
                   </p>
                 </div>
 
@@ -187,7 +187,7 @@ export default function NewPresetPage() {
                   onClick={() => setModelsDialogOpen(true)}
                 >
                   <Plus className="w-4 h-4" />
-                  Add model
+                  {t("presets.new.models.addModel")}
                 </Button>
               </div>
             </div>
@@ -199,10 +199,10 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Network className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">Provider Routing</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.providerRouting.title")}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Control which providers are used and routing preferences.
+                  {t("presets.new.providerRouting.description")}
                 </p>
               </div>
 
@@ -217,7 +217,7 @@ export default function NewPresetPage() {
                       onChange={(e) => setIncludeProviderPrefs(e.target.checked)}
                     />
                     <span className="text-sm font-medium">
-                      Include Provider Preferences
+                      {t("presets.new.providerRouting.includePreferences")}
                     </span>
                   </div>
 
@@ -225,7 +225,7 @@ export default function NewPresetPage() {
                     <label className="text-sm font-medium">sort</label>
                     <Input placeholder="--" />
                     <p className="text-xs text-muted-foreground">
-                      The sorting strategy to use for this request.
+                      {t("presets.new.providerRouting.sort.description")}
                     </p>
                   </div>
 
@@ -233,8 +233,7 @@ export default function NewPresetPage() {
                     <label className="text-sm font-medium">data_collection</label>
                     <Input placeholder="--" />
                     <p className="text-xs text-muted-foreground">
-                      Data collection setting if no available model provider meets
-                      the requirement.
+                      {t("presets.new.providerRouting.dataCollection.description")}
                     </p>
                   </div>
                 </div>
@@ -243,15 +242,15 @@ export default function NewPresetPage() {
                 {[
                   {
                     title: "order" as ProviderSectionKey,
-                    description: "An ordered list of provider slugs.",
+                    description: t("presets.new.providerRouting.order.description"),
                   },
                   {
                     title: "only" as ProviderSectionKey,
-                    description: "List of provider slugs to allow.",
+                    description: t("presets.new.providerRouting.only.description"),
                   },
                   {
                     title: "ignore" as ProviderSectionKey,
-                    description: "List of provider slugs to ignore.",
+                    description: t("presets.new.providerRouting.ignore.description"),
                   },
                 ].map((section) => (
                   <div key={section.title} className="space-y-3">
@@ -269,12 +268,12 @@ export default function NewPresetPage() {
                         onClick={() => selectAllProviders(section.title)}
                       >
                         {areAllProvidersSelected(section.title)
-                          ? "All selected"
-                          : "Select All"}
+                          ? t("presets.new.allSelected")
+                          : t("presets.new.selectAll")}
                       </Button>
                     </div>
 
-                    <Input placeholder="Search..." />
+                    <Input placeholder={t("common.search")} />
 
                     <div className="border rounded-xl p-4 h-40 overflow-y-auto space-y-2">
                       {PROVIDERS.map((provider) => (
@@ -300,9 +299,9 @@ export default function NewPresetPage() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-sm font-medium">quantizations</h3>
+                      <h3 className="text-sm font-medium">{t("presets.new.providerRouting.quantizations.title")}</h3>
                       <p className="text-xs text-muted-foreground">
-                        A list of quantization levels to filter the provider by.
+                        {t("presets.new.providerRouting.quantizations.description")}
                       </p>
                     </div>
                     <Button
@@ -311,11 +310,11 @@ export default function NewPresetPage() {
                       type="button"
                       onClick={selectAllQuantizations}
                     >
-                      {areAllQuantizationsSelected ? "All selected" : "Select All"}
+                      {areAllQuantizationsSelected ? t("presets.new.allSelected") : t("presets.new.selectAll")}
                     </Button>
                   </div>
 
-                  <Input placeholder="Search..." />
+                  <Input placeholder={t("common.search")} />
 
                   <div className="border rounded-xl p-4 h-32 overflow-y-auto space-y-2">
                     {QUANTIZATION_OPTIONS.map((q) => (
@@ -334,18 +333,17 @@ export default function NewPresetPage() {
                 <div className="md:col-span-2 space-y-6">
                 {/* max_price */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium">max_price</h3>
+                  <h3 className="text-sm font-medium">{t("presets.new.maxPrice.title")}</h3>
                   <p className="text-xs text-muted-foreground">
-                    Maximum price (USD per million tokens) you want to pay for
-                    this request.
+                    {t("presets.new.maxPrice.description")}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-medium">Prompt</label>
+                      <label className="text-xs font-medium">{t("presets.new.maxPrice.prompt")}</label>
                       <Input placeholder="e.g. 5.00" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-medium">Completion</label>
+                      <label className="text-xs font-medium">{t("presets.new.maxPrice.completion")}</label>
                       <Input placeholder="e.g. 10.00" />
                     </div>
                   </div>
@@ -354,11 +352,10 @@ export default function NewPresetPage() {
                 {/* preferred_min_throughput */}
                 <div className="space-y-2">
                   <h3 className="text-sm font-medium">
-                    preferred_min_throughput
+                    {t("presets.new.preferredMinThroughput.title")}
                   </h3>
                   <p className="text-xs text-muted-foreground">
-                    Preferred minimum throughput (tokens per second). Can be a
-                    single value or percentile-specific cutoffs.
+                    {t("presets.new.preferredMinThroughput.description")}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {["p50", "p75", "p99"].map((p) => (
@@ -372,10 +369,9 @@ export default function NewPresetPage() {
 
                 {/* preferred_max_latency */}
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium">preferred_max_latency</h3>
+                  <h3 className="text-sm font-medium">{t("presets.new.preferredMaxLatency.title")}</h3>
                   <p className="text-xs text-muted-foreground">
-                    Preferred maximum latency (in seconds). Can be a single value
-                    or percentile-specific cutoffs.
+                    {t("presets.new.preferredMaxLatency.description")}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {["p50", "p75", "p99"].map((p) => (
@@ -390,20 +386,19 @@ export default function NewPresetPage() {
                 {/* Booleans / enums */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-1">
-                    <label className="text-sm font-medium">Allow fallbacks</label>
+                    <label className="text-sm font-medium">{t("presets.new.allowFallbacks.label")}</label>
                     <p className="text-xs text-muted-foreground">
-                      Whether fallback models can be used when the primary model
-                      is unavailable.
+                      {t("presets.new.allowFallbacks.description")}
                     </p>
                     <Input placeholder="true" />
                   </div>
 
                   <div className="space-y-1">
                     <label className="text-sm font-medium">
-                      Require parameters
+                      {t("presets.new.requireParameters.label")}
                     </label>
                     <p className="text-xs text-muted-foreground">
-                      Require a specific provider parameter preset.
+                      {t("presets.new.requireParameters.description")}
                     </p>
                     <Input placeholder="undefined" />
                   </div>
@@ -419,47 +414,46 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">Parameters</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.parameters.title")}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Override default generation settings like temperature and
-                  max tokens.
+                  {t("presets.new.parameters.description")}
                 </p>
               </div>
 
               <div className="md:col-span-2 space-y-6">
                 {[
                   {
-                    label: "Temperature",
-                    help: "Controls randomness in the output. Lower values are more deterministic.",
+                    label: t("presets.new.parameters.temperature.label"),
+                    help: t("presets.new.parameters.temperature.help"),
                   },
                   {
-                    label: "Top P",
-                    help: "Nucleus sampling parameter. Controls diversity via cumulative probability.",
+                    label: t("presets.new.parameters.topP.label"),
+                    help: t("presets.new.parameters.topP.help"),
                   },
                   {
-                    label: "Top K",
-                    help: "Limits the number of highest probability tokens to consider.",
+                    label: t("presets.new.parameters.topK.label"),
+                    help: t("presets.new.parameters.topK.help"),
                   },
                   {
-                    label: "Frequency Penalty",
-                    help: "Reduces repetition based on token frequency in the text so far.",
+                    label: t("presets.new.parameters.frequencyPenalty.label"),
+                    help: t("presets.new.parameters.frequencyPenalty.help"),
                   },
                   {
-                    label: "Presence Penalty",
-                    help: "Reduces repetition based on whether tokens appear in the text so far.",
+                    label: t("presets.new.parameters.presencePenalty.label"),
+                    help: t("presets.new.parameters.presencePenalty.help"),
                   },
                   {
-                    label: "Repetition Penalty",
-                    help: "Penalizes repetition. Values > 1 discourage repetition, < 1 encourage it.",
+                    label: t("presets.new.parameters.repetitionPenalty.label"),
+                    help: t("presets.new.parameters.repetitionPenalty.help"),
                   },
                   {
-                    label: "Max Tokens",
-                    help: "Maximum number of tokens to generate.",
+                    label: t("presets.new.parameters.maxTokens.label"),
+                    help: t("presets.new.parameters.maxTokens.help"),
                   },
                   {
-                    label: "Seed",
-                    help: "Random seed for deterministic outputs (when supported).",
+                    label: t("presets.new.parameters.seed.label"),
+                    help: t("presets.new.parameters.seed.help"),
                   },
                 ].map((param) => (
                   <div key={param.label} className="space-y-1">
@@ -474,7 +468,7 @@ export default function NewPresetPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <span className="text-xs text-muted-foreground">
-                          Include
+                          {t("presets.new.include")}
                         </span>
                         <input type="checkbox" className="h-4 w-4" />
                       </div>
@@ -498,17 +492,16 @@ export default function NewPresetPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Brain className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-medium text-base">Reasoning</h2>
+                  <h2 className="font-medium text-base">{t("presets.new.reasoning.title")}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Configure reasoning (thinking) parameters for models that
-                  support extended reasoning.
+                  {t("presets.new.reasoning.description")}
                 </p>
               </div>
 
               <div className="md:col-span-2 space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Include</span>
+                  <span className="text-sm font-medium">{t("presets.new.include")}</span>
                   <input type="checkbox" className="h-4 w-4" />
                 </div>
 
@@ -516,10 +509,10 @@ export default function NewPresetPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <label className="text-sm font-medium">
-                        Enable Reasoning
+                        {t("presets.new.reasoning.enable.label")}
                       </label>
                       <p className="text-xs text-muted-foreground">
-                        Enable extended reasoning for models that support it.
+                        {t("presets.new.reasoning.enable.description")}
                       </p>
                     </div>
                     <input type="checkbox" className="h-4 w-4" />
@@ -529,21 +522,21 @@ export default function NewPresetPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <label className="text-sm font-medium">
-                          Reasoning Effort
+                          {t("presets.new.reasoning.effort.label")}
                         </label>
                         <p className="text-xs text-muted-foreground">
-                          Controls how much reasoning the model performs.
+                          {t("presets.new.reasoning.effort.description")}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <span className="text-xs text-muted-foreground">
-                          Include
+                          {t("presets.new.include")}
                         </span>
                         <input type="checkbox" className="h-4 w-4" />
                       </div>
                     </div>
                     <Input
-                      placeholder="Medium"
+                      placeholder={t("presets.new.reasoning.effort.placeholder")}
                       className="max-w-xs"
                     />
                   </div>
@@ -552,15 +545,15 @@ export default function NewPresetPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <label className="text-sm font-medium">
-                          Reasoning Max Tokens
+                          {t("presets.new.reasoning.maxTokens.label")}
                         </label>
                         <p className="text-xs text-muted-foreground">
-                          Maximum number of tokens for reasoning.
+                          {t("presets.new.reasoning.maxTokens.description")}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <span className="text-xs text-muted-foreground">
-                          Include
+                          {t("presets.new.include")}
                         </span>
                         <input type="checkbox" className="h-4 w-4" />
                       </div>
@@ -576,16 +569,15 @@ export default function NewPresetPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <label className="text-sm font-medium">
-                          Exclude Reasoning from Response
+                          {t("presets.new.reasoning.exclude.label")}
                         </label>
                         <p className="text-xs text-muted-foreground">
-                          When enabled, reasoning tokens will not be included in
-                          the response output.
+                          {t("presets.new.reasoning.exclude.description")}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <span className="text-xs text-muted-foreground">
-                          Exclude
+                          {t("presets.new.exclude")}
                         </span>
                         <input type="checkbox" className="h-4 w-4" />
                       </div>

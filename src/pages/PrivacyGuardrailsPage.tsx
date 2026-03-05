@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Switch } from "@/components/ui/switch";
@@ -53,38 +54,38 @@ function ToggleRow({ title, description, enabled = false }: ToggleRowProps) {
 }
 
 function PrivacyGuardrailsContent() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       {/* Intro */}
       <section className="space-y-2">
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Privacy & Guardrails
+          {t("privacyGuardrails.title")}
         </h2>
         <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
-          Configure how OpenRouter handles your data and applies safety filters for
-          requests made from this organization.
+          {t("privacyGuardrails.description")}
         </p>
       </section>
 
       {/* Data handling */}
       <section className="space-y-4">
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Data handling
+          {t("privacyGuardrails.dataHandling.title")}
         </h3>
         <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
-            title="Log requests for debugging"
-            description="Store logs of requests and responses so you can inspect and debug issues later."
+            title={t("privacyGuardrails.dataHandling.logRequests.title")}
+            description={t("privacyGuardrails.dataHandling.logRequests.description")}
             enabled
           />
           <ToggleRow
-            title="Send data to model providers"
-            description="Allow model providers to retain data for improving their models, where applicable."
+            title={t("privacyGuardrails.dataHandling.sendData.title")}
+            description={t("privacyGuardrails.dataHandling.sendData.description")}
           />
           <Row
-            title="Retention window"
-            description="How long OpenRouter will retain logs and traces before automatic deletion."
-            actionLabel="30 days"
+            title={t("privacyGuardrails.dataHandling.retention.title")}
+            description={t("privacyGuardrails.dataHandling.retention.description")}
+            actionLabel={t("privacyGuardrails.dataHandling.retention.30days")}
           />
         </div>
       </section>
@@ -92,21 +93,21 @@ function PrivacyGuardrailsContent() {
       {/* Safety filters */}
       <section className="space-y-4">
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Safety filters
+          {t("privacyGuardrails.safetyFilters.title")}
         </h3>
         <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
-            title="Block unsafe content"
-            description="Filter prompts and responses that violate default safety policies."
+            title={t("privacyGuardrails.safetyFilters.blockUnsafe.title")}
+            description={t("privacyGuardrails.safetyFilters.blockUnsafe.description")}
             enabled
           />
           <ToggleRow
-            title="PII redaction"
-            description="Automatically redact common types of personally identifiable information in logs."
+            title={t("privacyGuardrails.safetyFilters.piiRedaction.title")}
+            description={t("privacyGuardrails.safetyFilters.piiRedaction.description")}
           />
           <ToggleRow
-            title="Strict content guardrails"
-            description="Apply stricter moderation rules for high‑risk use cases."
+            title={t("privacyGuardrails.safetyFilters.strictGuardrails.title")}
+            description={t("privacyGuardrails.safetyFilters.strictGuardrails.description")}
           />
         </div>
       </section>
@@ -114,17 +115,17 @@ function PrivacyGuardrailsContent() {
       {/* Footer actions */}
       <section className="flex flex-col items-stretch justify-between gap-3 border-t border-gray-200 dark:border-gray-700 pt-4 text-[12px] text-gray-600 dark:text-gray-300 md:flex-row md:items-center">
         <button className="text-[12px] font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          Reset to defaults
+          {t("privacyGuardrails.resetToDefaults")}
         </button>
         <div className="flex items-center gap-2">
           <span className="text-[11px] text-gray-400 dark:text-gray-500">
-            Changes apply to new requests only.
+            {t("privacyGuardrails.changesApplyNote")}
           </span>
           <button className="rounded-full border border-gray-200 dark:border-gray-600 px-4 py-1.5 text-[12px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-            Cancel
+            {t("common.cancel")}
           </button>
           <button className="rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]">
-            Save changes
+            {t("privacyGuardrails.saveChanges")}
           </button>
         </div>
       </section>
@@ -133,13 +134,14 @@ function PrivacyGuardrailsContent() {
 }
 
 export default function PrivacyGuardrailsPage() {
-  usePageTitle("Privacy & Guardrails");
+  const { t } = useTranslation();
+  usePageTitle(t("settings.privacyGuardrails"));
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title="Privacy & Guardrails">
+      <DashboardLayout title={t("settings.privacyGuardrails")}>
         <PrivacyGuardrailsContent />
       </DashboardLayout>
     </div>

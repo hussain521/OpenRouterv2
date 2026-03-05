@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, type NavLinkRenderProps, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Switch } from "@/components/ui/switch";
@@ -16,8 +17,9 @@ import NewDestinationPage from "@/components/observability/NewDestinationPage";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ObservabilityPage() {
+  const { t } = useTranslation();
   const [activeDestination, setActiveDestination] = useState<DestinationConfig | null>(null);
-  usePageTitle("Observability");
+  usePageTitle(t("settings.observability"));
 
   // When a destination is selected, render the NewDestinationPage without DashboardLayout
   if (activeDestination) {
@@ -58,7 +60,7 @@ export default function ObservabilityPage() {
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title="Observability">
+      <DashboardLayout title={t("settings.observability")}>
         <ObservabilitySettingsContent onSelectDestination={setActiveDestination} />
       </DashboardLayout>
     </div>
@@ -66,6 +68,7 @@ export default function ObservabilityPage() {
 }
 
 export function ObservabilitySettingsContent({ onSelectDestination }: { onSelectDestination?: (destination: DestinationConfig | null) => void }) {
+  const { t } = useTranslation();
   const [isBroadcastEnabled, setIsBroadcastEnabled] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [localActiveDestination, setLocalActiveDestination] = useState<DestinationConfig | null>(null);
@@ -89,9 +92,9 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
       {/* Broadcast header */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-medium text-gray-900 dark:text-gray-100">Broadcast</h2>
+          <h2 className="text-sm font-medium text-gray-900 dark:text-gray-100">{t("observability.broadcast.title")}</h2>
           <div className="flex items-center gap-2 text-[12px] text-gray-400 dark:text-gray-500">
-            <span>{isBroadcastEnabled ? "Enabled" : "Disabled"}</span>
+            <span>{isBroadcastEnabled ? t("observability.enabled") : t("observability.disabled")}</span>
             <Switch
               checked={isBroadcastEnabled}
               onCheckedChange={setIsBroadcastEnabled}
@@ -100,13 +103,12 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
           </div>
         </div>
         <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
-          Automatically send traces from your requests to external observability
-          platforms without additional instrumentation.&nbsp;
+          {t("observability.broadcast.description")}&nbsp;
           <button
             type="button"
             className="text-[12px] font-medium text-[#6366F1] hover:underline"
           >
-            Learn more
+            {t("observability.learnMore")}
           </button>
         </p>
       </section>
@@ -114,7 +116,7 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
       {/* Available destinations list */}
       <section className="space-y-3 transition-opacity duration-300 opacity-100">
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Available
+          {t("observability.available")}
         </h3>
 
         <div
@@ -148,15 +150,15 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
       {/* Footer feedback */}
       <section className="flex items-center justify-between pt-4 text-[12px] text-gray-500 dark:text-gray-400">
         <div className="space-y-0.5">
-          <p className="font-medium text-gray-700 dark:text-gray-300">Send Feedback</p>
-          <p>Let us know how we can improve!</p>
+          <p className="font-medium text-gray-700 dark:text-gray-300">{t("observability.sendFeedback")}</p>
+          <p>{t("observability.feedbackDescription")}</p>
         </div>
         <button
           type="button"
           onClick={() => setIsFeedbackOpen(true)}
           className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-1.5 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
         >
-          Open
+          {t("observability.open")}
         </button>
       </section>
 
@@ -200,6 +202,7 @@ type DestinationRowProps = {
 };
 
 function DestinationRow({ name, iconBg, iconEmoji, disabled, onAdd }: DestinationRowProps) {
+  const { t } = useTranslation();
   const handleClick = () => {
     if (disabled) return;
     onAdd?.();
@@ -239,7 +242,7 @@ function DestinationRow({ name, iconBg, iconEmoji, disabled, onAdd }: Destinatio
             : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
         }`}
       >
-        <span>Add Destination</span>
+        <span>{t("observability.addDestination")}</span>
         <span className="text-base leading-none">+</span>
       </button>
     </div>
@@ -248,6 +251,7 @@ function DestinationRow({ name, iconBg, iconEmoji, disabled, onAdd }: Destinatio
 
 // Simple sidebar component for when NewDestinationPage is shown
 function SimpleSidebarSections() {
+  const { t } = useTranslation();
   const location = useLocation();
   const isInSettingsSection = location.pathname.startsWith("/settings");
   const [isSettingsOpen, setIsSettingsOpen] = useState(() => {
@@ -259,17 +263,17 @@ function SimpleSidebarSections() {
       <div className="space-y-1">
         <SidebarLink
           to="/activity"
-          label="Activity"
+          label={t("nav.activity")}
           icon={<Activity className="h-4 w-4" />}
         />
         <SidebarLink
           to="/logs"
-          label="Logs"
+          label={t("nav.logs")}
           icon={<FileText className="h-4 w-4" />}
         />
         <SidebarLink
           to="/credits"
-          label="Credits"
+          label={t("nav.credits")}
           icon={<CreditCard className="h-4 w-4" />}
         />
       </div>
@@ -289,7 +293,7 @@ function SimpleSidebarSections() {
             <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
               <Settings className="h-4 w-4" />
             </span>
-            <span>Settings</span>
+            <span>{t("nav.settings")}</span>
           </span>
           <span
             className={[
@@ -303,23 +307,23 @@ function SimpleSidebarSections() {
 
         {isSettingsOpen && (
           <div className="space-y-0.5">
-            <SidebarSubLink to="/settings/account" label="Account" />
-            <SidebarSubLink to="/settings/api-keys" label="API Keys" />
+            <SidebarSubLink to="/settings/account" label={t("settings.account")} />
+            <SidebarSubLink to="/settings/api-keys" label={t("settings.apiKeys")} />
             <SidebarSubLink
               to="/settings/management-keys"
-              label="Management Keys"
+              label={t("settings.managementKeys")}
             />
             <SidebarSubLink
               to="/settings/privacy-guardrails"
-              label="Privacy & Guardrails"
+              label={t("settings.privacyGuardrails")}
             />
-            <SidebarSubLink to="/settings/byok" label="BYOK" />
-            <SidebarSubLink to="/settings/presets" label="Presets" />
-            <SidebarSubLink to="/settings/routing" label="Routing" />
-            <SidebarSubLink to="/settings/plugins" label="Plugins" />
+            <SidebarSubLink to="/settings/byok" label={t("settings.byok")} />
+            <SidebarSubLink to="/settings/presets" label={t("settings.presets")} />
+            <SidebarSubLink to="/settings/routing" label={t("settings.routing")} />
+            <SidebarSubLink to="/settings/plugins" label={t("settings.plugins")} />
             <SidebarSubLink
               to="/settings/observability"
-              label="Observability"
+              label={t("settings.observability")}
             />
           </div>
         )}

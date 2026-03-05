@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 interface ModelCardProps {
   logo: string;
@@ -17,6 +18,7 @@ export default function ModelCard({
   tokens,
   trend,
 }: ModelCardProps) {
+  const { t } = useTranslation();
   const isPositive = trend.startsWith("+");
 
   return (
@@ -45,7 +47,7 @@ export default function ModelCard({
             </div>
 
             <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5 md:mt-1">
-              by {provider}
+              {t("common.by")} {provider}
             </p>
           </div>
         </div>
@@ -55,12 +57,12 @@ export default function ModelCard({
         {/* Stats */}
         <div className="flex justify-between text-xs md:text-sm">
           <div>
-            <p className="text-gray-500 dark:text-gray-400">Tokens</p>
+            <p className="text-gray-500 dark:text-gray-400">{t("modelCard.tokens")}</p>
             <p className="font-semibold mt-1 dark:text-white">{tokens}</p>
           </div>
 
           <div className="text-right">
-            <p className="text-gray-500 dark:text-gray-400">Weekly Trend</p>
+            <p className="text-gray-500 dark:text-gray-400">{t("modelCard.weeklyTrend")}</p>
             <p
               className={`font-semibold mt-1 ${
                 isPositive ? "text-green-600" : "text-red-600"

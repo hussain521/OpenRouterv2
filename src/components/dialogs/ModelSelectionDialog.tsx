@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 
 interface ModelSelectionDialogProps {
   open: boolean;
@@ -32,8 +33,7 @@ const MODELS: ModelInfo[] = [
     name: "Aion-2.0",
     provider: "DeepSeek",
     categories: ["all", "output"],
-    description:
-      "Aion-2.0 is a variant of DeepSeek V3.2 optimized for immersive roleplaying and storytelling. It is particularly strong at introducing tension, crises, and conflict into stories, making narratives feel more engaging.",
+    description: "modelDescriptions.aion2",
     available: true,
   },
   {
@@ -41,8 +41,7 @@ const MODELS: ModelInfo[] = [
     name: "Gemini 3.1 Pro Preview",
     provider: "Google",
     categories: ["all", "input", "output"],
-    description:
-      "Preview version of Gemini 3.1 Pro for advanced reasoning tasks, coding, and multi-modal understanding.",
+    description: "modelDescriptions.geminiProPreview",
     available: true,
   },
   {
@@ -50,8 +49,7 @@ const MODELS: ModelInfo[] = [
     name: "Claude Sonnet 4.6",
     provider: "Anthropic",
     categories: ["all", "input", "output"],
-    description:
-      "Balanced Claude model with strong reasoning, long-context support, and fast response times suitable for a wide range of assistant use cases.",
+    description: "modelDescriptions.claudeSonnet",
     available: true,
   },
   {
@@ -59,8 +57,7 @@ const MODELS: ModelInfo[] = [
     name: "Qwen3.5 Plus 2026-02-15",
     provider: "Qwen",
     categories: ["all", "input", "output", "free"],
-    description:
-      "General-purpose Qwen3.5 model, updated 2026-02-15, with strong multilingual capabilities and competitive performance on coding and chat benchmarks.",
+    description: "modelDescriptions.qwenPlus",
     available: true,
   },
   {
@@ -68,8 +65,7 @@ const MODELS: ModelInfo[] = [
     name: "GLM 5",
     provider: "Zhipu",
     categories: ["all", "input", "output"],
-    description:
-      "Latest GLM series model with strong Chinese and English understanding, optimized for chat and knowledge-intensive tasks.",
+    description: "modelDescriptions.glm5",
     available: false,
   },
 ];
@@ -78,6 +74,7 @@ export function ModelSelectionDialog({
   open,
   onOpenChange,
 }: ModelSelectionDialogProps) {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<ModelCategory>("all");
   const [hideUnavailable, setHideUnavailable] = useState(true);
@@ -117,7 +114,7 @@ export function ModelSelectionDialog({
       >
         <DialogHeader className="items-start gap-2">
           <DialogTitle className="text-lg font-semibold">
-            Select models
+            {t("modelSelection.selectModels")}
           </DialogTitle>
         </DialogHeader>
 
@@ -125,7 +122,7 @@ export function ModelSelectionDialog({
           {/* Top controls */}
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <Input
-              placeholder="Search models"
+              placeholder={t("modelSelection.searchModels")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="h-9 w-full md:max-w-xs rounded-xl"
@@ -143,7 +140,7 @@ export function ModelSelectionDialog({
                   )
                 }
               >
-                Input
+                {t("modelSelection.input")}
               </Button>
               <Button
                 type="button"
@@ -156,7 +153,7 @@ export function ModelSelectionDialog({
                   )
                 }
               >
-                Output
+                {t("modelSelection.output")}
               </Button>
               <Button
                 type="button"
@@ -167,7 +164,7 @@ export function ModelSelectionDialog({
                   setActiveCategory((prev) => (prev === "free" ? "all" : "free"))
                 }
               >
-                Free
+                {t("modelSelection.free")}
               </Button>
 
               <Button
@@ -177,7 +174,7 @@ export function ModelSelectionDialog({
                 className="rounded-full px-3 h-7"
                 onClick={() => setHideUnavailable((v) => !v)}
               >
-                Hide Unavailable
+                {t("modelSelection.hideUnavailable")}
               </Button>
 
               {query || activeCategory !== "all" || !hideUnavailable ? (
@@ -192,7 +189,7 @@ export function ModelSelectionDialog({
                     setHideUnavailable(true);
                   }}
                 >
-                  Clear
+                  {t("common.clear")}
                 </Button>
               ) : null}
             </div>
@@ -220,7 +217,7 @@ export function ModelSelectionDialog({
                     </div>
                     {model.available === false && (
                       <span className="text-[10px] rounded-full border px-2 py-0.5 text-muted-foreground">
-                        Unavailable
+                        {t("modelSelection.unavailable")}
                       </span>
                     )}
                   </button>
@@ -229,7 +226,7 @@ export function ModelSelectionDialog({
 
               {filteredModels.length === 0 && (
                 <div className="px-3 py-4 text-xs text-muted-foreground">
-                  No models match your filters.
+                  {t("modelSelection.noModelsMatch")}
                 </div>
               )}
             </div>
@@ -239,12 +236,12 @@ export function ModelSelectionDialog({
                 <>
                   <div className="font-medium">{selectedModel.name}</div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    {selectedModel.description}
+                    {t(selectedModel.description)}
                   </p>
                 </>
               ) : (
                 <p className="text-xs text-muted-foreground">
-                  Select a model on the left to see details.
+                  {t("modelSelection.selectModelForDetails")}
                 </p>
               )}
             </div>
@@ -259,7 +256,7 @@ export function ModelSelectionDialog({
             className="rounded-xl px-4"
             onClick={() => onOpenChange(false)}
           >
-            Cancel
+            {t("common.cancel")}
           </Button>
           <Button
             type="button"
@@ -267,7 +264,7 @@ export function ModelSelectionDialog({
             className="rounded-xl px-4"
             onClick={() => onOpenChange(false)}
           >
-            Save
+            {t("common.save")}
           </Button>
         </DialogFooter>
       </DialogContent>

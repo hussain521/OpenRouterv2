@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { EmptyStateCard } from "@/components/EmptyStateCard";
@@ -6,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function PresetsPage() {
-  usePageTitle("Presets");
+  const { t } = useTranslation();
+  usePageTitle(t("settings.presets"));
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -24,15 +26,14 @@ export default function PresetsPage() {
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title="Presets">
+      <DashboardLayout title={t("settings.presets")}>
         <EmptyStateCard
-          title="Create your first preset"
+          title={t("presets.emptyState.title")}
           description={
             <>
-              Presets are shortcuts for your system prompts and request
-              parameters.{" "}
+              {t("presets.emptyState.description")}{" "}
               <a href="#" className="text-[#6366F1] hover:underline">
-                Learn more.
+                {t("presets.emptyState.learnMore")}
               </a>
             </>
           }
@@ -42,7 +43,7 @@ export default function PresetsPage() {
               className="mt-3 rounded-md bg-[#6366F1] px-6 py-2 text-[13px] font-medium text-white hover:bg-[#4F46E5]"
               onClick={handleCreatePreset}
             >
-              Create Preset
+              {t("presets.createPreset")}
             </Button>
           }
           className="py-24"

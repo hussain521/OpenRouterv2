@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
 
 interface BillingAddressDialogProps {
   open: boolean;
@@ -24,7 +25,8 @@ interface BillingAddressDialogProps {
 }
 
 export function BillingAddressDialog({ open, onOpenChange, onComplete }: BillingAddressDialogProps) {
-  const [billingName, setBillingName] = useState("Hussain ELsid");
+  const { t } = useTranslation();
+  const [billingName, setBillingName] = useState("");
   const [billingCountry, setBillingCountry] = useState("united-states");
   const [billingAddress1, setBillingAddress1] = useState("");
 
@@ -38,7 +40,7 @@ export function BillingAddressDialog({ open, onOpenChange, onComplete }: Billing
       >
         <DialogHeader className="mb-4">
           <DialogTitle className="text-center text-sm font-medium text-gray-900 dark:text-gray-100">
-            Add a Billing Address
+            {t("billing.addBillingAddress")}
           </DialogTitle>
         </DialogHeader>
 
@@ -46,34 +48,34 @@ export function BillingAddressDialog({ open, onOpenChange, onComplete }: Billing
           {/* Full name */}
           <div className="space-y-1.5">
             <label className="block text-[11px] font-medium text-gray-600 dark:text-gray-300">
-              Full name
+              {t("billing.fullName")}
             </label>
             <Input
               value={billingName}
               onChange={(e) => setBillingName(e.target.value)}
               className="h-10 rounded-md bg-gray-100 dark:bg-gray-900/60 border-none text-[13px] text-gray-900 dark:text-gray-100"
-              placeholder="Full name"
+              placeholder={t("billing.fullNamePlaceholder")}
             />
           </div>
 
           {/* Country / region */}
           <div className="space-y-1.5">
             <label className="block text-[11px] font-medium text-gray-600 dark:text-gray-300">
-              Country or region
+              {t("billing.countryOrRegion")}
             </label>
             <Select
               value={billingCountry}
               onValueChange={setBillingCountry}
             >
               <SelectTrigger className="h-10 w-full rounded-md bg-gray-100 dark:bg-gray-900/60 border-none text-[13px] text-gray-900 dark:text-gray-100 justify-between">
-                <SelectValue placeholder="Select country" />
+                <SelectValue placeholder={t("billing.selectCountry")} />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="united-states">United States</SelectItem>
-                <SelectItem value="united-kingdom">United Kingdom</SelectItem>
-                <SelectItem value="germany">Germany</SelectItem>
-                <SelectItem value="france">France</SelectItem>
-                <SelectItem value="canada">Canada</SelectItem>
+              <SelectContent align="start">
+                <SelectItem value="united-states">{t("countries.unitedStates")}</SelectItem>
+                <SelectItem value="united-kingdom">{t("countries.unitedKingdom")}</SelectItem>
+                <SelectItem value="germany">{t("countries.germany")}</SelectItem>
+                <SelectItem value="france">{t("countries.france")}</SelectItem>
+                <SelectItem value="canada">{t("countries.canada")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -81,18 +83,18 @@ export function BillingAddressDialog({ open, onOpenChange, onComplete }: Billing
           {/* Address line 1 */}
           <div className="space-y-1.5">
             <label className="block text-[11px] font-medium text-gray-600 dark:text-gray-300">
-              Address line 1
+              {t("billing.addressLine1")}
             </label>
             <Input
               value={billingAddress1}
               onChange={(e) => setBillingAddress1(e.target.value)}
               className="h-10 rounded-md bg-gray-100 dark:bg-gray-900/60 border-none text-[13px] text-gray-900 dark:text-gray-100"
-              placeholder="Street address"
+              placeholder={t("billing.streetAddressPlaceholder")}
             />
           </div>
 
           <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">
-            A billing address is <span className="font-semibold">required</span> to verify your identity and help prevent fraud.
+            {t("billing.addressRequired")} <span className="font-semibold">{t("billing.required")}</span> {t("billing.toVerifyIdentity")}
           </p>
         </DialogBody>
 
@@ -103,7 +105,7 @@ export function BillingAddressDialog({ open, onOpenChange, onComplete }: Billing
             disabled={!isBillingFormValid}
             onClick={onComplete}
           >
-            Complete address details to continue
+            {t("billing.completeAddressDetails")}
           </Button>
         </DialogFooter>
       </DialogContent>

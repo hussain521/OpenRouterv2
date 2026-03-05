@@ -24,6 +24,7 @@ import {
   PaginationPrevious,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
+import { useTranslation } from "react-i18next";
 
 interface Transaction {
   date: string;
@@ -37,24 +38,25 @@ interface TransactionsTableProps {
   setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
 }
 
-const columnHelper = {
-  date: "Transaction date",
-  description: "Description of the transaction",
-  amount: "Transaction amount (positive for credits, negative for debits)",
-  balance: "Account balance after this transaction",
-};
-
 export function TransactionsTable({
   transactions,
   setTransactions,
 }: TransactionsTableProps) {
+  const { t } = useTranslation();
   const [filterType, setFilterType] = useState<"all" | "credits" | "debits">("all");
   const [columnResizeMode] = useState<ColumnResizeMode>("onChange");
 
+  const columnHelper = {
+    date: t("credits.transactions.dateTooltip"),
+    description: t("credits.transactions.descriptionTooltip"),
+    amount: t("credits.transactions.amountTooltip"),
+    balance: t("credits.transactions.balanceTooltip"),
+  };
+
   const filters = [
-    { value: "all" as const, label: "All" },
-    { value: "credits" as const, label: "Credits" },
-    { value: "debits" as const, label: "Debits" },
+    { value: "all" as const, label: t("credits.transactions.all") },
+    { value: "credits" as const, label: t("credits.transactions.credits") },
+    { value: "debits" as const, label: t("credits.transactions.debits") },
   ];
 
   const filteredData = useMemo(() => {
@@ -67,20 +69,20 @@ export function TransactionsTable({
   const columns = useMemo<ColumnDef<Transaction>[]>(
     () => [
       {
-        header: "Date",
+        header: t("credits.transactions.date"),
         accessorKey: "date",
         size: 120,
         minSize: 80,
         maxSize: 200,
       },
       {
-        header: "Description",
+        header: t("credits.transactions.description"),
         accessorKey: "description",
         size: 300,
         minSize: 150,
       },
       {
-        header: "Amount",
+        header: t("credits.transactions.amount"),
         accessorKey: "amount",
         size: 120,
         minSize: 80,
@@ -95,7 +97,7 @@ export function TransactionsTable({
         },
       },
       {
-        header: "Balance",
+        header: t("credits.transactions.balance"),
         accessorKey: "balance",
         size: 120,
         minSize: 80,
@@ -106,7 +108,7 @@ export function TransactionsTable({
         },
       },
     ],
-    []
+    [t]
   );
 
   const table = useReactTable({
@@ -211,7 +213,7 @@ export function TransactionsTable({
       <div>
         <div className="flex items-center justify-between pb-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-            Recent Transactions
+            {t("credits.recentTransactions")}
           </p>
           <div className="flex items-center gap-2 text-[11px] text-gray-500 dark:text-gray-400">
             {filters.map((filter) => (
@@ -284,7 +286,7 @@ export function TransactionsTable({
                       colSpan={columns.length}
                       className="px-4 py-8 text-center text-[11px] text-gray-400 dark:text-gray-600"
                     >
-                      No results
+                      {t("credits.transactions.noResults")}
                     </td>
                   </tr>
                 ) : (

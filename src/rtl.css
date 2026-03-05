@@ -1,0 +1,20 @@
+/* RTL specific styles */
+/* Keep borders on the left side even in RTL mode for the sidebar */
+
+/* Fix for select dropdowns in RTL */
+[dir="rtl"] [data-radix-popper-content-wrapper] {
+  direction: ltr;
+}
+
+[dir="rtl"] [data-radix-popper-content-wrapper] > * {
+  direction: rtl;
+}
+
+/* Ensure proper scrollbar position in RTL */
+[dir="rtl"] .overflow-y-auto {
+  direction: ltr;
+}
+
+[dir="rtl"] .overflow-y-auto > * {
+  direction: rtl;
+}

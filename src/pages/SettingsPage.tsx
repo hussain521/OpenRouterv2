@@ -1,4 +1,5 @@
 import { useLocation, NavLink, type NavLinkRenderProps, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Info, Search, SquarePen, Activity, FileText, CreditCard, Settings, ChevronDown, CircleDot } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
@@ -18,20 +19,20 @@ import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 import { CreateManagementKeyDialog } from "@/components/dialogs";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
-function getSettingsTitle(pathname: string) {
+function getSettingsTitle(pathname: string, t: (key: string) => string) {
   if (pathname === "/settings" || pathname.startsWith("/settings/account"))
-    return "Account";
-  if (pathname.startsWith("/settings/api-keys")) return "API Keys";
+    return t("settings.account");
+  if (pathname.startsWith("/settings/api-keys")) return t("settings.apiKeys");
   if (pathname.startsWith("/settings/management-keys"))
-    return "Management Keys";
+    return t("settings.managementKeys");
   if (pathname.startsWith("/settings/privacy-guardrails"))
-    return "Privacy & Guardrails";
-  if (pathname.startsWith("/settings/byok")) return "BYOK";
-  if (pathname.startsWith("/settings/presets")) return "Presets";
-  if (pathname.startsWith("/settings/routing")) return "Routing";
-  if (pathname.startsWith("/settings/plugins")) return "Plugins";
-  if (pathname.startsWith("/settings/observability")) return "Observability";
-  return "Settings";
+    return t("settings.privacyGuardrails");
+  if (pathname.startsWith("/settings/byok")) return t("settings.byok");
+  if (pathname.startsWith("/settings/presets")) return t("settings.presets");
+  if (pathname.startsWith("/settings/routing")) return t("settings.routing");
+  if (pathname.startsWith("/settings/plugins")) return t("settings.plugins");
+  if (pathname.startsWith("/settings/observability")) return t("settings.observability");
+  return t("nav.settings");
 }
 
 type DestinationConfig = {
@@ -41,10 +42,11 @@ type DestinationConfig = {
 };
 
 export default function SettingsPage() {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
-  const title = getSettingsTitle(pathname);
+  const title = getSettingsTitle(pathname, t);
   const [observabilityDestination, setObservabilityDestination] = useState<DestinationConfig | null>(null);
   const [managementDialogOpen, setManagementDialogOpen] = useState(false);
   
@@ -110,7 +112,7 @@ export default function SettingsPage() {
               className="inline-flex items-center justify-center rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]"
               onClick={() => setManagementDialogOpen(true)}
             >
-              Create
+              {t("common.create")}
             </button>
           ) : null
         }
@@ -127,13 +129,12 @@ export default function SettingsPage() {
           <PrivacyGuardrailsContent />
         ) : isPresetsPage ? (
           <EmptyStateCard
-            title="Create your first preset"
+            title={t("presets.emptyState.title")}
             description={
               <>
-                Presets are shortcuts for your system prompts and request
-                parameters.{" "}
+                {t("presets.emptyState.description")}{" "}
                 <a href="#" className="text-[#6366F1] hover:underline">
-                  Learn more.
+                  {t("presets.emptyState.learnMore")}
                 </a>
               </>
             }
@@ -143,7 +144,7 @@ export default function SettingsPage() {
                 className="mt-3 rounded-md bg-[#6366F1] px-6 py-2 text-[13px] font-medium text-white hover:bg-[#4F46E5]"
                 onClick={() => navigate("/presets")}
               >
-                Create Preset
+                {t("presets.createPreset")}
               </Button>
             }
             className="py-24"
@@ -157,12 +158,7 @@ export default function SettingsPage() {
         ) : (
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              This is a placeholder for the{" "}
-              <span className="font-medium">{title}</span> page.
-            </p>
-            <p>
-              The sidebar on the left stays fixed, and this content area can be
-              replaced with the exact UI you want for each settings section.
+              {t("settings.placeholder", { section: title })}
             </p>
           </div>
         )}
@@ -179,6 +175,7 @@ export default function SettingsPage() {
 }
 
 function ApiKeysContent() {
+  const { t } = useTranslation();
   return (
     <div className="flex h-full items-center justify-center pt-10">
       <div className="flex flex-col items-center text-center space-y-3">
@@ -186,10 +183,10 @@ function ApiKeysContent() {
           <span>🔑</span>
         </div>
         <h2 className="text-[15px] font-medium text-gray-900 dark:text-gray-100">
-          No API keys yet
+          {t("apiKeysPage.emptyState.title")}
         </h2>
         <p className="max-w-sm text-[12px] text-gray-500 dark:text-gray-400">
-          Create API keys to authenticate requests from your apps to OpenRouter.
+          {t("apiKeysPage.emptyState.description")}
         </p>
         <CreateApiKeyDialog />
       </div>
@@ -198,13 +195,12 @@ function ApiKeysContent() {
 }
 
 function ManagementKeysContent() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       <section>
         <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
-          Create management keys to manage settings, permissions, and other
-          controls for this organization. These keys are meant for admins
-          only.
+          {t("managementKeys.contentDescription")}
         </p>
       </section>
     </div>
@@ -212,38 +208,38 @@ function ManagementKeysContent() {
 }
 
 function PrivacyGuardrailsContent() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       {/* Intro */}
       <section className="space-y-2">
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Privacy & Guardrails
+          {t("settings.privacyGuardrails")}
         </h2>
         <p className="max-w-2xl text-[12px] text-gray-500 dark:text-gray-400">
-          Configure how OpenRouter handles your data and applies safety filters
-          for requests made from this organization.
+          {t("privacyGuardrails.description")}
         </p>
       </section>
 
       {/* Data handling */}
       <section className="space-y-4">
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Data handling
+          {t("privacyGuardrails.dataHandling.title")}
         </h3>
         <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
-            title="Log requests for debugging"
-            description="Store logs of requests and responses so you can inspect and debug issues later."
+            title={t("privacyGuardrails.dataHandling.logRequests.title")}
+            description={t("privacyGuardrails.dataHandling.logRequests.description")}
             defaultEnabled
           />
           <ToggleRow
-            title="Send data to model providers"
-            description="Allow model providers to retain data for improving their models, where applicable."
+            title={t("privacyGuardrails.dataHandling.sendData.title")}
+            description={t("privacyGuardrails.dataHandling.sendData.description")}
           />
           <SettingsRow
-            title="Retention window"
-            description="How long OpenRouter will retain logs and traces before automatic deletion."
-            actionLabel="30 days"
+            title={t("privacyGuardrails.dataHandling.retention.title")}
+            description={t("privacyGuardrails.dataHandling.retention.description")}
+            actionLabel={t("privacyGuardrails.dataHandling.retention.days", { days: 30 })}
           />
         </div>
       </section>
@@ -251,21 +247,21 @@ function PrivacyGuardrailsContent() {
       {/* Safety filters */}
       <section className="space-y-4">
         <h3 className="text-[12px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
-          Safety filters
+          {t("privacyGuardrails.safetyFilters.title")}
         </h3>
         <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
           <ToggleRow
-            title="Block unsafe content"
-            description="Filter prompts and responses that violate default safety policies."
+            title={t("privacyGuardrails.safetyFilters.blockUnsafe.title")}
+            description={t("privacyGuardrails.safetyFilters.blockUnsafe.description")}
             defaultEnabled
           />
           <ToggleRow
-            title="PII redaction"
-            description="Automatically redact common types of personally identifiable information in logs."
+            title={t("privacyGuardrails.safetyFilters.piiRedaction.title")}
+            description={t("privacyGuardrails.safetyFilters.piiRedaction.description")}
           />
           <ToggleRow
-            title="Strict content guardrails"
-            description="Apply stricter moderation rules for high‑risk use cases."
+            title={t("privacyGuardrails.safetyFilters.strictGuardrails.title")}
+            description={t("privacyGuardrails.safetyFilters.strictGuardrails.description")}
           />
         </div>
       </section>
@@ -273,17 +269,17 @@ function PrivacyGuardrailsContent() {
       {/* Footer actions */}
       <section className="flex flex-col items-stretch justify-between gap-3 border-t border-gray-200 dark:border-gray-700 pt-4 text-[12px] text-gray-600 dark:text-gray-300 md:flex-row md:items-center">
         <button className="text-[12px] font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          Reset to defaults
+          {t("privacyGuardrails.resetToDefaults")}
         </button>
         <div className="flex items-center gap-2">
           <span className="text-[11px] text-gray-400 dark:text-gray-500">
-            Changes apply to new requests only.
+            {t("privacyGuardrails.changesApplyNote")}
           </span>
           <button className="rounded-full border border-gray-200 dark:border-gray-600 px-4 py-1.5 text-[12px] font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-            Cancel
+            {t("common.cancel")}
           </button>
           <button className="rounded-full bg-[#4F46E5] px-5 py-1.5 text-[12px] font-medium text-white hover:bg-[#4338CA]">
-            Save changes
+            {t("privacyGuardrails.saveChanges")}
           </button>
         </div>
       </section>
@@ -292,13 +288,14 @@ function PrivacyGuardrailsContent() {
 }
 
 function BYOKSettingsContent() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
       {/* Top: intro + search */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
           <p className="text-[13px]">
-            Use your own provider API keys on OpenRouter
+            {t("byok.subtitle")}
           </p>
           <Info className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
         </div>
@@ -307,7 +304,7 @@ function BYOKSettingsContent() {
           <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
           <input
             type="text"
-            placeholder="Search providers..."
+            placeholder={t("byok.searchPlaceholder")}
             className="h-9 w-full rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-9 pr-4 text-[13px] text-gray-700 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-gray-300 dark:focus:border-gray-500 focus:bg-white dark:focus:bg-gray-700 focus:outline-none focus:ring-0"
           />
         </div>
@@ -316,77 +313,77 @@ function BYOKSettingsContent() {
       {/* Provider list */}
       <section className="space-y-3">
         <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">
-          Available
+          {t("byok.available")}
         </h2>
 
         <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             <BYOKProviderRow
               name="AI21"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#ff007a]"
               textColor="text-white"
               iconText="a"
             />
             <BYOKProviderRow
               name="AionLabs"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#e5e7eb]"
               textColor="text-gray-700"
               iconText="Ai"
             />
             <BYOKProviderRow
               name="Alibaba Cloud Int."
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#ff7a00]"
               textColor="text-white"
               iconText="↷"
             />
             <BYOKProviderRow
               name="Amazon Bedrock"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#232f3e]"
               textColor="text-white"
               iconText="aws"
             />
             <BYOKProviderRow
               name="Anthropic"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#f5f5e6]"
               textColor="text-gray-900"
               iconText="A"
             />
             <BYOKProviderRow
               name="Arcee AI"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#00bfa5]"
               textColor="text-white"
               iconText="A"
             />
             <BYOKProviderRow
               name="AtlasCloud"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#4f46e5]"
               textColor="text-white"
               iconText="A"
             />
             <BYOKProviderRow
               name="Azure"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#0078d4]"
               textColor="text-white"
               iconText="A"
             />
             <BYOKProviderRow
               name="Baseten"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#00c853]"
               textColor="text-white"
               iconText="⚡"
             />
             <BYOKProviderRow
               name="Cerebras"
-              status="Not configured"
+              status={t("byok.notConfigured")}
               iconColor="bg-[#ff3d00]"
               textColor="text-white"
               iconText="C"
@@ -397,7 +394,7 @@ function BYOKSettingsContent() {
             type="button"
             className="flex h-10 w-full items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-[12px] font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
           >
-            Show 44 more
+            {t("byok.showMore", { count: 44 })}
           </button>
         </div>
       </section>
@@ -483,6 +480,7 @@ function BYOKProviderRow({
 
 // Simple sidebar component for when NewDestinationPage is shown
 function SimpleSidebarSections() {
+  const { t } = useTranslation();
   const location = useLocation();
   const isInSettingsSection = location.pathname.startsWith("/settings");
   const [isSettingsOpen, setIsSettingsOpen] = useState(() => {
@@ -494,17 +492,17 @@ function SimpleSidebarSections() {
       <div className="space-y-1">
         <SidebarLink
           to="/activity"
-          label="Activity"
+          label={t("nav.activity")}
           icon={<Activity className="h-4 w-4" />}
         />
         <SidebarLink
           to="/logs"
-          label="Logs"
+          label={t("nav.logs")}
           icon={<FileText className="h-4 w-4" />}
         />
         <SidebarLink
           to="/credits"
-          label="Credits"
+          label={t("nav.credits")}
           icon={<CreditCard className="h-4 w-4" />}
         />
       </div>
@@ -524,7 +522,7 @@ function SimpleSidebarSections() {
             <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
               <Settings className="h-4 w-4" />
             </span>
-            <span>Settings</span>
+            <span>{t("nav.settings")}</span>
           </span>
           <span
             className={[
@@ -538,23 +536,23 @@ function SimpleSidebarSections() {
 
         {isSettingsOpen && (
           <div className="space-y-0.5">
-            <SidebarSubLink to="/settings/account" label="Account" />
-            <SidebarSubLink to="/settings/api-keys" label="API Keys" />
+            <SidebarSubLink to="/settings/account" label={t("settings.account")} />
+            <SidebarSubLink to="/settings/api-keys" label={t("settings.apiKeys")} />
             <SidebarSubLink
               to="/settings/management-keys"
-              label="Management Keys"
+              label={t("settings.managementKeys")}
             />
             <SidebarSubLink
               to="/settings/privacy-guardrails"
-              label="Privacy & Guardrails"
+              label={t("settings.privacyGuardrails")}
             />
-            <SidebarSubLink to="/settings/byok" label="BYOK" />
-            <SidebarSubLink to="/settings/presets" label="Presets" />
-            <SidebarSubLink to="/settings/routing" label="Routing" />
-            <SidebarSubLink to="/settings/plugins" label="Plugins" />
+            <SidebarSubLink to="/settings/byok" label={t("settings.byok")} />
+            <SidebarSubLink to="/settings/presets" label={t("settings.presets")} />
+            <SidebarSubLink to="/settings/routing" label={t("settings.routing")} />
+            <SidebarSubLink to="/settings/plugins" label={t("settings.plugins")} />
             <SidebarSubLink
               to="/settings/observability"
-              label="Observability"
+              label={t("settings.observability")}
             />
           </div>
         )}

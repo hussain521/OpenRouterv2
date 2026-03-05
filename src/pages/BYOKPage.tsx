@@ -1,11 +1,13 @@
 import { Info, Search, SquarePen } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function BYOKPage() {
-  usePageTitle("BYOK");
+  const { t } = useTranslation();
+  usePageTitle(t("byok.pageTitle"));
   const [showAll, setShowAll] = useState(false);
 
   // All providers data - simplified
@@ -73,13 +75,13 @@ export default function BYOKPage() {
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title="BYOK">
+      <DashboardLayout title={t("settings.byok")}>
         <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
           {/* Top: intro + search */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
               <p className="text-[13px]">
-                Use your own provider API keys on OpenRouter
+                {t("byok.subtitle")}
               </p>
               <Info className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
             </div>
@@ -88,7 +90,7 @@ export default function BYOKPage() {
               <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
-                placeholder="Search providers..."
+                placeholder={t("byok.searchPlaceholder")}
                 className="h-9 w-full rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-9 pr-4 text-[13px] text-gray-700 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-gray-300 dark:focus:border-gray-500 focus:bg-white dark:focus:bg-gray-700 focus:outline-none focus:ring-0"
               />
             </div>
@@ -96,7 +98,7 @@ export default function BYOKPage() {
 
           {/* Provider list */}
           <section className="space-y-3">
-            <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">Available</h2>
+            <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">{t("byok.available")}</h2>
 
             <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
               <div className="divide-y divide-gray-200 dark:divide-gray-700" key={showAll ? 'all' : 'limited'}>
@@ -104,7 +106,7 @@ export default function BYOKPage() {
                   <ProviderRow
                     key={`${provider.name}-${index}`}
                     name={provider.name}
-                    status="Not configured"
+                    status={t("byok.notConfigured")}
                     iconColor={provider.iconColor}
                     textColor={provider.textColor}
                     iconText={provider.iconText}
@@ -117,7 +119,7 @@ export default function BYOKPage() {
                 onClick={() => setShowAll(!showAll)}
                 className="flex h-10 w-full items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-[12px] font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
               >
-                {showAll ? 'Show less' : `Show ${remainingCount} more`}
+                {showAll ? t("byok.showLess") : t("byok.showMore", { count: remainingCount })}
               </button>
             </div>
           </section>
@@ -125,31 +127,22 @@ export default function BYOKPage() {
           {/* Info footer */}
           <section className="space-y-4 pt-2 text-[13px] text-gray-600 dark:text-gray-300">
             <h3 className="text-[16px] font-medium text-gray-900 dark:text-gray-100">
-              Key Priority and Fallback
+              {t("byok.keyPriority.title")}
             </h3>
             <div className="max-w-4xl space-y-3 leading-relaxed">
-              <p>OpenRouter always prioritizes using your provider keys when available.</p>
+              <p>{t("byok.keyPriority.priorityDesc")}</p>
+              <p>{t("byok.keyPriority.fallbackDesc")}</p>
+              <p>{t("byok.keyPriority.alwaysUseDesc")}</p>
               <p>
-                By default, if your key encounters a rate limit or failure, OpenRouter will
-                fall back to using shared OpenRouter credits.
-              </p>
-              <p>
-                You can configure individual keys with "Always use this key" to
-                prevent any fallback to OpenRouter credits. When this option is enabled,
-                OpenRouter will only use your key for requests to that provider. This may
-                result in rate limit errors if your key is exhausted, but ensures all
-                requests go through your account.
-              </p>
-              <p>
-                If you wish to never use shared OpenRouter credits for a model, you must{" "}
+                {t("byok.keyPriority.neverUseCreditsDesc1")}{" "}
                 <strong className="font-medium text-gray-800 dark:text-gray-200">
-                  both specify "Always use this key" and pin the provider
+                  {t("byok.keyPriority.neverUseCreditsDesc2")}
                 </strong>{" "}
-                by specifying it as{" "}
+                {t("byok.keyPriority.neverUseCreditsDesc3")}{" "}
                 <a href="#" className="text-[#6366F1] hover:underline">
-                  your only provider
+                  {t("byok.keyPriority.yourOnlyProvider")}
                 </a>{" "}
-                when making the request.
+                {t("byok.keyPriority.neverUseCreditsDesc4")}
               </p>
             </div>
           </section>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Settings as SettingsIcon } from "lucide-react";
@@ -11,13 +12,14 @@ import {
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function PluginsPage() {
-  usePageTitle("Plugins");
+  const { t } = useTranslation();
+  usePageTitle(t("settings.plugins"));
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="sticky top-0 z-50 transition-all duration-300">
         <Navbar />
       </div>
-      <DashboardLayout title="Plugins">
+      <DashboardLayout title={t("settings.plugins")}>
         <PluginsSettingsContent />
       </DashboardLayout>
     </div>
@@ -25,6 +27,7 @@ export default function PluginsPage() {
 }
 
 export function PluginsSettingsContent() {
+  const { t } = useTranslation();
   const [isWebSearchDialogOpen, setIsWebSearchDialogOpen] = useState(false);
   const [isPdfInputsDialogOpen, setIsPdfInputsDialogOpen] = useState(false);
   const [isResponseHealingDialogOpen, setIsResponseHealingDialogOpen] =
@@ -35,13 +38,13 @@ export function PluginsSettingsContent() {
       {/* Intro */}
       <section className="space-y-1">
         <h2 className="text-[13px] font-medium text-gray-900 dark:text-gray-100">
-          Default Plugin Settings
+          {t("plugins.defaultSettings.title")}
         </h2>
         <div className="flex items-center gap-1.5 text-[12px] text-gray-500 dark:text-gray-400">
           <span className="flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-[10px] text-gray-400 dark:text-gray-500">
             i
           </span>
-          <span>Configure default plugin behavior for your API requests.</span>
+          <span>{t("plugins.defaultSettings.description")}</span>
         </div>
       </section>
 
@@ -49,20 +52,20 @@ export function PluginsSettingsContent() {
       <section>
         <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
           <PluginRow
-            name="Web Search"
-            description="Augment LLM responses with real-time web search results"
+            name={t("plugins.webSearch.title")}
+            description={t("plugins.webSearch.description")}
             hasToggle={false}
             onSettingsClick={() => setIsWebSearchDialogOpen(true)}
           />
           <PluginRow
-            name="PDF Inputs"
-            description="Parse and extract content from uploaded PDF files"
+            name={t("plugins.pdfInputs.title")}
+            description={t("plugins.pdfInputs.description")}
             hasToggle={false}
             onSettingsClick={() => setIsPdfInputsDialogOpen(true)}
           />
           <PluginRow
-            name="Response Healing"
-            description="Automatically fix malformed JSON responses from LLMs"
+            name={t("plugins.responseHealing.title")}
+            description={t("plugins.responseHealing.description")}
             hasToggle
             onSettingsClick={() => setIsResponseHealingDialogOpen(true)}
           />

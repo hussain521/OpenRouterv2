@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface WebSearchDialogProps {
   open: boolean;
@@ -25,6 +26,8 @@ interface WebSearchDialogProps {
 }
 
 export function WebSearchDialog({ open, onOpenChange }: WebSearchDialogProps) {
+  const { t } = useTranslation();
+  
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg rounded-2xl" onClose={() => onOpenChange(false)}>
@@ -33,12 +36,12 @@ export function WebSearchDialog({ open, onOpenChange }: WebSearchDialogProps) {
           <DialogHeader className="space-y-2">
             <div>
               <DialogTitle className="text-xl font-semibold">
-                Configure Web Search
+                {t("webSearch.configureTitle")}
               </DialogTitle>
               <p className="text-sm text-muted-foreground mt-2">
-                Augment LLM responses with real-time web search results
+                {t("webSearch.description")}
                 <span className="text-primary ml-1 cursor-pointer">
-                  Learn more
+                  {t("webSearch.learnMore")}
                 </span>
               </p>
             </div>
@@ -46,44 +49,40 @@ export function WebSearchDialog({ open, onOpenChange }: WebSearchDialogProps) {
 
           {/* Search Engine */}
           <div className="space-y-2">
-            <Label>Search Engine</Label>
+            <Label>{t("webSearch.searchEngine")}</Label>
             <Select defaultValue="native">
               <SelectTrigger className="w-full rounded-xl">
-                <SelectValue placeholder="Select engine" />
+                <SelectValue placeholder={t("webSearch.selectEngine")} />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="native">Native</SelectItem>
-                <SelectItem value="exa">Exa</SelectItem>
+              <SelectContent align="start">
+                <SelectItem value="native">{t("webSearch.native")}</SelectItem>
+                <SelectItem value="exa">{t("webSearch.exa")}</SelectItem>
               </SelectContent>
             </Select>
             <p className="text-xs text-muted-foreground">
-              Choose the search engine to use. Native uses the provider's
-              built-in search when available.
+              {t("webSearch.engineDescription")}
             </p>
           </div>
 
           {/* Max Results */}
           <div className="space-y-2">
-            <Label>Max Results</Label>
-            <Input placeholder="Default" disabled className="bg-muted" />
+            <Label>{t("webSearch.maxResults")}</Label>
+            <Input placeholder={t("common.default")} disabled className="bg-muted" />
             <p className="text-xs text-muted-foreground">
-              Maximum number of search results to include (1-20). See docs
-              for default.
+              {t("webSearch.maxResultsDescription")}
             </p>
           </div>
 
           {/* Search Prompt */}
           <div className="space-y-2">
-            <Label>Search Prompt</Label>
+            <Label>{t("webSearch.searchPrompt")}</Label>
             <textarea
-              placeholder="Default"
+              placeholder={t("common.default")}
               disabled
               className="w-full min-h-[100px] rounded-xl border bg-muted px-3 py-2 text-sm resize-none"
             />
             <p className="text-xs text-muted-foreground">
-              Custom prompt injected with search results. Default instructs
-              the model to incorporate results and cite sources using
-              markdown links.
+              {t("webSearch.searchPromptDescription")}
             </p>
           </div>
 
@@ -92,7 +91,7 @@ export function WebSearchDialog({ open, onOpenChange }: WebSearchDialogProps) {
           {/* Prevent Overrides */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Label className="font-medium">Prevent overrides</Label>
+              <Label className="font-medium">{t("webSearch.preventOverrides")}</Label>
             </div>
             <Switch />
           </div>
@@ -104,9 +103,9 @@ export function WebSearchDialog({ open, onOpenChange }: WebSearchDialogProps) {
               className="rounded-xl px-6"
               onClick={() => onOpenChange(false)}
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
-            <Button className="rounded-xl px-6">Save</Button>
+            <Button className="rounded-xl px-6">{t("common.save")}</Button>
           </DialogFooter>
         </div>
       </DialogContent>

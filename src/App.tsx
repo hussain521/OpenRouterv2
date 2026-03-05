@@ -11,28 +11,37 @@ import PresetsPage from "./pages/PresetsPage";
 import NewPresetPage from "./pages/NewPresetPage";
 import BYOKPage from "./pages/BYOKPage";
 import RoutingPage from "./pages/RoutingPage";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 function App() {
- return (
-   <ViewProvider>
-     <Routes>
-       <Route path="/" element={<Home />} />
-       <Route path="/activity" element={<ActivityPage />} />
-       <Route path="/logs" element={<LogsPage />} />
-       <Route path="/credits" element={<CreditsPage />} />
-       <Route path="/settings/*" element={<SettingsPage />} />
-       <Route path="/presets" element={<PresetsPage />} />
-       <Route path="/settings/presets" element={<PresetsPage />} />
-       <Route path="/new-preset" element={<NewPresetPage />} />
-       <Route path="/settings/new-preset" element={<NewPresetPage />} />
-       <Route path="/byok" element={<BYOKPage />} />
-       <Route path="/settings/byok" element={<BYOKPage />} />
-       <Route path="/routing" element={<RoutingPage />} />
-       <Route path="/settings/routing" element={<RoutingPage />} />
-       <Route path="*" element={<Navigate to="/" replace />} />
-     </Routes>
-   </ViewProvider>
- );
+  const { i18n } = useTranslation();
+  
+  useEffect(() => {
+    // Set document direction based on language
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+  }, [i18n.language]);
+  
+  return (
+    <ViewProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/activity" element={<ActivityPage />} />
+        <Route path="/logs" element={<LogsPage />} />
+        <Route path="/credits" element={<CreditsPage />} />
+        <Route path="/settings/*" element={<SettingsPage />} />
+        <Route path="/presets" element={<PresetsPage />} />
+        <Route path="/settings/presets" element={<PresetsPage />} />
+        <Route path="/new-preset" element={<NewPresetPage />} />
+        <Route path="/settings/new-preset" element={<NewPresetPage />} />
+        <Route path="/byok" element={<BYOKPage />} />
+        <Route path="/settings/byok" element={<BYOKPage />} />
+        <Route path="/routing" element={<RoutingPage />} />
+        <Route path="/settings/routing" element={<RoutingPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </ViewProvider>
+  );
 }
 
 export default App;

@@ -1,13 +1,16 @@
 import SectionHeader from "./SectionHeader";
 import ModelCard from "./ModelCard";
+import { useTranslation } from "react-i18next";
 
 export default function FeaturedModels() {
+  const { t } = useTranslation();
+  
   const models = [
     {
       logo: "/OpenAI.svg",
       name: "Claude Opus 4.6",
       provider: "OpenAI",
-      badge: "New",
+      badge: t("common.new"),
       tokens: "555.8B",
       trend: "+102.39%",
     },
@@ -31,8 +34,8 @@ export default function FeaturedModels() {
     <section className="py-8 md:py-12 lg:pb-16">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <SectionHeader
-          title="Featured Models"
-          subtitle="300+ active models on 60+ providers"
+          title={t("featuredModels.title")}
+          subtitle={t("featuredModels.subtitle")}
           viewAll
         />
 

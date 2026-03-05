@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FiSearch,
   FiMenu,
@@ -12,6 +13,7 @@ import {
   FiEyeOff,
   FiAlertCircle,
   FiMonitor,
+  FiGlobe,
 } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -44,6 +46,7 @@ function SignInCard({
   onSignedIn: () => void;
   onSwitchToSignUp: () => void;
 }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
@@ -60,7 +63,7 @@ function SignInCard({
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close"
+        aria-label={t("common.closeButton")}
         className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200"
       >
         <FiX className="h-5 w-5" />
@@ -68,10 +71,10 @@ function SignInCard({
 
       <div className="px-8 pt-8 pb-6">
         <h2 className="text-center text-[20px] font-semibold dark:text-white">
-          Sign in to OpenRouter
+          {t("signIn.title")}
         </h2>
         <p className="mt-1 text-center text-[13px] text-gray-500 dark:text-gray-400">
-          Welcome back! Please sign in to continue
+          {t("signIn.subtitle")}
         </p>
 
         {/* Social buttons */}
@@ -90,7 +93,7 @@ function SignInCard({
         {/* Or divider */}
         <div className="mt-6 flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500">
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-600" />
-          <span>or</span>
+          <span>{t("common.or")}</span>
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-600" />
         </div>
 
@@ -98,11 +101,11 @@ function SignInCard({
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           <div className="space-y-1.5">
             <label className="text-[13px] font-medium text-gray-700 dark:text-gray-200">
-              Email address
+              {t("signIn.emailLabel")}
             </label>
             <Input
               type="email"
-              placeholder="Enter your email address"
+              placeholder={t("signIn.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="h-11 rounded-lg border border-gray-200 dark:border-gray-600 bg-[#F9FAFB] dark:bg-gray-700 text-[13px] dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#6366F1]"
@@ -113,7 +116,7 @@ function SignInCard({
             type="submit"
             className="mt-1.5 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA]"
           >
-            Continue
+            {t("common.continue")}
             <span className="ml-2 text-[15px] leading-none">▸</span>
           </Button>
         </form>
@@ -122,18 +125,18 @@ function SignInCard({
           type="button"
           className="mt-3 w-full text-center text-[12px] font-medium text-[#6366F1] hover:underline"
         >
-          Use passkey instead
+          {t("signIn.usePasskey")}
         </button>
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 px-8 py-4 text-center text-[13px] text-gray-500 dark:text-gray-400">
-        Don't have an account?{" "}
+        {t("signIn.dontHaveAccount")}{" "}
         <button
           type="button"
           className="font-medium text-[#6366F1] hover:underline"
           onClick={onSwitchToSignUp}
         >
-          Sign up
+          {t("signIn.signUpLink")}
         </button>
       </div>
     </div>
@@ -149,6 +152,7 @@ function SignUpCard({
   onSignedUp: () => void;
   onSwitchToSignIn: () => void;
 }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -168,7 +172,7 @@ function SignUpCard({
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close"
+        aria-label={t("common.closeButton")}
         className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200"
       >
         <FiX className="h-5 w-5" />
@@ -176,10 +180,10 @@ function SignUpCard({
 
       <div className="px-8 pt-8 pb-6">
         <h2 className="text-center text-[20px] font-semibold dark:text-white">
-          Create your account
+          {t("signUp.title")}
         </h2>
         <p className="mt-1 text-center text-[13px] text-gray-500 dark:text-gray-400">
-          Welcome! Please fill in the details to get started.
+          {t("signUp.subtitle")}
         </p>
 
         {/* Social buttons */}
@@ -198,18 +202,18 @@ function SignUpCard({
         {/* Or divider */}
         <div className="mt-6 flex items-center gap-3 text-[11px] text-gray-400 dark:text-gray-500">
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-600" />
-          <span>or</span>
+          <span>{t("common.or")}</span>
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-600" />
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           <div className="space-y-1.5">
             <label className="text-[13px] font-medium text-gray-700 dark:text-gray-200">
-              Email address
+              {t("signUp.emailLabel")}
             </label>
             <Input
               type="email"
-              placeholder="Enter your email address"
+              placeholder={t("signUp.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="h-11 rounded-lg border border-gray-200 dark:border-gray-600 bg-[#F9FAFB] dark:bg-gray-700 text-[13px] dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#6366F1]"
@@ -218,12 +222,12 @@ function SignUpCard({
 
           <div className="space-y-1.5">
             <label className="text-[13px] font-medium text-gray-700 dark:text-gray-200">
-              Password
+              {t("signUp.passwordLabel")}
             </label>
             <div className="relative">
               <Input
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
+                placeholder={t("signUp.passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-11 rounded-lg border border-gray-200 dark:border-gray-600 bg-[#F9FAFB] dark:bg-gray-700 text-[13px] dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#6366F1] pr-10"
@@ -232,7 +236,7 @@ function SignUpCard({
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
                 className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200"
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
               >
                 {showPassword ? (
                   <FiEyeOff className="h-4 w-4" />
@@ -244,7 +248,7 @@ function SignUpCard({
             {password.length > 0 && password.length < 8 && (
               <div className="flex items-center gap-1.5 text-[11px] text-red-500">
                 <FiAlertCircle className="h-3.5 w-3.5" />
-                <span>Your password must contain 8 or more characters.</span>
+                <span>{t("signUp.passwordError")}</span>
               </div>
             )}
           </div>
@@ -261,19 +265,19 @@ function SignUpCard({
               htmlFor="signup-terms"
               className="text-[12px] leading-snug text-gray-500 dark:text-gray-400"
             >
-              I agree to the{" "}
+              {t("signUp.agreeText")}{" "}
               <button
                 type="button"
                 className="text-[#6366F1] underline-offset-2 hover:underline"
               >
-                Terms of Service
+                {t("signUp.termsOfService")}
               </button>{" "}
               and{" "}
               <button
                 type="button"
                 className="text-[#6366F1] underline-offset-2 hover:underline"
               >
-                Privacy Policy
+                {t("signUp.privacyPolicy")}
               </button>
               .
             </label>
@@ -283,20 +287,20 @@ function SignUpCard({
             type="submit"
             className="mt-2 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA]"
           >
-            Continue
+            {t("common.continue")}
             <span className="ml-2 text-[15px] leading-none">▸</span>
           </Button>
         </form>
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 px-8 py-4 text-center text-[13px] text-gray-500 dark:text-gray-400">
-        Already have an account?{" "}
+        {t("signUp.alreadyHaveAccount")}{" "}
         <button
           type="button"
           className="font-medium text-[#6366F1] hover:underline"
           onClick={onSwitchToSignIn}
         >
-          Sign in
+          {t("signUp.signInLink")}
         </button>
       </div>
     </div>
@@ -306,6 +310,7 @@ function SignUpCard({
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
   const { theme, themePreference, systemTheme, isSystemDarkMode, setThemePreference } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(() => {
@@ -316,6 +321,18 @@ export default function Navbar() {
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
   const profileDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle language change
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    // Update document direction for RTL/LTR
+    document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+  };
+
+  // Set initial direction based on current language
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+  }, [i18n.language]);
 
   // Map routes to icons
   const getPageIcon = () => {
@@ -393,7 +410,7 @@ export default function Navbar() {
             <div className="relative w-full max-w-[200px] md:max-w-[288px]">
               <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 dark:text-gray-500 md:text-base" />
               <Input
-                placeholder="Search"
+                placeholder={t('nav.search')}
                 className="h-9 w-full bg-gray-100 dark:bg-black dark:text-white pl-8 text-sm md:h-10 md:pl-10 md:text-base"
               />
             </div>
@@ -405,37 +422,37 @@ export default function Navbar() {
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
             >
-              Models
+              {t('features.models', 'Models')}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Chat
+              {t("nav.chat")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Rankings
+              {t("nav.rankings")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Enterprise
+              {t("nav.enterprise")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Pricing
+              {t("nav.pricing")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Docs
+              {t("nav.docs")}
             </a>
 
             {!isSignedIn ? (
@@ -443,7 +460,7 @@ export default function Navbar() {
                 className="rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
                 onClick={() => openAuth("signin")}
               >
-                Sign in
+                {t('nav.signIn', 'Sign in')}
               </Button>
             ) : (
               <div className="relative ml-4" ref={profileDropdownRef}>
@@ -472,7 +489,7 @@ export default function Navbar() {
                 </button>
 
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
+                  <div className="absolute ltr:right-0 rtl:left-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
                       onClick={() => {
@@ -480,7 +497,7 @@ export default function Navbar() {
                         navigate("/activity");
                       }}
                     >
-                      Activity
+                      {t('nav.activity', 'Activity')}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -489,7 +506,7 @@ export default function Navbar() {
                         navigate("/logs");
                       }}
                     >
-                      Logs
+                      {t("nav.logs")}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -498,7 +515,7 @@ export default function Navbar() {
                         navigate("/credits");
                       }}
                     >
-                      Credits
+                      {t('nav.credits', 'Credits')}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -507,7 +524,7 @@ export default function Navbar() {
                         navigate("/settings");
                       }}
                     >
-                      Settings
+                      {t('nav.settings', 'Settings')}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -517,11 +534,43 @@ export default function Navbar() {
                         localStorage.removeItem('isSignedIn');
                       }}
                     >
-                      Sign Out
+                      {t('nav.signOut', 'Sign Out')}
                     </button>
                     <div className="mt-1 flex flex-col gap-2 border-t border-gray-200 dark:border-gray-700 px-4 pb-1 pt-2">
+                      {/* Language Toggle */}
+                      <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pb-2">
+                        <span className="flex items-center gap-1">
+                          <FiGlobe className="h-3.5 w-3.5" />
+                          <span>{t('nav.language', 'Language')}</span>
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            onClick={() => changeLanguage('en')}
+                            className={`px-2 py-0.5 text-xs rounded transition-colors ${
+                              i18n.language === 'en'
+                                ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
+                                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            }`}
+                          >
+                            EN
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => changeLanguage('ar')}
+                            className={`px-2 py-0.5 text-xs rounded transition-colors ${
+                              i18n.language === 'ar'
+                                ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
+                                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            }`}
+                          >
+                            AR
+                          </button>
+                        </div>
+                      </div>
+                      {/* Theme Toggle */}
                       <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-                        <span>الثيم</span>
+                        <span>{t("nav.theme")}</span>
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
@@ -531,7 +580,7 @@ export default function Navbar() {
                                 ? "border-gray-600 bg-gray-100 text-gray-900 shadow-sm"
                                 : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
                             }`}
-                            title="وضع فاتح"
+                            title={t("nav.lightMode")}
                           >
                             <FiSun className="h-3.5 w-3.5" />
                           </button>
@@ -543,7 +592,7 @@ export default function Navbar() {
                                 ? "border-gray-600 bg-gray-500 text-white shadow-sm"
                                 : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
                             }`}
-                            title="تلقائي حسب النظام"
+                            title={t("nav.systemDefault")}
                           >
                             <FiMonitor className="h-3.5 w-3.5" />
                           </button>
@@ -555,7 +604,7 @@ export default function Navbar() {
                                 ? "border-gray-600 bg-gray-700 text-gray-100 shadow-sm"
                                 : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
                             }`}
-                            title="وضع داكن"
+                            title={t("nav.darkMode")}
                           >
                             <FiMoon className="h-3.5 w-3.5" />
                           </button>
@@ -563,17 +612,17 @@ export default function Navbar() {
                       </div>
                       {themePreference === 'system' && (
                         <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400">
-                          <span>حالة النظام:</span>
+                          <span>{t("nav.systemStatus")}</span>
                           <span className="flex items-center gap-1">
                             {isSystemDarkMode ? (
                               <>
                                 <FiMoon className="h-3 w-3" />
-                                <span>داكن</span>
+                                <span>{t("nav.dark")}</span>
                               </>
                             ) : (
                               <>
                                 <FiSun className="h-3 w-3" />
-                                <span>فاتح</span>
+                                <span>{t("nav.light")}</span>
                               </>
                             )}
                           </span>
@@ -590,7 +639,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="ml-2 rounded-lg bg-[#6467F2] p-2 text-white transition-colors hover:bg-indigo-700 lg:hidden"
-            aria-label="Toggle menu"
+            aria-label={t("common.toggleMenu")}
           >
             <FiMenu className="h-5 w-5" />
           </button>
@@ -603,44 +652,44 @@ export default function Navbar() {
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Models
+              {t('features.models', 'Models')}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Chat
+              {t("nav.chat")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Rankings
+              {t("nav.rankings")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Enterprise
+              {t("nav.enterprise")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Pricing
+              {t("nav.pricing")}
             </a>
             <a
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              Docs
+              {t("nav.docs")}
             </a>
             {!isSignedIn && (
               <Button
                 className="mt-2 rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
                 onClick={() => openAuth("signin")}
               >
-                Sign in
+                {t('nav.signIn', 'Sign in')}
               </Button>
             )}
           </div>
@@ -653,7 +702,7 @@ export default function Navbar() {
           {/* backdrop click to close */}
           <button
             type="button"
-            aria-label="Close"
+            aria-label={t("common.closeButton")}
             className="absolute inset-0 h-full w-full cursor-default"
             onClick={closeAuth}
           />

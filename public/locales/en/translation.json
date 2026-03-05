@@ -1,0 +1,1059 @@
+{
+  "nav": {
+    "home": "Home",
+    "activity": "Activity",
+    "credits": "Credits",
+    "apiKeys": "API Keys",
+    "settings": "Settings",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "dashboard": "Dashboard",
+    "language": "Language",
+    "search": "Search",
+    "chat": "Chat",
+    "rankings": "Rankings",
+    "enterprise": "Enterprise",
+    "pricing": "Pricing",
+    "docs": "Docs",
+    "logs": "Logs",
+    "theme": "Theme",
+    "lightMode": "Light mode",
+    "systemDefault": "System default",
+    "darkMode": "Dark mode",
+    "systemStatus": "System status:",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "hero": {
+    "title": "Welcome to OpenRouter",
+    "subtitle": "Unified API for AI Models",
+    "getStarted": "Get Started",
+    "unifiedInterface": "The Unified Interface For LLMs",
+    "better": "Better",
+    "prices": "prices",
+    "uptime": "uptime",
+    "noSubscriptions": "no subscriptions",
+    "getApiKey": "Get API Key",
+    "exploreModels": "Explore Models"
+  },
+  "features": {
+    "title": "Features",
+    "explore": "Explore",
+    "agents": "Agents",
+    "models": "Models",
+    "oneApi": {
+      "title": "One API for Any Model",
+      "description": "Access all major models through a single, unified interface. OpenAI SDK works out of the box.",
+      "linkText": "Browse all"
+    },
+    "availability": {
+      "title": "Higher Availability",
+      "description": "Reliable AI models via our distributed infrastructure. Fall back to other providers when one goes down.",
+      "linkText": "Learn more"
+    },
+    "performance": {
+      "title": "Price and Performance",
+      "description": "Keep costs in check without sacrificing speed. OpenRouter runs at the edge for minimal latency.",
+      "linkText": "Learn more"
+    },
+    "dataPolicies": {
+      "title": "Custom Data Policies",
+      "description": "Protect your organization with fine grained data policies. Ensure prompts only go to trusted providers.",
+      "linkText": "View docs"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "update": "Update",
+    "install": "Install",
+    "uninstall": "Uninstall",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "continue": "Continue",
+    "or": "or",
+    "by": "by",
+    "viewAll": "View all",
+    "new": "New",
+    "name": "Name",
+    "na": "N/A",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "upload": "Upload",
+    "add": "Add",
+    "default": "Default",
+    "clear": "Clear",
+    "select": "Select...",
+    "comingSoon": "Coming Soon",
+    "remove": "Remove",
+    "configure": "Configure",
+    "learnMore": "Learn more",
+    "model": "Model",
+    "close": "Close",
+    "info": "i",
+    "uploadIcon": "⬆",
+    "maxChars": "{{max}}",
+    "noResults": "No results found",
+    "closeButton": "Close",
+    "toggleMenu": "Toggle menu",
+    "pagination": "pagination",
+    "aiProviderLogo": "AI Provider Logo"
+  },
+  "footer": {
+    "copyright": "© 2026 OpenRouter. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "product": {
+      "title": "Product",
+      "chat": "Chat",
+      "rankings": "Rankings",
+      "models": "Models",
+      "providers": "Providers",
+      "pricing": "Pricing",
+      "enterprise": "Enterprise"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "announcements": "Announcements",
+      "careers": "Careers",
+      "hiring": "Hiring",
+      "privacy": "Privacy",
+      "termsOfService": "Terms of Service",
+      "support": "Support",
+      "stateOfAI": "State of AI",
+      "worksWithOR": "Works With OR"
+    },
+    "developer": {
+      "title": "Developer",
+      "documentation": "Documentation",
+      "apiReference": "API Reference",
+      "sdk": "SDK",
+      "status": "Status"
+    },
+    "connect": {
+      "title": "Connect",
+      "discord": "Discord",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "x": "X",
+      "youtube": "YouTube"
+    }
+  },
+  "signIn": {
+    "title": "Sign in to OpenRouter",
+    "subtitle": "Welcome back! Please sign in to continue",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
+    "usePasskey": "Use passkey instead",
+    "dontHaveAccount": "Don't have an account?",
+    "signUpLink": "Sign up"
+  },
+  "signUp": {
+    "title": "Create your account",
+    "subtitle": "Welcome! Please fill in the details to get started.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "hidePassword": "Hide password",
+    "showPassword": "Show password",
+    "passwordError": "Your password must contain 8 or more characters.",
+    "agreeText": "I agree to the",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInLink": "Sign in"
+  },
+  "banner": {
+    "observabilityMessage": "Send traces to your favorite observability platforms with Broadcast (now GA). →"
+  },
+  "stats": {
+    "monthlyTokens": "Monthly Tokens",
+    "globalUsers": "Global Users",
+    "activeProviders": "Active Providers",
+    "models": "Models"
+  },
+  "gettingStarted": {
+    "step1": {
+      "title": "Signup",
+      "description": "Create an account to get started. You can set up an org for your team later."
+    },
+    "step2": {
+      "title": "Buy credits",
+      "description": "Credits can be used with any model or provider."
+    },
+    "step3": {
+      "title": "Get your API key",
+      "description": "Create an API key and start making requests. Fully OpenAI compatible."
+    }
+  },
+  "modelCard": {
+    "tokens": "Tokens",
+    "weeklyTrend": "Weekly Trend"
+  },
+  "featuredAgents": {
+    "title": "Featured Agents",
+    "subtitle": "250k+ apps using OpenRouter with 4.2M+ users globally",
+    "openai": {
+      "description": "The easiest way to go from idea to app"
+    },
+    "gemini": {
+      "description": "AI agent for builders"
+    },
+    "meta": {
+      "description": "Everything you need for agentic development"
+    }
+  },
+  "featuredModels": {
+    "title": "Featured Models",
+    "subtitle": "300+ active models on 60+ providers"
+  },
+  "explore": {
+    "models": {
+      "title": "Explore Models",
+      "description": "Discover AI models across our collection, from all major labs and providers.",
+      "linkText": "View models"
+    },
+    "rankings": {
+      "title": "Model & App Rankings",
+      "description": "Explore token usage across models, labs, and public applications.",
+      "linkText": "View rankings"
+    }
+  },
+  "announcements": {
+    "title": "Recent Announcements",
+    "items": {
+      "nemo": {
+        "title": "Distillable Models and Synthetic Data Pipelines with NeMo Data Designer",
+        "description": "How to generate license-safe synthetic data workflows for model specialization."
+      },
+      "responseHealing": {
+        "title": "Response Healing: Reduce JSON Defects by 80%+",
+        "description": "Today we're launching Response Healing, a new feature..."
+      },
+      "aiReport": {
+        "title": "The 2025 State of AI Report",
+        "description": "Introducing the 2025 State of AI Report..."
+      }
+    }
+  },
+  "apiKeys": {
+    "createKey": "Create key",
+    "namePlaceholder": "e.g. \"Chatbot Key\"",
+    "creditLimit": "Credit limit (optional)",
+    "creditLimitPlaceholder": "Leave blank for unlimited",
+    "resetLimit": "Reset limit every...",
+    "selectResetFrequency": "Select reset frequency",
+    "expiration": "Expiration",
+    "selectExpiration": "Select expiration",
+    "noExpiration": "No expiration",
+    "in7Days": "In 7 days",
+    "in30Days": "In 30 days",
+    "in90Days": "In 90 days"
+  },
+  "apiKeysPage": {
+    "emptyState": {
+      "title": "No API keys yet",
+      "description": "Create API keys to authenticate requests from your apps to OpenRouter."
+    }
+  },
+  "managementKeys": {
+    "createTitle": "Create a Management Key",
+    "namePlaceholder": "e.g. \"Management Key\"",
+    "contentDescription": "Create management keys to manage settings, permissions, and other controls for this organization. These keys are meant for admins only.",
+    "description": "Create management keys to manage settings, permissions, and other controls for this organization. These keys are meant for admins only."
+  },
+  "dashboard": {
+    "logs": "Logs",
+    "notEnoughData": "Not enough data to display yet.",
+    "model": "Model",
+    "minPrice": "Min ($)",
+    "maxPrice": "Max ($)",
+    "avgPrice": "Avg ($)",
+    "sumPrice": "Sum ($)",
+    "noRows": "No rows to display.",
+    "usageDescription": "Your usage across models on OpenRouter.",
+    "filters": "Filters",
+    "timeRange": {
+      "1hour": "1 Hour",
+      "1day": "1 Day",
+      "1week": "1 Week",
+      "1month": "1 Month",
+      "1year": "1 Year"
+    },
+    "byModel": "By Model",
+    "byApiKey": "By API Key",
+    "exportTo": "Export to…",
+    "csv": "CSV",
+    "pdf": "PDF",
+    "models": "Models",
+    "searchModels": "Search models",
+    "noModelsFound": "No models found",
+    "apiKeys": "API Keys",
+    "searchApiKeys": "Search API keys",
+    "noApiKeysFound": "No API keys found",
+    "spend": "Spend",
+    "requests": "Requests",
+    "tokens": "Tokens",
+    "noDataInWindow": "No data in this window",
+    "wantToGoDeeper": "Want to go deeper?",
+    "observabilityDescription": "Send your OpenRouter traces to observability tools with no code changes, and more destinations with no code changes.",
+    "checkOutBroadcast": "Check out Broadcast",
+    "logsHaveMoved": "Logs have moved",
+    "logsDescription": "Your API request logs now have their own dedicated page.",
+    "openRouterCredits": "OpenRouter Credits",
+    "usd": "USD ($)",
+    "spendByModel": "Spend By Model",
+    "requestsByModel": "Requests By Model",
+    "tokensByModel": "Tokens By Model"
+  },
+  "settings": {
+    "account": "Account",
+    "apiKeys": "API Keys",
+    "managementKeys": "Management Keys",
+    "privacyGuardrails": "Privacy & Guardrails",
+    "byok": "BYOK",
+    "presets": "Presets",
+    "routing": "Routing",
+    "plugins": "Plugins",
+    "observability": "Observability",
+    "placeholder": "This is a placeholder for the {{section}} page."
+  },
+  "account": {
+      "userPreferences": {
+        "title": "User Preferences",
+        "timezone": "Timezone",
+        "language": "Language"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "systemUpdates": "System Updates",
+        "usageAlerts": "Usage Alerts",
+        "newsPromotions": "News & Promotions"
+      }
+  },
+  "accountSettings": {
+    "user": {
+      "title": "User",
+      "description": "Manage your personal account settings and preferences",
+      "action": "Edit profile"
+    },
+    "organization": {
+      "title": "Organization",
+      "description": "Create and manage organizations for your team",
+      "action": "Create organization"
+    },
+    "accountType": {
+      "title": "Account Type",
+      "description": "Your account type determines your access to features and limits.",
+      "learnMore": "Learn more",
+      "selfServe": "Self-serve"
+    },
+    "chatroomColor": {
+      "title": "Chatroom Color",
+      "description": "Choose a color theme for your chat interface",
+      "default": "Default",
+      "purple": "Purple",
+      "green": "Green"
+    },
+    "defaultPreset": {
+      "title": "Default Preset",
+      "description": "Select a default preset for new conversations",
+      "none": "None",
+      "creative": "Creative",
+      "balanced": "Balanced",
+      "focused": "Focused"
+    },
+    "analyticsToggle": {
+      "title": "Analytics",
+      "description": "Share anonymous usage data to help improve the platform"
+    },
+    "notifications": {
+      "title": "Notifications"
+    },
+    "lowBalanceAlerts": {
+      "title": "Low Balance Alerts",
+      "description": "Get notified when your credit balance is running low"
+    },
+    "creditThreshold": {
+      "title": "Credit Threshold",
+      "description": "Set the balance threshold for low credit alerts"
+    },
+    "chatCompletionNotifications": {
+      "title": "Chat Completion Notifications",
+      "description": "Get notified when long-running chat completions finish"
+    },
+    "ignoredProviders": {
+      "title": "Ignored Providers",
+      "description": "Exclude specific providers from being used in requests",
+      "action": "Configure"
+    },
+    "defaultProviderSort": {
+      "title": "Default Provider Sort",
+      "description": "Set the default sorting order for provider selection",
+      "action": "Configure"
+    }
+  },
+  "credits": {
+    "currentBalanceTooltip": "Current available balance in your OpenRouter account.",
+    "buyCredits": "Buy Credits",
+    "useCrypto": "Use crypto",
+    "addCredits": "Add Credits",
+    "viewUsage": "View Usage",
+    "needInvoicing": "Need invoicing?",
+    "contactSales": "Contact sales for an Enterprise plan",
+    "autoTopUp": "Auto Top-Up",
+    "autoTopUpDescription": "Automatically add credits when balance is low",
+    "autoTopUpActive": "Auto Top-Up Active",
+    "autoTopUpActiveDescription": "Credits will be automatically added when your balance drops below $10.",
+    "addPaymentMethod": "Add a Payment Method",
+    "paymentMethodRequired": "To activate auto top-up, you'll need a payment method that supports offline charging.",
+    "recentTransactions": "Recent Transactions",
+    "transactions": {
+      "date": "Date",
+      "description": "Description",
+      "amount": "Amount",
+      "balance": "Balance",
+      "dateTooltip": "Transaction date",
+      "descriptionTooltip": "Description of the transaction",
+      "amountTooltip": "Transaction amount (positive for credits, negative for debits)",
+      "balanceTooltip": "Account balance after this transaction",
+      "all": "All",
+      "credits": "Credits",
+      "debits": "Debits",
+      "noResults": "No results"
+    }
+  },
+  "billing": {
+    "addBillingAddress": "Add a Billing Address",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Full name",
+    "countryOrRegion": "Country or region",
+    "selectCountry": "Select country",
+    "addressLine1": "Address line 1",
+    "streetAddressPlaceholder": "Street address",
+    "addressRequired": "A billing address is",
+    "required": "required",
+    "toVerifyIdentity": "to verify your identity and help prevent fraud.",
+    "completeAddressDetails": "Complete address details to continue"
+  },
+  "countries": {
+    "unitedStates": "United States",
+    "unitedKingdom": "United Kingdom",
+    "germany": "Germany",
+    "france": "France",
+    "canada": "Canada"
+  },
+  "organization": {
+    "createOrganization": "Create organization",
+    "logo": "Logo",
+    "logoRecommendation": "Recommended size 1:1, up to 10MB.",
+    "namePlaceholder": "Organization name"
+  },
+  "feedback": {
+    "sendFeedback": "Send Feedback",
+    "placeholder": "Tell us about your experience or what we can improve...",
+    "sendFeedback": "Send Feedback",
+    "placeholder": "Tell us what you think..."
+  },
+  "modelSelection": {
+    "selectModels": "Select models",
+    "searchModels": "Search models",
+    "input": "Input",
+    "output": "Output",
+    "free": "Free",
+    "hideUnavailable": "Hide Unavailable",
+    "unavailable": "Unavailable",
+    "noModelsMatch": "No models match your filters.",
+    "selectModelForDetails": "Select a model on the left to see details."
+  },
+  "webSearch": {
+    "configureTitle": "Configure Web Search",
+    "description": "Augment LLM responses with real-time web search results",
+    "learnMore": "Learn more",
+    "searchEngine": "Search Engine",
+    "selectEngine": "Select engine",
+    "native": "Native",
+    "exa": "Exa",
+    "engineDescription": "Choose the search engine to use. Native uses the provider's built-in search when available.",
+    "maxResults": "Max Results",
+    "maxResultsDescription": "Maximum number of search results to include (1-20). See docs for default.",
+    "searchPrompt": "Search Prompt",
+    "searchPromptDescription": "Custom prompt injected with search results. Default instructs the model to incorporate results and cite sources using markdown links.",
+    "preventOverrides": "Prevent overrides"
+  },
+  "observability": {
+    "newDestination": "New {{name}} Destination",
+    "connection": "Connection",
+    "connectionDescription": "Configure credentials and endpoint. Test the connection before saving.",
+    "nameTooltip": "A friendly name to identify this destination",
+    "apiKey": "API Key",
+    "apiKeyTooltip": "Your Arize API key for authentication",
+    "spaceKey": "Space Key",
+    "spaceKeyTooltip": "The space key where traces will be sent",
+    "modelId": "Model ID",
+    "modelIdTooltip": "The model identifier for trace categorization",
+    "baseUrl": "Base URL (optional)",
+    "baseUrlTooltip": "Custom endpoint URL for self-hosted deployments",
+    "headers": "Headers (optional)",
+    "headersTooltip": "Additional HTTP headers in JSON format",
+    "testConnection": "Test Connection",
+    "sendTrace": "Send Trace",
+    "privacy": "Privacy",
+    "privacyDescription": "Control what data is sent to this destination.",
+    "privacyMode": "Privacy Mode",
+    "privacyModeDescription": "When enabled, excludes prompt and completion data from traces.",
+    "sampling": "Sampling",
+    "samplingDescription": "Control what percentage of traces are sent to this destination.",
+    "rate": "Rate",
+    "rateTooltip": "Sampling rate between 0 and 1 (e.g., 0.5 = 50% of traces)",
+    "apiKeyFilter": "API Key Filter",
+    "apiKeyFilterDescription": "Optionally filter traces by API key.",
+    "apiKeyFilterOptional": "API Key Filter (optional)",
+    "apiKeyFilterTooltip": "Send traces only from specific API keys",
+    "selectApiKeys": "Select API keys",
+    "filterRules": "Filter Rules",
+    "filterRulesDescription": "Only send traces that match specific criteria.",
+    "noFilterRules": "No filter rules configured. All traces will be sent to this destination.",
+    "allMatch": "All match (AND)",
+    "anyMatch": "Any match (OR)",
+    "field": "Field",
+    "model": "Model",
+    "operator": "Operator",
+    "equals": "equals",
+    "notEquals": "does not equal",
+    "addRule": "Add Rule",
+    "addFilterRule": "Add Filter Rule",
+    "broadcast": {
+      "description": "Send traces to your favorite observability platforms for monitoring and debugging.",
+      "datadog": "Monitor performance and trace requests",
+      "arize": "ML observability and monitoring",
+      "helicone": "LLM observability platform",
+      "braintrust": "AI product development platform",
+      "langfuse": "Open source LLM engineering platform",
+      "weights": "LLM monitoring and evaluation"
+    },
+    "destinations": {
+      "title": "Destinations",
+      "datadog": "Datadog",
+      "arize": "Arize",
+      "helicone": "Helicone",
+      "braintrust": "Braintrust",
+      "langfuse": "Langfuse",
+      "weights": "Weights & Biases",
+      "addNew": "Add New"
+    },
+    "status": {
+      "active": "Active"
+    },
+    "filterRules": "Filter rules",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "broadcast": {
+      "title": "Broadcast",
+      "description": "Send traces to your favorite observability platforms with no code changes."
+    },
+    "learnMore": "Learn more",
+    "available": "Available",
+    "sendFeedback": "Send Feedback",
+    "feedbackDescription": "Let us know what destinations you'd like to see added.",
+    "open": "Open",
+    "addDestination": "Add destination"
+  },
+  "byok": {
+    "subtitle": "Use your own provider API keys on OpenRouter",
+    "searchPlaceholder": "Search providers...",
+    "available": "Available",
+    "notConfigured": "Not configured",
+    "showMore": "Show {{count}} more",
+    "showLess": "Show less",
+    "keyPriority": {
+      "title": "Key Priority and Fallback",
+      "priorityDesc": "OpenRouter always prioritizes using your provider keys when available.",
+      "fallbackDesc": "By default, if your key encounters a rate limit or failure, OpenRouter will fall back to using shared OpenRouter credits.",
+      "alwaysUseDesc": "You can configure individual keys with \"Always use this key\" to prevent any fallback to OpenRouter credits. When this option is enabled, OpenRouter will only use your key for requests to that provider. This may result in rate limit errors if your key is exhausted, but ensures all requests go through your account.",
+      "neverUseCreditsDesc1": "If you wish to never use shared OpenRouter credits for a model, you must",
+      "neverUseCreditsDesc2": "both specify \"Always use this key\" and pin the provider",
+      "neverUseCreditsDesc3": "by specifying it as",
+      "yourOnlyProvider": "your only provider",
+      "neverUseCreditsDesc4": "when making the request."
+    }
+  },
+  "dialogs": {
+    "test": {
+      "title": "Dialog Test Page",
+      "openCreateApiKey": "Open Create API Key Dialog",
+      "openCreateManagementKey": "Open Create Management Key Dialog",
+      "openCreateOrganization": "Open Create Organization Dialog",
+      "openPdfInputs": "Open PDF Inputs Dialog",
+      "openBillingAddress": "Open Billing Address Dialog",
+      "openModelSelection": "Open Model Selection Dialog",
+      "openWebSearch": "Open Web Search Dialog",
+      "openResponseHealing": "Open Response Healing Dialog",
+      "openFeedback": "Open Feedback Dialog",
+      "openReportFeedback": "Open Report Feedback Dialog"
+    }
+  },
+  "logsPage": {
+    "columns": {
+      "id": "ID",
+      "timestamp": "Timestamp",
+      "model": "Model",
+      "status": "Status",
+      "latency": "Latency",
+      "cost": "Cost",
+      "method": "Method",
+      "actions": "Actions",
+      "providerModel": "Provider/Model",
+      "app": "App",
+      "tokens": "Tokens",
+      "speed": "Speed",
+      "finish": "Finish"
+    },
+    "filters": {
+      "dates": "Dates",
+      "models": "Models",
+      "statuses": "Statuses"
+    },
+    "dateRanges": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "last7Days": "Last 7 days",
+      "last30Days": "Last 30 days",
+      "thisMonth": "This month",
+      "lastMonth": "Last month"
+    },
+    "searchPlaceholder": "Search logs...",
+    "showTraceId": "Show Trace ID",
+    "requestDetails": {
+      "title": "Request Details",
+      "close": "Close"
+    },
+    "noLogs": {
+      "title": "No logs found",
+      "description": "Adjust your filters or search criteria to find logs."
+    },
+    "filterBy": "Filter by",
+    "dateRange": "Date range",
+    "allMethods": "All methods",
+    "method": "Method",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "from": "From",
+    "to": "To",
+    "selectStartDate": "Select start date",
+    "selectEndDate": "Select end date",
+    "models": "Models",
+    "searchModels": "Search models",
+    "allModels": "All models",
+    "noModelsFound": "No models found",
+    "providers": "Providers",
+    "searchProviders": "Search providers",
+    "allProviders": "All providers",
+    "noProvidersFound": "No providers found",
+    "apiKeys": "API Keys",
+    "searchApiKeys": "Search API keys",
+    "allApiKeys": "All API keys",
+    "noApiKeysFound": "No API keys found",
+    "filters": "Filters",
+    "reportFeedback": "Report Feedback",
+    "export": "Export",
+    "emptyMessage": "No logs to display",
+    "columns": {
+      "timestampTooltip": "The time when the request was made",
+      "providerModel": "Provider/Model",
+      "providerModelTooltip": "The provider and model used for this request",
+      "app": "App",
+      "appTooltip": "The application that made this request",
+      "tokens": "Tokens",
+      "tokensTooltip": "Total number of tokens processed",
+      "costTooltip": "The cost of this request in USD",
+      "speed": "Speed",
+      "speedTooltip": "Processing speed in tokens per second",
+      "finish": "Finish",
+      "finishTooltip": "How the request finished (stop, length, timeout)",
+      "actionsTooltip": "Available actions for this log entry"
+    },
+    "app": "App",
+    "key": "Key",
+    "finish": {
+      "stop": "stop",
+      "length": "length",
+      "timeout": "timeout"
+    },
+    "actions": {
+      "view": "View"
+    }
+  },
+  "plugins": {
+    "defaultSettings": {
+      "title": "Default Settings",
+      "description": "Configure default settings for plugins that will apply to all requests"
+    },
+    "webSearch": {
+      "title": "Web Search",
+      "description": "Enable real-time web search to augment LLM responses with current information."
+    },
+    "pdfInputs": {
+      "title": "PDF Inputs",
+      "description": "Parse and extract content from uploaded PDF files"
+    },
+    "responseHealing": {
+      "title": "Response Healing",
+      "description": "Automatically fix malformed JSON responses from LLMs"
+    },
+    "structuredData": {
+      "title": "Structured Data Extraction",
+      "description": "Extract structured data from unstructured text using LLMs."
+    }
+  },
+  "presets": {
+    "emptyState": {
+      "title": "Create your first preset",
+      "description": "Presets are shortcuts for your system prompts and request parameters.",
+      "learnMore": "Learn more."
+    },
+    "createPreset": "Create Preset",
+    "newPreset": "New Preset",
+    "name": "Preset name",
+    "description": "Description (optional)",
+    "descriptionHelper": "Helpful for searching and understanding what this preset does",
+    "configuration": {
+      "title": "Configuration",
+      "systemPrompt": "System Prompt",
+      "systemPromptHelper": "Set the behavior and personality of the assistant",
+      "modelSelection": {
+        "title": "Model Selection",
+        "mode": "Mode",
+        "dynamic": "Dynamic (Auto-select best model)",
+        "fixed": "Fixed (Use specific models)",
+        "fixedHelper": "Select one or more models for this preset"
+      },
+      "parameters": {
+        "title": "Parameters",
+        "temperature": "Temperature",
+        "maxTokens": "Max Tokens",
+        "topP": "Top P",
+        "topK": "Top K",
+        "frequencyPenalty": "Frequency Penalty",
+        "presencePenalty": "Presence Penalty",
+        "seed": "Seed"
+      },
+      "features": {
+        "title": "Features",
+        "streaming": "Enable streaming",
+        "json": "JSON mode",
+        "byok": "Allow BYOK"
+      },
+      "providerSettings": {
+        "title": "Provider Settings",
+        "preferredProviders": "Preferred Providers",
+        "fallbackProviders": "Fallback Providers"
+      },
+      "savePreset": "Save Preset"
+    },
+    "new": {
+      "pageTitle": "New Preset",
+      "savePreset": "Save Preset",
+      "basicInfo": {
+        "title": "Basic Info",
+        "description": "Give your preset a name and description to help identify it later."
+      },
+      "name": {
+        "label": "Name",
+        "placeholder": "e.g. \"Creative Writer\""
+      },
+      "slug": {
+        "label": "Slug",
+        "placeholder": "e.g. \"creative-writer\""
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Describe what this preset is for and when to use it"
+      },
+      "systemPrompt": {
+        "title": "System Prompt",
+        "placeholder": "Enter the system prompt that will guide the assistant's behavior..."
+      },
+      "models": {
+        "title": "Models",
+        "selection": {
+          "title": "Model Selection",
+          "description": "Choose which models can be used with this preset."
+        },
+        "addModel": "Add Model"
+      },
+      "providerRouting": {
+        "title": "Provider Routing",
+        "description": "Configure how requests are routed to different providers.",
+        "includePreferences": "Include provider preferences",
+        "sort": {
+          "description": "Sort providers by a specific metric (e.g., price, speed)"
+        },
+        "dataCollection": {
+          "description": "Control data collection settings for this preset"
+        },
+        "order": {
+          "description": "Prioritize these providers in order when routing requests"
+        },
+        "only": {
+          "description": "Only use these providers (exclusive list)"
+        },
+        "ignore": {
+          "description": "Never use these providers"
+        },
+        "quantizations": {
+          "title": "Quantizations",
+          "description": "Select which quantization levels are acceptable"
+        }
+      },
+      "allSelected": "All selected",
+      "selectAll": "Select all",
+      "maxPrice": {
+        "title": "Max Price",
+        "description": "Set maximum price limits per million tokens",
+        "prompt": "Prompt",
+        "completion": "Completion"
+      },
+      "preferredMinThroughput": {
+        "title": "Preferred Min Throughput",
+        "description": "Minimum tokens per second at different percentiles"
+      },
+      "preferredMaxLatency": {
+        "title": "Preferred Max Latency",
+        "description": "Maximum latency in seconds at different percentiles"
+      },
+      "allowFallbacks": {
+        "label": "Allow Fallbacks",
+        "description": "Allow falling back to other models if preferred ones fail"
+      },
+      "requireParameters": {
+        "label": "Require Parameters",
+        "description": "Require all parameters to be present in requests"
+      },
+      "parameters": {
+        "title": "Parameters",
+        "description": "Set default values for generation parameters",
+        "temperature": {
+          "label": "Temperature",
+          "help": "Controls randomness: Lower = more focused, Higher = more creative"
+        },
+        "topP": {
+          "label": "Top P",
+          "help": "Alternative to temperature, controls diversity"
+        },
+        "topK": {
+          "label": "Top K",
+          "help": "Limits vocabulary to top K tokens"
+        },
+        "frequencyPenalty": {
+          "label": "Frequency Penalty",
+          "help": "Reduces repetition of frequently used words"
+        },
+        "presencePenalty": {
+          "label": "Presence Penalty",
+          "help": "Reduces repetition of any used words"
+        },
+        "repetitionPenalty": {
+          "label": "Repetition Penalty",
+          "help": "Alternative repetition control parameter"
+        },
+        "maxTokens": {
+          "label": "Max Tokens",
+          "help": "Maximum length of generated response"
+        },
+        "seed": {
+          "label": "Seed",
+          "help": "For reproducible outputs (when supported)"
+        }
+      },
+      "include": "Include",
+      "exclude": "Exclude",
+      "reasoning": {
+        "title": "Reasoning",
+        "description": "Configure reasoning and chain-of-thought settings",
+        "enable": {
+          "label": "Enable Reasoning",
+          "description": "Allow models to use reasoning capabilities when available"
+        },
+        "effort": {
+          "label": "Reasoning Effort",
+          "description": "Control the amount of reasoning effort (low, medium, high)",
+          "placeholder": "medium"
+        },
+        "maxTokens": {
+          "label": "Max Reasoning Tokens",
+          "description": "Maximum tokens allowed for reasoning process"
+        },
+        "exclude": {
+          "label": "Exclude Reasoning from Output",
+          "description": "Hide the reasoning process from the final response"
+        }
+      }
+    }
+  },
+  "privacyGuardrails": {
+    "description": "Configure how OpenRouter handles your data and applies safety filters for requests made from this organization.",
+    "dataHandling": {
+      "title": "Data handling",
+      "logRequests": {
+        "title": "Log requests for debugging",
+        "description": "Store logs of requests and responses so you can inspect and debug issues later."
+      },
+      "sendData": {
+        "title": "Send data to model providers",
+        "description": "Allow model providers to retain data for improving their models, where applicable."
+      },
+      "retention": {
+        "title": "Retention window",
+        "description": "How long OpenRouter will retain logs and traces before automatic deletion.",
+        "days": "{{days}} days"
+      }
+    },
+    "safetyFilters": {
+      "title": "Safety filters",
+      "blockUnsafe": {
+        "title": "Block unsafe content",
+        "description": "Filter prompts and responses that violate default safety policies."
+      },
+      "piiRedaction": {
+        "title": "PII redaction",
+        "description": "Automatically redact common types of personally identifiable information in logs."
+      },
+      "strictGuardrails": {
+        "title": "Strict content guardrails",
+        "description": "Apply stricter moderation rules for high‑risk use cases."
+      }
+    },
+    "resetToDefaults": "Reset to defaults",
+    "changesApplyNote": "Changes apply to new requests only.",
+    "saveChanges": "Save changes"
+  },
+  "routing": {
+    "autoRouter": {
+      "title": "Auto Router",
+      "description": "Let OpenRouter automatically select the best model for each request.",
+      "settings": "Auto Router Settings",
+      "routeDescription": "Route",
+      "learnMore": "to automatically select the best model for each request. Learn more.",
+      "allowedModels": {
+        "label": "Allowed Models",
+        "help": "Use pattern matching (e.g., anthropic/*) to allow multiple models. One pattern per line."
+      },
+      "modelsMatched": "{{count}} models matched",
+      "preventOverrides": "Prevent per-request overrides",
+      "preventOverridesTooltip": "Disable per-request changes to these auto router settings."
+    },
+    "providerSort": {
+      "title": "Provider Sort",
+      "description": "Choose how OpenRouter sorts providers",
+      "chooseDescription": "Choose which criteria OpenRouter uses to sort providers for each model.",
+      "defaultDescription": "By default, OpenRouter balances for a mix of price, performance, uptime, and quality.",
+      "learnMore": "Learn more.",
+      "balanced": "Balanced",
+      "lowestPrice": "Lowest price",
+      "highestUptime": "Highest uptime",
+      "preferredProviders": "Preferred Providers",
+      "preferredProvidersHelper": "OpenRouter will prioritize these providers when selecting models",
+      "fallbackProviders": "Fallback Providers",
+      "fallbackProvidersHelper": "Used when preferred providers are unavailable"
+    },
+    "defaultModel": {
+      "title": "Default Model",
+      "description": "Set a fallback model for requests",
+      "appsDescription": "Apps can send chat completions without specifying a model and OpenRouter will pick one.",
+      "fallbackDescription": "The fallback model is used when the app isn't allowed to use any available model.",
+      "noDefault": "No default",
+      "modelOverrides": "Model Overrides",
+      "modelOverridesHelper": "Map requested models to different models. Useful for testing or migrations.",
+      "originalModelTitle": "Original Model",
+      "overrideModelTitle": "Override Model",
+      "removeOverride": "Remove override",
+      "addOverride": "Add Override"
+    }
+  },
+  "datePicker": {
+    "weekdays": {
+      "sun": "S",
+      "mon": "M",
+      "tue": "T",
+      "wed": "W",
+      "thu": "T",
+      "fri": "F",
+      "sat": "S"
+    },
+    "pickDate": "Pick a date",
+    "now": "Now"
+  },
+  "common": {
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "morePages": "More pages"
+  },
+  "dataTable": {
+    "empty": "(empty)"
+  },
+  "feedback": {
+    "reportFeedback": {
+      "title": "Report Feedback",
+      "model": "Model",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "selectCategory": "Select a category",
+      "categoryGeneral": "General feedback",
+      "categoryBug": "Bug report",
+      "categoryFeature": "Feature request",
+      "categoryImprovement": "Improvement suggestion",
+      "comment": "Comment (optional)",
+      "commentPlaceholder": "Provide additional details about your feedback...",
+      "generationId": "Generation ID",
+      "generationIdPlaceholder": "Enter generation ID",
+      "description": "Report issues with specific model generations to help us improve quality.",
+      "categories": {
+        "incorrectOutput": "Incorrect output",
+        "safety": "Safety concern",
+        "performance": "Performance issue",
+        "other": "Other"
+      }
+    }
+  },
+  "pdfInputs": {
+    "title": "Configure PDF Inputs",
+    "description": "Parse and extract content from uploaded PDF files",
+    "pdfParserEngine": "PDF Parser Engine",
+    "selectParserEngine": "Select parser engine",
+    "defaultMistralOcr": "Default (Mistral OCR)",
+    "parserEngineDescription": "Choose the PDF parsing engine. Mistral OCR provides the best quality but has a cost.",
+    "preventOverrides": "Prevent overrides",
+    "preventOverridesDescription": "Disable per-request changes to these PDF input settings."
+  },
+  "responseHealing": {
+    "title": "Configure Response Healing",
+    "description": "Automatically fix malformed JSON responses from LLMs",
+    "preventOverrides": "Prevent overrides",
+    "preventOverridesDescription": "Disable per-request changes to these response healing settings."
+  },
+  "modelDescriptions": {
+    "aion2": "Aion-2.0 is a variant of DeepSeek V3.2 optimized for immersive roleplaying and storytelling. It is particularly strong at introducing tension, crises, and conflict into stories, making narratives feel more engaging.",
+    "geminiProPreview": "Preview version of Gemini 3.1 Pro for advanced reasoning tasks, coding, and multi-modal understanding.",
+    "claudeSonnet": "Balanced Claude model with strong reasoning, long-context support, and fast response times suitable for a wide range of assistant use cases.",
+    "qwenPlus": "General-purpose Qwen3.5 model, updated 2026-02-15, with strong multilingual capabilities and competitive performance on coding and chat benchmarks.",
+    "glm5": "Latest GLM series model with strong Chinese and English understanding, optimized for chat and knowledge-intensive tasks."
+  }
+}

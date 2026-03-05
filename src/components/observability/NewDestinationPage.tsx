@@ -15,6 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
+
 export type ObservabilityDestination = {
   name: string;
   iconEmoji: string;
@@ -52,6 +54,7 @@ const createGroup = (): FilterGroup => ({
 });
 
 const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }) => {
+  const { t } = useTranslation();
   const [filterGroups, setFilterGroups] = useState<FilterGroup[]>([]);
 
   const handleAddGroup = () => {
@@ -119,10 +122,10 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
               <ArrowLeft className="w-5 h-5 text-muted-foreground cursor-pointer" onClick={onBack} />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">{destination.iconEmoji}</span>
-                <h1 className="text-2xl font-semibold">New {destination.name} Destination</h1>
+                <h1 className="text-2xl font-semibold">{t("observability.newDestination", { name: destination.name })}</h1>
               </div>
             </div>
-            <Button className="rounded-xl">Add</Button>
+            <Button className="rounded-xl">{t("common.add")}</Button>
           </div>
 
           <Separator />
@@ -132,23 +135,23 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
             <div className="col-span-3">
               <h2 className="font-medium flex items-center gap-2">
                 <Link className="w-4 h-4" />
-                Connection
+                {t("observability.connection")}
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Configure credentials and endpoint. Test the connection before saving.
+                {t("observability.connectionDescription")}
               </p>
             </div>
 
             <div className="col-span-9 space-y-6">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>Name</Label>
+                  <Label>{t("common.name")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>A friendly name to identify this destination</p>
+                      <p>{t("observability.nameTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -157,13 +160,13 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>API Key</Label>
+                  <Label>{t("observability.apiKey")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Your Arize API key for authentication</p>
+                      <p>{t("observability.apiKeyTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -172,13 +175,13 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>Space Key</Label>
+                  <Label>{t("observability.spaceKey")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>The space key where traces will be sent</p>
+                      <p>{t("observability.spaceKeyTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -187,13 +190,13 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>Model ID</Label>
+                  <Label>{t("observability.modelId")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>The model identifier for trace categorization</p>
+                      <p>{t("observability.modelIdTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -202,13 +205,13 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>Base URL (optional)</Label>
+                  <Label>{t("observability.baseUrl")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Custom endpoint URL for self-hosted deployments</p>
+                      <p>{t("observability.baseUrlTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -217,13 +220,13 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Label>Headers (optional)</Label>
+                  <Label>{t("observability.headers")}</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Additional HTTP headers in JSON format</p>
+                      <p>{t("observability.headersTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -232,10 +235,10 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
 
               <div className="flex gap-3">
                 <Button variant="outline" className="rounded-xl">
-                  Test Connection
+                  {t("observability.testConnection")}
                 </Button>
                 <Button variant="outline" className="rounded-xl">
-                  Send Trace
+                  {t("observability.sendTrace")}
                 </Button>
               </div>
             </div>
@@ -248,20 +251,20 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
             <div className="col-span-3">
               <h2 className="font-medium flex items-center gap-2">
                 <Shield className="w-4 h-4" />
-                Privacy
+                {t("observability.privacy")}
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Control what data is sent to this destination.
+                {t("observability.privacyDescription")}
               </p>
             </div>
             <div className="col-span-9 flex items-start gap-3">
               <Checkbox id="privacy" />
               <div>
                 <Label htmlFor="privacy" className="font-medium">
-                  Privacy Mode
+                  {t("observability.privacyMode")}
                 </Label>
                 <p className="text-sm text-muted-foreground">
-                  When enabled, excludes prompt and completion data from traces.
+                  {t("observability.privacyModeDescription")}
                 </p>
               </div>
             </div>
@@ -274,21 +277,21 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
             <div className="col-span-3">
               <h2 className="font-medium flex items-center gap-2">
                 <Percent className="w-4 h-4" />
-                Sampling
+                {t("observability.sampling")}
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Control what percentage of traces are sent to this destination.
+                {t("observability.samplingDescription")}
               </p>
             </div>
             <div className="col-span-9 space-y-2">
               <div className="flex items-center gap-2">
-                <Label>Rate</Label>
+                <Label>{t("observability.rate")}</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Sampling rate between 0 and 1 (e.g., 0.5 = 50% of traces)</p>
+                    <p>{t("observability.rateTooltip")}</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -303,25 +306,25 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
             <div className="col-span-3">
               <h2 className="font-medium flex items-center gap-2">
                 <Key className="w-4 h-4" />
-                API Key Filter
+                {t("observability.apiKeyFilter")}
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Optionally filter traces by API key.
+                {t("observability.apiKeyFilterDescription")}
               </p>
             </div>
             <div className="col-span-9 space-y-2">
               <div className="flex items-center gap-2">
-                <Label>API Key Filter (optional)</Label>
+                <Label>{t("observability.apiKeyFilterOptional")}</Label>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Info className="w-3 h-3 text-muted-foreground hover:text-foreground cursor-help" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Send traces only from specific API keys</p>
+                    <p>{t("observability.apiKeyFilterTooltip")}</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <Input placeholder="Select API keys" />
+              <Input placeholder={t("observability.selectApiKeys")} />
             </div>
           </div>
 
@@ -332,23 +335,23 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
             <div className="col-span-3">
               <h2 className="font-medium flex items-center gap-2">
                 <Filter className="w-4 h-4" />
-                Filter Rules
+                {t("observability.filterRules")}
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Only send traces that match specific criteria.
+                {t("observability.filterRulesDescription")}
               </p>
             </div>
             <div className="col-span-9 space-y-4">
               {filterGroups.length === 0 && (
                 <p className="text-sm text-muted-foreground">
-                  No filter rules configured. All traces will be sent to this destination.
+                  {t("observability.noFilterRules")}
                 </p>
               )}
 
               {filterGroups.map((group, groupIndex) => (
                 <div key={group.id} className="space-y-2">
                   {groupIndex > 0 && (
-                    <div className="text-xs font-medium text-muted-foreground px-1">OR</div>
+                    <div className="text-xs font-medium text-muted-foreground px-1">{t("common.or").toUpperCase()}</div>
                   )}
                   <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black px-4 py-3 space-y-3">
                     {group.rules.length > 1 && (
@@ -365,9 +368,9 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                           <SelectTrigger size="sm" className="min-w-[160px]">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="all">All match (AND)</SelectItem>
-                            <SelectItem value="any">Any match (OR)</SelectItem>
+                          <SelectContent align="start">
+                            <SelectItem value="all">{t("observability.allMatch")}</SelectItem>
+                            <SelectItem value="any">{t("observability.anyMatch")}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -382,10 +385,10 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                             }
                           >
                             <SelectTrigger className="min-w-[120px]">
-                              <SelectValue placeholder="Field" />
+                              <SelectValue placeholder={t("observability.field")} />
                             </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="model">Model</SelectItem>
+                            <SelectContent align="start">
+                              <SelectItem value="model">{t("observability.model")}</SelectItem>
                             </SelectContent>
                           </Select>
 
@@ -396,11 +399,11 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                             }
                           >
                             <SelectTrigger className="min-w-[120px]">
-                              <SelectValue placeholder="Operator" />
+                              <SelectValue placeholder={t("observability.operator")} />
                             </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="equals">equals</SelectItem>
-                              <SelectItem value="not_equals">does not equal</SelectItem>
+                            <SelectContent align="start">
+                              <SelectItem value="equals">{t("observability.equals")}</SelectItem>
+                              <SelectItem value="not_equals">{t("observability.notEquals")}</SelectItem>
                             </SelectContent>
                           </Select>
 
@@ -411,9 +414,9 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                             }
                           >
                             <SelectTrigger className="flex-1">
-                              <SelectValue placeholder="Select..." />
+                              <SelectValue placeholder={t("common.select")} />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent align="start">
                               <SelectItem value="value-1">Value 1</SelectItem>
                               <SelectItem value="value-2">Value 2</SelectItem>
                             </SelectContent>
@@ -436,7 +439,7 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                       onClick={() => handleAddRule(group.id)}
                     >
                       <span className="text-base leading-none">+</span>
-                      <span>Add Rule</span>
+                      <span>{t("observability.addRule")}</span>
                     </button>
                   </div>
                 </div>
@@ -448,7 +451,7 @@ const NewDestinationPage: FC<NewDestinationPageProps> = ({ destination, onBack }
                 className="rounded-xl"
                 onClick={handleAddGroup}
               >
-                + Add Filter Rule
+                + {t("observability.addFilterRule")}
               </Button>
             </div>
           </div>

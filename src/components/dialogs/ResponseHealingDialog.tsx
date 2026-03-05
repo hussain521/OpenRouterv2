@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { useTranslation } from "react-i18next";
 
 interface ResponseHealingDialogProps {
   open: boolean;
@@ -15,14 +16,16 @@ interface ResponseHealingDialogProps {
 }
 
 export function ResponseHealingDialog({ open, onOpenChange }: ResponseHealingDialogProps) {
+  const { t } = useTranslation();
+  
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg" onClose={() => onOpenChange(false)}>
         <DialogHeader className="justify-between gap-3 sm:flex-row sm:items-start">
           <div className="space-y-1 text-left">
-            <DialogTitle>Configure Response Healing</DialogTitle>
+            <DialogTitle>{t("responseHealing.title")}</DialogTitle>
             <p className="text-[12px] text-gray-500 dark:text-gray-400">
-              Automatically fix malformed JSON responses from LLMs
+              {t("responseHealing.description")}
             </p>
           </div>
           <a
@@ -31,7 +34,7 @@ export function ResponseHealingDialog({ open, onOpenChange }: ResponseHealingDia
             rel="noreferrer"
             className="text-[11px] font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
           >
-            Learn more
+            {t("common.learnMore")}
           </a>
         </DialogHeader>
 
@@ -41,14 +44,14 @@ export function ResponseHealingDialog({ open, onOpenChange }: ResponseHealingDia
             <div className="space-y-0.5">
               <div className="flex items-center gap-1.5">
                 <span className="font-medium text-gray-800 dark:text-gray-100">
-                  Prevent overrides
+                  {t("responseHealing.preventOverrides")}
                 </span>
                 <span className="flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 text-[10px] text-gray-400 dark:border-gray-600 dark:text-gray-500">
-                  i
+                  {t("common.info")}
                 </span>
               </div>
               <p className="text-[11px] text-gray-500 dark:text-gray-400">
-                Disable per-request changes to these response healing settings.
+                {t("responseHealing.preventOverridesDescription")}
               </p>
             </div>
             <Switch className="data-[state=checked]:bg-[#4F46E5]" />
@@ -62,10 +65,10 @@ export function ResponseHealingDialog({ open, onOpenChange }: ResponseHealingDia
             size="sm"
             onClick={() => onOpenChange(false)}
           >
-            Cancel
+            {t("common.cancel")}
           </Button>
           <Button type="button" size="sm" className="px-4">
-            Save
+            {t("common.save")}
           </Button>
         </DialogFooter>
       </DialogContent>

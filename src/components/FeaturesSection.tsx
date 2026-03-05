@@ -1,34 +1,33 @@
 import FeatureCard from "./FeatureCard";
+import { useTranslation } from "react-i18next";
 
 export default function FeaturesSection() {
+  const { t } = useTranslation();
+  
   const features = [
     {
       image: "/GoogleVertex.svg",
-      title: "One API for Any Model",
-      description:
-        "Access all major models through a single, unified interface. OpenAI SDK works out of the box.",
-      linkText: "Browse all",
+      title: t("features.oneApi.title"),
+      description: t("features.oneApi.description"),
+      linkText: t("features.oneApi.linkText"),
     },
     {
       image: "/Meta.png",
-      title: "Higher Availability",
-      description:
-        "Reliable AI models via our distributed infrastructure. Fall back to other providers when one goes down.",
-      linkText: "Learn more",
+      title: t("features.availability.title"),
+      description: t("features.availability.description"),
+      linkText: t("features.availability.linkText"),
     },
     {
       image: "/images/performance.png",
-      title: "Price and Performance",
-      description:
-        "Keep costs in check without sacrificing speed. OpenRouter runs at the edge for minimal latency.",
-      linkText: "Learn more",
+      title: t("features.performance.title"),
+      description: t("features.performance.description"),
+      linkText: t("features.performance.linkText"),
     },
     {
       image: "/images/security.png",
-      title: "Custom Data Policies",
-      description:
-        "Protect your organization with fine grained data policies. Ensure prompts only go to trusted providers.",
-      linkText: "View docs",
+      title: t("features.dataPolicies.title"),
+      description: t("features.dataPolicies.description"),
+      linkText: t("features.dataPolicies.linkText"),
     },
   ];
 
