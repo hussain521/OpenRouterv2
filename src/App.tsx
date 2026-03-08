@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import ActivityPage from "./pages/ActivityPage";
 import LogsPage from "./pages/LogsPage";
 import CreditsPage from "./pages/CreditsPage";
+import ChatPage from "./pages/ChatPage";
 import SettingsPage from "./pages/SettingsPage";
 import PresetsPage from "./pages/PresetsPage";
 import NewPresetPage from "./pages/NewPresetPage";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/activity" element={<ActivityPage />} />
         <Route path="/logs" element={<LogsPage />} />
         <Route path="/credits" element={<CreditsPage />} />
+        <Route path="/chat" element={<ChatPage />} />
         <Route path="/settings/*" element={<SettingsPage />} />
         <Route path="/presets" element={<PresetsPage />} />
         <Route path="/settings/presets" element={<PresetsPage />} />

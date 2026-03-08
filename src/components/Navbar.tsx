@@ -425,8 +425,12 @@ export default function Navbar() {
               {t('features.models', 'Models')}
             </a>
             <a
-              href="#"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
+              href="/chat"
+              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/chat");
+              }}
             >
               {t("nav.chat")}
             </a>
@@ -655,8 +659,13 @@ export default function Navbar() {
               {t('features.models', 'Models')}
             </a>
             <a
-              href="#"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
+              href="/chat"
+              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/chat");
+                setIsMenuOpen(false);
+              }}
             >
               {t("nav.chat")}
             </a>

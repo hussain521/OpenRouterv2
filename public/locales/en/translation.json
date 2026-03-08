@@ -23,20 +23,56 @@
     "systemStatus": "System status:",
     "dark": "Dark",
     "light": "Light"
-  },
-  "hero": {
-    "title": "Welcome to OpenRouter",
-    "subtitle": "Unified API for AI Models",
-    "getStarted": "Get Started",
-    "unifiedInterface": "The Unified Interface For LLMs",
-    "better": "Better",
-    "prices": "prices",
-    "uptime": "uptime",
-    "noSubscriptions": "no subscriptions",
-    "getApiKey": "Get API Key",
-    "exploreModels": "Explore Models"
-  },
-  "features": {
+   },
+   "hero": {
+     "title": "Welcome to OpenRouter",
+     "subtitle": "Unified API for AI Models",
+     "getStarted": "Get Started",
+     "unifiedInterface": "The Unified Interface For LLMs",
+     "better": "Better",
+     "prices": "prices",
+     "uptime": "uptime",
+     "noSubscriptions": "no subscriptions",
+     "getApiKey": "Get API Key",
+     "exploreModels": "Explore Models"
+   },
+   "chatPage": {
+     "newChat": "New Chat",
+     "addModel": "Add Model",
+     "searchRooms": "Search rooms...",
+     "noMatchingRooms": "No matching rooms",
+     "flagshipModels": "Flagship models",
+     "bestRoleplayModels": "Best roleplay models",
+     "bestCodingModels": "Best coding models",
+     "reasoningModels": "Reasoning models",
+     "createArtifact": "Create Artifact...",
+     "startMessage": "Start a new message...",
+     "auto": "Auto",
+     "global": "Global",
+     "suggestions": {
+       "lifestyle": {
+         "title": "Lifestyle",
+         "description": "Balanced diet and ..."
+       },
+       "smallBusiness": {
+         "title": "Small Business Strategy",
+         "description": "Develop a business expans..."
+       },
+       "educational": {
+         "title": "Educational Advancement",
+         "description": "Plan for higher education."
+       },
+       "nineNine": {
+         "title": "9.9 vs 9.11",
+         "description": "Which one is larger?"
+       },
+       "strawberry": {
+         "title": "Strawberry Test",
+         "description": "How many r's are in..."
+       }
+     }
+   },
+   "features": {
     "title": "Features",
     "explore": "Explore",
     "agents": "Agents",

@@ -23,20 +23,56 @@
     "systemStatus": "حالة النظام:",
     "dark": "داكن",
     "light": "فاتح"
-  },
-  "hero": {
-    "title": "مرحباً بك في OpenRouter",
-    "subtitle": "واجهة برمجية موحدة لنماذج الذكاء الاصطناعي",
-    "getStarted": "ابدأ الآن",
-    "unifiedInterface": "الواجهة الموحدة لنماذج اللغة الكبيرة",
-    "better": "أفضل",
-    "prices": "أسعار",
-    "uptime": "وقت التشغيل",
-    "noSubscriptions": "بدون اشتراكات",
-    "getApiKey": "احصل على مفتاح API",
-    "exploreModels": "استكشف النماذج"
-  },
-  "features": {
+   },
+   "hero": {
+     "title": "مرحباً بك في OpenRouter",
+     "subtitle": "واجهة برمجية موحدة لنماذج الذكاء الاصطناعي",
+     "getStarted": "ابدأ الآن",
+     "unifiedInterface": "الواجهة الموحدة لنماذج اللغة الكبيرة",
+     "better": "أفضل",
+     "prices": "أسعار",
+     "uptime": "وقت التشغيل",
+     "noSubscriptions": "بدون اشتراكات",
+     "getApiKey": "احصل على مفتاح API",
+     "exploreModels": "استكشف النماذج"
+   },
+   "chatPage": {
+     "newChat": "محادثة جديدة",
+     "addModel": "إضافة نموذج",
+     "searchRooms": "البحث في الغرف...",
+     "noMatchingRooms": "لا توجد غرف مطابقة",
+     "flagshipModels": "النماذج الرائدة",
+     "bestRoleplayModels": "أفضل نماذج لعب الأدوار",
+     "bestCodingModels": "أفضل نماذج البرمجة",
+     "reasoningModels": "نماذج التفكير المنطقي",
+     "createArtifact": "إنشاء عنصر...",
+     "startMessage": "ابدأ رسالة جديدة...",
+     "auto": "تلقائي",
+     "global": "عالمي",
+     "suggestions": {
+       "lifestyle": {
+         "title": "نمط الحياة",
+         "description": "نظام غذائي متوازن و..."
+       },
+       "smallBusiness": {
+         "title": "استراتيجية الأعمال الصغيرة",
+         "description": "طوّر خطة لتوسيع الأعمال..."
+       },
+       "educational": {
+         "title": "التقدم التعليمي",
+         "description": "خطط للتعليم العالي."
+       },
+       "nineNine": {
+         "title": "9.9 مقابل 9.11",
+         "description": "أيّهما أكبر؟"
+       },
+       "strawberry": {
+         "title": "اختبار الفراولة",
+         "description": "كم عدد حروف r في..."
+       }
+     }
+   },
+   "features": {
     "title": "المميزات",
     "explore": "استكشف",
     "agents": "الوكلاء",
