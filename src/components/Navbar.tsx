@@ -410,7 +410,7 @@ export default function Navbar() {
             <div className="relative w-full max-w-[200px] md:max-w-[288px]">
               <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 dark:text-gray-500 md:text-base" />
               <Input
-                placeholder={t('nav.search')}
+                placeholder={t("nav.search")}
                 className="h-9 w-full bg-gray-100 dark:bg-black dark:text-white pl-8 text-sm md:h-10 md:pl-10 md:text-base"
               />
             </div>
@@ -422,7 +422,7 @@ export default function Navbar() {
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
             >
-              {t('features.models', 'Models')}
+              {t("features.models", "Models")}
             </a>
             <a
               href="/chat"
@@ -444,10 +444,10 @@ export default function Navbar() {
               href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
-              {t("nav.enterprise")}
+              {t("nav.app")}
             </a>
             <a
-              href="#"
+              href="/app"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
               {t("nav.pricing")}
@@ -464,7 +464,7 @@ export default function Navbar() {
                 className="rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
                 onClick={() => openAuth("signin")}
               >
-                {t('nav.signIn', 'Sign in')}
+                {t("nav.signIn", "Sign in")}
               </Button>
             ) : (
               <div className="relative ml-4" ref={profileDropdownRef}>
@@ -473,17 +473,19 @@ export default function Navbar() {
                   onClick={() => setIsProfileOpen((prev) => !prev)}
                   className="flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-2 py-1 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                   {/* Dropdown Arrow in the middle */}
+                  {/* Dropdown Arrow in the middle */}
                   <div className="flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300">
-                    {isProfileOpen ? <FiChevronDown className="h-3.5 w-3.5" /> : <FiMenu className="h-3.5 w-3.5" />}
+                    {isProfileOpen ? (
+                      <FiChevronDown className="h-3.5 w-3.5" />
+                    ) : (
+                      <FiMenu className="h-3.5 w-3.5" />
+                    )}
                   </div>
                   {/* Current Page Icon */}
                   <div className="flex items-center justify-center text-gray-600 dark:text-gray-300">
                     {getPageIcon()}
                   </div>
-                  
-                 
-                  
+
                   {/* User Avatar on the right */}
                   <img
                     src="./Meta.png"
@@ -501,7 +503,7 @@ export default function Navbar() {
                         navigate("/activity");
                       }}
                     >
-                      {t('nav.activity', 'Activity')}
+                      {t("nav.activity", "Activity")}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -519,7 +521,7 @@ export default function Navbar() {
                         navigate("/credits");
                       }}
                     >
-                      {t('nav.credits', 'Credits')}
+                      {t("nav.credits", "Credits")}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -528,31 +530,31 @@ export default function Navbar() {
                         navigate("/settings");
                       }}
                     >
-                      {t('nav.settings', 'Settings')}
+                      {t("nav.settings", "Settings")}
                     </button>
                     <button
                       className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
                       onClick={() => {
                         setIsSignedIn(false);
                         setIsProfileOpen(false);
-                        localStorage.removeItem('isSignedIn');
+                        localStorage.removeItem("isSignedIn");
                       }}
                     >
-                      {t('nav.signOut', 'Sign Out')}
+                      {t("nav.signOut", "Sign Out")}
                     </button>
                     <div className="mt-1 flex flex-col gap-2 border-t border-gray-200 dark:border-gray-700 px-4 pb-1 pt-2">
                       {/* Language Toggle */}
                       <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pb-2">
                         <span className="flex items-center gap-1">
                           <FiGlobe className="h-3.5 w-3.5" />
-                          <span>{t('nav.language', 'Language')}</span>
+                          <span>{t("nav.language", "Language")}</span>
                         </span>
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
-                            onClick={() => changeLanguage('en')}
+                            onClick={() => changeLanguage("en")}
                             className={`px-2 py-0.5 text-xs rounded transition-colors ${
-                              i18n.language === 'en'
+                              i18n.language === "en"
                                 ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
                                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
                             }`}
@@ -561,9 +563,9 @@ export default function Navbar() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => changeLanguage('ar')}
+                            onClick={() => changeLanguage("ar")}
                             className={`px-2 py-0.5 text-xs rounded transition-colors ${
-                              i18n.language === 'ar'
+                              i18n.language === "ar"
                                 ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
                                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
                             }`}
@@ -578,7 +580,7 @@ export default function Navbar() {
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
-                            onClick={() => setThemePreference('light')}
+                            onClick={() => setThemePreference("light")}
                             className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
                               themePreference === "light"
                                 ? "border-gray-600 bg-gray-100 text-gray-900 shadow-sm"
@@ -590,7 +592,7 @@ export default function Navbar() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setThemePreference('system')}
+                            onClick={() => setThemePreference("system")}
                             className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
                               themePreference === "system"
                                 ? "border-gray-600 bg-gray-500 text-white shadow-sm"
@@ -602,7 +604,7 @@ export default function Navbar() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setThemePreference('dark')}
+                            onClick={() => setThemePreference("dark")}
                             className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
                               themePreference === "dark"
                                 ? "border-gray-600 bg-gray-700 text-gray-100 shadow-sm"
@@ -614,7 +616,7 @@ export default function Navbar() {
                           </button>
                         </div>
                       </div>
-                      {themePreference === 'system' && (
+                      {themePreference === "system" && (
                         <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400">
                           <span>{t("nav.systemStatus")}</span>
                           <span className="flex items-center gap-1">
@@ -656,7 +658,7 @@ export default function Navbar() {
               href="#"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              {t('features.models', 'Models')}
+              {t("features.models", "Models")}
             </a>
             <a
               href="/chat"
@@ -676,10 +678,10 @@ export default function Navbar() {
               {t("nav.rankings")}
             </a>
             <a
-              href="#"
+              href="/app"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
             >
-              {t("nav.enterprise")}
+              {t("nav.app")}
             </a>
             <a
               href="#"
@@ -698,7 +700,7 @@ export default function Navbar() {
                 className="mt-2 rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
                 onClick={() => openAuth("signin")}
               >
-                {t('nav.signIn', 'Sign in')}
+                {t("nav.signIn", "Sign in")}
               </Button>
             )}
           </div>

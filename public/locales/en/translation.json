@@ -12,7 +12,7 @@
     "search": "Search",
     "chat": "Chat",
     "rankings": "Rankings",
-    "enterprise": "Enterprise",
+    "app": "App",
     "pricing": "Pricing",
     "docs": "Docs",
     "logs": "Logs",
@@ -1091,5 +1091,68 @@
     "claudeSonnet": "Balanced Claude model with strong reasoning, long-context support, and fast response times suitable for a wide range of assistant use cases.",
     "qwenPlus": "General-purpose Qwen3.5 model, updated 2026-02-15, with strong multilingual capabilities and competitive performance on coding and chat benchmarks.",
     "glm5": "Latest GLM series model with strong Chinese and English understanding, optimized for chat and knowledge-intensive tasks."
+  },
+  
+  "appRanking": {
+    "title": "App & Agent Rankings",
+    "mostPopular": "Most Popular",
+    "trending": "Trending",
+    "viewAll": "View all",
+    "topCodingAgents": "Top Coding Agents",
+    "topProductivity": "Top Productivity",
+    "topCreative": "Top Creative",
+    "topEntertainment": "Top Entertainment"
+  },
+
+  "apps": {
+    "openClaw": {
+      "name": "OpenClaw",
+      "desc": "The AI that actually does things",
+      "tokens": "9.09T tokens"
+    },
+    "kiloCode": {
+      "name": "Kilo Code",
+      "desc": "AI coding agent for VS Code",
+      "tokens": "4.94T tokens"
+    },
+    "blackbox": {
+      "name": "BLACKBOXAI",
+      "desc": "AI agent for builders",
+      "tokens": "1.9T tokens"
+    },
+    "liteLLM": {
+      "name": "liteLLM",
+      "desc": "Open-source library to simplify LLM calls",
+      "tokens": "1.65T tokens"
+    }
   }
+,
+
+  "trending": {
+    "openClaw": {
+      "tokens": "2.56T tokens",
+      "growth": "+17%"
+    },
+    "blackbox": {
+      "tokens": "587B tokens",
+      "growth": "+34%"
+    },
+    "liteLLM": {
+      "tokens": "517B tokens",
+      "growth": "+37%"
+    },
+    "claude": {
+      "tokens": "277B tokens",
+      "growth": "+54%"
+    },
+    "descript": {
+      "tokens": "248B tokens",
+      "growth": "+62%"
+    },
+    "paperboy": {
+      "tokens": "18.6B tokens",
+      "growth": "+377%"
+    }
+  }
+
 }
