@@ -9,19 +9,19 @@ export default function FeaturedAgents() {
     {
       image: "/OpenAI.svg",
       logo: "/OpenAI.svg",
-      name: "OpenAI",
+      name: t("featuredAgents.openai.name"),
       description: t("featuredAgents.openai.description"),
     },
     {
       image: "/Meta.png",
       logo: "/GoogleGemini.svg",
-      name: "Google Gemini",
+      name: t("featuredAgents.gemini.name"),
       description: t("featuredAgents.gemini.description"),
     },
     {
       image: "/Meta.png",
       logo: "/Meta.png",
-      name: "Meta AI",
+      name: t("featuredAgents.meta.name"),
       description: t("featuredAgents.meta.description"),
     },
   ];

@@ -241,18 +241,35 @@
     "title": "Featured Agents",
     "subtitle": "250k+ apps using OpenRouter with 4.2M+ users globally",
     "openai": {
+      "name": "OpenAI",
       "description": "The easiest way to go from idea to app"
     },
     "gemini": {
+      "name": "Google Gemini",
       "description": "AI agent for builders"
     },
     "meta": {
+      "name": "Meta AI",
       "description": "Everything you need for agentic development"
     }
   },
   "featuredModels": {
     "title": "Featured Models",
-    "subtitle": "300+ active models on 60+ providers"
+    "subtitle": "300+ active models on 60+ providers",
+    "models": {
+      "claudeOpus": {
+        "name": "Claude Opus 4.6",
+        "provider": "OpenAI"
+      },
+      "geminiPro": {
+        "name": "Gemini 3 Pro Preview",
+        "provider": "Google"
+      },
+      "vertexAI": {
+        "name": "Vertex AI Preview",
+        "provider": "Google"
+      }
+    }
   },
   "explore": {
     "models": {
@@ -1153,6 +1170,195 @@
       "tokens": "18.6B tokens",
       "growth": "+377%"
     }
-  }
+  },
 
+  "modelsSidebar": {
+    "inputModalities": "Input Modalities",
+    "outputModalities": "Output Modalities",
+    "contextLength": "Context length",
+    "promptPricing": "Prompt pricing",
+    "series": "Series",
+    "categories": "Categories",
+    "supportedParameters": "Supported Parameters",
+    "distillable": "Distillable",
+    "modalities": {
+      "text": "Text",
+      "image": "Image",
+      "file": "File",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "contextValues": {
+      "4k": "4K",
+      "64k": "64K",
+      "1m": "1M"
+    },
+    "pricing": {
+      "free": "Free",
+      "range1": "$0.01 - $0.10 / 1M tokens",
+      "range2": "$0.10 - $1.00 / 1M tokens",
+      "range3": "$1.00+ / 1M tokens"
+    },
+    "series": {
+      "gpt4": "GPT-4",
+      "gpt35": "GPT-3.5",
+      "claude3": "Claude 3",
+      "geminiPro": "Gemini Pro",
+      "llama3": "Llama 3",
+      "mistral": "Mistral"
+    },
+    "categories": {
+      "academia": "Academia",
+      "finance": "Finance",
+      "health": "Health",
+      "legal": "Legal",
+      "marketing": "Marketing",
+      "coding": "Coding",
+      "roleplay": "Roleplay"
+    },
+    "parameters": {
+      "temperature": "Temperature",
+      "topP": "Top P",
+      "topK": "Top K",
+      "maxTokens": "Max Tokens",
+      "frequencyPenalty": "Frequency Penalty",
+      "presencePenalty": "Presence Penalty"
+    }
+  },
+
+  "modelCard": {
+    "contextLabel": "context",
+    "pricingLabel": "/M tokens",
+    "tokensLabel": "tokens"
+  },
+
+  "modelsPage": {
+    "models": "Models",
+    "compare": "Compare",
+    "modelsCount": "{{count}} models",
+    "sortOptions": {
+      "mostPopular": "Most Popular",
+      "newest": "Newest",
+      "topWeekly": "Top Weekly",
+      "pricingLowHigh": "Pricing: Low to High",
+      "pricingHighLow": "Pricing: High to Low",
+      "contextHighLow": "Context: High to Low",
+      "throughputHighLow": "Throughput: High to Low",
+      "latencyLowHigh": "Latency: Low to High"
+    },
+    "table": {
+      "modelName": "Model Name",
+      "weeklyTokens": "Weekly Tokens",
+      "inputPrice": "Input ($/1M)",
+      "outputPrice": "Output ($/1M)",
+      "context": "Context",
+      "released": "Released"
+    }
+  },
+
+  "newPreset": {
+    "providers": {
+      "ai21": "AI21",
+      "aionLabs": "AionLabs",
+      "alibaba": "Alibaba",
+      "ambient": "Ambient",
+      "amazonBedrock": "Amazon Bedrock",
+      "amazonNova": "Amazon Nova",
+      "anthropic": "Anthropic",
+      "arceeAI": "Arcee AI"
+    },
+    "quantizations": {
+      "int4": "int4",
+      "int8": "int8",
+      "fp4": "fp4",
+      "fp6": "fp6",
+      "fp8": "fp8",
+      "bf16": "bf16",
+      "fp32": "fp32"
+    },
+    "sortLabel": "Sort",
+    "dataCollectionLabel": "Data Collection"
+  },
+
+  "logsPage": {
+    "providers": {
+      "openai": "OpenAI",
+      "anthropic": "Anthropic",
+      "google": "Google"
+    },
+    "models": {
+      "gpt4": "GPT-4",
+      "gpt35": "GPT-3.5",
+      "claude": "Claude",
+      "gemini": "Gemini"
+    }
+  },
+
+  "creditsPage": {
+    "transactions": {
+      "apiUsageGpt4": "API Usage - GPT-4",
+      "apiUsageClaude": "API Usage - Claude-3",
+      "apiUsageGpt35": "API Usage - GPT-3.5",
+      "creditsAdded": "Credits Added"
+    }
+  },
+  "globalRanking": {
+    "title": "Global Ranking",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "pagination": "1–20 of 60",
+    "items": {
+      "openClaw": {
+        "name": "OpenClaw",
+        "desc": "The AI that actually does things",
+        "tokens": "422B tokens"
+      },
+      "kiloCode": {
+        "name": "Kilo Code",
+        "desc": "AI coding agent for VS Code",
+        "tokens": "159B tokens"
+      },
+      "blackbox": {
+        "name": "BLACKBOXAI",
+        "desc": "AI agent for builders",
+        "tokens": "93.1B tokens"
+      },
+      "liteLLM": {
+        "name": "liteLLM",
+        "desc": "Open-source library to simplify LLM calls",
+        "tokens": "80.1B tokens"
+      },
+      "claudeCode": {
+        "name": "Claude Code",
+        "desc": "The AI for problem solvers",
+        "tokens": "54.2B tokens"
+      },
+      "descript": {
+        "name": "Descript",
+        "desc": "AI Video & Podcast Editor",
+        "tokens": "38.9B tokens"
+      },
+      "janitorAI": {
+        "name": "Janitor AI",
+        "desc": "Character chat and creation",
+        "tokens": "30.7B tokens"
+      },
+      "cline": {
+        "name": "Cline",
+        "desc": "Autonomous coding agent right in your IDE",
+        "tokens": "26.2B tokens"
+      },
+      "isekaiZero": {
+        "name": "ISEKAI ZERO",
+        "desc": "AI adventures with your favorite characters",
+        "tokens": "24.8B tokens"
+      },
+      "rooCode": {
+        "name": "Roo Code",
+        "desc": "A whole dev team of AI agents",
+        "tokens": "17.6B tokens"
+      }
+    }
+  }
 }

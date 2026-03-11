@@ -238,18 +238,35 @@
     "title": "الوكلاء المميزون",
     "subtitle": "أكثر من 250 ألف تطبيق يستخدم OpenRouter مع أكثر من 4.2 مليون مستخدم عالمياً",
     "openai": {
+      "name": "OpenAI",
       "description": "أسهل طريقة للانتقال من الفكرة إلى التطبيق"
     },
     "gemini": {
+      "name": "Google Gemini",
       "description": "وكيل الذكاء الاصطناعي للمطورين"
     },
     "meta": {
+      "name": "Meta AI",
       "description": "كل ما تحتاجه لتطوير الوكلاء"
     }
   },
   "featuredModels": {
     "title": "النماذج المميزة",
-    "subtitle": "أكثر من 300 نموذج نشط على أكثر من 60 مزود"
+    "subtitle": "أكثر من 300 نموذج نشط على أكثر من 60 مزود",
+    "models": {
+      "claudeOpus": {
+        "name": "Claude Opus 4.6",
+        "provider": "OpenAI"
+      },
+      "geminiPro": {
+        "name": "Gemini 3 Pro Preview",
+        "provider": "Google"
+      },
+      "vertexAI": {
+        "name": "Vertex AI Preview",
+        "provider": "Google"
+      }
+    }
   },
   "explore": {
     "models": {
@@ -1124,6 +1141,197 @@
       "tokens": "18.6 مليار توكن",
       "growth": "+377%"
     }
+  },
+
+  "modelsSidebar": {
+    "inputModalities": "أنماط المدخلات",
+    "outputModalities": "أنماط المخرجات",
+    "contextLength": "طول السياق",
+    "promptPricing": "تسعير الموجهات",
+    "series": "السلاسل",
+    "categories": "الفئات",
+    "supportedParameters": "المعاملات المدعومة",
+    "distillable": "قابل للتقطير",
+    "modalities": {
+      "text": "نص",
+      "image": "صورة",
+      "file": "ملف",
+      "audio": "صوت",
+      "video": "فيديو"
+    },
+    "contextValues": {
+      "4k": "4K",
+      "64k": "64K",
+      "1m": "1M"
+    },
+    "pricing": {
+      "free": "مجاني",
+      "range1": "0.01$ - 0.10$ / 1M رمز",
+      "range2": "0.10$ - 1.00$ / 1M رمز",
+      "range3": "1.00$+ / 1M رمز"
+    },
+    "series": {
+      "gpt4": "GPT-4",
+      "gpt35": "GPT-3.5",
+      "claude3": "Claude 3",
+      "geminiPro": "Gemini Pro",
+      "llama3": "Llama 3",
+      "mistral": "Mistral"
+    },
+    "categories": {
+      "academia": "أكاديميا",
+      "finance": "مالية",
+      "health": "صحة",
+      "legal": "قانونية",
+      "marketing": "تسويق",
+      "coding": "برمجة",
+      "roleplay": "لعب أدوار"
+    },
+    "parameters": {
+      "temperature": "درجة الحرارة",
+      "topP": "Top P",
+      "topK": "Top K",
+      "maxTokens": "الحد الأقصى للرموز",
+      "frequencyPenalty": "عقوبة التكرار",
+      "presencePenalty": "عقوبة الحضور"
+    }
+  },
+
+  "modelCard": {
+    "tokens": "الرموز",
+    "weeklyTrend": "الاتجاه الأسبوعي",
+    "contextLabel": "سياق",
+    "pricingLabel": "/مليون رمز",
+    "tokensLabel": "رموز"
+  },
+
+  "modelsPage": {
+    "models": "النماذج",
+    "compare": "مقارنة",
+    "modelsCount": "{{count}} نماذج",
+    "sortOptions": {
+      "mostPopular": "الأكثر شهرة",
+      "newest": "الأحدث",
+      "topWeekly": "الأفضل هذا الأسبوع",
+      "pricingLowHigh": "السعر: من الأقل للأعلى",
+      "pricingHighLow": "السعر: من الأعلى للأقل",
+      "contextHighLow": "السياق: من الأعلى للأقل",
+      "throughputHighLow": "الإنتاجية: من الأعلى للأقل",
+      "latencyLowHigh": "الكُمون: من الأقل للأعلى"
+    },
+    "table": {
+      "modelName": "اسم النموذج",
+      "weeklyTokens": "الرموز الأسبوعية",
+      "inputPrice": "المدخلات ($/1M)",
+      "outputPrice": "المخرجات ($/1M)",
+      "context": "السياق",
+      "released": "تاريخ الإصدار"
+    }
+  },
+
+  "newPreset": {
+    "providers": {
+      "ai21": "AI21",
+      "aionLabs": "AionLabs",
+      "alibaba": "Alibaba",
+      "ambient": "Ambient",
+      "amazonBedrock": "Amazon Bedrock",
+      "amazonNova": "Amazon Nova",
+      "anthropic": "Anthropic",
+      "arceeAI": "Arcee AI"
+    },
+    "quantizations": {
+      "int4": "int4",
+      "int8": "int8",
+      "fp4": "fp4",
+      "fp6": "fp6",
+      "fp8": "fp8",
+      "bf16": "bf16",
+      "fp32": "fp32"
+    },
+    "sortLabel": "الترتيب",
+    "dataCollectionLabel": "جمع البيانات"
+  },
+
+  "logsPage": {
+    "providers": {
+      "openai": "OpenAI",
+      "anthropic": "Anthropic",
+      "google": "Google"
+    },
+    "models": {
+      "gpt4": "GPT-4",
+      "gpt35": "GPT-3.5",
+      "claude": "Claude",
+      "gemini": "Gemini"
+    }
+  },
+
+  "creditsPage": {
+    "transactions": {
+      "apiUsageGpt4": "استخدام واجهة البرمجة - GPT-4",
+      "apiUsageClaude": "استخدام واجهة البرمجة - Claude-3",
+      "apiUsageGpt35": "استخدام واجهة البرمجة - GPT-3.5",
+      "creditsAdded": "تم إضافة الرصيد"
+    }
+  },
+  "globalRanking": {
+    "title": "التصنيف العالمي",
+    "today": "اليوم",
+    "thisWeek": "هذا الأسبوع",
+    "thisMonth": "هذا الشهر",
+    "pagination": "1-20 من 60",
+    "items": {
+      "openClaw": {
+        "name": "OpenClaw",
+        "desc": "الذكاء الاصطناعي الذي ينجز المهام فعلاً",
+        "tokens": "422 مليار توكن"
+      },
+      "kiloCode": {
+        "name": "Kilo Code",
+        "desc": "وكيل ذكاء اصطناعي للبرمجة في VS Code",
+        "tokens": "159 مليار توكن"
+      },
+      "blackbox": {
+        "name": "BLACKBOXAI",
+        "desc": "وكيل ذكاء اصطناعي للمطورين",
+        "tokens": "93.1 مليار توكن"
+      },
+      "liteLLM": {
+        "name": "liteLLM",
+        "desc": "مكتبة مفتوحة المصدر لتبسيط استدعاء نماذج الذكاء الاصطناعي",
+        "tokens": "80.1 مليار توكن"
+      },
+      "claudeCode": {
+        "name": "Claude Code",
+        "desc": "الذكاء الاصطناعي لحل المشكلات",
+        "tokens": "54.2 مليار توكن"
+      },
+      "descript": {
+        "name": "Descript",
+        "desc": "محرر الفيديو والبودكاست بالذكاء الاصطناعي",
+        "tokens": "38.9 مليار توكن"
+      },
+      "janitorAI": {
+        "name": "Janitor AI",
+        "desc": "دردشة الشخصيات وإنشائها",
+        "tokens": "30.7 مليار توكن"
+      },
+      "cline": {
+        "name": "Cline",
+        "desc": "وكيل برمجة مستقل مباشرة في بيئة التطوير الخاصة بك",
+        "tokens": "26.2 مليار توكن"
+      },
+      "isekaiZero": {
+        "name": "ISEKAI ZERO",
+        "desc": "مغامرات الذكاء الاصطناعي مع شخصياتك المفضلة",
+        "tokens": "24.8 مليار توكن"
+      },
+      "rooCode": {
+        "name": "Roo Code",
+        "desc": "فريق تطوير كامل من وكلاء الذكاء الاصطناعي",
+        "tokens": "17.6 مليار توكن"
+      }
+    }
   }
-  
 }

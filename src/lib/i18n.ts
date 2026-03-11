@@ -9,9 +9,9 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     supportedLngs: ['en', 'ar'],
-    
+    lng: 'en',
     interpolation: {
       escapeValue: false,
     },
@@ -23,6 +23,12 @@ i18n
     detection: {
       order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
       caches: ['localStorage', 'cookie'],
+      lookupLocalStorage: 'i18nextLng',
+      lookupCookie: 'i18nextLng',
+    },
+    
+    react: {
+      useSuspense: false,
     },
   });
 

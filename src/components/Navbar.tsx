@@ -419,8 +419,12 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="hidden items-center gap-2 text-sm text-gray-600 dark:text-gray-300 lg:flex">
             <a
-              href="#"
+              href="/models"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/models");
+              }}
             >
               {t("features.models", "Models")}
             </a>
@@ -655,8 +659,13 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="flex flex-col gap-2 border-t dark:border-gray-700 bg-white dark:bg-black px-4 pb-4 lg:hidden">
             <a
-              href="#"
+              href="/models"
               className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/models");
+                setIsMenuOpen(false);
+              }}
             >
               {t("features.models", "Models")}
             </a>

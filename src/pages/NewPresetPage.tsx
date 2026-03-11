@@ -222,7 +222,7 @@ export default function NewPresetPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">sort</label>
+                    <label className="text-sm font-medium">{t("newPreset.sortLabel")}</label>
                     <Input placeholder="--" />
                     <p className="text-xs text-muted-foreground">
                       {t("presets.new.providerRouting.sort.description")}
@@ -230,7 +230,7 @@ export default function NewPresetPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">data_collection</label>
+                    <label className="text-sm font-medium">{t("newPreset.dataCollectionLabel")}</label>
                     <Input placeholder="--" />
                     <p className="text-xs text-muted-foreground">
                       {t("presets.new.providerRouting.dataCollection.description")}

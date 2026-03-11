@@ -15,6 +15,7 @@ import RoutingPage from "./pages/RoutingPage";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import AppPage from "./pages/AppPage";
+import ModelsPage from "./pages/models-page";
 
 function App() {
   const { i18n } = useTranslation();
@@ -28,6 +29,9 @@ function App() {
     <ViewProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/models" element={<ModelsPage />} />
+       
+
         <Route path="/app" element={<AppPage />} />
         <Route path="/activity" element={<ActivityPage />} />
         <Route path="/logs" element={<LogsPage />} />

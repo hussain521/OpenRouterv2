@@ -1,87 +1,38 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useTranslation } from "react-i18next"
 
-const ranking = [
-  {
-    rank: 1,
-    name: "OpenClaw",
-    desc: "The AI that actually does things",
-    tokens: "422B tokens",
-  },
-  {
-    rank: 2,
-    name: "Kilo Code",
-    desc: "AI coding agent for VS Code",
-    tokens: "159B tokens",
-  },
-  {
-    rank: 3,
-    name: "BLACKBOXAI",
-    desc: "AI agent for builders",
-    tokens: "93.1B tokens",
-  },
-  {
-    rank: 4,
-    name: "liteLLM",
-    desc: "Open-source library to simplify LLM calls",
-    tokens: "80.1B tokens",
-  },
-  {
-    rank: 5,
-    name: "Claude Code",
-    desc: "The AI for problem solvers",
-    tokens: "54.2B tokens",
-  },
-  {
-    rank: 6,
-    name: "Descript",
-    desc: "AI Video & Podcast Editor",
-    tokens: "38.9B tokens",
-  },
-  {
-    rank: 7,
-    name: "Janitor AI",
-    desc: "Character chat and creation",
-    tokens: "30.7B tokens",
-  },
-  {
-    rank: 8,
-    name: "Cline",
-    desc: "Autonomous coding agent right in your IDE",
-    tokens: "26.2B tokens",
-  },
-  {
-    rank: 9,
-    name: "ISEKAI ZERO",
-    desc: "AI adventures with your favorite characters",
-    tokens: "24.8B tokens",
-  },
-  {
-    rank: 10,
-    name: "Roo Code",
-    desc: "A whole dev team of AI agents",
-    tokens: "17.6B tokens",
-  },
+const rankingKeys = [
+  "openClaw",
+  "kiloCode",
+  "blackbox",
+  "liteLLM",
+  "claudeCode",
+  "descript",
+  "janitorAI",
+  "cline",
+  "isekaiZero",
+  "rooCode",
 ]
 
-function RankingRow({ item }: { item: typeof ranking[0] }) {
+function RankingRow({ item, rank }: { item: { name: string; desc: string; tokens: string }; rank: number }) {
   return (
-    <div className="flex items-center justify-between py-4 border-b last:border-none">
+    <div className="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-700 last:border-none">
       <div className="flex items-center gap-4">
-        <span className="text-sm text-muted-foreground w-6">
-          {item.rank}.
+        <span className="text-sm text-gray-500 dark:text-gray-400 w-6">
+          {rank}.
         </span>
 
-        <div className="w-10 h-10 rounded-lg bg-muted"></div>
+        <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800"></div>
 
         <div>
-          <p className="font-medium">{item.name}</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-medium text-gray-900 dark:text-gray-100">{item.name}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {item.desc}
           </p>
         </div>
       </div>
 
-      <span className="font-medium">
+      <span className="font-medium text-gray-900 dark:text-gray-100">
         {item.tokens}
       </span>
     </div>
@@ -89,49 +40,66 @@ function RankingRow({ item }: { item: typeof ranking[0] }) {
 }
 
 export function GlobalRanking() {
-  const left = ranking.slice(0, 5)
-  const right = ranking.slice(5, 10)
+  const { t } = useTranslation()
+  const left = rankingKeys.slice(0, 5)
+  const right = rankingKeys.slice(5, 10)
 
   return (
-    <Card className="rounded-2xl mt-10">
+    <Card className="rounded-2xl mt-10 border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-xl">
-          Global Ranking
+        <CardTitle className="text-xl text-gray-900 dark:text-gray-100">
+          {t("globalRanking.title")}
         </CardTitle>
 
-        <select className="border rounded-md px-3 py-1 text-sm">
-          <option>Today</option>
-          <option>This Week</option>
-          <option>This Month</option>
+        <select className="border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+          <option>{t("globalRanking.today")}</option>
+          <option>{t("globalRanking.thisWeek")}</option>
+          <option>{t("globalRanking.thisMonth")}</option>
         </select>
       </CardHeader>
 
       <CardContent>
         <div className="grid md:grid-cols-2 gap-10">
           <div>
-            {left.map((item) => (
-              <RankingRow key={item.rank} item={item} />
+            {left.map((key, index) => (
+              <RankingRow
+                key={key}
+                item={{
+                  name: t(`globalRanking.items.${key}.name`),
+                  desc: t(`globalRanking.items.${key}.desc`),
+                  tokens: t(`globalRanking.items.${key}.tokens`),
+                }}
+                rank={index + 1}
+              />
             ))}
           </div>
 
           <div>
-            {right.map((item) => (
-              <RankingRow key={item.rank} item={item} />
+            {right.map((key, index) => (
+              <RankingRow
+                key={key}
+                item={{
+                  name: t(`globalRanking.items.${key}.name`),
+                  desc: t(`globalRanking.items.${key}.desc`),
+                  tokens: t(`globalRanking.items.${key}.tokens`),
+                }}
+                rank={index + 6}
+              />
             ))}
           </div>
         </div>
 
         {/* pagination */}
         <div className="flex justify-center items-center gap-6 mt-8 text-sm">
-          <button className="px-3 py-1 border rounded">
+          <button className="px-3 py-1 border border-gray-200 dark:border-gray-700 rounded text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
             ‹
           </button>
 
-          <span className="text-muted-foreground">
-            1–20 of 60
+          <span className="text-gray-500 dark:text-gray-400">
+            {t("globalRanking.pagination")}
           </span>
 
-          <button className="px-3 py-1 border rounded">
+          <button className="px-3 py-1 border border-gray-200 dark:border-gray-700 rounded text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
             ›
           </button>
         </div>
