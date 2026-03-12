@@ -1,6 +1,5 @@
 import {
   Dialog,
-  DialogBody,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -17,7 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface WebSearchDialogProps {

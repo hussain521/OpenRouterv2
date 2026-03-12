@@ -7,7 +7,7 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import type { ColumnDef, ColumnResizeMode } from "@tanstack/react-table";
-import { ChevronLeft, ChevronRight, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -40,7 +40,6 @@ interface TransactionsTableProps {
 
 export function TransactionsTable({
   transactions,
-  setTransactions,
 }: TransactionsTableProps) {
   const { t } = useTranslation();
   const [filterType, setFilterType] = useState<"all" | "credits" | "debits">("all");

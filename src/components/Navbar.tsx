@@ -29,7 +29,6 @@ import {
   Route,
   Puzzle,
   Eye,
-  Package,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -311,7 +310,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t, i18n } = useTranslation();
-  const { theme, themePreference, systemTheme, isSystemDarkMode, setThemePreference } = useTheme();
+  const { themePreference, isSystemDarkMode, setThemePreference } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(() => {
     // Check if user is signed in from localStorage
@@ -439,19 +438,27 @@ export default function Navbar() {
               {t("nav.chat")}
             </a>
             <a
-              href="#"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
+              href="/rankings"
+              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/rankings");
+              }}
             >
               {t("nav.rankings")}
             </a>
             <a
-              href="#"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
+              href="/app"
+              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/app");
+              }}
             >
               {t("nav.app")}
             </a>
             <a
-              href="/app"
+              href="#"
               className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
             >
               {t("nav.pricing")}
@@ -681,14 +688,24 @@ export default function Navbar() {
               {t("nav.chat")}
             </a>
             <a
-              href="#"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
+              href="/rankings"
+              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/rankings");
+                setIsMenuOpen(false);
+              }}
             >
               {t("nav.rankings")}
             </a>
             <a
               href="/app"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
+              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/app");
+                setIsMenuOpen(false);
+              }}
             >
               {t("nav.app")}
             </a>

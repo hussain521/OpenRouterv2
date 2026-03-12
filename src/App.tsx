@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import AppPage from "./pages/AppPage";
 import ModelsPage from "./pages/models-page";
+import RankingsPage from "./pages/RankingsPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -30,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/models" element={<ModelsPage />} />
-       
+        <Route path="/rankings" element={<RankingsPage />} />
 
         <Route path="/app" element={<AppPage />} />
         <Route path="/activity" element={<ActivityPage />} />

@@ -23,7 +23,7 @@ export default function ModelsSidebar() {
   const [parametersOpen, setParametersOpen] = useState(false);
 
   return (
-    <aside className="w-[260px] border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-black flex flex-col h-[calc(100vh-64px)] fixed top-[64px] left-0 overflow-hidden">
+    <aside className="w-[260px] border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-black flex flex-col h-[calc(100vh-64px)] fixed top-[64px] left-0 overflow-hidden hidden lg:flex">
       <div className="flex-1 overflow-y-auto p-5 scrollbar-hide">
         {/* Input Modalities */}
 

@@ -43,8 +43,6 @@ export function RoutingSettingsContent() {
     "anthropic/*,\nopenai/gpt-4o,\ngoogle/*"
   );
   const [preventOverrides, setPreventOverrides] = useState(false);
-  const [providerSort, setProviderSort] = useState("balanced");
-  const [defaultModel, setDefaultModel] = useState("none");
   const [showMatchedModels, setShowMatchedModels] = useState(false);
 
   const matchedModels = [

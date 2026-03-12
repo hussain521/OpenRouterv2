@@ -14,7 +14,6 @@ import NewDestinationPage from "@/components/observability/NewDestinationPage";
 import { AccountSettingsContent } from "@/pages/AccountSettingsPage";
 import { SettingsRow } from "@/components/settings/SettingsRow";
 import { ToggleRow } from "@/components/settings/ToggleRow";
-import { Switch } from "@/components/ui/switch";
 import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 import { CreateManagementKeyDialog } from "@/components/dialogs";
 import { usePageTitle } from "@/hooks/usePageTitle";

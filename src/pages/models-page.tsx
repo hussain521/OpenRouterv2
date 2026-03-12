@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/context/ThemeContext";
-import { FiSun, FiMoon, FiGrid, FiList, FiCopy, FiChevronDown, FiSearch, FiLayers } from "react-icons/fi";
+import { FiGrid, FiList, FiCopy, FiSearch, FiLayers } from "react-icons/fi";
 import {
   Tooltip,
   TooltipContent,
@@ -25,59 +24,64 @@ import Footer from "@/components/Footer";
 
 export default function ModelsPage() {
   const { t } = useTranslation();
-  const { theme, toggleTheme } = useTheme();
   const [viewMode, setViewMode] = useState<"card" | "table">("card");
   const [sortBy, setSortBy] = useState<string>("most-popular");
 
   return (
-    <div className="flex h-screen flex-col bg-background text-foreground overflow-hidden">
+    <div className="flex h-screen flex-col bg-white dark:bg-black text-gray-900 dark:text-gray-100 overflow-hidden">
       <Navbar />
       
       <div className="flex flex-1 overflow-hidden">
         <ModelsSidebar />
 
-        <main className="flex-1 p-8 space-y-6 overflow-y-auto ml-[260px]">
+        <main className="flex-1 p-4 lg:p-8 space-y-4 lg:space-y-6 overflow-y-auto ml-0 lg:ml-[260px]">
           {/* Header */}
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold">{t("models")}</h1>
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <h1 className="text-2xl font-bold">{t("modelsPage.models", "Models")}</h1>
 
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input placeholder={t("search")} className="w-64 pl-10" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+              <div className="relative flex-1 sm:flex-none">
+                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
+                <Input
+                  placeholder={t("common.search")}
+                  className="w-full sm:w-64 pl-10 dark:bg-gray-900 dark:border-gray-700"
+                />
               </div>
-              <Button variant="outline">
-                <FiLayers className="mr-2 h-4 w-4" />
-                {t("compare")}
-              </Button>
-              <div className="flex items-center gap-1 border rounded-md">
-                <Button
-                  variant={viewMode === "card" ? "secondary" : "ghost"}
-                  size="icon"
-                  onClick={() => setViewMode("card")}
-                >
-                  <FiGrid />
+              <div className="flex items-center gap-2">
+                <Button variant="outline" className="flex-1 sm:flex-none dark:border-gray-700 dark:hover:bg-gray-800">
+                  <FiLayers className="mr-2 h-4 w-4" />
+                  {t("modelsPage.compare", "Compare")}
                 </Button>
-                <Button
-                  variant={viewMode === "table" ? "secondary" : "ghost"}
-                  size="icon"
-                  onClick={() => setViewMode("table")}
-                >
-                  <FiList />
-                </Button>
+                <div className="flex items-center gap-1 border border-gray-200 dark:border-gray-700 rounded-md">
+                  <Button
+                    variant={viewMode === "card" ? "secondary" : "ghost"}
+                    size="icon"
+                    onClick={() => setViewMode("card")}
+                    className="dark:hover:bg-gray-700"
+                  >
+                    <FiGrid />
+                  </Button>
+                  <Button
+                    variant={viewMode === "table" ? "secondary" : "ghost"}
+                    size="icon"
+                    onClick={() => setViewMode("table")}
+                    className="dark:hover:bg-gray-700"
+                  >
+                    <FiList />
+                  </Button>
+                </div>
               </div>
-             
             </div>
           </div>
 
           {/* Models Count and Sort */}
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-muted-foreground">{t("modelsPage.modelsCount", { count: 639 })}</p>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <p className="text-sm text-gray-600 dark:text-gray-400">{t("modelsPage.modelsCount", { count: 639 })}</p>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[200px]">
+              <SelectTrigger className="w-full sm:w-[200px] dark:border-gray-700 dark:bg-gray-900">
                 <SelectValue placeholder={t("modelsPage.sortOptions.mostPopular")} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="dark:bg-gray-900 dark:border-gray-700">
                 <SelectItem value="most-popular">{t("modelsPage.sortOptions.mostPopular")}</SelectItem>
                 <SelectItem value="newest">{t("modelsPage.sortOptions.newest")}</SelectItem>
                 <SelectItem value="top-weekly">{t("modelsPage.sortOptions.topWeekly")}</SelectItem>
@@ -98,9 +102,9 @@ export default function ModelsPage() {
               <ModelCard />
             </div>
           ) : (
-            <div className="w-full">
+            <div className="w-full overflow-x-auto">
               {/* Table Header */}
-              <div className="grid grid-cols-12 gap-4 text-sm font-medium text-muted-foreground border-b pb-2">
+              <div className="min-w-[800px] grid grid-cols-12 gap-4 text-sm font-medium text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2">
                 <div className="col-span-3">{t("modelsPage.table.modelName")}</div>
                 <div className="col-span-2">{t("modelsPage.table.weeklyTokens")}</div>
                 <div className="col-span-2">{t("modelsPage.table.inputPrice")}</div>
@@ -109,7 +113,7 @@ export default function ModelsPage() {
                 <div className="col-span-1">{t("modelsPage.table.released")}</div>
               </div>
               {/* Table Rows */}
-              <div className="space-y-0">
+              <div className="space-y-0 min-w-[800px]">
                 <ModelTableRow
                   name="ByteDance Seed: Seed-2.0-Lite"
                   modelId="bytedance-seed/seed-2.0-lite"
@@ -262,32 +266,32 @@ function ModelTableRow({ name, modelId, weeklyTokens, inputPrice, outputPrice, c
   favicon: string;
 }) {
   return (
-    <div className="grid grid-cols-12 gap-4 text-sm border-b py-3 hover:bg-muted/50 transition-colors group">
-      <div className="col-span-3 flex items-center gap-2">
+    <div className="min-w-[800px] grid grid-cols-12 gap-4 text-sm border-b border-gray-200 dark:border-gray-700 py-3 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors group">
+      <div className="col-span-3 flex items-center gap-2 min-w-0">
         <img
           src={`/${favicon}.png`}
           alt={name.split(":")[0]}
-          className="w-5 h-5 rounded"
+          className="w-5 h-5 rounded flex-shrink-0"
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/vite.svg";
           }}
         />
-        <div className="relative group/name cursor-pointer inline-flex items-center gap-2">
-          <span className="font-medium hover:underline">{name}</span>
-          <div className="absolute left-full top-1/2 -translate-y-1/2 opacity-0 group-hover/name:opacity-100 transition-opacity">
+        <div className="relative group/name cursor-pointer inline-flex items-center gap-2 min-w-0">
+          <span className="font-medium hover:underline text-gray-900 dark:text-gray-100 truncate">{name}</span>
+          <div className="absolute left-full top-1/2 -translate-y-1/2 opacity-0 group-hover/name:opacity-100 transition-opacity flex-shrink-0">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-6 w-6"
+                    className="h-6 w-6 dark:hover:bg-gray-700"
                     onClick={() => navigator.clipboard.writeText(modelId)}
                   >
                     <FiCopy className="h-3 w-3" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="dark:bg-gray-800 dark:border-gray-700">
                   <p>Copy model id: {modelId}</p>
                 </TooltipContent>
               </Tooltip>
@@ -295,11 +299,11 @@ function ModelTableRow({ name, modelId, weeklyTokens, inputPrice, outputPrice, c
           </div>
         </div>
       </div>
-      <div className="col-span-2 text-muted-foreground">{weeklyTokens}</div>
-      <div className="col-span-2 text-muted-foreground">{inputPrice}</div>
-      <div className="col-span-2 text-muted-foreground">{outputPrice}</div>
-      <div className="col-span-2 text-muted-foreground">{context}</div>
-      <div className="col-span-1 text-muted-foreground">{released}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{weeklyTokens}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{inputPrice}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{outputPrice}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{context}</div>
+      <div className="col-span-1 text-gray-600 dark:text-gray-400 truncate">{released}</div>
     </div>
   );
 }

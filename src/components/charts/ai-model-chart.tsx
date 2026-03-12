@@ -1,0 +1,785 @@
+"use client";
+
+import { useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
+const data = [
+  {
+    date: "Jan 15",
+    others: 0.8,
+    minimax: 0.2,
+    step: 0.1,
+    gemini: 0.2,
+    openai: 1.8,
+    anthropic: 1.5,
+    meta: 1.0,
+    cohere: 0.6,
+    mistral: 0.8,
+    nvidia: 0.4,
+    perplexity: 0.3,
+    huggingface: 0.5,
+    xai: 0.2,
+    stability: 0.3,
+    inflection: 0.1,
+    together: 0.3,
+    replicate: 0.2,
+    fireworks: 0.3,
+    groq: 0.4,
+    deepseek: 0.1,
+    alibaba: 0.2,
+    baidu: 0.3,
+    yandex: 0.1,
+    tencent: 0.2,
+    bytedance: 0.2,
+    amazon: 0.3,
+    microsoft: 0.4,
+    google: 0.5,
+    apple: 0.2,
+    intel: 0.2,
+    samsung: 0.3,
+    ibm: 0.2,
+    oracle: 0.1,
+    salesforce: 0.2,
+    adobe: 0.1,
+    shopify: 0.1,
+  },
+  {
+    date: "Feb 10",
+    others: 1.0,
+    minimax: 0.3,
+    step: 0.2,
+    gemini: 0.3,
+    openai: 1.9,
+    anthropic: 1.6,
+    meta: 1.1,
+    cohere: 0.7,
+    mistral: 0.9,
+    nvidia: 0.5,
+    perplexity: 0.4,
+    huggingface: 0.6,
+    xai: 0.3,
+    stability: 0.4,
+    inflection: 0.2,
+    together: 0.4,
+    replicate: 0.3,
+    fireworks: 0.4,
+    groq: 0.5,
+    deepseek: 0.2,
+    alibaba: 0.3,
+    baidu: 0.4,
+    yandex: 0.2,
+    tencent: 0.3,
+    bytedance: 0.3,
+    amazon: 0.4,
+    microsoft: 0.5,
+    google: 0.6,
+    apple: 0.3,
+    intel: 0.3,
+    samsung: 0.4,
+    ibm: 0.3,
+    oracle: 0.2,
+    salesforce: 0.3,
+    adobe: 0.2,
+    shopify: 0.2,
+  },
+  {
+    date: "Mar 17",
+    others: 1.2,
+    minimax: 0.5,
+    step: 0.3,
+    gemini: 0.4,
+    openai: 2.1,
+    anthropic: 1.8,
+    meta: 1.3,
+    cohere: 0.9,
+    mistral: 1.1,
+    nvidia: 0.7,
+    perplexity: 0.6,
+    huggingface: 0.8,
+    xai: 0.4,
+    stability: 0.5,
+    inflection: 0.3,
+    together: 0.6,
+    replicate: 0.4,
+    fireworks: 0.5,
+    groq: 0.7,
+    deepseek: 0.3,
+    alibaba: 0.4,
+    baidu: 0.5,
+    yandex: 0.3,
+    tencent: 0.4,
+    bytedance: 0.4,
+    amazon: 0.5,
+    microsoft: 0.6,
+    google: 0.7,
+    apple: 0.4,
+    intel: 0.4,
+    samsung: 0.5,
+    ibm: 0.4,
+    oracle: 0.3,
+    salesforce: 0.4,
+    adobe: 0.3,
+    shopify: 0.3,
+    reka: 0.3,
+    nomic: 0.3,
+    ai21: 0.3,
+    aleph: 0.3,
+    adept: 0.3,
+    character: 0.3,
+    poe: 0.3,
+    jasper: 0.3,
+    writer: 0.3,
+    copy: 0.3,
+    writesonic: 0.3,
+    rytr: 0.3,
+    longshot: 0.3,
+    moonbeam: 0.3,
+    peppertype: 0.3,
+    shortly: 0.3,
+  },
+  {
+    date: "Apr 21",
+    others: 1.4,
+    minimax: 0.7,
+    step: 0.4,
+    gemini: 0.6,
+    openai: 2.3,
+    anthropic: 2.0,
+    meta: 1.5,
+    cohere: 1.1,
+    mistral: 1.3,
+    nvidia: 0.8,
+    perplexity: 0.7,
+    huggingface: 1.0,
+    xai: 0.5,
+    stability: 0.6,
+    inflection: 0.4,
+    together: 0.7,
+    replicate: 0.5,
+    fireworks: 0.6,
+    groq: 0.8,
+    deepseek: 0.4,
+    alibaba: 0.5,
+    baidu: 0.6,
+    yandex: 0.4,
+    tencent: 0.5,
+    bytedance: 0.5,
+    amazon: 0.6,
+    microsoft: 0.7,
+    google: 0.8,
+    apple: 0.5,
+    intel: 0.5,
+    samsung: 0.6,
+    ibm: 0.5,
+    oracle: 0.4,
+    salesforce: 0.5,
+    adobe: 0.4,
+    shopify: 0.4,
+    reka: 0.4,
+    nomic: 0.4,
+    ai21: 0.4,
+    aleph: 0.4,
+    adept: 0.4,
+    character: 0.4,
+    poe: 0.4,
+    jasper: 0.4,
+    writer: 0.4,
+    copy: 0.4,
+    writesonic: 0.4,
+    rytr: 0.4,
+    longshot: 0.4,
+    moonbeam: 0.4,
+    peppertype: 0.4,
+    shortly: 0.4,
+  },
+  {
+    date: "May 26",
+    others: 1.6,
+    minimax: 0.9,
+    step: 0.5,
+    gemini: 0.7,
+    openai: 2.5,
+    anthropic: 2.2,
+    meta: 1.7,
+    cohere: 1.3,
+    mistral: 1.5,
+    nvidia: 1.0,
+    perplexity: 0.8,
+    huggingface: 1.2,
+    xai: 0.6,
+    stability: 0.7,
+    inflection: 0.5,
+    together: 0.8,
+    replicate: 0.6,
+    fireworks: 0.7,
+    groq: 1.0,
+    deepseek: 0.5,
+    alibaba: 0.6,
+    baidu: 0.7,
+    yandex: 0.5,
+    tencent: 0.6,
+    bytedance: 0.6,
+    amazon: 0.7,
+    microsoft: 0.8,
+    google: 0.9,
+    apple: 0.6,
+    intel: 0.6,
+    samsung: 0.7,
+    ibm: 0.6,
+    oracle: 0.5,
+    salesforce: 0.6,
+    adobe: 0.5,
+    shopify: 0.5,
+    reka: 0.5,
+    nomic: 0.5,
+    ai21: 0.5,
+    aleph: 0.5,
+    adept: 0.5,
+    character: 0.5,
+    poe: 0.5,
+    jasper: 0.5,
+    writer: 0.5,
+    copy: 0.5,
+    writesonic: 0.5,
+    rytr: 0.5,
+    longshot: 0.5,
+    moonbeam: 0.5,
+    peppertype: 0.5,
+    shortly: 0.5,
+  },
+  {
+    date: "Jun 30",
+    others: 2.0,
+    minimax: 1.1,
+    step: 0.7,
+    gemini: 0.8,
+    openai: 2.8,
+    anthropic: 2.5,
+    meta: 1.9,
+    cohere: 1.5,
+    mistral: 1.7,
+    nvidia: 1.2,
+    perplexity: 1.0,
+    huggingface: 1.4,
+    xai: 0.8,
+    stability: 0.9,
+    inflection: 0.6,
+    together: 1.0,
+    replicate: 0.7,
+    fireworks: 0.8,
+    groq: 1.2,
+    deepseek: 0.6,
+    alibaba: 0.7,
+    baidu: 0.8,
+    yandex: 0.6,
+    tencent: 0.7,
+    bytedance: 0.7,
+    amazon: 0.8,
+    microsoft: 0.9,
+    google: 1.0,
+    apple: 0.7,
+    intel: 0.7,
+    samsung: 0.8,
+    ibm: 0.7,
+    oracle: 0.6,
+    salesforce: 0.7,
+    adobe: 0.6,
+    shopify: 0.6,
+    reka: 0.6,
+    nomic: 0.6,
+    ai21: 0.6,
+    aleph: 0.6,
+    adept: 0.6,
+    character: 0.6,
+    poe: 0.6,
+    jasper: 0.6,
+    writer: 0.6,
+    copy: 0.6,
+    writesonic: 0.6,
+    rytr: 0.6,
+    longshot: 0.6,
+    moonbeam: 0.6,
+    peppertype: 0.6,
+    shortly: 0.6,
+  },
+  {
+    date: "Jul 15",
+    others: 2.2,
+    minimax: 1.3,
+    step: 0.8,
+    gemini: 0.9,
+    openai: 3.0,
+    anthropic: 2.7,
+    meta: 2.1,
+    cohere: 1.7,
+    mistral: 1.9,
+    nvidia: 1.4,
+    perplexity: 1.2,
+    huggingface: 1.6,
+    xai: 1.0,
+    stability: 1.1,
+    inflection: 0.7,
+    together: 1.2,
+    replicate: 0.8,
+    fireworks: 1.0,
+    groq: 1.4,
+    deepseek: 0.7,
+    alibaba: 0.8,
+    baidu: 1.0,
+    yandex: 0.7,
+    tencent: 0.8,
+    bytedance: 0.8,
+    amazon: 0.9,
+    microsoft: 1.0,
+    google: 1.1,
+    apple: 0.8,
+    intel: 0.8,
+    samsung: 0.9,
+    ibm: 0.8,
+    oracle: 0.7,
+    salesforce: 0.8,
+    adobe: 0.7,
+    shopify: 0.7,
+    reka: 0.7,
+    nomic: 0.7,
+    ai21: 0.7,
+    aleph: 0.7,
+    adept: 0.7,
+    character: 0.7,
+    poe: 0.7,
+    jasper: 0.7,
+    writer: 0.7,
+    copy: 0.7,
+    writesonic: 0.7,
+    rytr: 0.7,
+    longshot: 0.7,
+    moonbeam: 0.7,
+    peppertype: 0.7,
+    shortly: 0.7,
+  },
+  {
+    date: "Aug 20",
+    others: 2.4,
+    minimax: 1.5,
+    step: 1.0,
+    gemini: 1.1,
+    openai: 3.2,
+    anthropic: 2.9,
+    meta: 2.3,
+    cohere: 1.9,
+    mistral: 2.1,
+    nvidia: 1.6,
+    perplexity: 1.4,
+    huggingface: 1.8,
+    xai: 1.2,
+    stability: 1.3,
+    inflection: 0.8,
+    together: 1.4,
+    replicate: 1.0,
+    fireworks: 1.2,
+    groq: 1.6,
+    deepseek: 0.8,
+    alibaba: 1.0,
+    baidu: 1.2,
+    yandex: 0.8,
+    tencent: 1.0,
+    bytedance: 1.0,
+    amazon: 1.1,
+    microsoft: 1.2,
+    google: 1.3,
+    apple: 1.0,
+    intel: 1.0,
+    samsung: 1.1,
+    ibm: 1.0,
+    oracle: 0.8,
+    salesforce: 1.0,
+    adobe: 0.8,
+    shopify: 0.8,
+    reka: 0.8,
+    nomic: 0.8,
+    ai21: 0.8,
+    aleph: 0.8,
+    adept: 0.8,
+    character: 0.8,
+    poe: 0.8,
+    jasper: 0.8,
+    writer: 0.8,
+    copy: 0.8,
+    writesonic: 0.8,
+    rytr: 0.8,
+    longshot: 0.8,
+    moonbeam: 0.8,
+    peppertype: 0.8,
+    shortly: 0.8,
+  },
+  {
+    date: "Sep 25",
+    others: 2.6,
+    minimax: 1.7,
+    step: 1.2,
+    gemini: 1.3,
+    openai: 3.4,
+    anthropic: 3.1,
+    meta: 2.5,
+    cohere: 2.1,
+    mistral: 2.3,
+    nvidia: 1.8,
+    perplexity: 1.6,
+    huggingface: 2.0,
+    xai: 1.4,
+    stability: 1.5,
+    inflection: 1.0,
+    together: 1.6,
+    replicate: 1.2,
+    fireworks: 1.4,
+    groq: 1.8,
+    deepseek: 1.0,
+    alibaba: 1.2,
+    baidu: 1.4,
+    yandex: 1.0,
+    tencent: 1.2,
+    bytedance: 1.2,
+    amazon: 1.3,
+    microsoft: 1.4,
+    google: 1.5,
+    apple: 1.2,
+    intel: 1.2,
+    samsung: 1.3,
+    ibm: 1.2,
+    oracle: 1.0,
+    salesforce: 1.2,
+    adobe: 1.0,
+    shopify: 1.0,
+    reka: 1.0,
+    nomic: 1.0,
+    ai21: 1.0,
+    aleph: 1.0,
+    adept: 1.0,
+    character: 1.0,
+    poe: 1.0,
+    jasper: 1.0,
+    writer: 1.0,
+    copy: 1.0,
+    writesonic: 1.0,
+    rytr: 1.0,
+    longshot: 1.0,
+    moonbeam: 1.0,
+    peppertype: 1.0,
+    shortly: 1.0,
+  },
+  {
+    date: "Oct 30",
+    others: 2.8,
+    minimax: 1.9,
+    step: 1.4,
+    gemini: 1.5,
+    openai: 3.6,
+    anthropic: 3.3,
+    meta: 2.7,
+    cohere: 2.3,
+    mistral: 2.5,
+    nvidia: 2.0,
+    perplexity: 1.8,
+    huggingface: 2.2,
+    xai: 1.6,
+    stability: 1.7,
+    inflection: 1.2,
+    together: 1.8,
+    replicate: 1.4,
+    fireworks: 1.6,
+    groq: 2.0,
+    deepseek: 1.2,
+    alibaba: 1.4,
+    baidu: 1.6,
+    yandex: 1.2,
+    tencent: 1.4,
+    bytedance: 1.4,
+    amazon: 1.5,
+    microsoft: 1.6,
+    google: 1.7,
+    apple: 1.4,
+    intel: 1.4,
+    samsung: 1.5,
+    ibm: 1.4,
+    oracle: 1.2,
+    salesforce: 1.4,
+    adobe: 1.2,
+    shopify: 1.2,
+    reka: 1.2,
+    nomic: 1.2,
+    ai21: 1.2,
+    aleph: 1.2,
+    adept: 1.2,
+    character: 1.2,
+    poe: 1.2,
+    jasper: 1.2,
+    writer: 1.2,
+    copy: 1.2,
+    writesonic: 1.2,
+    rytr: 1.2,
+    longshot: 1.2,
+    moonbeam: 1.2,
+    peppertype: 1.2,
+    shortly: 1.2,
+  },
+  {
+    date: "Nov 18",
+    others: 3.0,
+    minimax: 2.1,
+    step: 1.6,
+    gemini: 1.7,
+    openai: 3.8,
+    anthropic: 3.5,
+    meta: 2.9,
+    cohere: 2.5,
+    mistral: 2.7,
+    nvidia: 2.2,
+    perplexity: 2.0,
+    huggingface: 2.4,
+    xai: 1.8,
+    stability: 1.9,
+    inflection: 1.4,
+    together: 2.0,
+    replicate: 1.6,
+    fireworks: 1.8,
+    groq: 2.2,
+    deepseek: 1.4,
+    alibaba: 1.6,
+    baidu: 1.8,
+    yandex: 1.4,
+    tencent: 1.6,
+    bytedance: 1.6,
+    amazon: 1.7,
+    microsoft: 1.8,
+    google: 1.9,
+    apple: 1.6,
+    intel: 1.6,
+    samsung: 1.7,
+    ibm: 1.6,
+    oracle: 1.4,
+    salesforce: 1.6,
+    adobe: 1.4,
+    shopify: 1.4,
+    reka: 1.4,
+    nomic: 1.4,
+    ai21: 1.4,
+    aleph: 1.4,
+    adept: 1.4,
+    character: 1.4,
+    poe: 1.4,
+    jasper: 1.4,
+    writer: 1.4,
+    copy: 1.4,
+    writesonic: 1.4,
+    rytr: 1.4,
+    longshot: 1.4,
+    moonbeam: 1.4,
+    peppertype: 1.4,
+    shortly: 1.4,
+  },
+  {
+    date: "Dec 22",
+    others: 3.2,
+    minimax: 2.3,
+    step: 1.8,
+    gemini: 1.9,
+    openai: 4.0,
+    anthropic: 3.7,
+    meta: 3.1,
+    cohere: 2.7,
+    mistral: 2.9,
+    nvidia: 2.4,
+    perplexity: 2.2,
+    huggingface: 2.6,
+    xai: 2.0,
+    stability: 2.1,
+    inflection: 1.6,
+    together: 2.2,
+    replicate: 1.8,
+    fireworks: 2.0,
+    groq: 2.4,
+    deepseek: 1.6,
+    alibaba: 1.8,
+    baidu: 2.0,
+    yandex: 1.6,
+    tencent: 1.8,
+    bytedance: 1.8,
+    amazon: 1.9,
+    microsoft: 2.0,
+    google: 2.1,
+    apple: 1.8,
+    intel: 1.8,
+    samsung: 1.9,
+    ibm: 1.8,
+    oracle: 1.6,
+    salesforce: 1.8,
+    adobe: 1.6,
+    shopify: 1.6,
+    reka: 1.6,
+    nomic: 1.6,
+    ai21: 1.6,
+    aleph: 1.6,
+    adept: 1.6,
+    character: 1.6,
+    poe: 1.6,
+    jasper: 1.6,
+    writer: 1.6,
+    copy: 1.6,
+    writesonic: 1.6,
+    rytr: 1.6,
+    longshot: 1.6,
+    moonbeam: 1.6,
+    peppertype: 1.6,
+    shortly: 1.6,
+  },
+];
+
+interface ChartDataItem {
+  date: string;
+  [key: string]: number | string;
+}
+
+// Custom Tooltip Component
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: ChartDataItem;
+  }>;
+  setHoveredData: (data: ChartDataItem | null) => void;
+}
+
+const CustomTooltip = ({ active, payload, setHoveredData }: CustomTooltipProps) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    setHoveredData(data);
+  } else {
+    setHoveredData(null);
+  }
+  return null;
+};
+
+export function AIModelChart() {
+  const [hoveredData, setHoveredData] = useState<ChartDataItem | null>(null);
+
+  const handleMouseLeave = () => {
+    setHoveredData(null);
+  };
+
+  return (
+    <div className="h-[350px] w-full relative" onMouseLeave={handleMouseLeave}>
+      <div className="h-full w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={data}
+            barGap={-1}
+            barCategoryGap={-1}
+            maxBarSize={50}
+          >
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            className="text-xs fill-gray-600 dark:fill-gray-300"
+            tick={{ fill: 'currentColor' }}
+          />
+
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            className="text-xs fill-gray-600 dark:fill-gray-300"
+            tick={{ fill: 'currentColor' }}
+          />
+
+          <Bar
+            dataKey="openai"
+            stackId="a"
+            fill="#10b981"
+          />
+          <Tooltip content={<CustomTooltip setHoveredData={setHoveredData} />} />
+          <Bar dataKey="anthropic" stackId="a" fill="#3b82f6" />
+          <Bar dataKey="meta" stackId="a" fill="#8b5cf6" />
+          <Bar dataKey="gemini" stackId="a" fill="#f59e0b" />
+          <Bar dataKey="cohere" stackId="a" fill="#ef4444" />
+          <Bar dataKey="mistral" stackId="a" fill="#06b6d4" />
+          <Bar dataKey="nvidia" stackId="a" fill="#84cc16" />
+          <Bar dataKey="minimax" stackId="a" fill="#60a5fa" />
+          <Bar dataKey="step" stackId="a" fill="#34d399" />
+          <Bar dataKey="perplexity" stackId="a" fill="#f97316" />
+          <Bar dataKey="huggingface" stackId="a" fill="#eab308" />
+          <Bar dataKey="xai" stackId="a" fill="#14b8a6" />
+          <Bar dataKey="stability" stackId="a" fill="#f43f5e" />
+          <Bar dataKey="inflection" stackId="a" fill="#8b5cf6" />
+          <Bar dataKey="together" stackId="a" fill="#22d3ee" />
+          <Bar dataKey="replicate" stackId="a" fill="#a3a3a3" />
+          <Bar dataKey="fireworks" stackId="a" fill="#fb923c" />
+          <Bar dataKey="groq" stackId="a" fill="#4ade80" />
+          <Bar dataKey="deepseek" stackId="a" fill="#1e40af" />
+          <Bar dataKey="alibaba" stackId="a" fill="#dc2626" />
+          <Bar dataKey="baidu" stackId="a" fill="#7c3aed" />
+          <Bar dataKey="yandex" stackId="a" fill="#059669" />
+          <Bar dataKey="tencent" stackId="a" fill="#ea580c" />
+          <Bar dataKey="bytedance" stackId="a" fill="#ff6b35" />
+          <Bar dataKey="amazon" stackId="a" fill="#ff9500" />
+          <Bar dataKey="microsoft" stackId="a" fill="#00bcf2" />
+          <Bar dataKey="google" stackId="a" fill="#4285f4" />
+          <Bar dataKey="apple" stackId="a" fill="#007aff" />
+          <Bar dataKey="intel" stackId="a" fill="#0071c5" />
+          <Bar dataKey="samsung" stackId="a" fill="#1428a0" />
+          <Bar dataKey="ibm" stackId="a" fill="#1261fe" />
+          <Bar dataKey="oracle" stackId="a" fill="#f80000" />
+          <Bar dataKey="salesforce" stackId="a" fill="#00a1e0" />
+          <Bar dataKey="adobe" stackId="a" fill="#ff0000" />
+          <Bar dataKey="shopify" stackId="a" fill="#95bf47" />
+          <Bar
+            dataKey="others"
+            stackId="a"
+            fill="#ec4899"
+          />
+        </BarChart>
+      </ResponsiveContainer>
+      </div>
+      
+      {/* منطقة عرض البيانات المخفية في الزاوية */}
+      {hoveredData && (
+        <div className="fixed top-20 right-6 w-48 max-h-60 z-50 opacity-80 hover:opacity-100 transition-all duration-300 animate-in fade-in-0 slide-in-from-top-2">
+          <div className="w-full bg-black/80 border border-gray-700/30 rounded-md backdrop-blur-sm shadow-lg">
+            <div className="p-2">
+              <div className="flex items-center gap-2 mb-2 border-b border-gray-700/50 pb-1">
+                <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+                <span className="text-xs text-gray-300 font-medium">{hoveredData.date}</span>
+              </div>
+              
+              <div className="max-h-40 overflow-y-auto" style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none'
+              }}>
+                <div className="space-y-1">
+                  {Object.entries(hoveredData)
+                    .filter(([key]) => key !== 'date' && key !== 'index')
+                    .sort(([,a], [,b]) => (b as number) - (a as number))
+                    .slice(0, 6) // عرض أهم 6 عناصر فقط
+                    .map(([key, value]) => (
+                      <div
+                        key={key}
+                        className="flex items-center justify-between py-1 px-2 bg-gray-800/20 rounded-sm hover:bg-gray-700/30 transition-colors"
+                      >
+                        <span className="text-gray-400 text-xs truncate capitalize">{key}</span>
+                        <span className="text-white text-xs font-semibold ml-1">{(value as number).toFixed(1)}</span>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
