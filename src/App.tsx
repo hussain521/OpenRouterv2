@@ -2,6 +2,7 @@
 import "./App.css";
 import Home from "./pages/Home";
 import { ViewProvider } from "./context/ViewContext";
+import { ModelsProvider } from "./context/ModelsContext";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ActivityPage from "./pages/ActivityPage";
 import LogsPage from "./pages/LogsPage";
@@ -17,6 +18,8 @@ import { useEffect } from "react";
 import AppPage from "./pages/AppPage";
 import ModelsPage from "./pages/models-page";
 import RankingsPage from "./pages/RankingsPage";
+import ModelComparisonPage from "./pages/ModelComparisonPage";
+import PricingPage from "./pages/PricingPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -27,29 +30,33 @@ function App() {
   }, [i18n.language]);
   
   return (
-    <ViewProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/models" element={<ModelsPage />} />
-        <Route path="/rankings" element={<RankingsPage />} />
+    <ModelsProvider>
+      <ViewProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/models" element={<ModelsPage />} />
+          <Route path="/compare" element={<ModelComparisonPage />} />
+          <Route path="/rankings" element={<RankingsPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
 
-        <Route path="/app" element={<AppPage />} />
-        <Route path="/activity" element={<ActivityPage />} />
-        <Route path="/logs" element={<LogsPage />} />
-        <Route path="/credits" element={<CreditsPage />} />
-        <Route path="/chat" element={<ChatPage />} />
-        <Route path="/settings/*" element={<SettingsPage />} />
-        <Route path="/presets" element={<PresetsPage />} />
-        <Route path="/settings/presets" element={<PresetsPage />} />
-        <Route path="/new-preset" element={<NewPresetPage />} />
-        <Route path="/settings/new-preset" element={<NewPresetPage />} />
-        <Route path="/byok" element={<BYOKPage />} />
-        <Route path="/settings/byok" element={<BYOKPage />} />
-        <Route path="/routing" element={<RoutingPage />} />
-        <Route path="/settings/routing" element={<RoutingPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </ViewProvider>
+          <Route path="/app" element={<AppPage />} />
+          <Route path="/activity" element={<ActivityPage />} />
+          <Route path="/logs" element={<LogsPage />} />
+          <Route path="/credits" element={<CreditsPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/settings/*" element={<SettingsPage />} />
+          <Route path="/presets" element={<PresetsPage />} />
+          <Route path="/settings/presets" element={<PresetsPage />} />
+          <Route path="/new-preset" element={<NewPresetPage />} />
+          <Route path="/settings/new-preset" element={<NewPresetPage />} />
+          <Route path="/byok" element={<BYOKPage />} />
+          <Route path="/settings/byok" element={<BYOKPage />} />
+          <Route path="/routing" element={<RoutingPage />} />
+          <Route path="/settings/routing" element={<RoutingPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </ViewProvider>
+    </ModelsProvider>
   );
 }
 

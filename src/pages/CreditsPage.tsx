@@ -12,62 +12,62 @@ import { Card } from "@/components/ui/card";
 import { BillingAddressDialog } from "@/components/dialogs";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
-// Mock data for transactions
-const mockTransactions = [
-  {
-    date: "2024-03-01",
-    description: "API Usage - GPT-4",
-    amount: -5.25,
-    balance: 94.75,
-  },
-  {
-    date: "2024-02-28",
-    description: "Credits Added",
-    amount: 100.00,
-    balance: 100.00,
-  },
-  {
-    date: "2024-02-27",
-    description: "API Usage - Claude-3",
-    amount: -3.50,
-    balance: 0.00,
-  },
-  {
-    date: "2024-02-26",
-    description: "API Usage - GPT-3.5",
-    amount: -1.25,
-    balance: 3.50,
-  },
-  {
-    date: "2024-02-25",
-    description: "Credits Added",
-    amount: 50.00,
-    balance: 4.75,
-  },
-  {
-    date: "2024-02-24",
-    description: "API Usage - Claude-3",
-    amount: -2.10,
-    balance: -45.25,
-  },
-  {
-    date: "2024-02-23",
-    description: "API Usage - GPT-4",
-    amount: -4.15,
-    balance: -43.15,
-  },
-  {
-    date: "2024-02-22",
-    description: "API Usage - GPT-3.5",
-    amount: -0.85,
-    balance: -39.00,
-  },
-];
-
 export default function CreditsPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   usePageTitle(t("nav.credits"));
+
+  // Mock data for transactions - moved inside component to access t()
+  const mockTransactions = [
+    {
+      date: "2024-03-01",
+      description: "API Usage - GPT-4",
+      amount: -5.25,
+      balance: 94.75,
+    },
+    {
+      date: "2024-02-28",
+      description: t("hardcodedStrings.creditsAdded"),
+      amount: 100.00,
+      balance: 100.00,
+    },
+    {
+      date: "2024-02-27",
+      description: "API Usage - Claude-3",
+      amount: -3.50,
+      balance: 0.00,
+    },
+    {
+      date: "2024-02-26",
+      description: "API Usage - GPT-3.5",
+      amount: -1.25,
+      balance: 3.50,
+    },
+    {
+      date: "2024-02-25",
+      description: t("hardcodedStrings.creditsAdded"),
+      amount: 50.00,
+      balance: 4.75,
+    },
+    {
+      date: "2024-02-24",
+      description: "API Usage - Claude-3",
+      amount: -2.10,
+      balance: -45.25,
+    },
+    {
+      date: "2024-02-23",
+      description: "API Usage - GPT-4",
+      amount: -4.15,
+      balance: -43.15,
+    },
+    {
+      date: "2024-02-22",
+      description: "API Usage - GPT-3.5",
+      amount: -0.85,
+      balance: -39.00,
+    },
+  ];
 
   const [balance, setBalance] = useState(94.75);
   const [autoTopUp, setAutoTopUp] = useState(false);

@@ -174,31 +174,31 @@ export default function AppPage() {
     <>
       <Navbar />
 
-      <div className="container max-w-7xl mx-auto py-12 space-y-12 dark:bg-gray-950">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t("appRanking.title")}</h1>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 space-y-8 sm:space-y-10 lg:space-y-12 dark:bg-gray-950">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">{t("appRanking.title")}</h1>
 
         {/* Most Popular */}
         <div>
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
             {t("appRanking.mostPopular")}
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {popularApps.map((app, i) => (
               <Card key={i} className={`rounded-2xl border ${app.borderColor} group transition-all hover:shadow-lg dark:bg-gray-900 dark:hover:shadow-2xl`}>
-                <CardContent className="p-6 space-y-3">
-                  <div className="w-12 h-12 bg-muted dark:bg-gray-800 rounded-xl"></div>
+                <CardContent className="p-4 sm:p-6 space-y-2 sm:space-y-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted dark:bg-gray-800 rounded-xl"></div>
 
-                  <h3 className={`font-semibold text-lg transition-colors text-gray-900 dark:text-white ${
+                  <h3 className={`font-semibold text-base sm:text-lg transition-colors text-gray-900 dark:text-white ${
                     app.borderColor === 'border-blue-500' ? 'group-hover:text-blue-500 dark:group-hover:text-blue-400' :
                     app.borderColor === 'border-purple-500' ? 'group-hover:text-purple-500 dark:group-hover:text-purple-400' :
                     app.borderColor === 'border-green-500' ? 'group-hover:text-green-500 dark:group-hover:text-green-400' :
                     app.borderColor === 'border-orange-500' ? 'group-hover:text-orange-500 dark:group-hover:text-orange-400' : ''
                   }`}>{t(app.name)}</h3>
 
-                  <p className="text-sm text-muted-foreground dark:text-gray-400">{t(app.desc)}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground dark:text-gray-400">{t(app.desc)}</p>
 
-                  <p className="text-sm text-muted-foreground dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-muted-foreground dark:text-gray-400">
                     {t(app.tokens)}
                   </p>
                 </CardContent>
@@ -209,17 +209,17 @@ export default function AppPage() {
 
         {/* Trending */}
         <div>
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
             {t("appRanking.trending")}
           </h2>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {trendingApps.map((app, i) => (
               <Card key={i} className={`rounded-xl border ${app.borderColor} group transition-all hover:shadow-lg dark:bg-gray-900 dark:hover:shadow-2xl`}>
-                <CardContent className="p-4 space-y-3">
-                  <div className="w-10 h-10 bg-muted dark:bg-gray-800 rounded-lg"></div>
+                <CardContent className="p-3 sm:p-4 space-y-2 sm:space-y-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted dark:bg-gray-800 rounded-lg"></div>
 
-                  <h4 className={`text-sm font-semibold transition-colors text-gray-900 dark:text-white ${
+                  <h4 className={`text-xs sm:text-sm font-semibold transition-colors text-gray-900 dark:text-white ${
                     app.borderColor === 'border-blue-500' ? 'group-hover:text-blue-500 dark:group-hover:text-blue-400' :
                     app.borderColor === 'border-red-500' ? 'group-hover:text-red-500 dark:group-hover:text-red-400' :
                     app.borderColor === 'border-yellow-500' ? 'group-hover:text-yellow-500 dark:group-hover:text-yellow-400' :
@@ -228,7 +228,7 @@ export default function AppPage() {
                     app.borderColor === 'border-teal-500' ? 'group-hover:text-teal-500 dark:group-hover:text-teal-400' : ''
                   }`}>{t(app.name)}</h4>
 
-                  <div className="flex justify-between text-xs text-muted-foreground dark:text-gray-400">
+                  <div className="flex justify-between text-[10px] sm:text-xs text-muted-foreground dark:text-gray-400">
                     <span>{t(app.tokens)}</span>
 
                     <span className="text-green-500 dark:text-green-400 font-medium">
@@ -242,7 +242,7 @@ export default function AppPage() {
         </div>
 
         {/* Rankings */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <RankCard
             title={t("appRanking.topCodingAgents")}
             data={codingAgents}

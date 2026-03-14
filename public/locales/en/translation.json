@@ -22,7 +22,11 @@
     "darkMode": "Dark mode",
     "systemStatus": "System status:",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "searchResults": {
+      "noResults": "No results found for \"{{query}}\"",
+      "tryAnother": "Try searching for another model"
+    }
    },
    "hero": {
      "title": "Welcome to OpenRouter",
@@ -279,7 +283,7 @@
     },
     "rankings": {
       "title": "Model & App Rankings",
-      "description": "Explore token usage across models, labs, and public applications.",
+      "description": "Based on real usage data from millions of users accessing models through OpenRouter.",
       "linkText": "View rankings"
     }
   },
@@ -1141,9 +1145,40 @@
       "name": "liteLLM",
       "desc": "Open-source library to simplify LLM calls",
       "tokens": "1.65T tokens"
+    },
+    "claude": {
+      "name": "Claude",
+      "desc": "The AI for problem solvers"
+    },
+    "cline": {
+      "name": "Cline",
+      "desc": "Autonomous coding agent right in your IDE"
+    },
+    "hermes": {
+      "name": "Hermes",
+      "desc": "Advanced conversational AI"
+    },
+    "gobii": {
+      "name": "Gobii",
+      "desc": "Smart productivity assistant"
+    },
+    "openWebui": {
+      "name": "Open WebUI",
+      "desc": "Open-source web interface for AI models"
+    },
+    "jobleads": {
+      "name": "Jobleads",
+      "desc": "AI-powered job search assistant"
+    },
+    "descript": {
+      "name": "Descript",
+      "desc": "AI Video & Podcast Editor"
+    },
+    "paperboy": {
+      "name": "Paperboy",
+      "desc": "AI news and content aggregator"
     }
-  }
-,
+  },
 
   "trending": {
     "openClaw": {
@@ -1172,11 +1207,26 @@
     }
   },
 
+  "ranking": {
+    "openClaw": "9.09T tokens",
+    "kiloCode": "4.94T tokens",
+    "blackbox": "1.9T tokens",
+    "liteLLM": "1.65T tokens",
+    "claude": "277B tokens",
+    "cline": "26.2B tokens",
+    "hermes": "185B tokens",
+    "gobii": "94.3B tokens",
+    "openWebui": "67.8B tokens",
+    "jobleads": "42.1B tokens"
+  },
+
   "modelsSidebar": {
     "inputModalities": "Input Modalities",
     "outputModalities": "Output Modalities",
     "contextLength": "Context length",
     "promptPricing": "Prompt pricing",
+    "seriesTitle": "Series",
+    "categoriesTitle": "Categories",
     "series": "Series",
     "categories": "Categories",
     "supportedParameters": "Supported Parameters",
@@ -1359,6 +1409,158 @@
         "desc": "A whole dev team of AI agents",
         "tokens": "17.6B tokens"
       }
+    },
+  
+    "marketShare": {
+      "title": "Market Share",
+      "subtitle": "Compare OpenRouter token share by model author",
+      "companies": {
+        "google": "Google",
+        "anthropic": "Anthropic",
+        "openai": "OpenAI",
+        "deepseek": "DeepSeek",
+        "meta-llama": "Meta-Llama",
+        "qwen": "Qwen",
+        "mistralai": "Mistral AI",
+        "microsoft": "Microsoft",
+        "x-ai": "xAI",
+        "others": "Others"
+      }
+    }
+  },
+  "hardcodedStrings": {
+    "previous": "Previous",
+    "next": "Next",
+    "credits": "Credits",
+    "usd": "USD",
+    "byModel": "By Model",
+    "creditsAdded": "Credits Added",
+    "categories": {
+      "academia": "Academia",
+      "finance": "Finance",
+      "health": "Health",
+      "legal": "Legal",
+      "marketing": "Marketing"
+    },
+    "providers": {
+      "ai21": "AI21",
+      "aionLabs": "AionLabs",
+      "alibaba": "Alibaba",
+      "ambient": "Ambient",
+      "amazonBedrock": "Amazon Bedrock",
+      "amazonNova": "Amazon Nova",
+      "anthropic": "Anthropic",
+      "arceeAI": "Arcee AI",
+      "atlasCloud": "AtlasCloud",
+      "azure": "Azure",
+      "baseten": "Baseten",
+      "cerebras": "Cerebras",
+      "cloudflare": "Cloudflare",
+      "cohere": "Cohere",
+      "coreweave": "CoreWeave",
+      "databricks": "Databricks",
+      "deepinfra": "DeepInfra",
+      "deepseek": "DeepSeek",
+      "featherless": "Featherless",
+      "fireworksAI": "Fireworks AI",
+      "gemini": "Gemini",
+      "githubModels": "GitHub Models",
+      "groq": "Groq",
+      "huggingFace": "Hugging Face",
+      "hyperbolic": "Hyperbolic",
+      "inflection": "Inflection",
+      "lambda": "Lambda",
+      "leptonAI": "Lepton AI",
+      "llamaCpp": "Llama.cpp",
+      "mancer": "Mancer",
+      "mistral": "Mistral",
+      "modal": "Modal",
+      "monsterAPI": "Monster API",
+      "nebius": "Nebius",
+      "novita": "Novita",
+      "octoAI": "OctoAI",
+      "openai": "OpenAI",
+      "perplexity": "Perplexity",
+      "predibase": "Predibase",
+      "recursalAI": "Recursal.ai",
+      "replicate": "Replicate",
+      "sambaNova": "Samba Nova",
+      "scale": "Scale",
+      "siliconFlow": "SiliconFlow",
+      "together": "Together",
+      "vertexAI": "VertexAI",
+      "voyageAI": "Voyage AI",
+      "weightsBiases": "Weight & Biases",
+      "workersAI": "Workers AI",
+      "xai": "xAI",
+      "yandex": "Yandex",
+      "yi": "Yi",
+      "zephyr": "Zephyr",
+      "zhipuAI": "Zhipu AI"
+    },
+    "destinations": {
+      "arizeAI": "Arize AI",
+      "braintrust": "Braintrust",
+      "clickhouse": "ClickHouse",
+      "cometOpik": "Comet Opik",
+      "datadog": "Datadog",
+      "grafanaCloud": "Grafana Cloud",
+      "langfuse": "Langfuse",
+      "langsmith": "LangSmith",
+      "newRelicAI": "New Relic AI",
+      "opentelemetryCollector": "OpenTelemetry Collector",
+      "posthog": "PostHog",
+      "s3Compatible": "S3 / S3‑Compatible",
+      "sentry": "Sentry",
+      "snowflake": "Snowflake",
+      "wbWeave": "W&B Weave",
+      "webhook": "Webhook"
+    },
+    "models": {
+      "aion20": "Aion-2.0",
+      "gemini31ProPreview": "Gemini 3.1 Pro Preview",
+      "claudeSonnet46": "Claude Sonnet 4.6",
+      "qwen35Plus": "Qwen3.5 Plus 2026-02-15",
+      "glm5": "GLM 5"
+    },
+    "byok": {
+      "pageTitle": "BYOK"
+    }
+  },
+  "modelComparison": {
+    "title": "AI Model Comparison",
+    "subtitle": "Compare AI models by key metrics like price, latency, throughput, context length, and other features.",
+    "addModel": "Add model",
+    "selectModelDialog": {
+      "title": "Select Model to Compare",
+      "searchPlaceholder": "Search models...",
+      "inputModalities": "Input",
+      "outputModalities": "Output",
+      "free": "Free",
+      "monthFilter": "Month",
+      "yearFilter": "Year",
+      "allMonths": "All Months",
+      "allYears": "All Years",
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      },
+      "years": {
+        "2024": "2024",
+        "2025": "2025",
+        "2026": "2026"
+      },
+      "noModelsFound": "No models found matching your criteria"
     }
   }
 }

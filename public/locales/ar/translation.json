@@ -22,7 +22,11 @@
     "darkMode": "الوضع الداكن",
     "systemStatus": "حالة النظام:",
     "dark": "داكن",
-    "light": "فاتح"
+    "light": "فاتح",
+    "searchResults": {
+      "noResults": "لا توجد نتائج للبحث \"{{query}}\"",
+      "tryAnother": "جرب البحث عن نموذج آخر"
+    }
    },
    "hero": {
      "title": "مرحباً بك في OpenRouter",
@@ -109,14 +113,14 @@
     "create": "إنشاء",
     "back": "رجوع",
     "next": "التالي",
+    "new": "جديد",
     "search": "بحث",
     "submit": "إرسال",
     "continue": "متابعة",
     "or": "أو",
     "by": "بواسطة",
     "viewAll": "عرض الكل",
-    "new": "جديد",
-    "name": "الاسم",
+     "name": "الاسم",
     "na": "غير متاح",
     "daily": "يومي",
     "weekly": "أسبوعي",
@@ -1114,6 +1118,38 @@
       "name": "liteLLM",
       "desc": "مكتبة مفتوحة المصدر لتبسيط استدعاء نماذج الذكاء الاصطناعي",
       "tokens": "1.65 تريليون توكن"
+    },
+    "claude": {
+      "name": "Claude",
+      "desc": "الذكاء الاصطناعي لحل المشكلات"
+    },
+    "cline": {
+      "name": "Cline",
+      "desc": "وكيل برمجة مستقل مباشرة في بيئة التطوير الخاصة بك"
+    },
+    "hermes": {
+      "name": "Hermes",
+      "desc": "ذكاء اصطناعي متقدم للمحادثة"
+    },
+    "gobii": {
+      "name": "Gobii",
+      "desc": "مساعد إنتاجية ذكي"
+    },
+    "openWebui": {
+      "name": "Open WebUI",
+      "desc": "واجهة ويب مفتوحة المصدر لنماذج الذكاء الاصطناعي"
+    },
+    "jobleads": {
+      "name": "Jobleads",
+      "desc": "مساعد البحث عن وظائف بالذكاء الاصطناعي"
+    },
+    "descript": {
+      "name": "Descript",
+      "desc": "محرر الفيديو والبودكاست بالذكاء الاصطناعي"
+    },
+    "paperboy": {
+      "name": "Paperboy",
+      "desc": "مجمع الأخبار والمحتوى بالذكاء الاصطناعي"
     }
   },
 "trending": {
@@ -1143,11 +1179,26 @@
     }
   },
 
+  "ranking": {
+    "openClaw": "9.09 تريليون توكن",
+    "kiloCode": "4.94 تريليون توكن",
+    "blackbox": "1.9 تريليون توكن",
+    "liteLLM": "1.65 تريليون توكن",
+    "claude": "277 مليار توكن",
+    "cline": "26.2 مليار توكن",
+    "hermes": "185 مليار توكن",
+    "gobii": "94.3 مليار توكن",
+    "openWebui": "67.8 مليار توكن",
+    "jobleads": "42.1 مليار توكن"
+  },
+
   "modelsSidebar": {
     "inputModalities": "أنماط المدخلات",
     "outputModalities": "أنماط المخرجات",
     "contextLength": "طول السياق",
     "promptPricing": "تسعير الموجهات",
+    "seriesTitle": "السلاسل",
+    "categoriesTitle": "الفئات",
     "series": "السلاسل",
     "categories": "الفئات",
     "supportedParameters": "المعاملات المدعومة",
@@ -1332,6 +1383,158 @@
         "desc": "فريق تطوير كامل من وكلاء الذكاء الاصطناعي",
         "tokens": "17.6 مليار توكن"
       }
+    },
+  
+    "marketShare": {
+      "title": "حصة السوق",
+      "subtitle": "مقارنة حصة الرموز في OpenRouter حسب مؤلف النموذج",
+      "companies": {
+        "google": "جوجل",
+        "anthropic": "أنثروبيك",
+        "openai": "OpenAI",
+        "deepseek": "ديب سيك",
+        "meta-llama": "ميتا-لاما",
+        "qwen": "كوين",
+        "mistralai": "ميسترال إيه آي",
+        "microsoft": "مايكروسوفت",
+        "x-ai": "إكس إيه آي",
+        "others": "آخرون"
+      }
+    }
+  },
+  "hardcodedStrings": {
+      "previous": "السابق",
+      "next": "التالي",
+      "credits": "الرصيد",
+      "usd": "دولار أمريكي",
+      "byModel": "حسب النموذج",
+      "creditsAdded": "تم إضافة الرصيد",
+      "categories": {
+        "academia": "أكاديميا",
+        "finance": "مالية",
+        "health": "صحة",
+        "legal": "قانونية",
+        "marketing": "تسويق"
+      },
+      "providers": {
+        "ai21": "AI21",
+        "aionLabs": "AionLabs",
+        "alibaba": "علي بابا",
+        "ambient": "Ambient",
+        "amazonBedrock": "Amazon Bedrock",
+        "amazonNova": "Amazon Nova",
+        "anthropic": "Anthropic",
+        "arceeAI": "Arcee AI",
+        "atlasCloud": "AtlasCloud",
+        "azure": "Azure",
+        "baseten": "Baseten",
+        "cerebras": "Cerebras",
+        "cloudflare": "Cloudflare",
+        "cohere": "Cohere",
+        "coreweave": "CoreWeave",
+        "databricks": "Databricks",
+        "deepinfra": "DeepInfra",
+        "deepseek": "DeepSeek",
+        "featherless": "Featherless",
+        "fireworksAI": "Fireworks AI",
+        "gemini": "Gemini",
+        "githubModels": "GitHub Models",
+        "groq": "Groq",
+        "huggingFace": "Hugging Face",
+        "hyperbolic": "Hyperbolic",
+        "inflection": "Inflection",
+        "lambda": "Lambda",
+        "leptonAI": "Lepton AI",
+        "llamaCpp": "Llama.cpp",
+        "mancer": "Mancer",
+        "mistral": "Mistral",
+        "modal": "Modal",
+        "monsterAPI": "Monster API",
+        "nebius": "Nebius",
+        "novita": "Novita",
+        "octoAI": "OctoAI",
+        "openai": "OpenAI",
+        "perplexity": "Perplexity",
+        "predibase": "Predibase",
+        "recursalAI": "Recursal.ai",
+        "replicate": "Replicate",
+        "sambaNova": "Samba Nova",
+        "scale": "Scale",
+        "siliconFlow": "SiliconFlow",
+        "together": "Together",
+        "vertexAI": "VertexAI",
+        "voyageAI": "Voyage AI",
+        "weightsBiases": "Weight & Biases",
+        "workersAI": "Workers AI",
+        "xai": "xAI",
+        "yandex": "Yandex",
+        "yi": "Yi",
+        "zephyr": "Zephyr",
+        "zhipuAI": "Zhipu AI"
+      },
+      "destinations": {
+        "arizeAI": "Arize AI",
+        "braintrust": "Braintrust",
+        "clickhouse": "ClickHouse",
+        "cometOpik": "Comet Opik",
+        "datadog": "Datadog",
+        "grafanaCloud": "Grafana Cloud",
+        "langfuse": "Langfuse",
+        "langsmith": "LangSmith",
+        "newRelicAI": "New Relic AI",
+        "opentelemetryCollector": "OpenTelemetry Collector",
+        "posthog": "PostHog",
+        "s3Compatible": "S3 / S3‑Compatible",
+        "sentry": "Sentry",
+        "snowflake": "Snowflake",
+        "wbWeave": "W&B Weave",
+        "webhook": "Webhook"
+      },
+      "models": {
+        "aion20": "Aion-2.0",
+        "gemini31ProPreview": "Gemini 3.1 Pro Preview",
+        "claudeSonnet46": "Claude Sonnet 4.6",
+        "qwen35Plus": "Qwen3.5 Plus 2026-02-15",
+        "glm5": "GLM 5"
+      },
+      "byok": {
+        "pageTitle": "مفاتيحك الخاصة"
+      }
+    },
+  "modelComparison": {
+    "title": "مقارنة نماذج الذكاء الاصطناعي",
+    "subtitle": "قارن نماذج الذكاء الاصطناعي حسب المقاييس الرئيسية مثل السعر وزمن الاستجابة والإنتاجية وطول السياق والميزات الأخرى.",
+    "addModel": "إضافة نموذج",
+    "selectModelDialog": {
+      "title": "اختر نموذج للمقارنة",
+      "searchPlaceholder": "البحث عن النماذج...",
+      "inputModalities": "المدخلات",
+      "outputModalities": "المخرجات",
+      "free": "مجاني",
+      "monthFilter": "الشهر",
+      "yearFilter": "السنة",
+      "allMonths": "جميع الشهور",
+      "allYears": "جميع السنوات",
+      "months": {
+        "january": "يناير",
+        "february": "فبراير",
+        "march": "مارس",
+        "april": "أبريل",
+        "may": "مايو",
+        "june": "يونيو",
+        "july": "يوليو",
+        "august": "أغسطس",
+        "september": "سبتمبر",
+        "october": "أكتوبر",
+        "november": "نوفمبر",
+        "december": "ديسمبر"
+      },
+      "years": {
+        "2024": "2024",
+        "2025": "2025",
+        "2026": "2026"
+      },
+      "noModelsFound": "لم يتم العثور على نماذج تطابق معاييرك"
     }
   }
 }

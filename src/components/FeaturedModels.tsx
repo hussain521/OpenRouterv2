@@ -31,15 +31,15 @@ export default function FeaturedModels() {
   ];
 
   return (
-    <section className="py-8 md:py-12 lg:pb-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="py-6 sm:py-8 lg:py-12 xl:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t("featuredModels.title")}
           subtitle={t("featuredModels.subtitle")}
           viewAll
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 auto-rows-fr">
           {models.map((model, index) => (
             <ModelCard key={index} {...model} />
           ))}

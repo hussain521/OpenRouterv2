@@ -35,7 +35,7 @@ export function Dialog({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/80 backdrop-blur-md",
+        "fixed inset-0 z-50 flex items-center sm:items-center justify-center bg-white/40 dark:bg-background/80 backdrop-blur-md p-4 sm:p-6",
         className,
       )}
     >
@@ -69,7 +69,7 @@ export function DialogContent({
   return (
     <div
       className={cn(
-        "relative z-10 w-full max-w-md rounded-3xl border border-gray-100 dark:border-gray-700 bg-white/98 dark:bg-black/98 pt-10 pb-7 px-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]",
+        "relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-2xl sm:rounded-3xl border border-gray-100 dark:border-border bg-white/98 dark:bg-card/98 pt-8 sm:pt-10 pb-6 sm:pb-7 px-4 sm:px-6 lg:px-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)] max-h-[90vh] overflow-y-auto",
         className,
       )}
     >
@@ -77,10 +77,10 @@ export function DialogContent({
         <button
           type="button"
           aria-label={t("common.close")}
-          className="absolute right-4 top-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 bg-white/90 dark:bg-gray-700/90 text-gray-400 dark:text-gray-500 shadow-sm hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+          className="absolute right-3 sm:right-4 top-3 sm:top-4 z-20 inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full border border-gray-200 dark:border-border bg-white/90 dark:bg-secondary/90 text-gray-400 dark:text-muted-foreground shadow-sm hover:text-gray-600 dark:hover:text-foreground focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-colors"
           onClick={onClose}
         >
-          <X className="h-3.5 w-3.5" />
+          <X className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
         </button>
       )}
       {children}
@@ -94,7 +94,7 @@ interface DialogHeaderProps {
 }
 
 export function DialogHeader({ children, className }: DialogHeaderProps) {
-  return <div className={cn("flex justify-center pr-6", className)}>{children}</div>;
+  return <div className={cn("flex justify-center pr-4 sm:pr-6", className)}>{children}</div>;
 }
 
 interface DialogTitleProps {
@@ -106,7 +106,7 @@ export function DialogTitle({ children, className }: DialogTitleProps) {
   return (
     <h2
       className={cn(
-        "text-[15px] font-medium text-gray-900 dark:text-gray-100",
+        "text-sm sm:text-[15px] lg:text-base font-medium text-gray-900 dark:text-foreground",
         className,
       )}
     >
@@ -124,7 +124,7 @@ export function DialogBody({ children, className }: DialogBodyProps) {
   return (
     <div
       className={cn(
-        "space-y-4 text-[12px] text-gray-700 dark:text-gray-300",
+        "space-y-3 sm:space-y-4 text-xs sm:text-[12px] lg:text-sm text-gray-700 dark:text-muted-foreground",
         className,
       )}
     >
@@ -140,6 +140,6 @@ interface DialogFooterProps {
 
 export function DialogFooter({ children, className }: DialogFooterProps) {
   return (
-    <div className={cn("flex justify-end pt-4", className)}>{children}</div>
+    <div className={cn("flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 pt-3 sm:pt-4", className)}>{children}</div>
   );
 }

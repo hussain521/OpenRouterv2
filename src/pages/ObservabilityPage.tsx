@@ -43,7 +43,7 @@ export default function ObservabilityPage() {
             <div className="mx-auto max-w-6xl">
               <NewDestinationPage
                 destination={{
-                  name: activeDestination.name,
+                  name: t(`hardcodedStrings.destinations.${activeDestination.nameKey}`, activeDestination.nameKey),
                   iconEmoji: activeDestination.iconEmoji,
                 }}
                 onBack={() => setActiveDestination(null)}
@@ -78,7 +78,7 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
     return (
       <NewDestinationPage
         destination={{
-          name: localActiveDestination.name,
+          name: t(`hardcodedStrings.destinations.${localActiveDestination.nameKey}`, localActiveDestination.nameKey),
           iconEmoji: localActiveDestination.iconEmoji,
         }}
         onBack={() => setLocalActiveDestination(null)}
@@ -129,8 +129,8 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
           <div className="divide-y divide-gray-100 dark:divide-gray-700">
             {DESTINATIONS.map((d) => (
               <DestinationRow
-                key={d.name}
-                name={d.name}
+                key={d.nameKey}
+                name={t(`hardcodedStrings.destinations.${d.nameKey}`, d.nameKey)}
                 iconBg={d.iconBg}
                 iconEmoji={d.iconEmoji}
                 disabled={false}
@@ -169,28 +169,28 @@ export function ObservabilitySettingsContent({ onSelectDestination }: { onSelect
 }
 
 type DestinationConfig = {
-  name: string;
+  nameKey: string;
   iconBg: string;
   iconEmoji: string;
 };
 
 const DESTINATIONS: DestinationConfig[] = [
-  { name: "Arize AI", iconBg: "bg-pink-100", iconEmoji: "🟣" },
-  { name: "Braintrust", iconBg: "bg-sky-100", iconEmoji: "🧠" },
-  { name: "ClickHouse", iconBg: "bg-yellow-100", iconEmoji: "📊" },
-  { name: "Comet Opik", iconBg: "bg-indigo-100", iconEmoji: "☄️" },
-  { name: "Datadog", iconBg: "bg-purple-100", iconEmoji: "🐶" },
-  { name: "Grafana Cloud", iconBg: "bg-orange-100", iconEmoji: "📈" },
-  { name: "Langfuse", iconBg: "bg-emerald-100", iconEmoji: "🧬" },
-  { name: "LangSmith", iconBg: "bg-slate-100", iconEmoji: "🧩" },
-  { name: "New Relic AI", iconBg: "bg-teal-100", iconEmoji: "🧿" },
-  { name: "OpenTelemetry Collector", iconBg: "bg-amber-100", iconEmoji: "📡" },
-  { name: "PostHog", iconBg: "bg-rose-100", iconEmoji: "🐷" },
-  { name: "S3 / S3‑Compatible", iconBg: "bg-gray-100", iconEmoji: "🗄️" },
-  { name: "Sentry", iconBg: "bg-red-100", iconEmoji: "🛟" },
-  { name: "Snowflake", iconBg: "bg-blue-50", iconEmoji: "❄️" },
-  { name: "W&B Weave", iconBg: "bg-yellow-50", iconEmoji: "🧶" },
-  { name: "Webhook", iconBg: "bg-gray-50", iconEmoji: "🪝" },
+  { nameKey: "arizeAI", iconBg: "bg-pink-100", iconEmoji: "🟣" },
+  { nameKey: "braintrust", iconBg: "bg-sky-100", iconEmoji: "🧠" },
+  { nameKey: "clickhouse", iconBg: "bg-yellow-100", iconEmoji: "📊" },
+  { nameKey: "cometOpik", iconBg: "bg-indigo-100", iconEmoji: "☄️" },
+  { nameKey: "datadog", iconBg: "bg-purple-100", iconEmoji: "🐶" },
+  { nameKey: "grafanaCloud", iconBg: "bg-orange-100", iconEmoji: "📈" },
+  { nameKey: "langfuse", iconBg: "bg-emerald-100", iconEmoji: "🧬" },
+  { nameKey: "langsmith", iconBg: "bg-slate-100", iconEmoji: "🧩" },
+  { nameKey: "newRelicAI", iconBg: "bg-teal-100", iconEmoji: "🧿" },
+  { nameKey: "opentelemetryCollector", iconBg: "bg-amber-100", iconEmoji: "📡" },
+  { nameKey: "posthog", iconBg: "bg-rose-100", iconEmoji: "🐷" },
+  { nameKey: "s3Compatible", iconBg: "bg-gray-100", iconEmoji: "🗄️" },
+  { nameKey: "sentry", iconBg: "bg-red-100", iconEmoji: "🛟" },
+  { nameKey: "snowflake", iconBg: "bg-blue-50", iconEmoji: "❄️" },
+  { nameKey: "wbWeave", iconBg: "bg-yellow-50", iconEmoji: "🧶" },
+  { nameKey: "webhook", iconBg: "bg-gray-50", iconEmoji: "🪝" },
 ];
 
 type DestinationRowProps = {

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { FiGrid, FiList, FiCopy, FiSearch, FiLayers } from "react-icons/fi";
+import { FiGrid, FiList, FiCopy, FiSearch, FiLayers, FiFilter } from "react-icons/fi";
 import {
   Tooltip,
   TooltipContent,
@@ -21,53 +22,76 @@ import ModelsSidebar from "@/components/models-sidebar";
 import ModelCard from "@/components/model-card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useModels } from "@/context/ModelsContext";
 
 export default function ModelsPage() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { filteredModels, filters, sortBy, setSearchQuery, setSortBy } = useModels();
   const [viewMode, setViewMode] = useState<"card" | "table">("card");
-  const [sortBy, setSortBy] = useState<string>("most-popular");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-black text-gray-900 dark:text-gray-100 overflow-hidden">
-      <Navbar />
+    <div className="min-h-screen bg-white dark:bg-background text-gray-900 dark:text-foreground">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
       
-      <div className="flex flex-1 overflow-hidden">
-        <ModelsSidebar />
+      <div className="flex pt-16 min-h-screen relative">
+        <ModelsSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-        <main className="flex-1 p-4 lg:p-8 space-y-4 lg:space-y-6 overflow-y-auto ml-0 lg:ml-[260px]">
+        <main className="flex-1 p-3 sm:p-4 lg:p-6 xl:p-8 space-y-4 sm:space-y-5 lg:space-y-6 overflow-y-auto lg:ml-[260px] min-h-0">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-            <h1 className="text-2xl font-bold">{t("modelsPage.models", "Models")}</h1>
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
+            <div className="flex items-center gap-3">
+              {/* Filter button for mobile */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="lg:hidden h-9 w-9 dark:border-gray-700 dark:hover:bg-gray-800"
+                onClick={() => setSidebarOpen(true)}
+              >
+                <FiFilter className="h-4 w-4" />
+              </Button>
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">{t("modelsPage.models", "Models")}</h1>
+            </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
-              <div className="relative flex-1 sm:flex-none">
-                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full lg:w-auto">
+              <div className="relative flex-1 sm:flex-none min-w-0">
+                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder={t("common.search")}
-                  className="w-full sm:w-64 pl-10 dark:bg-gray-900 dark:border-gray-700"
+                  value={filters.searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full sm:w-48 lg:w-64 pl-9 h-9 sm:h-10 text-sm dark:bg-gray-900 dark:border-gray-700"
                 />
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" className="flex-1 sm:flex-none dark:border-gray-700 dark:hover:bg-gray-800">
-                  <FiLayers className="mr-2 h-4 w-4" />
-                  {t("modelsPage.compare", "Compare")}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Button
+                  variant="outline"
+                  className="flex-1 sm:flex-none text-xs sm:text-sm px-3 sm:px-4 h-9 sm:h-10 dark:border-gray-700 dark:hover:bg-gray-800"
+                  onClick={() => navigate('/compare')}
+                >
+                  <FiLayers className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">{t("modelsPage.compare", "Compare")}</span>
+                  <span className="sm:hidden">{t("modelsPage.compare", "Compare")}</span>
                 </Button>
-                <div className="flex items-center gap-1 border border-gray-200 dark:border-gray-700 rounded-md">
+                <div className="flex items-center gap-0.5 sm:gap-1 border border-gray-200 dark:border-gray-700 rounded-md p-0.5">
                   <Button
                     variant={viewMode === "card" ? "secondary" : "ghost"}
                     size="icon"
                     onClick={() => setViewMode("card")}
-                    className="dark:hover:bg-gray-700"
+                    className="h-8 w-8 sm:h-9 sm:w-9 dark:hover:bg-gray-700"
                   >
-                    <FiGrid />
+                    <FiGrid className="h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                   <Button
                     variant={viewMode === "table" ? "secondary" : "ghost"}
                     size="icon"
                     onClick={() => setViewMode("table")}
-                    className="dark:hover:bg-gray-700"
+                    className="h-8 w-8 sm:h-9 sm:w-9 dark:hover:bg-gray-700"
                   >
-                    <FiList />
+                    <FiList className="h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </div>
               </div>
@@ -76,9 +100,9 @@ export default function ModelsPage() {
 
           {/* Models Count and Sort */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <p className="text-sm text-gray-600 dark:text-gray-400">{t("modelsPage.modelsCount", { count: 639 })}</p>
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{t("modelsPage.modelsCount", { count: filteredModels.length })}</p>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full sm:w-[200px] dark:border-gray-700 dark:bg-gray-900">
+              <SelectTrigger className="w-full sm:w-[180px] lg:w-[200px] text-sm h-9 sm:h-10 dark:border-gray-700 dark:bg-gray-900">
                 <SelectValue placeholder={t("modelsPage.sortOptions.mostPopular")} />
               </SelectTrigger>
               <SelectContent className="dark:bg-gray-900 dark:border-gray-700">
@@ -96,154 +120,51 @@ export default function ModelsPage() {
 
           {/* Models List */}
           {viewMode === "card" ? (
-            <div className="space-y-4">
-              <ModelCard />
-              <ModelCard />
-              <ModelCard />
+            <div className="space-y-3 sm:space-y-4">
+              {filteredModels.map((model) => (
+                <ModelCard key={model.id} model={model} />
+              ))}
+              {filteredModels.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">
+                    {t("modelsPage.noModelsFound")}
+                  </p>
+                </div>
+              )}
             </div>
           ) : (
-            <div className="w-full overflow-x-auto">
+            <div className="w-full overflow-x-auto -mx-3 sm:-mx-4 lg:-mx-6 xl:-mx-8 px-3 sm:px-4 lg:px-6 xl:px-8">
               {/* Table Header */}
-              <div className="min-w-[800px] grid grid-cols-12 gap-4 text-sm font-medium text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2">
-                <div className="col-span-3">{t("modelsPage.table.modelName")}</div>
+              <div className="min-w-[700px] sm:min-w-[800px] grid grid-cols-12 gap-2 sm:gap-4 text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2">
+                <div className="col-span-4 sm:col-span-3">{t("modelsPage.table.modelName")}</div>
                 <div className="col-span-2">{t("modelsPage.table.weeklyTokens")}</div>
                 <div className="col-span-2">{t("modelsPage.table.inputPrice")}</div>
                 <div className="col-span-2">{t("modelsPage.table.outputPrice")}</div>
-                <div className="col-span-2">{t("modelsPage.table.context")}</div>
-                <div className="col-span-1">{t("modelsPage.table.released")}</div>
+                <div className="col-span-2 sm:col-span-2">{t("modelsPage.table.context")}</div>
+                <div className="col-span-0 sm:col-span-1 hidden sm:block">{t("modelsPage.table.released")}</div>
               </div>
               {/* Table Rows */}
               <div className="space-y-0 min-w-[800px]">
-                <ModelTableRow
-                  name="ByteDance Seed: Seed-2.0-Lite"
-                  modelId="bytedance-seed/seed-2.0-lite"
-                  weeklyTokens="76.4M"
-                  inputPrice="$0.25"
-                  outputPrice="$2"
-                  context="262,144"
-                  released="Mar 10, 2026"
-                  favicon="bytedance-seed"
-                />
-                <ModelTableRow
-                  name="Qwen: Qwen3.5-9B"
-                  modelId="qwen/qwen3.5-9b"
-                  weeklyTokens="906M"
-                  inputPrice="$0.10"
-                  outputPrice="$0.15"
-                  context="262,144"
-                  released="Mar 10, 2026"
-                  favicon="qwen"
-                />
-                <ModelTableRow
-                  name="OpenAI: GPT-4o"
-                  modelId="openai/gpt-4o"
-                  weeklyTokens="1.2B"
-                  inputPrice="$5.00"
-                  outputPrice="$15.00"
-                  context="128,000"
-                  released="May 13, 2024"
-                  favicon="openai"
-                />
-                <ModelTableRow
-                  name="Anthropic: Claude 3.5 Sonnet"
-                  modelId="anthropic/claude-3.5-sonnet"
-                  weeklyTokens="2.8B"
-                  inputPrice="$3.00"
-                  outputPrice="$15.00"
-                  context="200,000"
-                  released="Jun 20, 2024"
-                  favicon="anthropic"
-                />
-                <ModelTableRow
-                  name="Google: Gemini 2.0 Flash"
-                  modelId="google/gemini-2.0-flash"
-                  weeklyTokens="1.5B"
-                  inputPrice="$0.10"
-                  outputPrice="$0.40"
-                  context="1,048,576"
-                  released="Dec 11, 2024"
-                  favicon="google"
-                />
-                <ModelTableRow
-                  name="Meta: Llama 3.1 405B"
-                  modelId="meta/llama-3.1-405b"
-                  weeklyTokens="850M"
-                  inputPrice="$0.80"
-                  outputPrice="$0.80"
-                  context="131,072"
-                  released="Jul 23, 2024"
-                  favicon="meta"
-                />
-                <ModelTableRow
-                  name="Mistral: Mistral Large 2"
-                  modelId="mistral/mistral-large-2"
-                  weeklyTokens="420M"
-                  inputPrice="$2.00"
-                  outputPrice="$6.00"
-                  context="131,072"
-                  released="Jul 24, 2024"
-                  favicon="mistral"
-                />
-                <ModelTableRow
-                  name="Cohere: Command R+"
-                  modelId="cohere/command-r-plus"
-                  weeklyTokens="380M"
-                  inputPrice="$2.50"
-                  outputPrice="$10.00"
-                  context="128,000"
-                  released="Mar 27, 2024"
-                  favicon="cohere"
-                />
-                <ModelTableRow
-                  name="AI21: Jamba 1.5 Large"
-                  modelId="ai21/jamba-1.5-large"
-                  weeklyTokens="290M"
-                  inputPrice="$2.00"
-                  outputPrice="$8.00"
-                  context="256,000"
-                  released="Oct 15, 2024"
-                  favicon="ai21"
-                />
-                <ModelTableRow
-                  name="DeepSeek: DeepSeek V3"
-                  modelId="deepseek/deepseek-v3"
-                  weeklyTokens="1.1B"
-                  inputPrice="$0.27"
-                  outputPrice="$1.10"
-                  context="64,000"
-                  released="Dec 26, 2024"
-                  favicon="deepseek"
-                />
-                <ModelTableRow
-                  name="xAI: Grok 2"
-                  modelId="xai/grok-2"
-                  weeklyTokens="650M"
-                  inputPrice="$2.00"
-                  outputPrice="$10.00"
-                  context="131,072"
-                  released="Aug 13, 2024"
-                  favicon="xai"
-                />
-                <ModelTableRow
-                  name="01.AI: Yi-Lightning"
-                  modelId="01.ai/yi-lightning"
-                  weeklyTokens="180M"
-                  inputPrice="$0.20"
-                  outputPrice="$0.20"
-                  context="16,384"
-                  released="Sep 5, 2024"
-                  favicon="01.ai"
-                />
-                <ModelTableRow
-                  name="Moonshot AI: Kimi K2"
-                  modelId="moonshotai/kimi-k2"
-                  weeklyTokens="520M"
-                  inputPrice="$0.30"
-                  outputPrice="$1.20"
-                  context="128,000"
-                  released="Nov 8, 2024"
-                  favicon="moonshot"
-                />
+                {filteredModels.map((model) => (
+                  <ModelTableRow
+                    key={model.id}
+                    name={`${model.provider}: ${model.name}`}
+                    modelId={model.modelId}
+                    weeklyTokens={model.weeklyTokens}
+                    inputPrice={`$${model.inputPrice.toFixed(2)}`}
+                    outputPrice={`$${model.outputPrice.toFixed(2)}`}
+                    context={model.context.toLocaleString()}
+                    released={model.released.toLocaleDateString()}
+                    favicon={model.favicon}
+                  />
+                ))}
+                {filteredModels.length === 0 && (
+                  <div className="text-center py-12">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                      {t("modelsPage.noModelsFound")}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -266,44 +187,44 @@ function ModelTableRow({ name, modelId, weeklyTokens, inputPrice, outputPrice, c
   favicon: string;
 }) {
   return (
-    <div className="min-w-[800px] grid grid-cols-12 gap-4 text-sm border-b border-gray-200 dark:border-gray-700 py-3 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors group">
-      <div className="col-span-3 flex items-center gap-2 min-w-0">
+    <div className="min-w-[700px] sm:min-w-[800px] grid grid-cols-12 gap-2 sm:gap-4 text-xs sm:text-sm border-b border-gray-200 dark:border-gray-700 py-2 sm:py-3 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors group">
+      <div className="col-span-4 sm:col-span-3 flex items-center gap-1.5 sm:gap-2 min-w-0">
         <img
           src={`/${favicon}.png`}
           alt={name.split(":")[0]}
-          className="w-5 h-5 rounded flex-shrink-0"
+          className="w-4 h-4 sm:w-5 sm:h-5 rounded flex-shrink-0"
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/vite.svg";
           }}
         />
-        <div className="relative group/name cursor-pointer inline-flex items-center gap-2 min-w-0">
-          <span className="font-medium hover:underline text-gray-900 dark:text-gray-100 truncate">{name}</span>
-          <div className="absolute left-full top-1/2 -translate-y-1/2 opacity-0 group-hover/name:opacity-100 transition-opacity flex-shrink-0">
+        <div className="relative group/name cursor-pointer inline-flex items-center gap-1 sm:gap-2 min-w-0">
+          <span className="font-medium hover:underline text-gray-900 dark:text-gray-100 truncate text-xs sm:text-sm">{name}</span>
+          <div className="absolute left-full top-1/2 -translate-y-1/2 opacity-0 group-hover/name:opacity-100 transition-opacity flex-shrink-0 hidden sm:block">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-6 w-6 dark:hover:bg-gray-700"
+                    className="h-5 w-5 sm:h-6 sm:w-6 dark:hover:bg-gray-700"
                     onClick={() => navigator.clipboard.writeText(modelId)}
                   >
-                    <FiCopy className="h-3 w-3" />
+                    <FiCopy className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="dark:bg-gray-800 dark:border-gray-700">
-                  <p>Copy model id: {modelId}</p>
+                  <p className="text-xs">Copy model id: {modelId}</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
           </div>
         </div>
       </div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{weeklyTokens}</div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{inputPrice}</div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{outputPrice}</div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate">{context}</div>
-      <div className="col-span-1 text-gray-600 dark:text-gray-400 truncate">{released}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{weeklyTokens}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{inputPrice}</div>
+      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{outputPrice}</div>
+      <div className="col-span-2 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{context}</div>
+      <div className="col-span-0 sm:col-span-1 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm hidden sm:block">{released}</div>
     </div>
   );
 }

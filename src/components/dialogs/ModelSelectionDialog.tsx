@@ -20,7 +20,7 @@ type ModelCategory = "all" | "input" | "output" | "free";
 
 interface ModelInfo {
   id: string;
-  name: string;
+  nameKey: string;
   provider: string;
   categories: ModelCategory[];
   description: string;
@@ -30,7 +30,7 @@ interface ModelInfo {
 const MODELS: ModelInfo[] = [
   {
     id: "aion-2.0",
-    name: "Aion-2.0",
+    nameKey: "aion20",
     provider: "DeepSeek",
     categories: ["all", "output"],
     description: "modelDescriptions.aion2",
@@ -38,7 +38,7 @@ const MODELS: ModelInfo[] = [
   },
   {
     id: "gemini-3.1-pro-preview",
-    name: "Gemini 3.1 Pro Preview",
+    nameKey: "gemini31ProPreview",
     provider: "Google",
     categories: ["all", "input", "output"],
     description: "modelDescriptions.geminiProPreview",
@@ -46,7 +46,7 @@ const MODELS: ModelInfo[] = [
   },
   {
     id: "claude-sonnet-4.6",
-    name: "Claude Sonnet 4.6",
+    nameKey: "claudeSonnet46",
     provider: "Anthropic",
     categories: ["all", "input", "output"],
     description: "modelDescriptions.claudeSonnet",
@@ -54,7 +54,7 @@ const MODELS: ModelInfo[] = [
   },
   {
     id: "qwen-3.5-plus-2026-02-15",
-    name: "Qwen3.5 Plus 2026-02-15",
+    nameKey: "qwen35Plus",
     provider: "Qwen",
     categories: ["all", "input", "output", "free"],
     description: "modelDescriptions.qwenPlus",
@@ -62,7 +62,7 @@ const MODELS: ModelInfo[] = [
   },
   {
     id: "glm-5",
-    name: "GLM 5",
+    nameKey: "glm5",
     provider: "Zhipu",
     categories: ["all", "input", "output"],
     description: "modelDescriptions.glm5",
@@ -94,12 +94,12 @@ export function ModelSelectionDialog({
 
       const q = query.toLowerCase();
       return (
-        model.name.toLowerCase().includes(q) ||
+        t(`hardcodedStrings.models.${model.nameKey}`, model.nameKey).toLowerCase().includes(q) ||
         model.provider.toLowerCase().includes(q) ||
         model.id.toLowerCase().includes(q)
       );
     });
-  }, [activeCategory, hideUnavailable, query]);
+  }, [activeCategory, hideUnavailable, query, t]);
 
   const selectedModel =
     filteredModels.find((m) => m.id === selectedModelId) ??
@@ -210,7 +210,7 @@ export function ModelSelectionDialog({
                     } ${model.available === false ? "opacity-60" : ""}`}
                   >
                     <div className="flex flex-col">
-                      <span className="font-medium">{model.name}</span>
+                      <span className="font-medium">{t(`hardcodedStrings.models.${model.nameKey}`, model.nameKey)}</span>
                       <span className="text-xs text-muted-foreground">
                         {model.provider}
                       </span>
@@ -234,7 +234,7 @@ export function ModelSelectionDialog({
             <div className="md:w-1/2 rounded-xl border bg-muted/40 p-3 text-sm space-y-2 max-h-72 overflow-y-auto">
               {selectedModel ? (
                 <>
-                  <div className="font-medium">{selectedModel.name}</div>
+                  <div className="font-medium">{t(`hardcodedStrings.models.${selectedModel.nameKey}`, selectedModel.nameKey)}</div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     {t(selectedModel.description)}
                   </p>

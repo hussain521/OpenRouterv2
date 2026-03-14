@@ -43,12 +43,12 @@ function SidebarLink({
         [
           "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
           isActive
-            ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-medium border-l-2 border-l-[#6366F1] pl-6"
-            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-2 border-l-transparent pl-6",
+            ? "bg-gray-200 dark:bg-accent text-gray-900 dark:text-foreground font-medium border-l-2 border-l-primary pl-6"
+            : "text-gray-600 dark:text-muted-foreground hover:bg-gray-100 dark:hover:bg-accent/50 hover:text-gray-900 dark:hover:text-foreground border-l-2 border-l-transparent pl-6",
         ].join(" ")
       }
     >
-      <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
+      <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-muted-foreground">
         {icon}
       </span>
       <span>{label}</span>
@@ -64,12 +64,12 @@ function SidebarSubLink({ to, label }: { to: string; label: string }) {
         [
           "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors pl-7",
           isActive
-            ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-l-4 border-l-[#6366F1] pl-2"
-            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-4 border-l-transparent pl-2",
+            ? "bg-gray-200 dark:bg-accent text-gray-900 dark:text-foreground font-semibold border-l-4 border-l-primary pl-2"
+            : "text-gray-600 dark:text-muted-foreground hover:bg-gray-100 dark:hover:bg-accent/50 hover:text-gray-900 dark:hover:text-foreground border-l-4 border-l-transparent pl-2",
         ].join(" ")
       }
     >
-      <span className="flex h-3 w-3 items-center justify-center text-gray-300 dark:text-gray-600">
+      <span className="flex h-3 w-3 items-center justify-center text-gray-300 dark:text-muted-foreground">
         <CircleDot className="h-3 w-3" />
       </span>
       <span>{label}</span>
@@ -84,12 +84,25 @@ export default function DashboardLayout({
 }: DashboardLayoutProps) {
   const { i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   return (
-    <div className="flex h-[calc(100vh-72px)] bg-white dark:bg-black overflow-hidden">
+    <div className="flex h-[calc(100vh-72px)] bg-white dark:bg-background overflow-hidden">
+      {/* Mobile sidebar overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      
       {/* Sidebar */}
-      <aside className={`w-60 ${isRTL ? 'border-l' : 'border-r'} dark:border-gray-700 bg-gray-50/80 dark:bg-black h-full`}>
-        <div className="h-full px-3 py-4">
+      <aside className={`${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-60 ${
+        isRTL ? 'border-l lg:border-l' : 'border-r lg:border-r'
+      } border-gray-200 dark:border-border bg-gray-50/80 dark:bg-background h-full transition-transform duration-300 ease-in-out lg:transition-none`}>
+        <div className="h-full px-3 py-4 overflow-y-auto">
           <nav className="space-y-4 text-sm">
             <SidebarSections />
           </nav>
@@ -97,11 +110,23 @@ export default function DashboardLayout({
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-y-auto bg-white dark:bg-black px-10 py-8 scrollbar-hide">
-        <div className="mx-auto max-w-6xl space-y-6">
-          <header className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-4">
-            <div className="flex items-center gap-2">
-              <h1 className="text-[22px] font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
+      <main className="flex-1 overflow-y-auto bg-white dark:bg-background px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8 scrollbar-hide">
+        <div className="mx-auto max-w-6xl space-y-4 sm:space-y-6">
+          <header className="flex items-center justify-between border-b border-gray-200 dark:border-border pb-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Mobile menu button */}
+              <button
+                type="button"
+                className="lg:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-muted-foreground dark:hover:text-foreground hover:bg-gray-100 dark:hover:bg-accent"
+                onClick={() => setSidebarOpen(true)}
+              >
+                <span className="sr-only">Open sidebar</span>
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+              
+              <h1 className="text-lg sm:text-xl lg:text-[22px] font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
                 {title}
               </h1>
             </div>
@@ -154,19 +179,19 @@ function SidebarSections() {
           className={[
             "flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors",
             isInSettingsSection
-              ? "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-l-4 border-l-[#6366F1] pl-2"
-              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-gray-100 border-l-4 border-l-transparent pl-2",
+              ? "bg-gray-200 dark:bg-accent text-gray-900 dark:text-foreground font-semibold border-l-4 border-l-primary pl-2"
+              : "text-gray-600 dark:text-muted-foreground hover:bg-gray-100 dark:hover:bg-accent/50 hover:text-gray-900 dark:hover:text-foreground border-l-4 border-l-transparent pl-2",
           ].join(" ")}
         >
           <span className="flex items-center gap-2">
-            <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500">
+            <span className="flex h-4 w-4 items-center justify-center text-gray-400 dark:text-muted-foreground">
               <Settings className="h-4 w-4" />
             </span>
             <span>{t("nav.settings")}</span>
           </span>
           <span
             className={[
-              "flex h-4 w-4 items-center justify-center text-gray-400 dark:text-gray-500 transition-transform",
+              "flex h-4 w-4 items-center justify-center text-gray-400 dark:text-muted-foreground transition-transform",
               isSettingsOpen ? "rotate-0" : "-rotate-90",
             ].join(" ")}
           >
@@ -261,35 +286,37 @@ function DefaultActivityContent() {
   };
 
   const renderMetricDialog = (title: string, onClose: () => void) => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/40 backdrop-blur-sm">
-      <div className="relative w-[900px] max-w-[95vw] rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-black shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-        <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6 py-4 
-        ">
-          <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-background/40 backdrop-blur-sm p-4">
+      <div className="relative w-full max-w-[95vw] sm:max-w-[600px] lg:max-w-[900px] rounded-2xl border border-gray-100 dark:border-border bg-white dark:bg-card shadow-[0_18px_45px_rgba(15,23,42,0.08)] max-h-[90vh] overflow-hidden">
+        <div className="flex items-center justify-between border-b border-gray-200 dark:border-border px-4 sm:px-6 py-3 sm:py-4">
+          <div className="text-sm sm:text-base font-medium text-gray-800 dark:text-card-foreground truncate pr-4">
             {title}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsCreditMenuOpen((open) => !open)}
-                className="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 px-3 py-1 text-[11px] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-border bg-gray-50 dark:bg-secondary px-2 sm:px-3 py-1 text-[10px] sm:text-[11px] text-gray-600 dark:text-secondary-foreground hover:bg-gray-100 dark:hover:bg-accent"
               >
-                <span>
+                <span className="hidden sm:inline">
                   {creditView === "credits" ? t("dashboard.openRouterCredits") : t("dashboard.usd")}
+                </span>
+                <span className="sm:hidden">
+                  {creditView === "credits" ? t("hardcodedStrings.credits") : t("hardcodedStrings.usd")}
                 </span>
                 <ChevronDown className="h-3 w-3" />
               </button>
 
               {isCreditMenuOpen && (
-                <div className="absolute right-0 z-50 mt-1 w-40 overflow-hidden rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-black py-1 text-[11px] shadow-lg">
+                <div className="absolute right-0 z-50 mt-1 w-32 sm:w-40 overflow-hidden rounded-xl border border-gray-100 dark:border-border bg-white dark:bg-popover py-1 text-[10px] sm:text-[11px] shadow-lg">
                   <button
                     type="button"
                     onClick={() => {
                       setCreditView("credits");
                       setIsCreditMenuOpen(false);
                     }}
-                    className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-popover-foreground hover:bg-gray-50 dark:hover:bg-accent"
                   >
                     {t("dashboard.openRouterCredits")}
                   </button>
@@ -299,7 +326,7 @@ function DefaultActivityContent() {
                       setCreditView("usd");
                       setIsCreditMenuOpen(false);
                     }}
-                    className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    className="block w-full px-3 py-1.5 text-left text-gray-700 dark:text-popover-foreground hover:bg-gray-50 dark:hover:bg-accent"
                   >
                     {t("dashboard.usd")}
                   </button>
@@ -309,21 +336,21 @@ function DefaultActivityContent() {
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-full text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-full text-gray-400 dark:text-muted-foreground hover:bg-gray-100 dark:hover:bg-accent hover:text-gray-600 dark:hover:text-foreground"
             >
               <span className="text-[13px] leading-none">✕</span>
             </button>
           </div>
         </div>
 
-        <div className="px-8 pt-10 pb-6">
-          <div className="flex min-h-[260px] flex-col items-center justify-center rounded-xl border border-dashed border-gray-200 dark:border-gray-600 bg-gray-50/60 dark:bg-gray-700/40">
-            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 text-gray-300 dark:text-gray-500">
+        <div className="px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-4 sm:pb-6 overflow-y-auto">
+          <div className="flex min-h-[200px] sm:min-h-[260px] flex-col items-center justify-center rounded-xl border border-dashed border-gray-200 dark:border-border bg-gray-50/60 dark:bg-muted/40">
+            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-muted text-gray-300 dark:text-muted-foreground">
               <div className="flex h-4 w-4 items-end gap-0.5">
-                <span className="h-2 w-1 rounded-full bg-gray-300 dark:bg-gray-500" />
-                <span className="h-3 w-1 rounded-full bg-gray-300 dark:bg-gray-500" />
-                <span className="h-4 w-1 rounded-full bg-gray-300 dark:bg-gray-500" />
-                <span className="h-3 w-1 rounded-full bg-gray-300 dark:bg-gray-500" />
+                <span className="h-2 w-1 rounded-full bg-gray-300 dark:bg-muted-foreground" />
+                <span className="h-3 w-1 rounded-full bg-gray-300 dark:bg-muted-foreground" />
+                <span className="h-4 w-1 rounded-full bg-gray-300 dark:bg-muted-foreground" />
+                <span className="h-3 w-1 rounded-full bg-gray-300 dark:bg-muted-foreground" />
               </div>
             </div>
             <p className="text-[13px] text-gray-500 dark:text-gray-400">
@@ -331,9 +358,9 @@ function DefaultActivityContent() {
             </p>
           </div>
 
-          <div className="mt-5 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/40">
-            <div className="grid grid-cols-5 gap-px bg-transparent px-2 py-2 text-[11px] font-medium text-gray-500 dark:text-gray-400">
-              <div className="rounded-full bg-white dark:bg-gray-700">
+          <div className="mt-4 sm:mt-5 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/40">
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-px bg-transparent px-1 sm:px-2 py-1 sm:py-2 text-[10px] sm:text-[11px] font-medium text-gray-500 dark:text-muted-foreground">
+              <div className="rounded-full bg-white dark:bg-card">
                 {renderSortLabel(t("dashboard.model"), "model")}
               </div>
               <div className="rounded-full bg-white dark:bg-gray-700">
@@ -349,7 +376,7 @@ function DefaultActivityContent() {
                 {renderSortLabel(t("dashboard.sumPrice"), "sum")}
               </div>
             </div>
-            <div className="px-4 py-6 text-center text-[12px] text-gray-400 dark:text-gray-500">
+            <div className="px-2 sm:px-4 py-4 sm:py-6 text-center text-[11px] sm:text-[12px] text-gray-400 dark:text-gray-500">
               {t("dashboard.noRows")}
             </div>
           </div>
@@ -427,7 +454,7 @@ function DefaultActivityContent() {
             onValueChange={(value: "model" | "api_key") => setGroupBy(value)}
           >
             <SelectTrigger className="h-8 min-w-[120px] rounded-full border border-gray-200 bg-white px-3 text-[13px] text-gray-600 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-200 dark:hover:bg-gray-700">
-              <SelectValue placeholder="By Model" />
+              <SelectValue placeholder={t("hardcodedStrings.byModel")} />
             </SelectTrigger>
             <SelectContent align="start" className="w-[140px] rounded-2xl border border-gray-200 bg-white p-0 text-[13px] shadow-lg dark:border-gray-700 dark:bg-black">
               <SelectItem value="model">{t("dashboard.byModel")}</SelectItem>
@@ -545,7 +572,7 @@ function DefaultActivityContent() {
 
       {/* KPI cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="border-gray-200 dark:border-gray-700 bg-white dark:bg-black shadow-sm/10 rounded-2xl p-2 transition-shadow hover:shadow-lg dark:hover:shadow-[0_18px_45px_rgba(15,23,42,0.45)]">
+        <Card className="border-gray-200 dark:border-border bg-white dark:bg-card shadow-sm/10 rounded-2xl p-2 transition-shadow hover:shadow-lg dark:hover:shadow-[0_18px_45px_rgba(15,23,42,0.45)]">
           <CardHeader className="flex flex-row items-center justify-between px-5 pt-1 pb-0">
             <CardTitle className="text-[11px] font-medium text-gray-500 dark:text-gray-400 tracking-wide">
               {t("dashboard.spend")}
