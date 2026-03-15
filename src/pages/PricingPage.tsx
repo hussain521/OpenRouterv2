@@ -22,33 +22,10 @@ import {
 } from "@/components/ui/accordion"
 import { Check, X } from "lucide-react"
 
-const features = [
-  { name: "Platform Fees", free: "N/A", pay: "5.5%", enterprise: "Bulk discounts available" },
-  { name: "Models", free: "25+ free models", pay: "300+ models", enterprise: "300+ models" },
-  { name: "Providers", free: "4 free providers", pay: "60+ providers", enterprise: "60+ providers" },
-  { name: "Chat and API Access", free: true, pay: true, enterprise: true },
-  { name: "Activity Logs & Export", free: true, pay: true, enterprise: true },
-  { name: "Auto-routing vendor selections", free: false, pay: true, enterprise: true },
-  { name: "Budgets & Spend Controls", free: false, pay: true, enterprise: true },
-  { name: "Prompt Caching", free: false, pay: true, enterprise: true },
-  { name: "Management API key", free: false, pay: true, enterprise: true },
-  { name: "Admin Controls", free: false, pay: true, enterprise: true },
-  { name: "Data Policy-Based Routing", free: false, pay: true, enterprise: true },
-  { name: "Managed Policy Enforcement", free: false, pay: false, enterprise: true },
-  { name: "Provider Data Explorer", free: false, pay: false, enterprise: true },
-  { name: "SSO/SAML", free: false, pay: false, enterprise: true },
-  { name: "Contractual SLAs", free: false, pay: false, enterprise: true },
-  { name: "Payment options", free: false, pay: "Credit card, crypto & more", enterprise: "Invoicing options" },
-  { name: "BYOK Limits", free: false, pay: "1M free reqs/month", enterprise: "5M free reqs/month" },
-  { name: "Rate limits", free: "50 reqs/day", pay: "High global limits", enterprise: "Optional dedicated limits" },
-  { name: "Token Pricing", free: "Free models only", pay: "No minimum spend", enterprise: "Volume commitments" },
-  { name: "Support", free: "Community Support", pay: "Email Support", enterprise: "Slack Channel Support" },
-]
-
 export default function PricingPage() {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  usePageTitle(t("pricing.title", "Pricing"));
+  usePageTitle(t("pricing.title"));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,55 +36,72 @@ export default function PricingPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const plans = [
+  // Features array with translation keys
+  const features = [
     {
-      name: t("pricing.plans.indie.name", "Indie Hacker"),
-      price: t("pricing.plans.indie.price", "$9"),
-      period: t("pricing.plans.indie.period", "/month"),
-      description: t("pricing.plans.indie.description", "Perfect for individual developers and small projects"),
-      features: [
-        t("pricing.plans.indie.features.requests", "10,000 requests/month"),
-        t("pricing.plans.indie.features.models", "Access to 50+ AI models"),
-        t("pricing.plans.indie.features.support", "Community support"),
-        t("pricing.plans.indie.features.analytics", "Basic analytics"),
-        t("pricing.plans.indie.features.api", "API access")
-      ],
-      popular: false
+      nameKey: "pricing.features.platformFees",
+      free: t("pricing.plans.freeFeatures.platformFees"),
+      pay: t("pricing.plans.payAsYouGoFeatures.platformFees"),
+      enterprise: t("pricing.plans.enterpriseFeatures.platformFees")
     },
     {
-      name: t("pricing.plans.startup.name", "AI Native Startup"),
-      price: t("pricing.plans.startup.price", "$49"),
-      period: t("pricing.plans.startup.period", "/month"),
-      description: t("pricing.plans.startup.description", "Ideal for AI-first startups and growing teams"),
-      features: [
-        t("pricing.plans.startup.features.requests", "100,000 requests/month"),
-        t("pricing.plans.startup.features.models", "Access to all AI models"),
-        t("pricing.plans.startup.features.support", "Priority support"),
-        t("pricing.plans.startup.features.analytics", "Advanced analytics"),
-        t("pricing.plans.startup.features.team", "Team collaboration"),
-        t("pricing.plans.startup.features.webhooks", "Webhooks & integrations")
-      ],
-      popular: true
+      nameKey: "pricing.features.models",
+      free: t("pricing.plans.freeFeatures.models"),
+      pay: t("pricing.plans.payAsYouGoFeatures.models"),
+      enterprise: t("pricing.plans.enterpriseFeatures.models")
     },
     {
-      name: t("pricing.plans.enterprise.name", "Enterprise"),
-      price: t("pricing.plans.enterprise.price", "Custom"),
-      period: "",
-      description: t("pricing.plans.enterprise.description", "For large organizations with custom requirements"),
-      features: [
-        t("pricing.plans.enterprise.features.requests", "Unlimited requests"),
-        t("pricing.plans.enterprise.features.models", "All models + custom deployments"),
-        t("pricing.plans.enterprise.features.support", "Dedicated support"),
-        t("pricing.plans.enterprise.features.sla", "99.9% SLA guarantee"),
-        t("pricing.plans.enterprise.features.security", "Enhanced security"),
-        t("pricing.plans.enterprise.features.onboarding", "Custom onboarding")
-      ],
-      popular: false
-    }
+      nameKey: "pricing.features.providers",
+      free: t("pricing.plans.freeFeatures.providers"),
+      pay: t("pricing.plans.payAsYouGoFeatures.providers"),
+      enterprise: t("pricing.plans.enterpriseFeatures.providers")
+    },
+    { nameKey: "pricing.features.chatApiAccess", free: true, pay: true, enterprise: true },
+    { nameKey: "pricing.features.activityLogsExport", free: true, pay: true, enterprise: true },
+    { nameKey: "pricing.features.autoRoutingVendor", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.budgetsSpendControls", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.promptCaching", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.managementApiKey", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.adminControls", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.dataPolicyRouting", free: false, pay: true, enterprise: true },
+    { nameKey: "pricing.features.managedPolicyEnforcement", free: false, pay: false, enterprise: true },
+    { nameKey: "pricing.features.providerDataExplorer", free: false, pay: false, enterprise: true },
+    { nameKey: "pricing.features.ssoSaml", free: false, pay: false, enterprise: true },
+    { nameKey: "pricing.features.contractualSlas", free: false, pay: false, enterprise: true },
+    {
+      nameKey: "pricing.features.paymentOptions",
+      free: false,
+      pay: t("pricing.plans.payAsYouGoFeatures.paymentOptions"),
+      enterprise: t("pricing.plans.enterpriseFeatures.paymentOptions")
+    },
+    {
+      nameKey: "pricing.features.byokLimits",
+      free: false,
+      pay: t("pricing.plans.payAsYouGoFeatures.byokLimits"),
+      enterprise: t("pricing.plans.enterpriseFeatures.byokLimits")
+    },
+    {
+      nameKey: "pricing.features.rateLimits",
+      free: t("pricing.plans.freeFeatures.rateLimits"),
+      pay: t("pricing.plans.payAsYouGoFeatures.rateLimits"),
+      enterprise: t("pricing.plans.enterpriseFeatures.rateLimits")
+    },
+    {
+      nameKey: "pricing.features.tokenPricing",
+      free: t("pricing.plans.freeFeatures.tokenPricing"),
+      pay: t("pricing.plans.payAsYouGoFeatures.tokenPricing"),
+      enterprise: t("pricing.plans.enterpriseFeatures.tokenPricing")
+    },
+    {
+      nameKey: "pricing.features.support",
+      free: t("pricing.plans.freeFeatures.support"),
+      pay: t("pricing.plans.payAsYouGoFeatures.support"),
+      enterprise: t("pricing.plans.enterpriseFeatures.support")
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-200">
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
           isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100"
@@ -119,143 +113,407 @@ export default function PricingPage() {
         <Navbar />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+        {/* Title Section */}
+        <div className="text-center mb-8 lg:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            {t("pricing.title")}
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
+            {t("pricing.subtitle")}
+          </p>
 
-      {/* Title */}
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold">Pricing</h1>
-        <p className="text-muted-foreground mt-2">
-          Plans for indie hackers, AI native startups, and enterprises
-        </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+            <Button
+              className="bg-[#6467f2] hover:bg-[#5558e6] text-white transition-all duration-200"
+              size="lg"
+            >
+              {t("pricing.getStarted")}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-[#6467f2] text-[#6467f2] hover:bg-[#6467f2] hover:text-white dark:border-[#6467f2] dark:text-[#6467f2] transition-all duration-200"
+            >
+              {t("pricing.talkToSales")}
+            </Button>
+          </div>
+        </div>
 
-        <div className="flex justify-center gap-4 mt-6">
+        {/* Responsive Table Section */}
+        <div className="bg-white dark:bg-black rounded-xl overflow-hidden mb-8">
+          {/* Mobile Card Layout */}
+          <div className="block lg:hidden">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+              {/* Free Plan */}
+              <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6 bg-gray-50 dark:bg-black">
+                <h3 className="text-xl font-semibold text-center mb-4 text-gray-900 dark:text-white">
+                  {t("pricing.plans.free")}
+                </h3>
+                <div className="space-y-3">
+                  {features.map((feature, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0"
+                    >
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {t(feature.nameKey)}
+                      </span>
+                      <div className="flex items-center">
+                        {typeof feature.free === "boolean" ? (
+                          feature.free ? (
+                            <Check className="w-5 h-5 text-green-600" />
+                          ) : (
+                            <X className="w-5 h-5 text-gray-400" />
+                          )
+                        ) : (
+                          <span className="text-sm text-gray-600 dark:text-gray-400 text-right max-w-[120px]">
+                            {feature.free}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pay-as-you-go Plan */}
+              <div className="border-2 border-[#6467f2] rounded-lg p-6 bg-blue-50 dark:bg-black relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#6467f2] text-white px-4 py-1 rounded-full text-sm font-medium">
+                  {t("common.popular", "Popular")}
+                </div>
+                <h3 className="text-xl font-semibold text-center mb-4 text-gray-900 dark:text-white">
+                  {t("pricing.plans.payAsYouGo")}
+                </h3>
+                <div className="space-y-3">
+                  {features.map((feature, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0"
+                    >
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {t(feature.nameKey)}
+                      </span>
+                      <div className="flex items-center">
+                        {typeof feature.pay === "boolean" ? (
+                          feature.pay ? (
+                            <Check className="w-5 h-5 text-green-600" />
+                          ) : (
+                            <X className="w-5 h-5 text-gray-400" />
+                          )
+                        ) : (
+                          <span className="text-sm text-gray-600 dark:text-gray-400 text-right max-w-[120px]">
+                            {feature.pay}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Enterprise Plan */}
+              <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6 bg-gray-50 dark:bg-black">
+                <h3 className="text-xl font-semibold text-center mb-4 text-gray-900 dark:text-white">
+                  {t("pricing.plans.enterprise")}
+                </h3>
+                <div className="space-y-3">
+                  {features.map((feature, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0"
+                    >
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {t(feature.nameKey)}
+                      </span>
+                      <div className="flex items-center">
+                        {typeof feature.enterprise === "boolean" ? (
+                          feature.enterprise ? (
+                            <Check className="w-5 h-5 text-green-600" />
+                          ) : (
+                            <X className="w-5 h-5 text-gray-400" />
+                          )
+                        ) : (
+                          <span className="text-sm text-gray-600 dark:text-gray-400 text-right max-w-[120px]">
+                            {feature.enterprise}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Table Layout */}
+          <div className="hidden lg:block overflow-x-auto">
+            <Table className="">
+              <TableHeader>
+                <TableRow className="  bg-gray-50 dark:bg-black h-[60px]">
+                  <TableHead className="w-[300px] font-semibold text-gray-900 dark:text-gray-100"></TableHead>
+                  <TableHead className="text-center font-semibold text-gray-900 dark:text-gray-100">
+                    {t("pricing.plans.free")}
+                  </TableHead>
+                  <TableHead className="text-center bg-blue-50 dark:bg-black font-semibold text-gray-900 dark:text-gray-100 relative">
+                    {/* <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#6467f2] text-white px-3 py-1 rounded-full text-xs font-medium">
+                      {t("common.popular", "Popular")}
+                    </div> */}
+                    {t("pricing.plans.payAsYouGo")}
+                  </TableHead>
+                  <TableHead className="text-center font-semibold text-gray-900 dark:text-gray-100">
+                    {t("pricing.plans.enterprise")}
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody>
+                {features.map((feature, i) => (
+                  <TableRow
+                    key={i}
+                    className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                  >
+                    <TableCell className="font-medium text-gray-900 dark:text-gray-100 py-4">
+                      {t(feature.nameKey)}
+                    </TableCell>
+
+                    <TableCell className="text-center py-4">
+                      {typeof feature.free === "boolean" ? (
+                        feature.free ? (
+                          <Check className="mx-auto text-green-600 w-5 h-5" />
+                        ) : (
+                          <X className="mx-auto text-gray-400 w-5 h-5" />
+                        )
+                      ) : (
+                        <span className="text-gray-600 dark:text-gray-400">
+                          {feature.free}
+                        </span>
+                      )}
+                    </TableCell>
+
+                    <TableCell className="text-center bg-blue-50 dark:bg-black py-4">
+                      {typeof feature.pay === "boolean" ? (
+                        feature.pay ? (
+                          <Check className="mx-auto text-green-600 w-5 h-5" />
+                        ) : (
+                          <X className="mx-auto text-gray-400 w-5 h-5" />
+                        )
+                      ) : (
+                        <span className="text-gray-600 dark:text-gray-400">
+                          {feature.pay}
+                        </span>
+                      )}
+                    </TableCell>
+
+                    <TableCell className="text-center py-4">
+                      {typeof feature.enterprise === "boolean" ? (
+                        feature.enterprise ? (
+                          <Check className="mx-auto text-green-600 w-5 h-5" />
+                        ) : (
+                          <X className="mx-auto text-gray-400 w-5 h-5" />
+                        )
+                      ) : (
+                        <span className="text-gray-600 dark:text-gray-400">
+                          {feature.enterprise}
+                        </span>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-16 lg:mb-20">
           <Button
-            style={{
-              backgroundColor: '#6467f2',
-              boxShadow: 'none'
-            }}
+            variant="outline"
+            size="lg"
+            className="border-[#6467f2] text-[#6467f2] hover:bg-[#6467f2] hover:text-white dark:border-[#6467f2] dark:text-[#6467f2] transition-all duration-200"
           >
-            Get Started
+            {t("pricing.getStartedForFree")}
           </Button>
-          <Button variant="outline">Talk To Sales</Button>
+          <Button
+            size="lg"
+            className="bg-[#6467f2] hover:bg-[#5558e6] text-white transition-all duration-200"
+          >
+            {t("pricing.buyCredits")}
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-[#6467f2] text-[#6467f2] hover:bg-[#6467f2] hover:text-white dark:border-[#6467f2] dark:text-[#6467f2] transition-all duration-200"
+          >
+            {t("pricing.contactSales")}
+          </Button>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+            {t("pricing.faq.title")}
+          </h2>
+
+          <div className="space-y-8">
+            {[
+              {
+                category: "general",
+                questions: [
+                  "tokenBilling",
+                  "markupPricing",
+                  "billingStructure",
+                  "creditExpiration",
+                  "autoTopUp",
+                ],
+              },
+              {
+                category: "apiLimits",
+                questions: [
+                  "apiLimits",
+                  "tokenLimits",
+                  "concurrentRequests",
+                  "apiCompatibility",
+                  "apiVersioning",
+                ],
+              },
+              {
+                category: "modelsAccess",
+                questions: [
+                  "modelAccess",
+                  "customModels",
+                  "modelVersioning",
+                  "modelUpdates",
+                  "experimentalFeatures",
+                ],
+              },
+              {
+                category: "securityPrivacy",
+                questions: [
+                  "dataPrivacy",
+                  "dataRetention",
+                  "securityAudits",
+                  "compliance",
+                  "dataProcessing",
+                ],
+              },
+              {
+                category: "enterpriseFeatures",
+                questions: [
+                  "enterpriseFeatures",
+                  "slaGuarantees",
+                  "bulkDiscounts",
+                  "regionalDeployment",
+                  "multiRegionSupport",
+                ],
+              },
+              {
+                category: "supportCommunity",
+                questions: [
+                  "supportChannels",
+                  "emergencySupport",
+                  "communitySupport",
+                  "featureRequests",
+                  "academicPricing",
+                ],
+              },
+              {
+                category: "technicalFeatures",
+                questions: [
+                  "promptCaching",
+                  "fallbackProviders",
+                  "websocketSupport",
+                  "batchProcessing",
+                  "loadBalancing",
+                ],
+              },
+              {
+                category: "optimizationCost",
+                questions: [
+                  "costOptimization",
+                  "costPrediction",
+                  "modelComparison",
+                  "customRouting",
+                  "usageAnalytics",
+                ],
+              },
+              {
+                category: "integrationTools",
+                questions: [
+                  "integrations",
+                  "developerTools",
+                  "webhookSupport",
+                  "apiKeyManagement",
+                  "testingEnvironment",
+                ],
+              },
+              {
+                category: "advancedFeatures",
+                questions: [
+                  "multipleOrgs",
+                  "dataExport",
+                  "backupRecovery",
+                  "performanceMonitoring",
+                  "scalability",
+                  "troubleshooting",
+                  "errorHandling",
+                  "partnerProgram",
+                  "migrationSupport",
+                  "customTraining",
+                ],
+              },
+            ].map((section, sectionIndex) => (
+              <div key={sectionIndex} className="space-y-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white pb-2">
+                  {t(`pricing.faq.categories.${section.category}`)}
+                </h3>
+                <Accordion type="single" collapsible className="space-y-2">
+                  {section.questions.map((questionKey, questionIndex) => (
+                    <AccordionItem
+                      key={questionIndex}
+                      value={`${sectionIndex}-${questionIndex}`}
+                      className="border border-gray-200 dark:border-gray-700 rounded-lg px-6 py-2 bg-white dark:bg-black shadow-sm"
+                    >
+                      <AccordionTrigger className="text-left text-gray-900 dark:text-gray-100 hover:text-[#6467f2] dark:hover:text-[#6467f2] transition-colors">
+                        {t(`pricing.faq.questions.${questionKey}.question`)}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600 dark:text-gray-300 pt-2">
+                        {t(`pricing.faq.questions.${questionKey}.answer`)}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call-to-Action Card */}
+        <div className="rounded-xl max-w-xl mx-auto transition-all duration-200 text-foreground p-6 md:p-16 text-center mt-16" style={{ border: '1px solid rgba(100, 103, 242, 0.3)', backgroundColor: 'rgba(100, 103, 242, 0.1)' }}>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+            {t("cta.title")}
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            {t("cta.subtitle")}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+            <Button
+              size="lg"
+              className="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-1 focus-visible:ring-ring gap-2 leading-6 text-white shadow hover:opacity-90 h-10 rounded-md px-8"
+              style={{ backgroundColor: '#6467f2' }}
+            >
+              {t("cta.signUpFree")}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-1 focus-visible:ring-ring gap-2 leading-6 bg-white text-gray-900 shadow hover:bg-gray-50 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 h-10 rounded-md px-8 border border-gray-200 dark:border-gray-200"
+            >
+              {t("cta.contactSales")}
+            </Button>
+          </div>
         </div>
       </div>
-
-      {/* Table */}
-      <div className="overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[300px]"></TableHead>
-              <TableHead className="text-center">Free</TableHead>
-              <TableHead className="text-center bg-muted">Pay-as-you-go</TableHead>
-              <TableHead className="text-center">Enterprise</TableHead>
-            </TableRow>
-          </TableHeader>
-
-          <TableBody>
-            {features.map((feature, i) => (
-              <TableRow key={i}>
-                <TableCell className="font-medium">{feature.name}</TableCell>
-
-                <TableCell className="text-center">
-                  {typeof feature.free === "boolean" ? (
-                    feature.free ? (
-                      <Check className="mx-auto text-green-600" />
-                    ) : (
-                      <X className="mx-auto text-muted-foreground" />
-                    )
-                  ) : (
-                    feature.free
-                  )}
-                </TableCell>
-
-                <TableCell className="text-center bg-muted">
-                  {typeof feature.pay === "boolean" ? (
-                    feature.pay ? (
-                      <Check className="mx-auto text-green-600" />
-                    ) : (
-                      <X className="mx-auto text-muted-foreground" />
-                    )
-                  ) : (
-                    feature.pay
-                  )}
-                </TableCell>
-
-                <TableCell className="text-center">
-                  {typeof feature.enterprise === "boolean" ? (
-                    feature.enterprise ? (
-                      <Check className="mx-auto text-green-600" />
-                    ) : (
-                      <X className="mx-auto text-muted-foreground" />
-                    )
-                  ) : (
-                    feature.enterprise
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-
-      {/* Buttons under table */}
-      <div className="flex justify-center gap-6 mt-8">
-        <Button
-          variant="outline"
-          style={{ color: '#6467f2' }}
-        >
-          Get Started For Free
-        </Button>
-        <Button
-          style={{
-            backgroundColor: '#6467f2',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
-          }}
-        >
-          Buy Credits
-        </Button>
-        <Button
-          variant="outline"
-          style={{ color: '#6467f2' }}
-        >
-          Contact Sales
-        </Button>
-      </div>
-
-      {/* FAQ */}
-      <div className="mt-20 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Frequently Asked Questions
-        </h2>
-
-        <Accordion type="single" collapsible >
-          <AccordionItem value="1" className="border border-gray-200 mb-1 p-1 dark:border-gray-700 rounded-lg">
-            <AccordionTrigger>How are tokens billed?</AccordionTrigger>
-            <AccordionContent>
-              Tokens are billed based on model usage and API calls.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="2" className="border border-gray-200 mb-1 p-1 dark:border-gray-700 rounded-lg">
-            <AccordionTrigger>Do you mark up provider pricing?</AccordionTrigger>
-            <AccordionContent>
-              Pricing depends on provider rates and usage tiers.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="3" className="border border-gray-200 mb-1 p-1 dark:border-gray-700 rounded-lg">
-            <AccordionTrigger>
-              How is billing structured for BYOK, Pay-As-You-Go vs Enterprise?
-            </AccordionTrigger>
-            <AccordionContent>
-              Enterprise plans offer volume pricing and custom agreements.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
-
-     </div>
 
       <Footer />
     </div>

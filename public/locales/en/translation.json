@@ -146,7 +146,8 @@
     "closeButton": "Close",
     "toggleMenu": "Toggle menu",
     "pagination": "pagination",
-    "aiProviderLogo": "AI Provider Logo"
+    "aiProviderLogo": "AI Provider Logo",
+    "popular": "Popular"
   },
   "footer": {
     "copyright": "© 2026 OpenRouter. All rights reserved.",
@@ -1562,5 +1563,314 @@
       },
       "noModelsFound": "No models found matching your criteria"
     }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Plans for indie hackers, AI native startups, and enterprises",
+    "getStarted": "Get Started",
+    "talkToSales": "Talk To Sales",
+    "getStartedForFree": "Get Started For Free",
+    "buyCredits": "Buy Credits",
+    "contactSales": "Contact Sales",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "categories": {
+        "general": "General Questions",
+        "apiLimits": "API & Limits",
+        "modelsAccess": "Models & Access",
+        "securityPrivacy": "Security & Privacy",
+        "enterpriseFeatures": "Enterprise Features",
+        "supportCommunity": "Support & Community",
+        "technicalFeatures": "Technical Features",
+        "optimizationCost": "Optimization & Cost",
+        "integrationTools": "Integration & Tools",
+        "advancedFeatures": "Advanced Features"
+      },
+      "questions": {
+        "tokenBilling": {
+          "question": "How are tokens billed?",
+          "answer": "Tokens are billed based on model usage and API calls."
+        },
+        "markupPricing": {
+          "question": "Do you mark up provider pricing?",
+          "answer": "Pricing depends on provider rates and usage tiers."
+        },
+        "billingStructure": {
+          "question": "How is billing structured for BYOK, Pay-As-You-Go vs Enterprise?",
+          "answer": "Enterprise plans offer volume pricing and custom agreements."
+        },
+        "apiLimits": {
+          "question": "What are the API rate limits for each plan?",
+          "answer": "Free plans have 50 requests/day, Pay-as-you-go has high global limits, and Enterprise has optional dedicated limits."
+        },
+        "modelAccess": {
+          "question": "Do I get access to all AI models?",
+          "answer": "Free plans include 25+ free models, while paid plans include access to 300+ models from 60+ providers."
+        },
+        "dataRetention": {
+          "question": "How long is my data retained?",
+          "answer": "Data retention periods vary by plan and can be configured in your privacy settings."
+        },
+        "supportChannels": {
+          "question": "What support channels are available?",
+          "answer": "Free users get community support, Pay-as-you-go gets email support, and Enterprise gets dedicated Slack channel support."
+        },
+        "apiCompatibility": {
+          "question": "Is OpenRouter compatible with OpenAI SDK?",
+          "answer": "Yes, OpenRouter is fully compatible with OpenAI SDK and works out of the box."
+        },
+        "creditExpiration": {
+          "question": "Do credits expire?",
+          "answer": "Credits don't expire and can be used with any model or provider in our network."
+        },
+        "customModels": {
+          "question": "Can I use custom models?",
+          "answer": "Enterprise plans support custom model deployments and fine-tuned models."
+        },
+        "autoTopUp": {
+          "question": "How does auto top-up work?",
+          "answer": "Auto top-up automatically adds credits when your balance drops below a threshold you set."
+        },
+        "dataPrivacy": {
+          "question": "How is my data protected?",
+          "answer": "We implement enterprise-grade security with configurable data policies and privacy controls."
+        },
+        "multipleOrgs": {
+          "question": "Can I have multiple organizations?",
+          "answer": "Yes, you can create and manage multiple organizations for different teams or projects."
+        },
+        "bulkDiscounts": {
+          "question": "Are there bulk discounts available?",
+          "answer": "Enterprise plans offer volume pricing and bulk discounts based on usage commitments."
+        },
+        "slaGuarantees": {
+          "question": "Do you offer SLA guarantees?",
+          "answer": "Enterprise plans include 99.9% SLA guarantees with contractual commitments."
+        },
+        "apiKeyManagement": {
+          "question": "How do I manage API keys?",
+          "answer": "You can create, rotate, and manage API keys with credit limits and expiration dates."
+        },
+        "promptCaching": {
+          "question": "What is prompt caching?",
+          "answer": "Prompt caching reduces costs and latency by caching frequently used prompts and responses."
+        },
+        "fallbackProviders": {
+          "question": "What happens if a provider goes down?",
+          "answer": "OpenRouter automatically falls back to other providers to ensure high availability."
+        },
+        "websocketSupport": {
+          "question": "Do you support WebSocket streaming?",
+          "answer": "Yes, we support real-time streaming for chat completions and other interactive use cases."
+        },
+        "batchProcessing": {
+          "question": "Can I process requests in batches?",
+          "answer": "Yes, we support batch processing for efficient handling of large volumes of requests."
+        },
+        "modelComparison": {
+          "question": "How do I compare different models?",
+          "answer": "Use our model comparison tool to evaluate performance, pricing, and capabilities across models."
+        },
+        "costOptimization": {
+          "question": "How can I optimize costs?",
+          "answer": "Use auto-routing, prompt caching, and our cost monitoring tools to optimize your spending."
+        },
+        "enterpriseFeatures": {
+          "question": "What enterprise features are included?",
+          "answer": "Enterprise includes SSO/SAML, dedicated support, custom SLAs, and advanced security controls."
+        },
+        "dataExport": {
+          "question": "Can I export my usage data?",
+          "answer": "Yes, you can export activity logs and usage data in various formats including CSV and JSON."
+        },
+        "regionalDeployment": {
+          "question": "Do you offer regional deployments?",
+          "answer": "Enterprise customers can request regional deployments for data residency requirements."
+        },
+        "modelVersioning": {
+          "question": "How do you handle model versioning?",
+          "answer": "We support multiple versions of models and provide migration paths for deprecated versions."
+        },
+        "troubleshooting": {
+          "question": "How do I troubleshoot API issues?",
+          "answer": "Use our comprehensive logs, error codes documentation, and support channels for troubleshooting."
+        },
+        "scalability": {
+          "question": "How does OpenRouter scale with my needs?",
+          "answer": "Our infrastructure auto-scales to handle traffic spikes and growing usage patterns."
+        },
+        "integrations": {
+          "question": "What integrations do you support?",
+          "answer": "We integrate with popular development tools, monitoring platforms, and cloud services."
+        },
+        "compliance": {
+          "question": "What compliance standards do you meet?",
+          "answer": "We comply with SOC 2, GDPR, CCPA, and other industry-standard compliance frameworks."
+        },
+        "backupRecovery": {
+          "question": "What backup and recovery options exist?",
+          "answer": "We maintain automated backups and offer point-in-time recovery for enterprise customers."
+        },
+        "performanceMonitoring": {
+          "question": "How can I monitor API performance?",
+          "answer": "Use our analytics dashboard and integrate with observability platforms for performance monitoring."
+        },
+        "customRouting": {
+          "question": "Can I customize model routing?",
+          "answer": "Yes, you can configure custom routing rules based on cost, performance, or data policies."
+        },
+        "tokenLimits": {
+          "question": "Are there token limits per request?",
+          "answer": "Token limits vary by model. Check our documentation for specific limits and capabilities."
+        },
+        "experimentalFeatures": {
+          "question": "Do you offer experimental features?",
+          "answer": "Yes, we regularly release experimental features for testing new capabilities and models."
+        },
+        "partnerProgram": {
+          "question": "Do you have a partner program?",
+          "answer": "Yes, we offer partnership opportunities for resellers, integrators, and technology partners."
+        },
+        "academicPricing": {
+          "question": "Is there academic or non-profit pricing?",
+          "answer": "We offer special pricing for educational institutions and qualifying non-profit organizations."
+        },
+        "migrationSupport": {
+          "question": "Do you help with migration from other platforms?",
+          "answer": "Yes, our team provides migration assistance and best practices for switching from other AI platforms."
+        },
+        "customTraining": {
+          "question": "Can you help with custom model training?",
+          "answer": "Enterprise customers can work with our team for custom model training and fine-tuning services."
+        },
+        "multiRegionSupport": {
+          "question": "Do you support multi-region deployments?",
+          "answer": "Yes, we offer multi-region support for global applications requiring low latency access."
+        },
+        "errorHandling": {
+          "question": "How should I handle API errors?",
+          "answer": "Implement exponential backoff, check error codes, and use our retry mechanisms for robust error handling."
+        },
+        "webhookSupport": {
+          "question": "Do you support webhooks for notifications?",
+          "answer": "Yes, we support webhooks for usage alerts, billing notifications, and system status updates."
+        },
+        "loadBalancing": {
+          "question": "How does load balancing work?",
+          "answer": "We automatically distribute requests across providers and regions for optimal performance and reliability."
+        },
+        "securityAudits": {
+          "question": "Do you conduct security audits?",
+          "answer": "We undergo regular security audits and penetration testing to maintain the highest security standards."
+        },
+        "apiVersioning": {
+          "question": "How do you handle API versioning?",
+          "answer": "We use semantic versioning and provide backward compatibility with clear deprecation timelines."
+        },
+        "developerTools": {
+          "question": "What developer tools do you provide?",
+          "answer": "We offer SDKs, CLI tools, testing frameworks, and comprehensive documentation for developers."
+        },
+        "usageAnalytics": {
+          "question": "What usage analytics are available?",
+          "answer": "Get detailed insights into usage patterns, costs, performance metrics, and model effectiveness."
+        },
+        "communitySupport": {
+          "question": "Is there a developer community?",
+          "answer": "Yes, join our Discord community for discussions, support, and to share experiences with other developers."
+        },
+        "featureRequests": {
+          "question": "How can I request new features?",
+          "answer": "Submit feature requests through our feedback channels or community forums for consideration."
+        },
+        "emergencySupport": {
+          "question": "Do you offer emergency support?",
+          "answer": "Enterprise customers receive priority emergency support with guaranteed response times."
+        },
+        "dataProcessing": {
+          "question": "How do you process sensitive data?",
+          "answer": "We offer configurable data processing options including on-premises and private cloud deployments."
+        },
+        "modelUpdates": {
+          "question": "How often are models updated?",
+          "answer": "Models are updated regularly as providers release new versions. We notify users of significant changes."
+        },
+        "costPrediction": {
+          "question": "Can I predict usage costs?",
+          "answer": "Use our cost calculator and budgeting tools to predict and control usage costs effectively."
+        },
+        "concurrentRequests": {
+          "question": "What are the concurrent request limits?",
+          "answer": "Concurrent request limits scale with your plan and can be increased for enterprise customers."
+        },
+        "testingEnvironment": {
+          "question": "Do you provide testing environments?",
+          "answer": "Yes, we offer sandbox environments for testing and development without affecting production usage."
+        }
+      }
+    },
+    "features": {
+      "platformFees": "Platform Fees",
+      "models": "Models",
+      "providers": "Providers",
+      "chatApiAccess": "Chat and API Access",
+      "activityLogsExport": "Activity Logs & Export",
+      "autoRoutingVendor": "Auto-routing vendor selections",
+      "budgetsSpendControls": "Budgets & Spend Controls",
+      "promptCaching": "Prompt Caching",
+      "managementApiKey": "Management API key",
+      "adminControls": "Admin Controls",
+      "dataPolicyRouting": "Data Policy-Based Routing",
+      "managedPolicyEnforcement": "Managed Policy Enforcement",
+      "providerDataExplorer": "Provider Data Explorer",
+      "ssoSaml": "SSO/SAML",
+      "contractualSlas": "Contractual SLAs",
+      "paymentOptions": "Payment options",
+      "byokLimits": "BYOK Limits",
+      "rateLimits": "Rate limits",
+      "tokenPricing": "Token Pricing",
+      "support": "Support"
+    },
+    "plans": {
+      "free": "Free",
+      "payAsYouGo": "Pay-as-you-go",
+      "enterprise": "Enterprise",
+      "freeFeatures": {
+        "platformFees": "N/A",
+        "models": "25+ free models",
+        "providers": "4 free providers",
+        "paymentOptions": false,
+        "byokLimits": false,
+        "rateLimits": "50 reqs/day",
+        "tokenPricing": "Free models only",
+        "support": "Community Support"
+      },
+      "payAsYouGoFeatures": {
+        "platformFees": "5.5%",
+        "models": "300+ models",
+        "providers": "60+ providers",
+        "paymentOptions": "Credit card, crypto & more",
+        "byokLimits": "1M free reqs/month",
+        "rateLimits": "High global limits",
+        "tokenPricing": "No minimum spend",
+        "support": "Email Support"
+      },
+      "enterpriseFeatures": {
+        "platformFees": "Bulk discounts available",
+        "models": "300+ models",
+        "providers": "60+ providers",
+        "paymentOptions": "Invoicing options",
+        "byokLimits": "5M free reqs/month",
+        "rateLimits": "Optional dedicated limits",
+        "tokenPricing": "Volume commitments",
+        "support": "Slack Channel Support"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready To Get Started?",
+    "subtitle": "Join thousands of developers building with OpenRouter",
+    "signUpFree": "Sign Up For Free",
+    "contactSales": "Contact Sales"
   }
 }
