@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -22,8 +23,22 @@ export default function Footer() {
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.chat")}</li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.rankings")}</li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.models")}</li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.providers")}</li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.pricing")}</li>
+              <li>
+                <Link
+                  to="/providers"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  {t("footer.product.providers")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/pricing"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  {t("footer.product.pricing")}
+                </Link>
+              </li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.product.enterprise")}</li>
             </ul>
           </div>
@@ -32,19 +47,45 @@ export default function Footer() {
           <div className="min-w-0">
             <h3 className="font-semibold mb-3 sm:mb-4 text-gray-900 dark:text-foreground">{t("footer.company.title")}</h3>
             <ul className="space-y-2 sm:space-y-3 text-gray-600 dark:text-muted-foreground">
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.about")}</li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.announcements")}</li>
-              <li className="flex items-center gap-2 hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">
-                <span className="truncate">{t("footer.company.careers")}</span>
-                <span className="text-xs bg-indigo-100 dark:bg-primary/20 text-indigo-600 dark:text-primary px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">
-                  {t("footer.company.hiring")}
-                </span>
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  {t("footer.company.about")}
+                </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.privacy")}</li>
+              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.announcements")}</li>
+              <li>
+                <Link
+                  to="/careers"
+                  className="flex items-center gap-2 hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  <span className="truncate">{t("footer.company.careers")}</span>
+                  <span className="text-xs bg-indigo-100 dark:bg-primary/20 text-indigo-600 dark:text-primary px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">
+                    {t("footer.company.hiring")}
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  {t("footer.company.privacy")}
+                </Link>
+              </li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">
                 {t("footer.company.termsOfService")}
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.support")}</li>
+              <li>
+                <Link
+                  to="/support"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors"
+                >
+                  {t("footer.company.support")}
+                </Link>
+              </li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.stateOfAI")}</li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors">{t("footer.company.worksWithOR")}</li>
             </ul>

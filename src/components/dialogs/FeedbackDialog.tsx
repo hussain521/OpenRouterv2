@@ -40,11 +40,11 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
           />
         </DialogBody>
 
-        <DialogFooter className="mt-4 flex justify-end gap-2">
+        <DialogFooter className="mt-4 flex flex-col sm:flex-row sm:justify-end gap-2">
           <button
             type="button"
             onClick={() => onOpenChange(false)}
-            className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-[12px] font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 sm:py-1.5 text-xs sm:text-[12px] font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 order-2 sm:order-1"
           >
             {t("common.cancel")}
           </button>
@@ -54,7 +54,7 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
               onOpenChange(false);
               setFeedbackText("");
             }}
-            className="inline-flex items-center justify-center rounded-lg bg-[#A855F7] px-4 py-1.5 text-[12px] font-medium text-white shadow-sm hover:bg-[#9b4ae7] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-[#A855F7] px-4 py-2 sm:py-1.5 text-xs sm:text-[12px] font-medium text-white shadow-sm hover:bg-[#9b4ae7] disabled:cursor-not-allowed disabled:opacity-60 order-1 sm:order-2"
             disabled={!feedbackText.trim()}
           >
             {t("common.submit")}

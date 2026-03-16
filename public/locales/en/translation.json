@@ -126,6 +126,7 @@
     "name": "Name",
     "na": "N/A",
     "daily": "Daily",
+     
     "weekly": "Weekly",
     "monthly": "Monthly",
     "upload": "Upload",
@@ -147,7 +148,11 @@
     "toggleMenu": "Toggle menu",
     "pagination": "pagination",
     "aiProviderLogo": "AI Provider Logo",
-    "popular": "Popular"
+    "popular": "Popular",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
   },
   "footer": {
     "copyright": "© 2026 OpenRouter. All rights reserved.",
@@ -1053,12 +1058,7 @@
     "pickDate": "Pick a date",
     "now": "Now"
   },
-  "common": {
-    "pagination": {
-      "previous": "Previous",
-      "next": "Next"
-    }
-  },
+ 
   "pagination": {
     "previous": "Previous",
     "next": "Next",
@@ -1872,5 +1872,459 @@
     "subtitle": "Join thousands of developers building with OpenRouter",
     "signUpFree": "Sign Up For Free",
     "contactSales": "Contact Sales"
+  },
+  "about": {
+    "title": "About OpenRouter",
+    "description": "Started in early 2023 as the first LLM marketplace, OpenRouter has grown to become the largest and most popular AI gateway for developers. We eliminate vendor lock-in while offering better prices, higher uptime, and enterprise-grade reliability.",
+    "stats": {
+      "globalUsers": "5M+ Global Users",
+      "models": "300+ Models",
+      "providers": "60+ Providers"
+    },
+    "news": {
+      "title": "OpenRouter, a Marketplace for AI Models, Raises $40 Million",
+      "description": "The startup aims to become the go-to platform for developers to access and compare different AI models from various providers.",
+      "readMore": "Read the full article →"
+    },
+    "investors": {
+      "title": "Backed by Leading Investors"
+    },
+    "callToAction": {
+      "title": "Ready to get started?",
+      "description": "Join millions of developers building with OpenRouter's unified AI platform.",
+      "getInTouch": "Get In Touch",
+      "viewDocs": "View Documentation"
+    }
+  },
+  "providersPage": {
+    "title": "Providers",
+    "subtitle": "Browse the network of model providers available on OpenRouter.",
+    "showing": "Showing",
+    "providers": "providers",
+    "searchPlaceholder": "Search providers...",
+    "sortBy": "Sort by",
+    "dailyTokens": "Daily Tokens",
+    "alphabetical": "Alphabetical",
+    "popularity": "Popularity",
+    "models": "Models",
+    "capabilities": {
+      "chat": "Chat",
+      "vision": "Vision",
+      "code": "Code",
+      "analysis": "Analysis",
+      "multimodal": "Multimodal",
+      "embeddings": "Embeddings",
+      "openSource": "Open Source",
+      "moe": "MoE"
+    },
+    "providerInfo": {
+      "openai": {
+        "name": "OpenAI",
+        "description": "GPT-4, DALL-E 3, and more"
+      },
+      "anthropic": {
+        "name": "Anthropic",
+        "description": "Claude 3.5 Sonnet and more"
+      },
+      "google": {
+        "name": "Google",
+        "description": "Gemini Pro and Ultra"
+      },
+      "meta": {
+        "name": "Meta",
+        "description": "Llama 3.1 and Code Llama"
+      },
+      "cohere": {
+        "name": "Cohere",
+        "description": "Command R+ and Embed"
+      },
+      "mistral": {
+        "name": "Mistral AI",
+        "description": "Mixtral 8x7B and 8x22B"
+      }
+    }
+  },
+  "careers": {
+    "pageTitle": "Careers - OpenRouter",
+    "hero": {
+      "title": "Build the Future of AI Infrastructure",
+      "subtitle": "Join a small team working on big problems. We are building the best tools to help developers ship AI products.",
+      "seeOpenPositions": "See Open Positions"
+    },
+    "whyOpenRouter": {
+      "title": "Why OpenRouter?",
+      "description1": "OpenRouter is the unified interface for LLMs. We route billions of tokens every month, helping developers build AI applications without worrying about provider lock-in, downtime, or complex integrations.",
+      "description2": "We are a small, focused team that punches above our weight. Every person here has direct impact on the product and our users."
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "subtitle": "We take care of our team so they can focus on building great products.",
+      "remoteFirst": {
+        "title": "Remote First",
+        "description": "Flexibility to work from anywhere in the US"
+      },
+      "competitiveCompensation": {
+        "title": "Competitive Compensation",
+        "description": "Top-of-market salary and equity packages"
+      },
+      "healthWellness": {
+        "title": "Health & Wellness",
+        "description": "Fully covered health, dental, and vision plans for you and your dependents"
+      },
+      "unlimitedPto": {
+        "title": "Unlimited PTO",
+        "description": "Take the time you need to recharge"
+      },
+      "wfhBudget": {
+        "title": "WFH Budget",
+        "description": "Annual stipend for your home setup and internet bill"
+      },
+      "quarterlyOffsites": {
+        "title": "Quarterly Offsites",
+        "description": "Regular team gatherings to connect in person"
+      }
+    },
+    "openPositions": {
+      "title": "Open Positions",
+      "subtitle": "Find your next role and help us shape the future of AI.",
+      "positions": {
+        "partnerDevelopmentManager": {
+          "title": "Partner Development Manager, Provider Ecosystem",
+          "department": "Engineering • Remote (US) • Full time"
+        },
+        "seniorFullStackEngineer": {
+          "title": "Senior Full-Stack Engineer",
+          "department": "Engineering • Remote (US) • Full time"
+        },
+        "providerOperationsSupport": {
+          "title": "Provider Operations & Support",
+          "department": "Engineering • Remote (US) • Full time"
+        },
+        "developerRelationsLead": {
+          "title": "Developer Relations Lead",
+          "department": "Engineering • Remote (US) • Full time"
+        },
+        "lifecycleMarketingLead": {
+          "title": "Lifecycle Marketing Lead",
+          "department": "Marketing • Remote (US) • Full time"
+        },
+        "accountExecutive": {
+          "title": "Account Executive",
+          "department": "Revenue • Remote (US) • Full time"
+        },
+        "strategicEnterpriseAccountExecutive": {
+          "title": "Strategic Enterprise Account Executive",
+          "department": "Revenue • Remote (US) • Full time"
+        },
+        "customerEngineer": {
+          "title": "Customer Engineer",
+          "department": "Revenue • Remote (US) • Full time"
+        },
+        "financeBusinessOperationsManager": {
+          "title": "Finance and Business Operations Manager",
+          "department": "Revenue • Remote (US) • Full time"
+        },
+        "businessDevelopmentRepresentative": {
+          "title": "Business Development Representative",
+          "department": "Revenue • Remote (US) • Full time"
+        }
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last Updated: Apr 15, 2025",
+        "intro": {
+          "paragraph1": "OpenRouter, Inc. (\"we\", \"us\" or \"our\") respects your privacy and we are committed to protecting it through our compliance with this Privacy Policy. We have created this Privacy Policy to inform you of our policies regarding the collection, use and disclosure of personal data and the choices you have associated with that information. Capitalized terms used but not defined in this Privacy Policy have the meaning given to them in our Terms of Service.",
+          "paragraph2": "This Privacy Policy applies to all personal data collected through any written, electronic, or oral communications, as you:",
+          "listItems": [
+            "Access the website located at https://openrouter.ai/ and all corresponding webpages and websites that link to this Privacy Policy (the \"Site\");",
+            "Interact with applications on third party websites and services, if those applications include links to this Privacy Policy;",
+            "Utilize our Service."
+          ],
+          "paragraph3": "Before using our Site and Service, please carefully read our Terms of Service and this Privacy Policy. By using this Site or Service, you consent to the collection and use of your personal data in accordance with this Privacy Policy and our Terms of Service."
+        },
+        "sections": {
+          "collection": {
+            "title": "1. Collection of Personal Data",
+            "content": "We collect personal data when you use our Site and our Service. Personal data is any information that relates to you, identifies you personally or could be used to identify you including, but not limited to: your name, mailing address, email address, and telephone number."
+          },
+          "voluntaryData": {
+            "title": "Personal Data You Voluntarily Provide to Us",
+            "content": "The personal data we collect from you may include:",
+            "items": [
+              "Information that you provide by filling in forms on our Site or Service.",
+              "Records and copies of your correspondence (including email addresses), if you contact us.",
+              "Your responses to surveys that we might ask you to complete for internal purposes.",
+              "Details of transactions you carry out through our Site.",
+              "Your search queries on the Site."
+            ]
+          },
+          "automaticData": {
+            "title": "Personal Data Collected Automatically",
+            "content": "As you navigate through and interact with our Site or Service, we may use automatic data collection technologies to collect certain information about your device, browsing actions and patterns."
+          },
+          "howWeUse": {
+            "title": "2. How We Use Your Personal Data",
+            "content": "We will only use your personal data as described in this Privacy Policy or as disclosed to you prior to such processing taking place."
+          },
+          "sharing": {
+            "title": "3. How We Share and Disclose Your Personal Data",
+            "content": "We may share or disclose your personal data in specific circumstances as outlined in this policy."
+          },
+          "rights": {
+            "title": "4. Your Rights and Choices",
+            "content": "Depending on where you live and the laws that apply in your country of residence, you may have certain rights regarding your personal data."
+          },
+          "security": {
+            "title": "5. Data Security",
+            "content": "We implement and maintain physical, technical and administrative security measures designed to protect Your Data from accidental loss and from unauthorized access, use, alteration and disclosure."
+          },
+          "contact": {
+            "title": "6. Contact Information",
+            "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us at privacy@openrouter.ai."
+          }
+        }
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: Apr 15, 2025",
+    "intro": {
+      "paragraph1": "OpenRouter, Inc. (\"we\", \"us\" or \"our\") respects your privacy and we are committed to protecting it through our compliance with this Privacy Policy. We have created this Privacy Policy to inform you of our policies regarding the collection, use and disclosure of personal data and the choices you have associated with that information. Capitalized terms used but not defined in this Privacy Policy have the meaning given to them in our Terms of Service.",
+      "paragraph2": "This Privacy Policy applies to all personal data collected through any written, electronic, or oral communications, as you:",
+      "listItems": [
+        "Access the website located at https://openrouter.ai/ and all corresponding webpages and websites that link to this Privacy Policy (the \"Site\");",
+        "Interact with applications on third party websites and services, if those applications include links to this Privacy Policy;",
+        "Utilize our Service."
+      ],
+      "paragraph3": "Before using our Site and Service, please carefully read our Terms of Service and this Privacy Policy. By using this Site or Service, you consent to the collection and use of your personal data in accordance with this Privacy Policy and our Terms of Service. If you do not feel comfortable with any part of this Privacy Policy or our Terms of Service, you should not use or access our Site or Service."
+    },
+    "sections": {
+      "collection": {
+        "title": "1. Collection of Personal Data",
+        "content": "We collect personal data when you use our Site and our Service. Personal data is any information that relates to you, identifies you personally or could be used to identify you including, but not limited to: your name, mailing address, email address, and telephone number. Any text or data (excluding prompts you send to the Service, which are governed by section five of the Terms of Service section 5) you input into the Service (\"Inputs\") that include personal data will also be collected by us. We do not control, and are not responsible for, LLMs' handling of your Inputs or Outputs, including for use in their model training."
+      },
+      "voluntaryData": {
+        "title": "Personal Data You Voluntarily Provide to Us",
+        "content": "The personal data we collect from you may include:",
+        "items": [
+          "Information that you provide by filling in forms on our Site or Service. This includes information provided at the time of or after registering and creating an account, using our Service, and sending Inputs through the Service. We may also ask you for information when you report a problem with our Site or Service.",
+          "Records and copies of your correspondence (including email addresses), if you contact us.",
+          "Your responses to surveys that we might ask you to complete for internal purposes.",
+          "Details of transactions you carry out through our Site and of the fulfillment of Credits purchases.",
+          "Your search queries on the Site."
+        ]
+      },
+      "automaticData": {
+        "title": "Personal Data Collected Automatically",
+        "content": "As you navigate through and interact with our Site or Service, we may use automatic data collection technologies to collect certain information about your device, browsing actions and patterns, including details of your visits to our Site, information about your computer and internet connection, including your IP address, operating system and browser type, and information about your preferences to make your use of the Site more productive, via the use of Cookies."
+      },
+      "howWeUse": {
+        "title": "2. How We Use Your Personal Data",
+        "content": "We will only use your personal data as described in this Privacy Policy or as disclosed to you prior to such processing taking place. The purposes for which we may use your personal data include providing the Service, contacting you regarding the administration of any features or functions of the Site or Service you have registered to use, providing you with notices about your account, notifying you about changes to our Site, our policies, terms or any products or Service we offer or provide though it, and other purposes outlined in our full policy."
+      },
+      "sharing": {
+        "title": "3. How We Share and Disclose Your Personal Data",
+        "content": "We may share or disclose your personal data in the following circumstances: with Website Service Providers, Affiliates and Corporate Partners, Corporate Transactions, Analytics, with your Consent, and as Required by Law as described in detail in our complete privacy policy."
+      },
+      "rights": {
+        "title": "4. Your Rights and Choices",
+        "content": "Depending on where you live and the laws that apply in your country of residence, you may have certain rights regarding your personal data, as described here. While we strive to prioritize the protection of personal data and comply with all applicable laws, we may decline a request from you if we have a lawful reason for doing so. To exercise your rights, you or your authorized agent may submit a request by email at"
+      },
+      "security": {
+        "title": "5. Data Security",
+        "content": "We implement and maintain physical, technical and administrative security measures designed to protect Your Data from accidental loss and from unauthorized access, use, alteration and disclosure. All personal data you provide to us is stored on our secure servers behind firewalls. The safety and security of your information also depends on you."
+      },
+      "contact": {
+        "title": "6. Contact Information",
+        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us at privacy@openrouter.ai."
+      }
+    }
+  },
+  "support": {
+    "title": "Hello, how can I help you?",
+    "subtitle": "Get the support you need to succeed with OpenRouter. Browse our help center, raise a ticket, or explore our documentation to find answers quickly.",
+    "raiseTicket": {
+      "title": "Raise a Ticket",
+      "description": "Get personalized help from our support team",
+      "button": "Create Ticket"
+    },
+    "documentation": {
+      "title": "Documentation",
+      "description": "Technical documentation and API references",
+      "button": "View Docs"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to common questions about OpenRouter",
+      "gettingStarted": {
+        "title": "Getting started",
+        "whyUse": {
+          "question": "Why should I use OpenRouter?",
+          "answer": "OpenRouter provides a unified API to access major LLM models, aggregate billing, and track usage with analytics.\n\nWe pass through provider pricing while pooling uptime, so you get the same provider rates with a unified API and automatic fallbacks for better reliability."
+        },
+        "howToStart": {
+          "question": "How do I get started with OpenRouter?",
+          "answer": "Create an account and add credits on the Credits page. Credits are used for LLM inference.\n\nUse the chat room or create API keys and start using the API. See our quickstart guide."
+        },
+        "howToGetSupport": {
+          "question": "How do I get support?",
+          "answer": "Join our community Discord and ask in the #help forum.\n\nFor billing and account questions, email support@openrouter.ai."
+        },
+        "howBilled": {
+          "question": "How do I get billed for my usage on OpenRouter?",
+          "answer": "Pricing is per model and may differ for prompt/completion, images, and reasoning tokens. See the model page for details.\n\nWe compute cost from provider token usage and deduct it from your credits. Review your history in Activity.\n\nInclude usage: {include: true} in requests to receive usage data in the response. We pass through provider pricing; we charge a small fee when purchasing credits."
+        }
+      },
+      "pricingAndFees": {
+        "title": "Pricing and Fees",
+        "whatAreFees": {
+          "question": "What are the fees for using OpenRouter?",
+          "answer": "We charge a small fee when you purchase credits. Model inference pricing is passed through from providers without markup.\n\nCrypto payments may include an additional processing fee."
+        },
+        "byokFees": {
+          "question": "Is there a fee for using my own provider keys (BYOK)?",
+          "answer": "Using BYOK includes a free monthly request allowance; subsequent usage incurs a small percentage fee based on the equivalent OpenRouter cost. This is deducted from your credits."
+        }
+      },
+      "modelsAndProviders": {
+        "title": "Models and Providers",
+        "whatModels": {
+          "question": "What LLM models does OpenRouter support?",
+          "answer": "Access a wide variety of models, including frontier models. See the models browser or the models API."
+        },
+        "howFrequent": {
+          "question": "How frequently are new models added?",
+          "answer": "We add models regularly, often in partnership with labs. If something's missing, reach out on Discord."
+        },
+        "whatVariants": {
+          "question": "What are model variants?",
+          "answer": "Variants are suffixes that modify behavior. Static variants are available on specific models, listed in the models API:\n\n• :free – free model with low rate limits\n• :extended – longer context length\n• :thinking – reasoning by default\n\nDynamic variants can be used on all models:\n\n• :online – attach web results to the prompt\n• :nitro – optimize for faster throughput\n• :floor – prioritize lowest price"
+        },
+        "inferenceProvider": {
+          "question": "I am an inference provider, how can I get listed on OpenRouter?",
+          "answer": "See provider requirements. For contact, email is best."
+        },
+        "expectedLatency": {
+          "question": "What is the expected latency/response time for different models?",
+          "answer": "Model pages show latency and throughput by provider. Use :nitro to route to faster providers."
+        },
+        "modelFallback": {
+          "question": "How does model fallback work if a provider is unavailable?",
+          "answer": "OpenRouter automatically falls back to the next provider on errors. Configure provider routing in documentation."
+        }
+      },
+      "apiTechnical": {
+        "title": "API Technical Specifications",
+        "authMethods": {
+          "question": "What authentication methods are supported?",
+          "answer": "Cookie-based auth for web/chatroom, API keys for completions and core endpoints, and management API keys for administrative actions."
+        },
+        "rateLimits": {
+          "question": "How are rate limits calculated?",
+          "answer": "Free model rate limits depend on your purchased credits. See details in the rate limits documentation."
+        },
+        "apiEndpoints": {
+          "question": "What API endpoints are available?",
+          "answer": "We implement OpenAI-compatible /completions and /chat/completions, plus /api/v1/models. See the API docs."
+        },
+        "supportedFormats": {
+          "question": "What are the supported formats?",
+          "answer": "Text and images are supported. Images can be URLs or base64. PDF and other file types are coming soon."
+        },
+        "howStreaming": {
+          "question": "How does streaming work?",
+          "answer": "Streaming uses SSE for real-time token delivery. Set stream: true."
+        },
+        "sdkSupport": {
+          "question": "What SDK support is available?",
+          "answer": "OpenRouter is a drop-in replacement for OpenAI; most OpenAI SDKs work. See SDK docs."
+        }
+      },
+      "privacyAndData": {
+        "title": "Privacy and Data Logging",
+        "subtitle": "See our Terms of Service and Privacy Policy.",
+        "whatDataLogged": {
+          "question": "What data is logged during API use?",
+          "answer": "We log basic request metadata (timestamps, model, token counts). Prompts and completions are not logged by default.\n\nYou can opt in to log prompts/completions for a small discount via privacy settings."
+        },
+        "chatroomData": {
+          "question": "What data is logged during Chatroom use?",
+          "answer": "Conversations are stored locally on your device and do not sync across devices. You can export/import conversations from chatroom settings."
+        },
+        "thirdPartySharing": {
+          "question": "What third-party sharing occurs?",
+          "answer": "Requests are proxied to model providers. We aim to avoid provider logging or training by default; routing respects your privacy settings. If no providers match, the request will error."
+        }
+      },
+      "creditAndBilling": {
+        "title": "Credit and Billing Systems",
+        "purchaseOptions": {
+          "question": "What purchase options exist?",
+          "answer": "OpenRouter uses a credit system denominated in USD. You can top up manually or enable auto top up."
+        },
+        "creditsExpire": {
+          "question": "Do credits expire?",
+          "answer": "Unused credits may expire after one year per our terms."
+        },
+        "creditsNotShowing": {
+          "question": "My credits haven't showed up in my account",
+          "answer": "For Stripe purchases, allow up to one hour. If no charge/receipt appears, your card may have been declined; try a different method.\n\nIf charged but credits are missing, email support@openrouter.ai with purchase details. For crypto payments, email support as well."
+        },
+        "refundPolicy": {
+          "question": "What's the refund policy?",
+          "answer": "Refunds for unused credits may be requested within 24 hours of purchase via the refund button on the Credits page. Platform fees are non-refundable. Cryptocurrency payments are not refundable."
+        },
+        "monitorUsage": {
+          "question": "How to monitor credit usage?",
+          "answer": "Use the Activity page or the credits API for balance and remaining credits."
+        },
+        "freeTier": {
+          "question": "What free tier options exist?",
+          "answer": "New users receive a small free allowance to test OpenRouter. Many free models are available but have low rate limits and are not suitable for production. Rate limits increase with purchased credits."
+        },
+        "volumeDiscounts": {
+          "question": "How do volume discounts work?",
+          "answer": "We don't currently offer volume discounts. If you have an exceptional use case, contact us."
+        },
+        "paymentMethods": {
+          "question": "What payment methods are accepted?",
+          "answer": "Major credit cards, AliPay, and USDC crypto. PayPal is in progress. For other methods, reach out on Discord."
+        },
+        "howMakeMoney": {
+          "question": "How does OpenRouter make money?",
+          "answer": "We charge a small fee when purchasing credits. We never mark up provider pricing."
+        }
+      },
+      "accountManagement": {
+        "title": "Account Management",
+        "deleteAccount": {
+          "question": "How can I delete my account?",
+          "answer": "Go to Settings → Manage Account → Security tab to delete your account.\n\nNote: unused credits will be lost and cannot be reclaimed if you delete and later recreate your account."
+        },
+        "teamAccess": {
+          "question": "How does team access work?",
+          "answer": "See our organization management documentation."
+        },
+        "analytics": {
+          "question": "What analytics are available?",
+          "answer": "The activity dashboard provides real-time usage metrics. Contact us for specific reports."
+        },
+        "contactSupport": {
+          "question": "How can I contact support?",
+          "answer": "For account and billing questions, email support@openrouter.ai."
+        }
+      }
+    },
+    "stillNeedHelp": {
+      "title": "Still need help?",
+      "description": "Our support team is here to help you get the most out of OpenRouter",
+      "emailSupport": "Email Support"
+    },
+    "discord": {
+      "title": "Discord",
+      "description": "Get community help instantly",
+      "button": "Join Discord"
+    }
   }
 }

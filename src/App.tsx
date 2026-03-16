@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { ViewProvider } from "./context/ViewContext";
 import { ModelsProvider } from "./context/ModelsContext";
 import { Routes, Route, Navigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import ActivityPage from "./pages/ActivityPage";
 import LogsPage from "./pages/LogsPage";
 import CreditsPage from "./pages/CreditsPage";
@@ -20,6 +21,11 @@ import ModelsPage from "./pages/models-page";
 import RankingsPage from "./pages/RankingsPage";
 import ModelComparisonPage from "./pages/ModelComparisonPage";
 import PricingPage from "./pages/PricingPage";
+import AboutPage from "./pages/AboutPage";
+import ProvidersPage from "./pages/ProvidersPage";
+import CareersPage from "./pages/CareersPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import SupportPage from "./pages/SupportPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -38,6 +44,11 @@ function App() {
           <Route path="/compare" element={<ModelComparisonPage />} />
           <Route path="/rankings" element={<RankingsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/providers" element={<ProvidersPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/support" element={<SupportPage />} />
 
           <Route path="/app" element={<AppPage />} />
           <Route path="/activity" element={<ActivityPage />} />
@@ -55,6 +66,7 @@ function App() {
           <Route path="/settings/routing" element={<RoutingPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <ScrollToTop />
       </ViewProvider>
     </ModelsProvider>
   );

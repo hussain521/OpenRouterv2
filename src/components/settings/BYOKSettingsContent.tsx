@@ -1,0 +1,194 @@
+import { useTranslation } from "react-i18next";
+import { Info, Search, SquarePen } from "lucide-react";
+
+type BYOKProviderRowProps = {
+  name: string;
+  status: string;
+  iconColor?: string;
+  textColor?: string;
+  iconText?: string;
+};
+
+function BYOKProviderRow({
+  name,
+  status,
+  iconColor = "bg-gray-100",
+  textColor = "text-gray-800",
+  iconText,
+}: BYOKProviderRowProps) {
+  return (
+    <button
+      type="button"
+      className="flex w-full items-center justify-between px-5 py-3 text-left text-[13px] hover:bg-gray-50 dark:hover:bg-gray-700"
+    >
+      <div className="flex items-center gap-3">
+        <div
+          className={`flex h-7 w-7 items-center justify-center rounded-md text-[10px] font-semibold ${iconColor} ${textColor}`}
+        >
+          {iconText || name.charAt(0)}
+        </div>
+        <span className="text-[13px] text-gray-800 dark:text-gray-200">
+          {name}
+        </span>
+      </div>
+      <div className="flex items-center gap-3 text-[12px]">
+        <span className="text-gray-400 dark:text-gray-500">{status}</span>
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+          <SquarePen className="h-3 w-3" />
+        </span>
+      </div>
+    </button>
+  );
+}
+
+export function BYOKSettingsContent() {
+  const { t } = useTranslation();
+  
+  return (
+    <div className="space-y-8 pt-4 text-[13px] text-gray-700 dark:text-gray-300">
+      {/* Top: intro + search */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+          <p className="text-[13px]">
+            {t("byok.subtitle")}
+          </p>
+          <Info className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
+        </div>
+
+        <div className="relative w-full max-w-xs">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
+          <input
+            type="text"
+            placeholder={t("byok.searchPlaceholder")}
+            className="h-9 w-full rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-9 pr-4 text-[13px] text-gray-700 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-gray-300 dark:focus:border-gray-500 focus:bg-white dark:focus:bg-gray-700 focus:outline-none focus:ring-0"
+          />
+        </div>
+      </div>
+
+      {/* Provider list */}
+      <section className="space-y-3">
+        <h2 className="text-[13px] font-medium text-gray-500 dark:text-gray-400">
+          {t("byok.available")}
+        </h2>
+
+        <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-[13px]">
+          <div className="divide-y divide-gray-200 dark:divide-gray-700">
+            <BYOKProviderRow
+              name="AI21"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#ff007a]"
+              textColor="text-white"
+              iconText="a"
+            />
+            <BYOKProviderRow
+              name="AionLabs"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#e5e7eb]"
+              textColor="text-gray-700"
+              iconText="Ai"
+            />
+            <BYOKProviderRow
+              name="Alibaba Cloud Int."
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#ff7a00]"
+              textColor="text-white"
+              iconText="↷"
+            />
+            <BYOKProviderRow
+              name="Amazon Bedrock"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#232f3e]"
+              textColor="text-white"
+              iconText="aws"
+            />
+            <BYOKProviderRow
+              name="Anthropic"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#f5f5e6]"
+              textColor="text-gray-900"
+              iconText="A"
+            />
+            <BYOKProviderRow
+              name="Arcee AI"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#00bfa5]"
+              textColor="text-white"
+              iconText="A"
+            />
+            <BYOKProviderRow
+              name="AtlasCloud"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#4f46e5]"
+              textColor="text-white"
+              iconText="A"
+            />
+            <BYOKProviderRow
+              name="Azure"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#0078d4]"
+              textColor="text-white"
+              iconText="A"
+            />
+            <BYOKProviderRow
+              name="Baseten"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#00c853]"
+              textColor="text-white"
+              iconText="⚡"
+            />
+            <BYOKProviderRow
+              name="Cerebras"
+              status={t("byok.notConfigured")}
+              iconColor="bg-[#ff3d00]"
+              textColor="text-white"
+              iconText="C"
+            />
+          </div>
+
+          <button
+            type="button"
+            className="flex h-10 w-full items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-[12px] font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            {t("byok.showMore", { count: 44 })}
+          </button>
+        </div>
+      </section>
+
+      {/* Info footer */}
+      <section className="space-y-4 pt-2 text-[13px] text-gray-600 dark:text-gray-300">
+        <h3 className="text-[16px] font-medium text-gray-900 dark:text-gray-100">
+          Key Priority and Fallback
+        </h3>
+        <div className="max-w-4xl space-y-3 leading-relaxed">
+          <p>
+            OpenRouter always prioritizes using your provider keys when
+            available.
+          </p>
+          <p>
+            By default, if your key encounters a rate limit or failure,
+            OpenRouter will fall back to using shared OpenRouter credits.
+          </p>
+          <p>
+            You can configure individual keys with "Always use this
+            key" to prevent any fallback to OpenRouter credits. When this
+            option is enabled, OpenRouter will only use your key for requests to
+            that provider. This may result in rate limit errors if your key is
+            exhausted, but ensures all requests go through your account.
+          </p>
+          <p>
+            If you wish to never use shared OpenRouter credits for a model, you
+            must{" "}
+            <strong className="font-medium text-gray-800 dark:text-gray-200">
+              both specify "Always use this key" and pin the provider
+            </strong>{" "}
+            by specifying it as{" "}
+            <a href="#" className="text-[#6366F1] hover:underline">
+              your only provider
+            </a>{" "}
+            when making the request.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}

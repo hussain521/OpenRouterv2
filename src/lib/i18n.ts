@@ -11,7 +11,6 @@ i18n
     fallbackLng: 'en',
     debug: false,
     supportedLngs: ['en', 'ar'],
-    lng: 'en',
     interpolation: {
       escapeValue: false,
     },
