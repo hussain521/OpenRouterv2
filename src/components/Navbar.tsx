@@ -30,6 +30,21 @@ import {
   Route,
   Puzzle,
   Eye,
+  Database,
+  BarChart3,
+  DollarSign,
+  Info,
+  Server,
+  Briefcase,
+  Lock,
+  HelpCircle,
+  Beaker,
+  MessageSquare,
+  Grid3X3,
+  Zap,
+  BarChart,
+  Calendar,
+  AppWindow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -352,10 +367,23 @@ export default function Navbar() {
   const getPageIcon = () => {
     const pathname = location.pathname;
     
+    // Home page
     if (pathname === '/') return <Home className="h-4 w-4" />;
+    
+    // Main navigation pages
+    if (pathname === '/models') return <Database className="h-4 w-4" />;
+    if (pathname === '/chat') return <MessageSquare className="h-4 w-4" />;
+    if (pathname === '/rankings') return <BarChart3 className="h-4 w-4" />;
+    if (pathname === '/pricing') return <DollarSign className="h-4 w-4" />;
+    if (pathname === '/app') return <AppWindow className="h-4 w-4" />;
+    if (pathname === '/compare') return <Grid3X3 className="h-4 w-4" />;
+    
+    // User activity pages
     if (pathname === '/activity') return <Activity className="h-4 w-4" />;
     if (pathname === '/logs') return <FileText className="h-4 w-4" />;
     if (pathname === '/credits') return <CreditCard className="h-4 w-4" />;
+    
+    // Settings pages
     if (pathname.includes('/settings/account')) return <Settings className="h-4 w-4" />;
     if (pathname.includes('/settings/api-keys')) return <Key className="h-4 w-4" />;
     if (pathname.includes('/settings/management-keys')) return <Key className="h-4 w-4" />;
@@ -366,6 +394,15 @@ export default function Navbar() {
     if (pathname.includes('/settings/plugins')) return <Puzzle className="h-4 w-4" />;
     if (pathname.includes('/settings/observability')) return <Eye className="h-4 w-4" />;
     if (pathname.includes('/settings')) return <Settings className="h-4 w-4" />;
+    
+    // Company/info pages
+    if (pathname === '/about') return <Info className="h-4 w-4" />;
+    if (pathname === '/providers') return <Server className="h-4 w-4" />;
+    if (pathname === '/careers') return <Briefcase className="h-4 w-4" />;
+    if (pathname === '/privacy') return <Lock className="h-4 w-4" />;
+    if (pathname === '/terms') return <FileText className="h-4 w-4" />;
+    if (pathname === '/support') return <HelpCircle className="h-4 w-4" />;
+    if (pathname === '/labs') return <Beaker className="h-4 w-4" />;
     
     return <Home className="h-4 w-4" />; // Default icon
   };
@@ -482,42 +519,42 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="relative z-20 w-full bg-white dark:bg-background">
-        <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
+      <div className="relative z-20 w-full bg-white dark:bg-background border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+        <div className="flex items-center justify-between px-3 xs:px-4 py-3 xs:py-4 sm:px-6 lg:px-8 xl:px-10">
           {/* Logo + Search */}
-          <div className="flex flex-1 items-center gap-2 sm:gap-3 lg:gap-6">
+          <div className="flex flex-1 items-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6">
             <h1
-              className="text-lg font-semibold sm:text-xl lg:text-xl dark:text-white cursor-pointer whitespace-nowrap"
+              className="text-base xs:text-lg font-semibold sm:text-xl lg:text-xl dark:text-foreground cursor-pointer whitespace-nowrap hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200"
               onClick={() => navigate("/")}
             >
               OpenRouter
             </h1>
 
-            <div className="relative w-full max-w-[150px] sm:max-w-[200px] lg:max-w-[288px]" ref={searchDropdownRef}>
-              <FiSearch className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 dark:text-gray-500 lg:text-base z-10" />
+            <div className="relative w-full max-w-[120px] xs:max-w-[150px] sm:max-w-[200px] lg:max-w-[300px] xl:max-w-[350px]" ref={searchDropdownRef}>
+              <FiSearch className="absolute left-2 xs:left-3 top-1/2 -translate-y-1/2 text-xs xs:text-sm text-gray-400 dark:text-muted-foreground lg:text-base z-10" />
               <Input
                 placeholder={t("nav.search", "Search models...")}
                 value={searchQuery}
                 onChange={handleSearchChange}
                 onFocus={handleSearchFocus}
                 onKeyDown={handleSearchSubmit}
-                className="h-8 sm:h-9 lg:h-10 w-full bg-gray-100 dark:bg-black dark:text-white pl-7 sm:pl-8 lg:pl-10 text-sm lg:text-base border-0 focus-visible:ring-1 focus-visible:ring-offset-0"
+                className="h-7 xs:h-8 sm:h-9 lg:h-10 w-full bg-gray-50 dark:bg-muted border border-gray-200 dark:border-border dark:text-foreground pl-6 xs:pl-7 sm:pl-8 lg:pl-10 text-xs xs:text-sm lg:text-base focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-colors duration-200"
               />
               {searchQuery && (
                 <button
                   onClick={clearSearch}
-                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                  className="absolute right-2 xs:right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-muted-foreground dark:hover:text-foreground transition-colors duration-200"
                 >
-                  <FiX className="h-3 w-3 lg:h-4 lg:w-4" />
+                  <FiX className="h-3 w-3 xs:h-3.5 xs:w-3.5 lg:h-4 lg:w-4" />
                 </button>
               )}
 
               {/* Search Dropdown */}
               {isSearchFocused && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-card border border-gray-200 dark:border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto animate-slide-in">
                   {/* Current Date Header */}
-                  <div className="px-3 py-2   ">
-                    <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                  <div className="px-3 py-2 border-b border-gray-100 dark:border-border">
+                    <div className="text-xs text-gray-500 dark:text-muted-foreground font-medium">
                       {getCurrentDate()}
                     </div>
                   </div>
@@ -528,7 +565,7 @@ export default function Navbar() {
                     {filteredResults.map((item) => (
                       <button
                         key={item.id}
-                        className="w-full px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center gap-3 transition-colors"
+                        className="w-full px-3 py-2 hover:bg-gray-50 dark:hover:bg-muted text-left flex items-center gap-3 transition-colors duration-200"
                         onClick={() => {
                           // Set the search query in models context and navigate to models page
                           setModelsSearchQuery(searchQuery);
@@ -536,21 +573,21 @@ export default function Navbar() {
                           clearSearch();
                         }}
                       >
-                        <div className="flex-shrink-0 w-6 h-6 rounded">
+                        <div className="flex-shrink-0 w-5 h-5 xs:w-6 xs:h-6 rounded">
                           <img
                             src={`/${item.favicon}.png`}
                             alt={item.provider}
-                            className="w-6 h-6 rounded"
+                            className="w-full h-full rounded object-contain"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = "/vite.svg";
                             }}
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="font-medium text-sm text-gray-900 dark:text-gray-100 truncate">
+                          <div className="font-medium text-xs xs:text-sm text-gray-900 dark:text-foreground truncate">
                             {item.provider}: {item.name}
                           </div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          <div className="text-xs text-gray-500 dark:text-muted-foreground truncate">
                             {item.modelId}
                           </div>
                         </div>
@@ -559,10 +596,10 @@ export default function Navbar() {
                   </div>
 
                   {searchQuery && filteredResults.length === 0 && (
-                    <div className="px-3 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                      <FiSearch className="h-8 w-8 mx-auto mb-2 text-gray-300 dark:text-gray-600" />
-                      <div>{t("nav.searchResults.noResults", { query: searchQuery })}</div>
-                      <div className="text-xs mt-1">{t("nav.searchResults.tryAnother")}</div>
+                    <div className="px-3 py-6 text-center text-sm text-gray-500 dark:text-muted-foreground">
+                      <FiSearch className="h-6 w-6 xs:h-8 xs:w-8 mx-auto mb-2 text-gray-300 dark:text-gray-600" />
+                      <div className="font-medium">{t("nav.searchResults.noResults", { query: searchQuery })}</div>
+                      <div className="text-xs mt-1 opacity-75">{t("nav.searchResults.tryAnother")}</div>
                     </div>
                   )}
                 </div>
@@ -571,10 +608,10 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden items-center gap-1 lg:gap-2 text-sm text-gray-600 dark:text-gray-300 lg:flex">
+          <div className="hidden items-center gap-1 xl:gap-2 text-sm text-gray-600 dark:text-muted-foreground lg:flex">
             <a
               href="/models"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/models");
@@ -584,7 +621,7 @@ export default function Navbar() {
             </a>
             <a
               href="/chat"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/chat");
@@ -594,7 +631,7 @@ export default function Navbar() {
             </a>
             <a
               href="/rankings"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/rankings");
@@ -604,7 +641,7 @@ export default function Navbar() {
             </a>
             <a
               href="/app"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/app");
@@ -614,7 +651,7 @@ export default function Navbar() {
             </a>
             <a
               href="/pricing"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/pricing");
@@ -624,35 +661,35 @@ export default function Navbar() {
             </a>
             <a
               href="#"
-              className="rounded-md px-3 py-2 font-medium hover:bg-gray-100 hover:text-black transition-colors"
+              className="rounded-lg px-2 xl:px-3 py-1.5 xl:py-2 font-medium hover:bg-gray-100 dark:hover:bg-muted hover:text-black dark:hover:text-foreground transition-colors duration-200"
             >
               {t("nav.docs")}
             </a>
 
             {!isSignedIn ? (
               <Button
-                className="rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
+                className="rounded-full bg-primary px-4 xl:px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200 ml-2"
                 onClick={() => openAuth("signin")}
               >
                 {t("nav.signIn", "Sign in")}
               </Button>
             ) : (
-              <div className="relative ml-2 lg:ml-4" ref={profileDropdownRef}>
+              <div className="relative ml-2 xl:ml-4" ref={profileDropdownRef}>
                 <button
                   type="button"
                   onClick={() => setIsProfileOpen((prev) => !prev)}
-                  className="flex items-center gap-1 lg:gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black px-1.5 lg:px-2 py-1 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="flex items-center gap-1 xl:gap-1.5 rounded-full border border-border bg-background px-1.5 xl:px-2 py-1 shadow-sm hover:bg-muted transition-colors duration-200"
                 >
                   {/* Dropdown Arrow in the middle */}
-                  <div className="flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300">
+                  <div className="flex items-center justify-center text-xs font-medium text-muted-foreground">
                     {isProfileOpen ? (
-                      <FiChevronDown className="h-3 lg:h-3.5 w-3 lg:w-3.5" />
+                      <FiChevronDown className="h-3 xl:h-3.5 w-3 xl:w-3.5" />
                     ) : (
-                      <FiMenu className="h-3 lg:h-3.5 w-3 lg:w-3.5" />
+                      <FiMenu className="h-3 xl:h-3.5 w-3 xl:w-3.5" />
                     )}
                   </div>
                   {/* Current Page Icon - hidden on very small screens */}
-                  <div className="hidden sm:flex items-center justify-center text-gray-600 dark:text-gray-300">
+                  <div className="hidden sm:flex items-center justify-center text-muted-foreground">
                     {getPageIcon()}
                   </div>
 
@@ -660,14 +697,14 @@ export default function Navbar() {
                   <img
                     src="./Meta.png"
                     alt=""
-                    className="inline-flex h-6 lg:h-7 w-6 lg:w-7 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold"
+                    className="inline-flex h-6 xl:h-7 w-6 xl:w-7 items-center justify-center rounded-full bg-muted object-cover"
                   />
                 </button>
 
                 {isProfileOpen && (
-                  <div className="absolute ltr:right-0 rtl:left-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-black py-2 text-sm text-gray-700 dark:text-gray-200 shadow-lg">
+                  <div className="absolute ltr:right-0 rtl:left-0 mt-2 w-48 rounded-xl border border-border bg-card py-2 text-sm text-card-foreground shadow-lg animate-fade-in">
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
                       onClick={() => {
                         setIsProfileOpen(false);
                         navigate("/activity");
@@ -676,7 +713,7 @@ export default function Navbar() {
                       {t("nav.activity", "Activity")}
                     </button>
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
                       onClick={() => {
                         setIsProfileOpen(false);
                         navigate("/logs");
@@ -685,7 +722,7 @@ export default function Navbar() {
                       {t("nav.logs")}
                     </button>
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
                       onClick={() => {
                         setIsProfileOpen(false);
                         navigate("/credits");
@@ -694,7 +731,7 @@ export default function Navbar() {
                       {t("nav.credits", "Credits")}
                     </button>
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
                       onClick={() => {
                         setIsProfileOpen(false);
                         navigate("/settings");
@@ -703,7 +740,7 @@ export default function Navbar() {
                       {t("nav.settings", "Settings")}
                     </button>
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block w-full px-4 py-2.5 text-left hover:bg-destructive/10 text-destructive transition-colors duration-200"
                       onClick={() => {
                         setIsSignedIn(false);
                         setIsProfileOpen(false);
@@ -712,9 +749,9 @@ export default function Navbar() {
                     >
                       {t("nav.signOut", "Sign Out")}
                     </button>
-                    <div className="mt-1 flex flex-col gap-2 border-t border-gray-200 dark:border-gray-700 px-4 pb-1 pt-2">
+                    <div className="mt-1 flex flex-col gap-2 border-t border-border px-4 pb-1 pt-2">
                       {/* Language Toggle */}
-                      <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pb-2">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground pb-2">
                         <span className="flex items-center gap-1">
                           <FiGlobe className="h-3.5 w-3.5" />
                           <span>{t("nav.language", "Language")}</span>
@@ -723,10 +760,10 @@ export default function Navbar() {
                           <button
                             type="button"
                             onClick={() => changeLanguage("en")}
-                            className={`px-2 py-0.5 text-xs rounded transition-colors ${
+                            className={`px-2 py-0.5 text-xs rounded transition-colors duration-200 ${
                               i18n.language === "en"
-                                ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
-                                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                ? "bg-primary text-primary-foreground shadow-sm"
+                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
                             }`}
                           >
                             EN
@@ -734,10 +771,10 @@ export default function Navbar() {
                           <button
                             type="button"
                             onClick={() => changeLanguage("ar")}
-                            className={`px-2 py-0.5 text-xs rounded transition-colors ${
+                            className={`px-2 py-0.5 text-xs rounded transition-colors duration-200 ${
                               i18n.language === "ar"
-                                ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
-                                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                ? "bg-primary text-primary-foreground shadow-sm"
+                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
                             }`}
                           >
                             AR
@@ -745,16 +782,16 @@ export default function Navbar() {
                         </div>
                       </div>
                       {/* Theme Toggle */}
-                      <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
                         <span>{t("nav.theme")}</span>
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
                             onClick={() => setThemePreference("light")}
-                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-200 ${
                               themePreference === "light"
-                                ? "border-gray-600 bg-gray-100 text-gray-900 shadow-sm"
-                                : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                                ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                                : "border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                             }`}
                             title={t("nav.lightMode")}
                           >
@@ -763,10 +800,10 @@ export default function Navbar() {
                           <button
                             type="button"
                             onClick={() => setThemePreference("system")}
-                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-200 ${
                               themePreference === "system"
-                                ? "border-gray-600 bg-gray-500 text-white shadow-sm"
-                                : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                                : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                             }`}
                             title={t("nav.systemDefault")}
                           >
@@ -775,10 +812,10 @@ export default function Navbar() {
                           <button
                             type="button"
                             onClick={() => setThemePreference("dark")}
-                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+                            className={`flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-200 ${
                               themePreference === "dark"
-                                ? "border-gray-600 bg-gray-700 text-gray-100 shadow-sm"
-                                : "border-gray-200 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                                : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                             }`}
                             title={t("nav.darkMode")}
                           >
@@ -787,7 +824,7 @@ export default function Navbar() {
                         </div>
                       </div>
                       {themePreference === "system" && (
-                        <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center justify-between text-[10px] text-muted-foreground opacity-75">
                           <span>{t("nav.systemStatus")}</span>
                           <span className="flex items-center gap-1">
                             {isSystemDarkMode ? (
@@ -814,19 +851,23 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="ml-2 rounded-lg bg-[#6467F2] p-1.5 sm:p-2 text-white transition-colors hover:bg-indigo-700 lg:hidden"
+            className="ml-2 rounded-lg bg-primary p-1.5 xs:p-2 text-primary-foreground transition-colors duration-200 hover:bg-primary/90 lg:hidden"
             aria-label={t("common.toggleMenu")}
           >
-            <FiMenu className="h-4 sm:h-5 w-4 sm:w-5" />
+            {isMenuOpen ? (
+              <FiX className="h-4 xs:h-5 w-4 xs:w-5" />
+            ) : (
+              <FiMenu className="h-4 xs:h-5 w-4 xs:w-5" />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="flex flex-col gap-2 border-t dark:border-gray-700 bg-white dark:bg-black px-4 pb-4 lg:hidden">
+          <div className="flex flex-col gap-1 border-t border-border bg-background px-3 xs:px-4 pb-4 pt-2 lg:hidden animate-slide-in">
             <a
               href="/models"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/models");
@@ -837,7 +878,7 @@ export default function Navbar() {
             </a>
             <a
               href="/chat"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/chat");
@@ -848,7 +889,7 @@ export default function Navbar() {
             </a>
             <a
               href="/rankings"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/rankings");
@@ -859,7 +900,7 @@ export default function Navbar() {
             </a>
             <a
               href="/app"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/app");
@@ -870,7 +911,7 @@ export default function Navbar() {
             </a>
             <a
               href="/pricing"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/pricing");
@@ -881,33 +922,33 @@ export default function Navbar() {
             </a>
             <a
               href="#"
-              className="rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors"
+              className="rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
             >
               {t("nav.docs")}
             </a>
             
             {!isSignedIn ? (
               <Button
-                className="mt-2 rounded-full bg-[#6467F2] px-6 hover:bg-indigo-700"
+                className="mt-3 rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
                 onClick={() => openAuth("signin")}
               >
                 {t("nav.signIn", "Sign in")}
               </Button>
             ) : (
-              <div className="mt-3 border-t border-gray-200 dark:border-gray-700 pt-3">
+              <div className="mt-3 border-t border-border pt-3">
                 <div className="flex items-center gap-3 mb-3 px-3">
                   <img
                     src="./Meta.png"
                     alt=""
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-200"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted object-cover"
                   />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                  <span className="text-sm font-medium text-foreground">
                     {t("nav.userMenu", "User Menu")}
                   </span>
                 </div>
                 
                 <button
-                  className="block w-full rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors text-left"
+                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
                   onClick={() => {
                     setIsMenuOpen(false);
                     navigate("/activity");
@@ -916,7 +957,7 @@ export default function Navbar() {
                   {t("nav.activity", "Activity")}
                 </button>
                 <button
-                  className="block w-full rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors text-left"
+                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
                   onClick={() => {
                     setIsMenuOpen(false);
                     navigate("/logs");
@@ -925,7 +966,7 @@ export default function Navbar() {
                   {t("nav.logs")}
                 </button>
                 <button
-                  className="block w-full rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors text-left"
+                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
                   onClick={() => {
                     setIsMenuOpen(false);
                     navigate("/credits");
@@ -934,7 +975,7 @@ export default function Navbar() {
                   {t("nav.credits", "Credits")}
                 </button>
                 <button
-                  className="block w-full rounded-md px-3 py-2 font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors text-left"
+                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
                   onClick={() => {
                     setIsMenuOpen(false);
                     navigate("/settings");
@@ -943,7 +984,7 @@ export default function Navbar() {
                   {t("nav.settings", "Settings")}
                 </button>
                 <button
-                  className="block w-full rounded-md px-3 py-2 font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-700 dark:hover:text-red-300 transition-colors text-left"
+                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-destructive hover:bg-destructive/10 transition-colors duration-200 text-left"
                   onClick={() => {
                     setIsSignedIn(false);
                     setIsMenuOpen(false);
@@ -954,10 +995,10 @@ export default function Navbar() {
                 </button>
 
                 {/* Theme and Language Controls for Mobile */}
-                <div className="mt-3 space-y-3 border-t border-gray-200 dark:border-gray-700 pt-3">
+                <div className="mt-3 space-y-3 border-t border-border pt-3">
                   {/* Language Toggle */}
                   <div className="flex items-center justify-between px-3">
-                    <span className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span className="flex items-center gap-2 text-sm text-muted-foreground">
                       <FiGlobe className="h-4 w-4" />
                       <span>{t("nav.language", "Language")}</span>
                     </span>
@@ -965,10 +1006,10 @@ export default function Navbar() {
                       <button
                         type="button"
                         onClick={() => changeLanguage("en")}
-                        className={`px-3 py-1 text-sm rounded transition-colors ${
+                        className={`px-3 py-1 text-sm rounded transition-colors duration-200 ${
                           i18n.language === "en"
-                            ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
-                            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                       >
                         EN
@@ -976,10 +1017,10 @@ export default function Navbar() {
                       <button
                         type="button"
                         onClick={() => changeLanguage("ar")}
-                        className={`px-3 py-1 text-sm rounded transition-colors ${
+                        className={`px-3 py-1 text-sm rounded transition-colors duration-200 ${
                           i18n.language === "ar"
-                            ? "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white"
-                            : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                       >
                         AR
@@ -989,15 +1030,15 @@ export default function Navbar() {
                   
                   {/* Theme Toggle */}
                   <div className="flex items-center justify-between px-3">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{t("nav.theme")}</span>
+                    <span className="text-sm text-muted-foreground">{t("nav.theme")}</span>
                     <div className="flex items-center gap-1">
                       <button
                         type="button"
                         onClick={() => setThemePreference("light")}
-                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors ${
+                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors duration-200 ${
                           themePreference === "light"
-                            ? "border-gray-600 bg-gray-100 text-gray-900 shadow-sm"
-                            : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600"
+                            ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                            : "border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                         title={t("nav.lightMode")}
                       >
@@ -1006,10 +1047,10 @@ export default function Navbar() {
                       <button
                         type="button"
                         onClick={() => setThemePreference("system")}
-                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors ${
+                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors duration-200 ${
                           themePreference === "system"
-                            ? "border-gray-600 bg-gray-500 text-white shadow-sm"
-                            : "border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                            ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                            : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                         }`}
                         title={t("nav.systemDefault")}
                       >
@@ -1018,10 +1059,10 @@ export default function Navbar() {
                       <button
                         type="button"
                         onClick={() => setThemePreference("dark")}
-                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors ${
+                        className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors duration-200 ${
                           themePreference === "dark"
-                            ? "border-gray-600 bg-gray-700 text-gray-100 shadow-sm"
-                            : "border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                            ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                            : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                         }`}
                         title={t("nav.darkMode")}
                       >
@@ -1031,7 +1072,7 @@ export default function Navbar() {
                   </div>
                   
                   {themePreference === "system" && (
-                    <div className="flex items-center justify-between px-3 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center justify-between px-3 text-xs text-muted-foreground opacity-75">
                       <span>{t("nav.systemStatus")}</span>
                       <span className="flex items-center gap-1">
                         {isSystemDarkMode ? (

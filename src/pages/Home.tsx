@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-white dark:bg-background transition-colors duration-200">
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
           isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100"
@@ -38,12 +38,12 @@ export default function Home() {
       >
         <TopBanner />
       </div>
-      <div className="sticky top-0 z-50 transition-all duration-300">
+      <div className="sticky top-0 z-50 transition-all duration-300 backdrop-blur-sm">
         <Navbar />
       </div>
 
       {view === "home" ? (
-        <>
+        <main className="animate-fade-in">
           <HeroSection />
           <StatsSection />
           <FeaturesSection />
@@ -54,7 +54,7 @@ export default function Home() {
           {/* Explore + Announcements */}
           <RecentAnnouncements />
           <Footer />
-        </>
+        </main>
       ) : (
         <DashboardLayout title={t("nav.activity")} />
       )}

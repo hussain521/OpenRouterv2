@@ -165,7 +165,8 @@
       "models": "Models",
       "providers": "Providers",
       "pricing": "Pricing",
-      "enterprise": "Enterprise"
+      "enterprise": "Enterprise",
+      "labs": "Labs"
     },
     "company": {
       "title": "Company",
@@ -2325,6 +2326,66 @@
       "title": "Discord",
       "description": "Get community help instantly",
       "button": "Join Discord"
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: March 16, 2026",
+    "introduction": "Welcome, and thank you for your interest in OpenRouter, Inc. (\"<strong>OpenRouter</strong>,\" \"<strong>we</strong>,\" or \"<strong>us</strong>\") and our website at <a href=\"https://openrouter.ai/\" className=\"underline underline-offset-2\" target=\"_blank\" rel=\"noopener noreferrer\">https://openrouter.ai/</a> (\"<strong>Site</strong>\"), along with our related websites, networks, applications, and other services provided by us (collectively, our \"<strong>Service</strong>\"). These Terms of Service are a legally binding contract between you and OpenRouter regarding your use of the Service.",
+    "readCarefully": "PLEASE READ THE FOLLOWING TERMS CAREFULLY. BY CLICKING \"I ACCEPT,\" OR BY USING THE SERVICE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THE FOLLOWING TERMS AND CONDITIONS, INCLUDING THE OPENROUTER PRIVACY POLICY (TOGETHER, THE \"<strong>TERMS</strong>\"). If you are not eligible, or do not agree to the Terms, then you do not have our permission to use the Service.",
+    "bindingArbitration": "These Terms provide that all disputes between you and OpenRouter will be resolved by BINDING ARBITRATION. YOU AGREE TO GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract, except for matters that may be taken to small claims court. Your rights will be determined by a NEUTRAL ARBITRATOR and NOT a judge or jury, and your claims cannot be brought as a class action. Please review Section 19 (\"Dispute Resolution and Arbitration\") for the details regarding your agreement to arbitrate any disputes with OpenRouter.",
+    "sections": {
+      "serviceOverview": {
+        "title": "OpenRouter Service Overview",
+        "content": "OpenRouter operates a large language model aggregator where users may use the Site to access third-party application programming interfaces (\"<strong>APIs</strong>\") to use a variety of generative artificial intelligence models listed on the Site (\"<strong>AI Models</strong>\"). OpenRouter may add or remove AI Models from the Service at any time."
+      },
+      "eligibility": {
+        "title": "Eligibility",
+        "content": "You must be at least 13 years of age to use the Service. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 13 years of age; (b) you have not previously been suspended or removed from the Service; and (c) your registration and your use of the Service is in compliance with all applicable laws and regulations. If you are under 18 years of age, you must have your parent or guardian's permission to use the Service. If you are using the Service on behalf of an entity, organization, or company, you represent and warrant that you have the authority to bind that organization to these Terms and you agree to be bound by these Terms on behalf of that organization."
+      },
+      "accounts": {
+        "title": "Accounts and Registration",
+        "content1": "To access most features of the Service, you must register for an account. When you register for an account, you may be required to provide us or our authentication platform with some information about yourself, such as your email address or other contact information. You agree that the information you provide to us is accurate and that you will keep it accurate and up-to-date at all times. When you register, you will be asked to provide a password. You are solely responsible for maintaining the confidentiality of your account and password, and you accept responsibility for all activities that occur under your account. If you have reason to believe that your account is no longer secure, then you must immediately notify us at support@openrouter.ai.",
+        "content2": "The Service allows creation of two account types: organizational accounts and individual accounts. An organizational account is managed by an administrative user (\"<strong>Admin User</strong>\") who can invite individuals from the Admin User's organization (\"<strong>Authorized Users</strong>\") to the organizational account. Authorized Users may only use the Service as configured by the Admin User, with such configurations which may include, without limitation, enabling prompt logging, chat logging, zero data retention, model training, and other settings. Authorized Users may also create separate individual accounts to access the Service."
+      },
+      "payment": {
+        "title": "Payment",
+        "prepaidCredits": {
+          "title": "4.1 Pre-Paid Credits; Refunds",
+          "content": "Access to the Service, or to certain features of the Service, may require you to pay fees for pre-paid credits that are linked to your account (\"Credits\"), along with payment processing fees and transaction fees. Before you pay any fees, you will have an opportunity to review and accept the fees that you will be charged. Currently, OpenRouter requires users to purchase Credits to make API calls and access the Service, with a minimum and maximum purchase amount of $5 and $25,000 per transaction, respectively. Once purchased, refunds for unused Credits may be requested within twenty-four (24) hours from the time the transaction was processed. If no refund request is received within twenty-four (24) hours following the purchase, any unused Credits become non-refundable. To request a refund within the eligible period, you can use the refund button on the <a href=\"https://openrouter.ai/settings/credits\" className=\"underline underline-offset-2\" target=\"_blank\" rel=\"noopener noreferrer\">Credits</a> page. The unused credit amount will be refunded to your payment method; the platform fees are non-refundable. Cryptocurrency payments are never refundable."
+        },
+        "creditExpiration": {
+          "title": "4.2 Credit Expiration; Auto Recharge",
+          "content": "OpenRouter reserves the right to expire unused credits three hundred sixty-five (365) days after purchase. When purchasing Credits, you will have the option to automatically add Credits to your account by charging the payment method of your choosing when your available Credits are below a threshold amount you have set on your account (\"<strong>Auto Recharge</strong>\"). If you elect the Auto Recharge option, you authorize OpenRouter to automatically charge payments to your account. You may update or cancel Auto Recharge at any time through your account page."
+        },
+        "currency": {
+          "title": "4.3 Currency; Payment Processing",
+          "content": "OpenRouter will charge the payment method you specify at the time of purchase. You authorize OpenRouter to charge all sums as described in these Terms, for the Service you select, to that payment method. OpenRouter accepts payment through our third-party payment processors, Stripe and Coinbase. All payments made through Stripe are in U.S. dollars, and payments made through Coinbase are through your crypto wallet. See Stripe's payment terms and conditions <a href=\"https://stripe.com/legal/ssa\" className=\"underline underline-offset-2\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>, and Coinbase payment terms and conditions <a href=\"https://www.coinbase.com/legal/user_agreement/united_states\" className=\"underline underline-offset-2\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>. If you choose to pay using Coinbase, you represent and warrant that the cryptocurrency and source of funds for the cryptocurrency you use do not constitute the proceeds of a financial crime or any other crime under applicable law."
+        },
+        "feeChanges": {
+          "title": "4.4 Changes to Fees",
+          "content": "If OpenRouter changes the fees for the Service, including by adding additional fees or charges, OpenRouter will provide you advance notice of those changes. If you do not accept the changes, OpenRouter may discontinue providing the Service to you."
+        }
+      },
+      "contact": {
+        "title": "Contact Information.",
+        "content": "The Service is offered by OpenRouter, Inc., located at 169 Madison Avenue, New York, NY 10016, United States. You may contact us by sending correspondence to that address or by emailing us at support@openrouter.ai."
+      }
+    }
+  },
+  "labs": {
+    "title": "Labs",
+    "subtitle": "Explore experimental features and tools. These are works in progress and may change or be removed at any time.",
+    "experiments": {
+      "title": "Experiments",
+      "modelFusion": {
+        "title": "Model Fusion",
+        "description": "Run multiple models side-by-side, analyze their strengths, and fuse the best answer."
+      },
+      "spawn": {
+        "title": "Spawn",
+        "description": "Deploy any AI coding agent on any cloud provider with a single command. No Terraform, no YAML — just pick an agent and a cloud."
+      }
     }
   }
 }

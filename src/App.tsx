@@ -26,6 +26,8 @@ import ProvidersPage from "./pages/ProvidersPage";
 import CareersPage from "./pages/CareersPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SupportPage from "./pages/SupportPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
+import LabsPage from "./pages/LabsPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -48,7 +50,9 @@ function App() {
           <Route path="/providers" element={<ProvidersPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/support" element={<SupportPage />} />
+          <Route path="/labs" element={<LabsPage />} />
 
           <Route path="/app" element={<AppPage />} />
           <Route path="/activity" element={<ActivityPage />} />
