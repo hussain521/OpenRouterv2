@@ -20,17 +20,17 @@ export default function ModelComparisonPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-background text-gray-900 dark:text-foreground max-w-7xl mx-auto">
+    <div className="min-h-screen bg-white dark:bg-background text-gray-900 dark:text-foreground">
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
 
-      <main className="pt-16 min-h-screen">
-        <div className="p-8">
+      <main className="pt-16 min-h-screen max-w-7xl mx-auto">
+        <div className="p-4 sm:p-6 lg:p-8">
           {/* Title */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-semibold">{t('modelComparison.title')}</h1>
-            <p className="text-sm text-muted-foreground mt-1">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-xl sm:text-2xl font-semibold">{t('modelComparison.title')}</h1>
+            <p className="text-sm text-muted-foreground mt-1 sm:mt-2">
               {t('modelComparison.subtitle')}
             </p>
           </div>

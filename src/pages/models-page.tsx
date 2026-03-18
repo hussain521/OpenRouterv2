@@ -133,18 +133,18 @@ export default function ModelsPage() {
               )}
             </div>
           ) : (
-            <div className="w-full overflow-x-auto -mx-3 sm:-mx-4 lg:-mx-6 xl:-mx-8 px-3 sm:px-4 lg:px-6 xl:px-8">
+            <div className="w-full overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
               {/* Table Header */}
-              <div className="min-w-[700px] sm:min-w-[800px] grid grid-cols-12 gap-2 sm:gap-4 text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2">
-                <div className="col-span-4 sm:col-span-3">{t("modelsPage.table.modelName")}</div>
-                <div className="col-span-2">{t("modelsPage.table.weeklyTokens")}</div>
-                <div className="col-span-2">{t("modelsPage.table.inputPrice")}</div>
-                <div className="col-span-2">{t("modelsPage.table.outputPrice")}</div>
-                <div className="col-span-2 sm:col-span-2">{t("modelsPage.table.context")}</div>
-                <div className="col-span-0 sm:col-span-1 hidden sm:block">{t("modelsPage.table.released")}</div>
+              <div className="min-w-[320px] sm:min-w-[600px] lg:min-w-[800px] grid grid-cols-8 sm:grid-cols-12 gap-1 sm:gap-2 lg:gap-4 text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2 px-3 sm:px-4 lg:px-6 pt-3">
+                <div className="col-span-3 sm:col-span-4 lg:col-span-3">{t("modelsPage.table.modelName")}</div>
+                <div className="col-span-2 sm:col-span-2">{t("modelsPage.table.weeklyTokens")}</div>
+                <div className="col-span-1 sm:col-span-2">{t("modelsPage.table.inputPrice")}</div>
+                <div className="col-span-1 sm:col-span-2">{t("modelsPage.table.outputPrice")}</div>
+                <div className="col-span-1 sm:col-span-2">{t("modelsPage.table.context")}</div>
+                <div className="hidden sm:block sm:col-span-0 lg:col-span-1">{t("modelsPage.table.released")}</div>
               </div>
               {/* Table Rows */}
-              <div className="space-y-0 min-w-[800px]">
+              <div className="space-y-0 min-w-[320px] sm:min-w-[600px] lg:min-w-[800px]">
                 {filteredModels.map((model) => (
                   <ModelTableRow
                     key={model.id}
@@ -220,11 +220,11 @@ function ModelTableRow({ name, modelId, weeklyTokens, inputPrice, outputPrice, c
           </div>
         </div>
       </div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{weeklyTokens}</div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{inputPrice}</div>
-      <div className="col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{outputPrice}</div>
-      <div className="col-span-2 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{context}</div>
-      <div className="col-span-0 sm:col-span-1 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm hidden sm:block">{released}</div>
+      <div className="col-span-2 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{weeklyTokens}</div>
+      <div className="col-span-1 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{inputPrice}</div>
+      <div className="col-span-1 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{outputPrice}</div>
+      <div className="col-span-1 sm:col-span-2 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{context}</div>
+      <div className="hidden sm:block sm:col-span-0 lg:col-span-1 text-gray-600 dark:text-gray-400 truncate text-xs sm:text-sm">{released}</div>
     </div>
   );
 }

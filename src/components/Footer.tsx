@@ -51,8 +51,13 @@ export default function Footer() {
                   {t("footer.product.pricing")}
                 </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.product.enterprise")}
+              <li>
+                <Link
+                  to="/enterprise"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.product.enterprise")}
+                </Link>
               </li>
               <li>
                 <Link
@@ -122,8 +127,13 @@ export default function Footer() {
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
                 {t("footer.company.stateOfAI")}
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.company.worksWithOR")}
+              <li>
+                <Link
+                  to="/works-with-openrouter"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.company.worksWithOR")}
+                </Link>
               </li>
             </ul>
           </div>
@@ -140,8 +150,13 @@ export default function Footer() {
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
                 {t("footer.developer.apiReference")}
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.developer.sdk")}
+              <li>
+                <Link
+                  to="/sdk"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.developer.sdk")}
+                </Link>
               </li>
               <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
                 {t("footer.developer.status")}

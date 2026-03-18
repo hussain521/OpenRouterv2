@@ -54,28 +54,28 @@ export default function AboutPage() {
   
           {/* Stats Section */}
           <div className="flex flex-col gap-8 md:gap-12 mb-20 lg:mb-28">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto justify-center">
-            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-110 hover:shadow-slate-6">
-              <div className="p-4 md:p-6">
-                <div className="flex flex-col items-center gap-1 md:gap-2">
-                  <p className="text-3xl md:text-4xl font-bold text-[#6467f2]">5M+</p>
-                  <p className="text-xs md:text-sm text-muted-foreground">{t("about.stats.globalUsers").split(" ").slice(1).join(" ")}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-105 sm:hover:scale-110 hover:shadow-slate-6">
+              <div className="p-4 sm:p-6">
+                <div className="flex flex-col items-center gap-1 sm:gap-2">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#6467f2]">5M+</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground text-center">{t("about.stats.globalUsers").split(" ").slice(1).join(" ")}</p>
                 </div>
               </div>
             </div>
-            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-110 hover:shadow-slate-6">
-              <div className="p-4 md:p-6">
-                <div className="flex flex-col items-center gap-1 md:gap-2">
-                  <p className="text-3xl md:text-4xl font-bold text-foreground">300+</p>
-                  <p className="text-xs md:text-sm text-muted-foreground">{t("about.stats.models").split(" ").slice(1).join(" ")}</p>
+            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-105 sm:hover:scale-110 hover:shadow-slate-6">
+              <div className="p-4 sm:p-6">
+                <div className="flex flex-col items-center gap-1 sm:gap-2">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">300+</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground text-center">{t("about.stats.models").split(" ").slice(1).join(" ")}</p>
                 </div>
               </div>
             </div>
-            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-110 hover:shadow-slate-6">
-              <div className="p-4 md:p-6">
-                <div className="flex flex-col items-center gap-1 md:gap-2">
-                  <p className="text-3xl md:text-4xl font-bold text-foreground">60+</p>
-                  <p className="text-xs md:text-sm text-muted-foreground">{t("about.stats.providers").split(" ").slice(1).join(" ")}</p>
+            <div className="group/card rounded-xl transition-all duration-200 bg-card hover:bg-card/80 text-foreground shadow-inner hover:scale-105 sm:hover:scale-110 hover:shadow-slate-6">
+              <div className="p-4 sm:p-6">
+                <div className="flex flex-col items-center gap-1 sm:gap-2">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">60+</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground text-center">{t("about.stats.providers").split(" ").slice(1).join(" ")}</p>
                 </div>
               </div>
             </div>
@@ -110,39 +110,39 @@ export default function AboutPage() {
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-8 sm:mb-12 lg:mb-16 text-center text-gray-900 dark:text-white">
               {t("about.investors.title")}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 items-center justify-items-center">
-              <div className="flex items-center justify-center h-10 sm:h-12 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 items-center justify-items-center">
+              <div className="flex items-center justify-center h-12 sm:h-14 lg:h-16 w-full max-w-[200px] sm:max-w-none">
                 <img
                   alt="Andreessen Horowitz logo"
                   loading="lazy"
                   width="180"
                   height="48"
                   decoding="async"
-                  className="object-contain max-h-8 sm:max-h-10 lg:max-h-12 max-w-full"
+                  className="object-contain max-h-10 sm:max-h-12 lg:max-h-14 max-w-full w-auto h-auto"
                   src="/images/icons/a16z-wordmark.svg"
                   style={{color: 'transparent'}}
                 />
               </div>
-              <div className="flex items-center justify-center h-10 sm:h-12 w-full">
+              <div className="flex items-center justify-center h-12 sm:h-14 lg:h-16 w-full max-w-[200px] sm:max-w-none">
                 <img
                   alt="Menlo Ventures logo"
                   loading="lazy"
                   width="180"
                   height="48"
                   decoding="async"
-                  className="object-contain max-h-8 sm:max-h-10 lg:max-h-12 max-w-full"
+                  className="object-contain max-h-10 sm:max-h-12 lg:max-h-14 max-w-full w-auto h-auto"
                   src="/images/icons/menlo.png"
                   style={{color: 'transparent'}}
                 />
               </div>
-              <div className="flex items-center justify-center h-10 sm:h-12 w-full">
+              <div className="flex items-center justify-center h-12 sm:h-14 lg:h-16 w-full max-w-[200px] sm:max-w-none">
                 <img
                   alt="Sequoia Capital logo"
                   loading="lazy"
                   width="180"
                   height="32"
                   decoding="async"
-                  className="object-contain max-h-8 sm:max-h-10 lg:max-h-12 max-w-full"
+                  className="object-contain max-h-10 sm:max-h-12 lg:max-h-14 max-w-full w-auto h-auto"
                   src="/images/icons/sequoia.png"
                   style={{color: 'transparent'}}
                 />

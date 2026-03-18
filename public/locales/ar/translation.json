@@ -27,56 +27,56 @@
       "noResults": "لا توجد نتائج للبحث \"{{query}}\"",
       "tryAnother": "جرب البحث عن نموذج آخر"
     }
-   },
-   "hero": {
-     "title": "مرحباً بك في OpenRouter",
-     "subtitle": "واجهة برمجية موحدة لنماذج الذكاء الاصطناعي",
-     "getStarted": "ابدأ الآن",
-     "unifiedInterface": "الواجهة الموحدة لنماذج اللغة الكبيرة",
-     "better": "أفضل",
-     "prices": "أسعار",
-     "uptime": "وقت التشغيل",
-     "noSubscriptions": "بدون اشتراكات",
-     "getApiKey": "احصل على مفتاح API",
-     "exploreModels": "استكشف النماذج"
-   },
-   "chatPage": {
-     "newChat": "محادثة جديدة",
-     "addModel": "إضافة نموذج",
-     "searchRooms": "البحث في الغرف...",
-     "noMatchingRooms": "لا توجد غرف مطابقة",
-     "flagshipModels": "النماذج الرائدة",
-     "bestRoleplayModels": "أفضل نماذج لعب الأدوار",
-     "bestCodingModels": "أفضل نماذج البرمجة",
-     "reasoningModels": "نماذج التفكير المنطقي",
-     "createArtifact": "إنشاء عنصر...",
-     "startMessage": "ابدأ رسالة جديدة...",
-     "auto": "تلقائي",
-     "global": "عالمي",
-     "suggestions": {
-       "lifestyle": {
-         "title": "نمط الحياة",
-         "description": "نظام غذائي متوازن و..."
-       },
-       "smallBusiness": {
-         "title": "استراتيجية الأعمال الصغيرة",
-         "description": "طوّر خطة لتوسيع الأعمال..."
-       },
-       "educational": {
-         "title": "التقدم التعليمي",
-         "description": "خطط للتعليم العالي."
-       },
-       "nineNine": {
-         "title": "9.9 مقابل 9.11",
-         "description": "أيّهما أكبر؟"
-       },
-       "strawberry": {
-         "title": "اختبار الفراولة",
-         "description": "كم عدد حروف r في..."
-       }
-     }
-   },
-   "features": {
+  },
+  "hero": {
+    "title": "مرحباً بك في OpenRouter",
+    "subtitle": "واجهة برمجية موحدة لنماذج الذكاء الاصطناعي",
+    "getStarted": "ابدأ الآن",
+    "unifiedInterface": "الواجهة الموحدة لنماذج اللغة الكبيرة",
+    "better": "أفضل",
+    "prices": "أسعار",
+    "uptime": "وقت التشغيل",
+    "noSubscriptions": "بدون اشتراكات",
+    "getApiKey": "احصل على مفتاح API",
+    "exploreModels": "استكشف النماذج"
+  },
+  "chatPage": {
+    "newChat": "محادثة جديدة",
+    "addModel": "إضافة نموذج",
+    "searchRooms": "البحث في الغرف...",
+    "noMatchingRooms": "لا توجد غرف مطابقة",
+    "flagshipModels": "النماذج الرائدة",
+    "bestRoleplayModels": "أفضل نماذج لعب الأدوار",
+    "bestCodingModels": "أفضل نماذج البرمجة",
+    "reasoningModels": "نماذج التفكير المنطقي",
+    "createArtifact": "إنشاء عنصر...",
+    "startMessage": "ابدأ رسالة جديدة...",
+    "auto": "تلقائي",
+    "global": "عالمي",
+    "suggestions": {
+      "lifestyle": {
+        "title": "نمط الحياة",
+        "description": "نظام غذائي متوازن و..."
+      },
+      "smallBusiness": {
+        "title": "استراتيجية الأعمال الصغيرة",
+        "description": "طوّر خطة لتوسيع الأعمال..."
+      },
+      "educational": {
+        "title": "التقدم التعليمي",
+        "description": "خطط للتعليم العالي."
+      },
+      "nineNine": {
+        "title": "9.9 مقابل 9.11",
+        "description": "أيّهما أكبر؟"
+      },
+      "strawberry": {
+        "title": "اختبار الفراولة",
+        "description": "كم عدد حروف r في..."
+      }
+    }
+  },
+  "features": {
     "title": "المميزات",
     "explore": "استكشف",
     "agents": "الوكلاء",
@@ -120,7 +120,7 @@
     "or": "أو",
     "by": "بواسطة",
     "viewAll": "عرض الكل",
-     "name": "الاسم",
+    "name": "الاسم",
     "na": "غير متاح",
     "daily": "يومي",
     "weekly": "أسبوعي",
@@ -170,7 +170,7 @@
       "termsOfService": "شروط الخدمة",
       "support": "الدعم",
       "stateOfAI": "حالة الذكاء الاصطناعي",
-      "worksWithOR": "يعمل مع OR"
+      "worksWithOR": "يعمل مع OpenRouter"
     },
     "developer": {
       "title": "المطور",
@@ -186,6 +186,41 @@
       "linkedin": "لينكد إن",
       "x": "إكس",
       "youtube": "يوتيوب"
+    }
+  },
+  "aboutFooter": {
+    "copyright": "© 2024 OpenRouter. جميع الحقوق محفوظة.",
+    "company": {
+      "title": "الشركة",
+      "aboutUs": "من نحن",
+      "careers": "الوظائف",
+      "contact": "اتصل بنا",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "blog": "المدونة"
+    },
+    "product": {
+      "title": "المنتج",
+      "api": "واجهة برمجة التطبيقات",
+      "models": "النماذج",
+      "pricing": "الأسعار",
+      "chat": "محادثة",
+      "compare": "مقارنة"
+    },
+    "resources": {
+      "title": "الموارد",
+      "documentation": "التوثيق",
+      "apiReference": "مرجع واجهة البرمجة",
+      "tutorials": "الدروس",
+      "support": "الدعم",
+      "community": "المجتمع"
+    },
+    "connect": {
+      "title": "تواصل",
+      "twitter": "تويتر",
+      "github": "جيت هب",
+      "discord": "ديسكورد",
+      "linkedin": "لينكد إن"
     }
   },
   "signIn": {
@@ -648,7 +683,6 @@
     }
   },
   "logsPage": {
-    
     "filters": {
       "dates": "التواريخ",
       "models": "النماذج",
@@ -703,7 +737,7 @@
       "providerModel": "المزود/النموذج",
       "providerModelTooltip": "المزود والنموذج المستخدم لهذا الطلب",
       "app": "التطبيق",
-        "id": "المعرف",
+      "id": "المعرف",
       "timestamp": "الطابع الزمني",
       "model": "النموذج",
       "status": "الحالة",
@@ -711,7 +745,7 @@
       "cost": "التكلفة",
       "method": "الطريقة",
       "actions": "الإجراءات",
-      
+
       "appTooltip": "التطبيق الذي قدم هذا الطلب",
       "tokens": "الرموز",
       "tokensTooltip": "إجمالي عدد الرموز المعالجة",
@@ -1088,7 +1122,7 @@
     "qwenPlus": "نموذج Qwen3.5 للأغراض العامة، محدث 2026-02-15، مع قدرات متعددة اللغات قوية وأداء تنافسي في البرمجة ومعايير الدردشة.",
     "glm5": "أحدث نموذج من سلسلة GLM مع فهم قوي للصينية والإنجليزية، محسّن للدردشة والمهام كثيفة المعرفة."
   },
- 
+
   "appRanking": {
     "title": "تصنيفات التطبيقات والوكلاء",
     "mostPopular": "الأكثر شهرة",
@@ -1154,7 +1188,7 @@
       "desc": "مجمع الأخبار والمحتوى بالذكاء الاصطناعي"
     }
   },
-"trending": {
+  "trending": {
     "openClaw": {
       "tokens": "2.56 تريليون توكن",
       "growth": "+17%"
@@ -1386,7 +1420,7 @@
         "tokens": "17.6 مليار توكن"
       }
     },
-  
+
     "marketShare": {
       "title": "حصة السوق",
       "subtitle": "مقارنة حصة الرموز في OpenRouter حسب مؤلف النموذج",
@@ -1411,104 +1445,104 @@
     }
   },
   "hardcodedStrings": {
-      "previous": "السابق",
-      "next": "التالي",
-      "credits": "الرصيد",
-      "usd": "دولار أمريكي",
-      "byModel": "حسب النموذج",
-      "creditsAdded": "تم إضافة الرصيد",
-      "categories": {
-        "academia": "أكاديميا",
-        "finance": "مالية",
-        "health": "صحة",
-        "legal": "قانونية",
-        "marketing": "تسويق"
-      },
-      "providers": {
-        "ai21": "AI21",
-        "aionLabs": "AionLabs",
-        "alibaba": "علي بابا",
-        "ambient": "Ambient",
-        "amazonBedrock": "Amazon Bedrock",
-        "amazonNova": "Amazon Nova",
-        "anthropic": "Anthropic",
-        "arceeAI": "Arcee AI",
-        "atlasCloud": "AtlasCloud",
-        "azure": "Azure",
-        "baseten": "Baseten",
-        "cerebras": "Cerebras",
-        "cloudflare": "Cloudflare",
-        "cohere": "Cohere",
-        "coreweave": "CoreWeave",
-        "databricks": "Databricks",
-        "deepinfra": "DeepInfra",
-        "deepseek": "DeepSeek",
-        "featherless": "Featherless",
-        "fireworksAI": "Fireworks AI",
-        "gemini": "Gemini",
-        "githubModels": "GitHub Models",
-        "groq": "Groq",
-        "huggingFace": "Hugging Face",
-        "hyperbolic": "Hyperbolic",
-        "inflection": "Inflection",
-        "lambda": "Lambda",
-        "leptonAI": "Lepton AI",
-        "llamaCpp": "Llama.cpp",
-        "mancer": "Mancer",
-        "mistral": "Mistral",
-        "modal": "Modal",
-        "monsterAPI": "Monster API",
-        "nebius": "Nebius",
-        "novita": "Novita",
-        "octoAI": "OctoAI",
-        "openai": "OpenAI",
-        "perplexity": "Perplexity",
-        "predibase": "Predibase",
-        "recursalAI": "Recursal.ai",
-        "replicate": "Replicate",
-        "sambaNova": "Samba Nova",
-        "scale": "Scale",
-        "siliconFlow": "SiliconFlow",
-        "together": "Together",
-        "vertexAI": "VertexAI",
-        "voyageAI": "Voyage AI",
-        "weightsBiases": "Weight & Biases",
-        "workersAI": "Workers AI",
-        "xai": "xAI",
-        "yandex": "Yandex",
-        "yi": "Yi",
-        "zephyr": "Zephyr",
-        "zhipuAI": "Zhipu AI"
-      },
-      "destinations": {
-        "arizeAI": "Arize AI",
-        "braintrust": "Braintrust",
-        "clickhouse": "ClickHouse",
-        "cometOpik": "Comet Opik",
-        "datadog": "Datadog",
-        "grafanaCloud": "Grafana Cloud",
-        "langfuse": "Langfuse",
-        "langsmith": "LangSmith",
-        "newRelicAI": "New Relic AI",
-        "opentelemetryCollector": "OpenTelemetry Collector",
-        "posthog": "PostHog",
-        "s3Compatible": "S3 / S3‑Compatible",
-        "sentry": "Sentry",
-        "snowflake": "Snowflake",
-        "wbWeave": "W&B Weave",
-        "webhook": "Webhook"
-      },
-      "models": {
-        "aion20": "Aion-2.0",
-        "gemini31ProPreview": "Gemini 3.1 Pro Preview",
-        "claudeSonnet46": "Claude Sonnet 4.6",
-        "qwen35Plus": "Qwen3.5 Plus 2026-02-15",
-        "glm5": "GLM 5"
-      },
-      "byok": {
-        "pageTitle": "مفاتيحك الخاصة"
-      }
+    "previous": "السابق",
+    "next": "التالي",
+    "credits": "الرصيد",
+    "usd": "دولار أمريكي",
+    "byModel": "حسب النموذج",
+    "creditsAdded": "تم إضافة الرصيد",
+    "categories": {
+      "academia": "أكاديميا",
+      "finance": "مالية",
+      "health": "صحة",
+      "legal": "قانونية",
+      "marketing": "تسويق"
     },
+    "providers": {
+      "ai21": "AI21",
+      "aionLabs": "AionLabs",
+      "alibaba": "علي بابا",
+      "ambient": "Ambient",
+      "amazonBedrock": "Amazon Bedrock",
+      "amazonNova": "Amazon Nova",
+      "anthropic": "Anthropic",
+      "arceeAI": "Arcee AI",
+      "atlasCloud": "AtlasCloud",
+      "azure": "Azure",
+      "baseten": "Baseten",
+      "cerebras": "Cerebras",
+      "cloudflare": "Cloudflare",
+      "cohere": "Cohere",
+      "coreweave": "CoreWeave",
+      "databricks": "Databricks",
+      "deepinfra": "DeepInfra",
+      "deepseek": "DeepSeek",
+      "featherless": "Featherless",
+      "fireworksAI": "Fireworks AI",
+      "gemini": "Gemini",
+      "githubModels": "GitHub Models",
+      "groq": "Groq",
+      "huggingFace": "Hugging Face",
+      "hyperbolic": "Hyperbolic",
+      "inflection": "Inflection",
+      "lambda": "Lambda",
+      "leptonAI": "Lepton AI",
+      "llamaCpp": "Llama.cpp",
+      "mancer": "Mancer",
+      "mistral": "Mistral",
+      "modal": "Modal",
+      "monsterAPI": "Monster API",
+      "nebius": "Nebius",
+      "novita": "Novita",
+      "octoAI": "OctoAI",
+      "openai": "OpenAI",
+      "perplexity": "Perplexity",
+      "predibase": "Predibase",
+      "recursalAI": "Recursal.ai",
+      "replicate": "Replicate",
+      "sambaNova": "Samba Nova",
+      "scale": "Scale",
+      "siliconFlow": "SiliconFlow",
+      "together": "Together",
+      "vertexAI": "VertexAI",
+      "voyageAI": "Voyage AI",
+      "weightsBiases": "Weight & Biases",
+      "workersAI": "Workers AI",
+      "xai": "xAI",
+      "yandex": "Yandex",
+      "yi": "Yi",
+      "zephyr": "Zephyr",
+      "zhipuAI": "Zhipu AI"
+    },
+    "destinations": {
+      "arizeAI": "Arize AI",
+      "braintrust": "Braintrust",
+      "clickhouse": "ClickHouse",
+      "cometOpik": "Comet Opik",
+      "datadog": "Datadog",
+      "grafanaCloud": "Grafana Cloud",
+      "langfuse": "Langfuse",
+      "langsmith": "LangSmith",
+      "newRelicAI": "New Relic AI",
+      "opentelemetryCollector": "OpenTelemetry Collector",
+      "posthog": "PostHog",
+      "s3Compatible": "S3 / S3‑Compatible",
+      "sentry": "Sentry",
+      "snowflake": "Snowflake",
+      "wbWeave": "W&B Weave",
+      "webhook": "Webhook"
+    },
+    "models": {
+      "aion20": "Aion-2.0",
+      "gemini31ProPreview": "Gemini 3.1 Pro Preview",
+      "claudeSonnet46": "Claude Sonnet 4.6",
+      "qwen35Plus": "Qwen3.5 Plus 2026-02-15",
+      "glm5": "GLM 5"
+    },
+    "byok": {
+      "pageTitle": "مفاتيحك الخاصة"
+    }
+  },
   "modelComparison": {
     "title": "مقارنة نماذج الذكاء الاصطناعي",
     "subtitle": "قارن نماذج الذكاء الاصطناعي حسب المقاييس الرئيسية مثل السعر وزمن الاستجابة والإنتاجية وطول السياق والميزات الأخرى.",
@@ -2068,6 +2102,7 @@
     }
   },
   "support": {
+    "pageTitle": "الدعم - OpenRouter",
     "title": "مرحباً، كيف يمكنني مساعدتك؟",
     "subtitle": "احصل على الدعم الذي تحتاجه للنجاح مع OpenRouter. تصفح مركز المساعدة أو أنشئ تذكرة دعم أو استكشف وثائقنا للعثور على إجابات سريعة.",
     "raiseTicket": {
@@ -2091,15 +2126,42 @@
         },
         "howToStart": {
           "question": "كيف أبدأ مع OpenRouter؟",
-          "answer": "أنشئ حساباً وأضف رصيداً في صفحة الرصيد. يُستخدم الرصيد لاستنتاج نماذج اللغة الكبيرة.\n\nاستخدم غرفة الدردشة أو أنشئ مفاتيح واجهة البرمجة وابدأ في استخدام واجهة البرمجة. راجع دليل البدء السريع."
+          "answer": "أنشئ حساباً وأضف رصيداً في صفحة الرصيد. يُستخدم الرصيد لاستنتاج نماذج اللغة الكبيرة.\n\nاستخدم غرفة الدردشة أو أنشئ مفاتيح واجهة البرمجة وابدأ في استخدام واجهة البرمجة. راجع دليل البدء السريع.",
+          "customContent": {
+            "paragraph1": "أنشئ حساباً وأضف رصيداً في صفحة",
+            "creditPageLink": "الرصيد",
+            "paragraph2": ". يُستخدم الرصيد لاستنتاج نماذج اللغة الكبيرة.",
+            "paragraph3": "استخدم غرفة الدردشة أو أنشئ مفاتيح واجهة البرمجة وابدأ في استخدام واجهة البرمجة. راجع",
+            "quickstartLink": "دليل البدء السريع",
+            "period": "."
+          }
         },
         "howToGetSupport": {
           "question": "كيف أحصل على الدعم؟",
-          "answer": "انضم إلى مجتمع Discord واسأل في منتدى #help.\n\nلأسئلة الفوترة والحساب، راسل support@openrouter.ai."
+          "answer": "انضم إلى مجتمع Discord واسأل في منتدى #help.\n\nلأسئلة الفوترة والحساب، راسل support@openrouter.ai.",
+          "customContent": {
+            "paragraph1": "انضم إلى مجتمع",
+            "discordLink": "Discord",
+            "paragraph2": "واسأل في منتدى #help.",
+            "paragraph3": "لأسئلة الفوترة والحساب، راسل",
+            "supportEmail": "support@openrouter.ai",
+            "period": "."
+          }
         },
         "howBilled": {
           "question": "كيف يتم إحتساب فاتورة استخدامي على OpenRouter؟",
-          "answer": "التسعير يكون لكل نموذج وقد يختلف للمطالبة/الإكمال والصور والرموز المنطقية. راجع صفحة النموذج للتفاصيل.\n\nنحسب التكلفة من استخدام رموز المزود ونخصمها من رصيدك. راجع تاريخك في النشاط.\n\nأدرج usage: {include: true} في الطلبات لتلقي بيانات الاستخدام في الاستجابة. نمرر تسعير المزود؛ نفرض رسماً صغيراً عند شراء الرصيد."
+          "answer": "التسعير يكون لكل نموذج وقد يختلف للمطالبة/الإكمال والصور والرموز المنطقية. راجع صفحة النموذج للتفاصيل.\n\nنحسب التكلفة من استخدام رموز المزود ونخصمها من رصيدك. راجع تاريخك في النشاط.\n\nأدرج usage: {include: true} في الطلبات لتلقي بيانات الاستخدام في الاستجابة. نمرر تسعير المزود؛ نفرض رسماً صغيراً عند شراء الرصيد.",
+          "customContent": {
+            "paragraph1": "التسعير يكون لكل نموذج وقد يختلف للمطالبة/الإكمال والصور والرموز المنطقية. راجع",
+            "modelPageLink": "صفحة النموذج",
+            "paragraph2": "للتفاصيل.",
+            "paragraph3": "نحسب التكلفة من استخدام رموز المزود ونخصمها من رصيدك. راجع تاريخك في",
+            "activityPageLink": "النشاط",
+            "period1": ".",
+            "paragraph4": "أدرج",
+            "usageCode": "usage: {include: true}",
+            "paragraph5": "في الطلبات لتلقي بيانات الاستخدام في الاستجابة. نمرر تسعير المزود؛ نفرض رسماً صغيراً عند شراء الرصيد."
+          }
         }
       },
       "pricingAndFees": {
@@ -2117,23 +2179,77 @@
         "title": "النماذج والمزودون",
         "whatModels": {
           "question": "ما نماذج اللغة الكبيرة التي يدعمها OpenRouter؟",
-          "answer": "الوصول إلى مجموعة واسعة من النماذج، بما في ذلك النماذج الحديثة. راجع متصفح النماذج أو واجهة برمجة النماذج."
+          "answer": "الوصول إلى مجموعة واسعة من النماذج، بما في ذلك النماذج الحديثة. راجع متصفح النماذج أو واجهة برمجة النماذج.",
+          "customContent": {
+            "paragraph1": "الوصول إلى مجموعة واسعة من النماذج، بما في ذلك النماذج الحديثة. راجع",
+            "modelBrowserLink": "متصفح النماذج",
+            "paragraph2": "أو",
+            "modelsApiLink": "واجهة برمجة النماذج",
+            "period": "."
+          }
         },
         "howFrequent": {
           "question": "كم مرة تُضاف نماذج جديدة؟",
-          "answer": "نضيف النماذج بانتظام، غالباً بالشراكة مع المختبرات. إذا كان هناك شيء مفقود، تواصل معنا على Discord."
+          "answer": "نضيف النماذج بانتظام، غالباً بالشراكة مع المختبرات. إذا كان هناك شيء مفقود، تواصل معنا على Discord.",
+          "customContent": {
+            "paragraph1": "نضيف النماذج بانتظام، غالباً بالشراكة مع المختبرات. إذا كان هناك شيء مفقود، تواصل معنا على",
+            "discordLink": "Discord",
+            "period": "."
+          }
         },
         "whatVariants": {
           "question": "ما هي متغيرات النموذج؟",
-          "answer": "المتغيرات هي لواحق تعدل السلوك. المتغيرات الثابتة متوفرة على نماذج محددة، مدرجة في واجهة برمجة النماذج:\n\n• :free – نموذج مجاني بحدود معدل منخفضة\n• :extended – طول سياق أطول\n• :thinking – منطق افتراضي\n\nيمكن استخدام المتغيرات الديناميكية على جميع النماذج:\n\n• :online – إرفاق نتائج الويب بالمطالبة\n• :nitro – تحسين لإنتاجية أسرع\n• :floor – إعطاء الأولوية لأقل سعر"
+          "answer": "المتغيرات هي لواحق تعدل السلوك. المتغيرات الثابتة متوفرة على نماذج محددة، مدرجة في واجهة برمجة النماذج:\n\n• :free – نموذج مجاني بحدود معدل منخفضة\n• :extended – طول سياق أطول\n• :thinking – منطق افتراضي\n\nيمكن استخدام المتغيرات الديناميكية على جميع النماذج:\n\n• :online – إرفاق نتائج الويب بالمطالبة\n• :nitro – تحسين لإنتاجية أسرع\n• :floor – إعطاء الأولوية لأقل سعر",
+          "customContent": {
+            "paragraph1": "المتغيرات هي لواحق تعدل السلوك. المتغيرات الثابتة متوفرة على نماذج محددة، مدرجة في واجهة برمجة النماذج:",
+            "staticVariants": {
+              "free": {
+                "code": ":free",
+                "description": "– نموذج مجاني بحدود معدل منخفضة"
+              },
+              "extended": {
+                "code": ":extended",
+                "description": "– طول سياق أطول"
+              },
+              "thinking": {
+                "code": ":thinking",
+                "description": "– منطق افتراضي"
+              }
+            },
+            "paragraph2": "يمكن استخدام المتغيرات الديناميكية على جميع النماذج:",
+            "dynamicVariants": {
+              "online": {
+                "code": ":online",
+                "description": "– إرفاق نتائج الويب بالمطالبة"
+              },
+              "nitro": {
+                "code": ":nitro",
+                "description": "– تحسين لإنتاجية أسرع"
+              },
+              "floor": {
+                "code": ":floor",
+                "description": "– إعطاء الأولوية لأقل سعر"
+              }
+            }
+          }
         },
         "inferenceProvider": {
           "question": "أنا مزود استنتاج، كيف يمكنني الحصول على قائمة في OpenRouter؟",
-          "answer": "راجع متطلبات المزود. للاتصال، البريد الإلكتروني هو الأفضل."
+          "answer": "راجع متطلبات المزود. للاتصال، البريد الإلكتروني هو الأفضل.",
+          "customContent": {
+            "paragraph1": "راجع",
+            "providerRequirementsLink": "متطلبات المزود",
+            "paragraph2": ". للاتصال، البريد الإلكتروني هو الأفضل."
+          }
         },
         "expectedLatency": {
           "question": "ما هو زمن الاستجابة المتوقع/وقت الاستجابة للنماذج المختلفة؟",
-          "answer": "تظهر صفحات النموذج زمن الاستجابة والإنتاجية حسب المزود. استخدم :nitro للتوجه إلى مزودين أسرع."
+          "answer": "تظهر صفحات النموذج زمن الاستجابة والإنتاجية حسب المزود. استخدم :nitro للتوجه إلى مزودين أسرع.",
+          "customContent": {
+            "paragraph1": "تظهر صفحات النموذج زمن الاستجابة والإنتاجية حسب المزود. استخدم",
+            "nitroVariant": ":nitro",
+            "paragraph2": "للتوجه إلى مزودين أسرع."
+          }
         },
         "modelFallback": {
           "question": "كيف يعمل بديل النموذج إذا كان المزود غير متاح؟",
@@ -2152,11 +2268,27 @@
         },
         "apiEndpoints": {
           "question": "ما نقاط نهاية واجهة البرمجة المتاحة؟",
-          "answer": "نطبق /completions و /chat/completions المتوافقة مع OpenAI، بالإضافة إلى /api/v1/models. راجع مستندات واجهة البرمجة."
+          "answer": "نطبق /completions و /chat/completions المتوافقة مع OpenAI، بالإضافة إلى /api/v1/models. راجع مستندات واجهة البرمجة.",
+          "customContent": {
+            "paragraph1": "نطبق",
+            "completionsEndpoint": "/completions",
+            "paragraph2": "و",
+            "chatCompletionsEndpoint": "/chat/completions",
+            "paragraph3": "المتوافقة مع OpenAI، بالإضافة إلى",
+            "modelsEndpoint": "/api/v1/models",
+            "paragraph4": ". راجع",
+            "apiDocsLink": "مستندات واجهة البرمجة",
+            "period": "."
+          }
         },
         "supportedFormats": {
           "question": "ما هي الصيغ المدعومة؟",
-          "answer": "النصوص والصور مدعومة. يمكن أن تكون الصور عناوين URL أو base64. ملفات PDF وأنواع الملفات الأخرى قادمة قريباً."
+          "answer": "النصوص والصور مدعومة. يمكن أن تكون الصور عناوين URL أو base64. ملفات PDF وأنواع الملفات الأخرى قادمة قريباً.",
+          "customContent": {
+            "paragraph1": "النصوص والصور مدعومة. يمكن أن تكون الصور عناوين URL أو",
+            "base64Text": "base64",
+            "paragraph2": ". ملفات PDF وأنواع الملفات الأخرى قادمة قريباً."
+          }
         },
         "howStreaming": {
           "question": "كيف يعمل التدفق؟",
@@ -2164,7 +2296,12 @@
         },
         "sdkSupport": {
           "question": "ما دعم SDK المتاح؟",
-          "answer": "OpenRouter بديل مباشر لـ OpenAI؛ معظم SDKs الخاصة بـ OpenAI تعمل. راجع مستندات SDK."
+          "answer": "OpenRouter بديل مباشر لـ OpenAI؛ معظم SDKs الخاصة بـ OpenAI تعمل. راجع مستندات SDK.",
+          "customContent": {
+            "paragraph1": "OpenRouter بديل مباشر لـ OpenAI؛ معظم SDKs الخاصة بـ OpenAI تعمل. راجع",
+            "sdkDocsLink": "مستندات SDK",
+            "period": "."
+          }
         }
       },
       "privacyAndData": {
@@ -2172,7 +2309,13 @@
         "subtitle": "راجع شروط الخدمة وسياسة الخصوصية الخاصة بنا.",
         "whatDataLogged": {
           "question": "ما البيانات التي يتم تسجيلها أثناء استخدام واجهة البرمجة؟",
-          "answer": "نسجل بيانات وصفية أساسية للطلب (الطوابع الزمنية والنموذج وعدد الرموز). المطالبات والإكمالات لا يتم تسجيلها بشكل افتراضي.\n\nيمكنك اختيار تسجيل المطالبات/الإكمالات للحصول على خصم صغير عبر إعدادات الخصوصية."
+          "answer": "نسجل بيانات وصفية أساسية للطلب (الطوابع الزمنية والنموذج وعدد الرموز). المطالبات والإكمالات لا يتم تسجيلها بشكل افتراضي.\n\nيمكنك اختيار تسجيل المطالبات/الإكمالات للحصول على خصم صغير عبر إعدادات الخصوصية.",
+          "customContent": {
+            "paragraph1": "نسجل بيانات وصفية أساسية للطلب (الطوابع الزمنية والنموذج وعدد الرموز). المطالبات والإكمالات لا يتم تسجيلها بشكل افتراضي.",
+            "paragraph2": "يمكنك اختيار تسجيل المطالبات/الإكمالات للحصول على خصم صغير عبر",
+            "privacySettingsLink": "إعدادات الخصوصية",
+            "period": "."
+          }
         },
         "chatroomData": {
           "question": "ما البيانات التي يتم تسجيلها أثناء استخدام غرفة الدردشة؟",
@@ -2195,15 +2338,33 @@
         },
         "creditsNotShowing": {
           "question": "لم يظهر رصيدي في حسابي",
-          "answer": "لمشتريات Stripe، اسمح حتى ساعة واحدة. إذا لم تظهر رسوم/إيصال، قد تكون بطاقتك مرفوضة؛ جرب طريقة أخرى.\n\nإذا تم الشحن ولكن الرصيد مفقود، راسل support@openrouter.ai مع تفاصيل الشراء. لمدفوعات العملة المشفرة، راسل الدعم أيضاً."
+          "answer": "لمشتريات Stripe، اسمح حتى ساعة واحدة. إذا لم تظهر رسوم/إيصال، قد تكون بطاقتك مرفوضة؛ جرب طريقة أخرى.\n\nإذا تم الشحن ولكن الرصيد مفقود، راسل support@openrouter.ai مع تفاصيل الشراء. لمدفوعات العملة المشفرة، راسل الدعم أيضاً.",
+          "customContent": {
+            "paragraph1": "لمشتريات Stripe، اسمح حتى ساعة واحدة. إذا لم تظهر رسوم/إيصال، قد تكون بطاقتك مرفوضة؛ جرب طريقة أخرى.",
+            "paragraph2": "إذا تم الشحن ولكن الرصيد مفقود، راسل",
+            "supportEmail": "support@openrouter.ai",
+            "paragraph3": "مع تفاصيل الشراء. لمدفوعات العملة المشفرة، راسل الدعم أيضاً."
+          }
         },
         "refundPolicy": {
           "question": "ما سياسة الاسترداد؟",
-          "answer": "قد يُطلب استرداد الرصيد غير المستخدم خلال 24 ساعة من الشراء عبر زر الاسترداد في صفحة الرصيد. رسوم المنصة غير قابلة للاسترداد. مدفوعات العملة المشفرة غير قابلة للاسترداد."
+          "answer": "قد يُطلب استرداد الرصيد غير المستخدم خلال 24 ساعة من الشراء عبر زر الاسترداد في صفحة الرصيد. رسوم المنصة غير قابلة للاسترداد. مدفوعات العملة المشفرة غير قابلة للاسترداد.",
+          "customContent": {
+            "paragraph1": "قد يُطلب استرداد الرصيد غير المستخدم خلال 24 ساعة من الشراء عبر زر الاسترداد في",
+            "creditsPageLink": "صفحة الرصيد",
+            "paragraph2": ". رسوم المنصة غير قابلة للاسترداد. مدفوعات العملة المشفرة غير قابلة للاسترداد."
+          }
         },
         "monitorUsage": {
           "question": "كيفية مراقبة استخدام الرصيد؟",
-          "answer": "استخدم صفحة النشاط أو واجهة برمجة الرصيد للرصيد والرصيد المتبقي."
+          "answer": "استخدم صفحة النشاط أو واجهة برمجة الرصيد للرصيد والرصيد المتبقي.",
+          "customContent": {
+            "paragraph1": "استخدم",
+            "activityPageLink": "صفحة النشاط",
+            "paragraph2": "أو",
+            "creditsApiLink": "واجهة برمجة الرصيد",
+            "paragraph3": "للرصيد والرصيد المتبقي."
+          }
         },
         "freeTier": {
           "question": "ما خيارات الطبقة المجانية الموجودة؟",
@@ -2215,7 +2376,12 @@
         },
         "paymentMethods": {
           "question": "ما طرق الدفع المقبولة؟",
-          "answer": "بطاقات الائتمان الرئيسية و AliPay و USDC المشفرة. PayPal قيد التقدم. لطرق أخرى، تواصل معنا على Discord."
+          "answer": "بطاقات الائتمان الرئيسية و AliPay و USDC المشفرة. PayPal قيد التقدم. لطرق أخرى، تواصل معنا على Discord.",
+          "customContent": {
+            "paragraph1": "بطاقات الائتمان الرئيسية و AliPay و USDC المشفرة. PayPal قيد التقدم. لطرق أخرى، تواصل معنا على",
+            "discordLink": "Discord",
+            "period": "."
+          }
         },
         "howMakeMoney": {
           "question": "كيف تربح OpenRouter المال؟",
@@ -2226,11 +2392,26 @@
         "title": "إدارة الحساب",
         "deleteAccount": {
           "question": "كيف يمكنني حذف حسابي؟",
-          "answer": "اذهب إلى الإعدادات ← إدارة الحساب ← علامة تبويب الأمان لحذف حسابك.\n\nملاحظة: سيُفقد الرصيد غير المستخدم ولا يمكن استرداده إذا حذفت وأعدت إنشاء حسابك لاحقاً."
+          "answer": "اذهب إلى الإعدادات ← إدارة الحساب ← علامة تبويب الأمان لحذف حسابك.\n\nملاحظة: سيُفقد الرصيد غير المستخدم ولا يمكن استرداده إذا حذفت وأعدت إنشاء حسابك لاحقاً.",
+          "customContent": {
+            "paragraph1": "اذهب إلى",
+            "settingsLink": "الإعدادات",
+            "arrow1": "←",
+            "accountManagementLink": "إدارة الحساب",
+            "arrow2": "←",
+            "paragraph2": "علامة تبويب الأمان لحذف حسابك.",
+            "noteLabel": "ملاحظة:",
+            "paragraph3": "سيُفقد الرصيد غير المستخدم ولا يمكن استرداده إذا حذفت وأعدت إنشاء حسابك لاحقاً."
+          }
         },
         "teamAccess": {
           "question": "كيف يعمل وصول الفريق؟",
-          "answer": "راجع توثيق إدارة المنظمة."
+          "answer": "راجع توثيق إدارة المنظمة.",
+          "customContent": {
+            "paragraph1": "راجع",
+            "orgManagementDocsLink": "توثيق إدارة المنظمة",
+            "period": "."
+          }
         },
         "analytics": {
           "question": "ما التحليلات المتاحة؟",
@@ -2238,7 +2419,12 @@
         },
         "contactSupport": {
           "question": "كيف يمكنني الاتصال بالدعم؟",
-          "answer": "لأسئلة الحساب والفوترة، راسل support@openrouter.ai."
+          "answer": "لأسئلة الحساب والفوترة، راسل support@openrouter.ai.",
+          "customContent": {
+            "paragraph1": "لأسئلة الحساب والفوترة، راسل",
+            "supportEmail": "support@openrouter.ai",
+            "period": "."
+          }
         }
       }
     },
@@ -2311,6 +2497,358 @@
         "title": "Spawn",
         "description": "انشر أي وكيل برمجة ذكي على أي مزود سحابي بأمر واحد. لا Terraform، لا YAML — اختر وكيلاً وسحابة فقط."
       }
+    },
+    "worksWithOpenRouter": {
+      "title": "يعمل مع OpenRouter",
+      "subtitle": "اكتشف التطبيقات والأدوات المتوافقة مع OpenRouter",
+      "addApp": "هل تريد إضافة تطبيقك؟",
+      "submitPR": "أرسل طلب سحب",
+      "optimize": "هل تريد تحسينه؟",
+      "oauthDocs": "راجع مستندات OAuth",
+      "categories": {
+        "coding": "البرمجة",
+        "productivity": "الإنتاجية",
+        "research": "البحث",
+        "chat": "الدردشة",
+        "creative": "إبداعي"
+      },
+      "apps": {
+        "maximAI": {
+          "name": "Maxim AI",
+          "description": "Maxim هو منصة محاكاة الوكلاء وتقييمها ومراقبتها التي تمكن فرق الذكاء الاصطناعي الحديثة من نشر الوكلاء بالجودة والموثوقية والسرعة."
+        },
+        "agentZero": {
+          "name": "Agent Zero",
+          "description": "ابني وكلاء الذكاء الاصطناعي المستقلة بسهولة."
+        },
+        "aiAssistWorks": {
+          "name": "AiAssistWorks",
+          "description": "الذكاء الاصطناعي لجداول بيانات Google™ والشرائح™ والمستندات™. املأ وانظف وصنف أكثر من 100 ألف صف بأوامر نصية بسيطة - لا حاجة لصيغ معقدة. أنشئ الرسوم البيانية والجداول المحورية واكتب المحتوى باستخدام أكثر من 100 نموذج ذكاء اصطناعي."
+        },
+        "aider": {
+          "name": "Aider",
+          "description": "برمجة مقترنة بالذكاء الاصطناعي في الطرفية تتيح لك العمل مع نماذج اللغة الكبيرة لبناء قاعدة الكود الموجودة."
+        },
+        "libreChat": {
+          "name": "LibreChat",
+          "description": "تطبيق دردشة مفتوح المصدر لجميع محادثات الذكاء الاصطناعي، متوافق مع أي مزود ذكاء اصطناعي."
+        },
+        "chatbox": {
+          "name": "Chatbox",
+          "description": "المساعد المثالي للذكاء الاصطناعي على سطح المكتب. Chatbox هو عميل سطح مكتب لـ ChatGPT و Claude ونماذج اللغة الكبيرة الأخرى، متاح على Windows و Mac و Linux و iOS و Android."
+        },
+        "cline": {
+          "name": "Cline",
+          "description": "وكيل برمجة مستقل مباشرة في بيئة التطوير الخاصة بك."
+        },
+        "sillyTavern": {
+          "name": "SillyTavern",
+          "description": "واجهة نماذج اللغة الكبيرة المحلية أولاً للمستخدمين المتقدمين، تدعم الدردشة وبطاقات الشخصيات ومزودي الذكاء الاصطناعي المتعددين."
+        }
+      },
+      "worksWithOpenRouter": {
+        "title": "يعمل مع OpenRouter",
+        "subtitle": "اكتشف التطبيقات والأدوات المتوافقة مع OpenRouter",
+        "addApp": "هل تريد إضافة تطبيقك؟",
+        "submitPR": "أرسل طلب سحب",
+        "optimize": "هل تريد تحسينه؟",
+        "oauthDocs": "راجع مستندات OAuth",
+        "categories": {
+          "coding": "البرمجة",
+          "productivity": "الإنتاجية",
+          "research": "البحث",
+          "chat": "الدردشة",
+          "creative": "إبداعي"
+        },
+        "apps": {
+          "maximAI": {
+            "name": "Maxim AI",
+            "description": "Maxim هو منصة محاكاة الوكلاء وتقييمها ومراقبتها التي تمكن فرق الذكاء الاصطناعي الحديثة من نشر الوكلاء بالجودة والموثوقية والسرعة."
+          },
+          "agentZero": {
+            "name": "Agent Zero",
+            "description": "ابني وكلاء الذكاء الاصطناعي المستقلة بسهولة."
+          },
+          "aiAssistWorks": {
+            "name": "AiAssistWorks",
+            "description": "الذكاء الاصطناعي لجداول بيانات Google™ والشرائح™ والمستندات™. املأ وانظف وصنف أكثر من 100 ألف صف بأوامر نصية بسيطة - لا حاجة لصيغ معقدة. أنشئ الرسوم البيانية والجداول المحورية واكتب المحتوى باستخدام أكثر من 100 نموذج ذكاء اصطناعي."
+          },
+          "aider": {
+            "name": "Aider",
+            "description": "برمجة مقترنة بالذكاء الاصطناعي في الطرفية تتيح لك العمل مع نماذج اللغة الكبيرة لبناء قاعدة الكود الموجودة."
+          },
+          "libreChat": {
+            "name": "LibreChat",
+            "description": "تطبيق دردشة مفتوح المصدر لجميع محادثات الذكاء الاصطناعي، متوافق مع أي مزود ذكاء اصطناعي."
+          },
+          "chatbox": {
+            "name": "Chatbox",
+            "description": "المساعد المثالي للذكاء الاصطناعي على سطح المكتب. Chatbox هو عميل سطح مكتب لـ ChatGPT و Claude ونماذج اللغة الكبيرة الأخرى، متاح على Windows و Mac و Linux و iOS و Android."
+          },
+          "cline": {
+            "name": "Cline",
+            "description": "وكيل برمجة مستقل مباشرة في بيئة التطوير الخاصة بك."
+          },
+          "sillyTavern": {
+            "name": "SillyTavern",
+            "description": "واجهة نماذج اللغة الكبيرة المحلية أولاً للمستخدمين المتقدمين، تدعم الدردشة وبطاقات الشخصيات ومزودي الذكاء الاصطناعي المتعددين."
+          }
+        }
+      }
+    }
+  },
+  "worksWithOpenRouter": {
+    "title": "يعمل مع OpenRouter",
+    "subtitle": "اكتشف التطبيقات والأدوات المتوافقة مع OpenRouter",
+    "addApp": "هل تريد إضافة تطبيقك؟",
+    "submitPR": "أرسل طلب سحب",
+    "optimize": "هل تريد تحسينه؟",
+    "oauthDocs": "راجع مستندات OAuth",
+    "categories": {
+      "coding": "البرمجة",
+      "productivity": "الإنتاجية",
+      "research": "البحث",
+      "chat": "الدردشة",
+      "creative": "إبداعي"
+    },
+    "apps": {
+      "maximAI": {
+        "name": "Maxim AI",
+        "description": "Maxim هو منصة محاكاة الوكلاء وتقييمها ومراقبتها التي تمكن فرق الذكاء الاصطناعي الحديثة من نشر الوكلاء بالجودة والموثوقية والسرعة."
+      },
+      "agentZero": {
+        "name": "Agent Zero",
+        "description": "ابني وكلاء الذكاء الاصطناعي المستقلة بسهولة."
+      },
+      "aiAssistWorks": {
+        "name": "AiAssistWorks",
+        "description": "الذكاء الاصطناعي لجداول بيانات Google™ والشرائح™ والمستندات™. املأ وانظف وصنف أكثر من 100 ألف صف بأوامر نصية بسيطة - لا حاجة لصيغ معقدة. أنشئ الرسوم البيانية والجداول المحورية واكتب المحتوى باستخدام أكثر من 100 نموذج ذكاء اصطناعي."
+      },
+      "aider": {
+        "name": "Aider",
+        "description": "برمجة مقترنة بالذكاء الاصطناعي في الطرفية تتيح لك العمل مع نماذج اللغة الكبيرة لتعديل قاعدة الكود الموجودة."
+      },
+      "libreChat": {
+        "name": "LibreChat",
+        "description": "تطبيق دردشة مفتوح المصدر لجميع محادثات الذكاء الاصطناعي، متوافق مع أي مزود ذكاء اصطناعي."
+      },
+      "chatbox": {
+        "name": "Chatbox",
+        "description": "المساعد المثالي للذكاء الاصطناعي على سطح المكتب. Chatbox هو عميل سطح مكتب لـ ChatGPT و Claude ونماذج اللغة الكبيرة الأخرى، متاح على Windows و Mac و Linux و iOS و Android."
+      },
+      "cline": {
+        "name": "Cline",
+        "description": "وكيل برمجة مستقل مباشرة في بيئة التطوير الخاصة بك."
+      },
+      "sillyTavern": {
+        "name": "SillyTavern",
+        "description": "واجهة نماذج اللغة الكبيرة المحلية أولاً للمستخدمين المتقدمين، تدعم الدردشة وبطاقات الشخصيات ومزودي الذكاء الاصطناعي المتعددين."
+      }
+    }
+  },
+  "enterprise": {
+    "hero": {
+      "title": "ركز على عملائك، وليس على البنية التحتية الخاصة بك",
+      "subtitle": "وصول موحد إلى أكثر من 300 نموذج ذكاء اصطناعي مع عدم وجود عبء تشغيلي",
+      "oneApiLabel": "واجهة برمجة تطبيقات واحدة، فاتورة واحدة، كل مقدمي الذكاء الاصطناعي",
+      "contactSales": "اتصل بفريق المبيعات",
+      "providerCta": "مقدم خدمة يريد إدراج النماذج؟"
+    },
+    "featuresComparison": {
+      "title": "توقف عن إدارة التعقيد. ابدأ في شحن الميزات.",
+      "billingBad": "إدارة أكثر من 5 علاقات مقدمي خدمة",
+      "billingGood": "واجهة برمجة تطبيقات واحدة، عقد واحد، فوترة موحدة",
+      "retryBad": "بناء منطق إعادة المحاولة المخصص",
+      "retryGood": "التحويل التلقائي بين مقدمي الخدمة",
+      "capacityBad": "حدود السعة ومعدل الطلبات",
+      "capacityGood": "التحويل إلى سعتنا عند الوصول إلى حدودك",
+      "switchingBad": "الحفاظ على كود منفصل لكل نموذج جديد",
+      "switchingGood": "تكلفة تبديل صفرية بين النماذج",
+      "privacyBad": "مخاوف الاحتفاظ بالبيانات والخصوصية",
+      "privacyGood": "منصة آمنة تركز على الخصوصية مع ZDR بنقرة واحدة",
+      "complianceBad": "إدارة الامتثال مع كل مقدم خدمة",
+      "complianceGood": "شريك واحد متوافق مع GDPR و SOC-2 مع SLAs"
+    },
+    "fromPocToProd": {
+      "title": "من إثبات المفهوم إلى الإنتاج",
+      "enterprisePerformanceTitle": "أداء على مستوى المؤسسات",
+      "enterprisePerformanceDesc": "مُنشر على الحافة، مع التحويل التلقائي لأفضل وقت تشغيل في فئته.",
+      "highRateLimitsTitle": "حدود معدل عالية",
+      "highRateLimitsDesc": "مليارات الطلبات وتريليونات الرموز، كل أسبوع.",
+      "highRateLimitsLink": "عرض الإحصائيات ←",
+      "automaticFailoverTitle": "التحويل التلقائي",
+      "automaticFailoverDesc": "مع أكثر من 50 مقدم خدمة سحابية في ظهرك.",
+      "automaticFailoverLink": "تعلم المزيد ←",
+      "enterprisePerfCardTitle": "أداء المؤسسة",
+      "enterprisePerfCardDesc": "مُنشر عالمياً على الحافة، مع زمن استجابة أدنى.",
+      "unifiedBillingTitle": "فوترة موحدة",
+      "unifiedBillingDesc": "إيداع ائتمانات على OpenRouter واستخدامها في أي مكان.",
+      "compliancePrivacyTitle": "الامتثال والخصوصية",
+      "compliancePrivacyDesc": "دعم ZDR. امتثال GDPR. قفل المنطقة الأوروبية.",
+      "compliancePrivacyLink": "تعلم المزيد ←",
+      "zeroLoggingTitle": "افتراضي عدم التسجيل",
+      "zeroLoggingDesc": "التوجيه إلى مقدمي الخدمة الذين يحمون بياناتك.",
+      "unifiedReportingTitle": "التقارير الموحدة",
+      "unifiedReportingDesc": "عرض وتصدير جميع طلبات API عبر جميع المستخدمين.",
+      "orgSsoTitle": "دعم المؤسسة مع SSO",
+      "orgSsoDesc": "مستخدمون متعددون مع تفضيلات عالمية لفرض السياسات.",
+      "spendMgmtTitle": "إدارة الإنفاق",
+      "spendMgmtDesc": "إدارة مفاتيح API برمجياً للتحكم على مستوى المؤسسة.",
+      "byocTitle": "أحضر سعتك الخاصة للإعداد الأكثر مرونة",
+      "byocUseCreditsTitle": "✓ استخدم ائتمانات AWS/GCP/Azure",
+      "byocUseCreditsDesc": "طبق ائتمانات السحابة الحالية على أحمال عمل الذكاء الاصطناعي",
+      "byocRateLimitTitle": "✓ تعزيز حد المعدل",
+      "byocRateLimitDesc": "أفضل إنتاجية في الصناعة تجمع بين حدودك + حدودنا"
+    },
+    "infrastructure": {
+      "title": "البنية التحتية للذكاء الاصطناعي على مستوى المؤسسة",
+      "subtitle": "ميزات متقدمة للمراقبة والتحكم في التكلفة وحوكمة البيانات.",
+      "observabilityTitle": "مراقبة LLM",
+      "observabilityDesc": "بث التتبعات إلى Langfuse و Datadog و Braintrust وأكثر. راقب استخدام الرموز والتكاليف والزمن عبر جميع طلبات الذكاء الاصطناعي.",
+      "costMgmtTitle": "إدارة التكلفة",
+      "costMgmtDesc": "تعيين حدود ائتمان لكل مفتاح مع إعادة تعيين تلقائية يومية أو أسبوعية أو شهرية. تتبع الاستخدام في الوقت الفعلي ومنع الإنفاق غير المتوقع.",
+      "zdrTitle": "عدم الاحتفاظ بالبيانات",
+      "zdrDesc": "توجيه الطلبات حصرياً إلى مقدمي الخدمة مع سياسات عدم الاحتفاظ بالبيانات. مطالباتك لا يتم تسجيلها أو استخدامها للتدريب أبداً."
+    },
+    "agreements": {
+      "title": "اتفاقيات المؤسسة",
+      "subtitle": "تمنحك اتفاقية المؤسسة الوصول إلى مجموعة كاملة من موارد الدعم لدينا.",
+      "enterpriseSupportTitle": "دعم المؤسسة",
+      "prioritySupportTitle": "قنوات الدعم ذات الأولوية",
+      "prioritySupportDesc": "وصول مباشر إلى فريقنا للدعم في الوقت الفعلي",
+      "dedicatedEngineerTitle": "جهة اتصال هندسية مخصصة",
+      "dedicatedEngineerDesc": "مهندس في الخدمة متاح للإعداد واستكشاف الأخطاء",
+      "dpaTitle": "اتفاقيات حماية البيانات والخصوصية",
+      "dpaDesc": "يمكننا تقديم اتفاقياتنا، أو مراجعة اتفاقياتك.",
+      "slaTitle": "اتفاقيات مستوى الخدمة",
+      "slaDesc": "OpenRouter ملتزم بأن يكون مضافاً لوقت تشغيلك.",
+      "technicalResourcesTitle": "الموارد التقنية",
+      "quickstartTitle": "البداية السريعة للمؤسسة",
+      "quickstartDesc": "اجعل مؤسستك تعمل مع OpenRouter",
+      "quickstartLink": "تعلم المزيد",
+      "apiDocsTitle": "وثائق API",
+      "apiDocsDesc": "أدلة شاملة ووثائق مرجعية",
+      "apiDocsLink": "تعلم المزيد",
+      "routingGuideTitle": "دليل توجيه المقدم",
+      "routingGuideDesc": "تعلم كيفية تحسين التوجيه لحالة الاستخدام الخاصة بك",
+      "routingGuideLink": "تعلم المزيد",
+      "integrationsTitle": "أمثلة التكامل",
+      "integrationsDesc": "عينات كود للأطر واللغات الشائعة",
+      "integrationsLink": "تعلم المزيد"
+    },
+    "billing": {
+      "title": "إعداد وفوترة بسيطة",
+      "subtitle": "خيارات دفع مرنة وتسعير شفاف للمشتريات على مستوى المؤسسة.",
+      "paymentOptionsTitle": "خيارات الدفع",
+      "creditCardTitle": "بطاقة ائتمان",
+      "creditCardDesc": "إعداد فوري مع بطاقات الائتمان الرئيسية",
+      "invoicedTitle": "الفوترة بالفاتورة",
+      "invoicedDesc": "شراء ائتمانات بكميات كبيرة للحصول على رسوم مخفضة",
+      "creditLinesTitle": "خطوط الائتمان",
+      "creditLinesDesc": "استمر في العمل، حتى لو أصبح حسابك سالباً",
+      "transparentPricingTitle": "تسعير شفاف",
+      "noMarkup": "لا توجد زيادة في الأسعار: تسعير OpenRouter يطابق دائماً تسعير المقدم",
+      "configurablePayments": "إعدادات دفع وتعبئة قابلة للتكوين",
+      "noLongTermContracts": "لا توجد عقود طويلة الأمد مطلوبة",
+      "byocSaaS": "أحضر سعتك الخاصة واستخدم OpenRouter كـ SaaS",
+      "vatCompliance": "امتثال ضريبة القيمة المضافة الدولية",
+      "invoicingReporting": "الفوترة وتقارير الاستخدام التفصيلية",
+      "pricingLink": "تعلم المزيد ←"
+    },
+    "cta": {
+      "title": "مستعد لتحويل طريقة البناء مع الذكاء الاصطناعي؟",
+      "subtitle": "انضم إلى آلاف الشركات التي تبني بالفعل مع OpenRouter.",
+      "contactSalesTitle": "اتصل بفريق المبيعات",
+      "contactSalesDesc": "تحدث مع فريق المؤسسة لدينا",
+      "contactSalesButton": "ابق على تواصل",
+      "getStartedTitle": "ابدأ",
+      "getStartedDesc": "ابدأ ببطاقة ائتمان فقط. ترقية عند الاستعداد.",
+      "getStartedButton": "إنشاء مفتاح API"
+    }
+  },
+  "sdkPage": {
+    "hero": {
+      "title": "مجموعة تطوير برمجيات واحدة لأكثر من 300 نموذج ذكاء اصطناعي",
+      "subtitle": "الوصول إلى أي نموذج لغوي كبير مع البث واستدعاء الأدوات وسير العمل الذكي المدمج. ابدأ ببساطة، أضف التعقيد عند الحاجة.",
+      "getApiKey": "احصل على مفتاح API",
+      "viewDocs": "عرض المستندات"
+    },
+    "languages": {
+      "typescript": "TypeScript",
+      "python": "Python",
+      "go": "Go",
+      "java": "Java"
+    },
+    "copyFeedback": "تم النسخ إلى الحافظة!",
+    "features": {
+      "flexibleResults": {
+        "title": "نتائج مرنة",
+        "description": "بث واستخراج ومعالجة نفس الاستجابة بشكل متزامن. لا حاجة للاختيار مقدماً."
+      },
+      "builtInStreaming": {
+        "title": "بث مدمج",
+        "description": "البث يعمل من الصندوق. أحداث مخصصة وتحويلات بدون الكود النموذجي."
+      },
+      "isolatedTools": {
+        "title": "أدوات معزولة",
+        "description": "الأدوات تعمل منفصلة عن استدعاءات النموذج. حدود واضحة، لا منطق متشابك."
+      },
+      "agenticWorkflows": {
+        "title": "سير عمل ذكي",
+        "description": "يمكن للأدوات تعديل الطلب التالي. بناء وكلاء معقدين كقطع صغيرة قابلة للاختبار."
+      },
+      "scalesLinearly": {
+        "title": "توسع خطي",
+        "description": "خفيف ومعياري. واجهة برمجية صغيرة تنمو معك، لا إعادة كتابة مطلوبة."
+      },
+      "dropInReady": {
+        "title": "جاهز للاستخدام",
+        "description": "يعمل مع مجموعات تطوير الذكاء الاصطناعي الموجودة. انتقل تدريجياً مع أمان نوع كامل."
+      }
+    },
+    "codeExamples": {
+      "title": "واجهة برمجية بسيطة وقوية",
+      "subtitle": "ابدأ في دقائق. مجموعات تطوير TypeScript و Python متاحة الآن.",
+      "examples": {
+        "basic": "أساسي",
+        "streaming": "البث",
+        "toolCalling": "استدعاء الأدوات"
+      },
+      "languages": {
+        "typescript": "typescript",
+        "python": "python"
+      },
+      "copied": "تم النسخ!",
+      "copy": "نسخ"
+    },
+    "gettingStarted": {
+      "install": {
+        "title": "تثبيت",
+        "description": "أضف مجموعة التطوير إلى مشروعك. TypeScript و Python متاحان اليوم."
+      },
+      "callModel": {
+        "title": "استدعي أي نموذج",
+        "description": "الوصول لأكثر من 300 نموذج عبر واجهة واحدة. بث أو استخراج أو نتائج دفعية."
+      },
+      "shipScale": {
+        "title": "شحن وتوسع",
+        "description": "انتقل من النموذج الأولي إلى الإنتاج. نفس الواجهة البرمجية تعمل على أي نطاق."
+      }
+    },
+    "cta": {
+      "title": "ابدأ البناء اليوم",
+      "subtitle": "احصل على مفتاح API واشحن أول ميزة ذكاء اصطناعي في دقائق.",
+      "getApiKey": "احصل على مفتاح API",
+      "viewDocs": "عرض المستندات"
+    },
+    "hardcodedText": {
+      "free": "مجاني",
+      "dailyTokens": "الرموز اليومية",
+      "models": "النماذج",
+      "sortBy": "ترتيب حسب",
+      "contextLabel": "السياق",
+      "pricingLabel": "/مليون رمز",
+      "tokensLabel": "الرموز"
     }
   }
 }

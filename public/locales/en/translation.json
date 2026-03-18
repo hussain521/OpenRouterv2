@@ -27,56 +27,56 @@
       "noResults": "No results found for \"{{query}}\"",
       "tryAnother": "Try searching for another model"
     }
-   },
-   "hero": {
-     "title": "Welcome to OpenRouter",
-     "subtitle": "Unified API for AI Models",
-     "getStarted": "Get Started",
-     "unifiedInterface": "The Unified Interface For LLMs",
-     "better": "Better",
-     "prices": "prices",
-     "uptime": "uptime",
-     "noSubscriptions": "no subscriptions",
-     "getApiKey": "Get API Key",
-     "exploreModels": "Explore Models"
-   },
-   "chatPage": {
-     "newChat": "New Chat",
-     "addModel": "Add Model",
-     "searchRooms": "Search rooms...",
-     "noMatchingRooms": "No matching rooms",
-     "flagshipModels": "Flagship models",
-     "bestRoleplayModels": "Best roleplay models",
-     "bestCodingModels": "Best coding models",
-     "reasoningModels": "Reasoning models",
-     "createArtifact": "Create Artifact...",
-     "startMessage": "Start a new message...",
-     "auto": "Auto",
-     "global": "Global",
-     "suggestions": {
-       "lifestyle": {
-         "title": "Lifestyle",
-         "description": "Balanced diet and ..."
-       },
-       "smallBusiness": {
-         "title": "Small Business Strategy",
-         "description": "Develop a business expans..."
-       },
-       "educational": {
-         "title": "Educational Advancement",
-         "description": "Plan for higher education."
-       },
-       "nineNine": {
-         "title": "9.9 vs 9.11",
-         "description": "Which one is larger?"
-       },
-       "strawberry": {
-         "title": "Strawberry Test",
-         "description": "How many r's are in..."
-       }
-     }
-   },
-   "features": {
+  },
+  "hero": {
+    "title": "Welcome to OpenRouter",
+    "subtitle": "Unified API for AI Models",
+    "getStarted": "Get Started",
+    "unifiedInterface": "The Unified Interface For LLMs",
+    "better": "Better",
+    "prices": "prices",
+    "uptime": "uptime",
+    "noSubscriptions": "no subscriptions",
+    "getApiKey": "Get API Key",
+    "exploreModels": "Explore Models"
+  },
+  "chatPage": {
+    "newChat": "New Chat",
+    "addModel": "Add Model",
+    "searchRooms": "Search rooms...",
+    "noMatchingRooms": "No matching rooms",
+    "flagshipModels": "Flagship models",
+    "bestRoleplayModels": "Best roleplay models",
+    "bestCodingModels": "Best coding models",
+    "reasoningModels": "Reasoning models",
+    "createArtifact": "Create Artifact...",
+    "startMessage": "Start a new message...",
+    "auto": "Auto",
+    "global": "Global",
+    "suggestions": {
+      "lifestyle": {
+        "title": "Lifestyle",
+        "description": "Balanced diet and ..."
+      },
+      "smallBusiness": {
+        "title": "Small Business Strategy",
+        "description": "Develop a business expans..."
+      },
+      "educational": {
+        "title": "Educational Advancement",
+        "description": "Plan for higher education."
+      },
+      "nineNine": {
+        "title": "9.9 vs 9.11",
+        "description": "Which one is larger?"
+      },
+      "strawberry": {
+        "title": "Strawberry Test",
+        "description": "How many r's are in..."
+      }
+    }
+  },
+  "features": {
     "title": "Features",
     "explore": "Explore",
     "agents": "Agents",
@@ -126,7 +126,7 @@
     "name": "Name",
     "na": "N/A",
     "daily": "Daily",
-     
+
     "weekly": "Weekly",
     "monthly": "Monthly",
     "upload": "Upload",
@@ -178,7 +178,7 @@
       "termsOfService": "Terms of Service",
       "support": "Support",
       "stateOfAI": "State of AI",
-      "worksWithOR": "Works With OR"
+      "worksWithOR": "Works with OpenRouter"
     },
     "developer": {
       "title": "Developer",
@@ -194,6 +194,41 @@
       "linkedin": "LinkedIn",
       "x": "X",
       "youtube": "YouTube"
+    }
+  },
+  "aboutFooter": {
+    "copyright": "© 2024 OpenRouter. All rights reserved.",
+    "company": {
+      "title": "Company",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "contact": "Contact",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "blog": "Blog"
+    },
+    "product": {
+      "title": "Product",
+      "api": "API",
+      "models": "Models",
+      "pricing": "Pricing",
+      "chat": "Chat",
+      "compare": "Compare"
+    },
+    "resources": {
+      "title": "Resources",
+      "documentation": "Documentation",
+      "apiReference": "API Reference",
+      "tutorials": "Tutorials",
+      "support": "Support",
+      "community": "Community"
+    },
+    "connect": {
+      "title": "Connect",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "discord": "Discord",
+      "linkedin": "LinkedIn"
     }
   },
   "signIn": {
@@ -394,17 +429,17 @@
     "placeholder": "This is a placeholder for the {{section}} page."
   },
   "account": {
-      "userPreferences": {
-        "title": "User Preferences",
-        "timezone": "Timezone",
-        "language": "Language"
-      },
-      "notifications": {
-        "title": "Notifications",
-        "systemUpdates": "System Updates",
-        "usageAlerts": "Usage Alerts",
-        "newsPromotions": "News & Promotions"
-      }
+    "userPreferences": {
+      "title": "User Preferences",
+      "timezone": "Timezone",
+      "language": "Language"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "systemUpdates": "System Updates",
+      "usageAlerts": "Usage Alerts",
+      "newsPromotions": "News & Promotions"
+    }
   },
   "accountSettings": {
     "user": {
@@ -1059,7 +1094,7 @@
     "pickDate": "Pick a date",
     "now": "Now"
   },
- 
+
   "pagination": {
     "previous": "Previous",
     "next": "Next",
@@ -1115,7 +1150,7 @@
     "qwenPlus": "General-purpose Qwen3.5 model, updated 2026-02-15, with strong multilingual capabilities and competitive performance on coding and chat benchmarks.",
     "glm5": "Latest GLM series model with strong Chinese and English understanding, optimized for chat and knowledge-intensive tasks."
   },
-  
+
   "appRanking": {
     "title": "App & Agent Rankings",
     "mostPopular": "Most Popular",
@@ -1412,7 +1447,7 @@
         "tokens": "17.6B tokens"
       }
     },
-  
+
     "marketShare": {
       "title": "Market Share",
       "subtitle": "Compare OpenRouter token share by model author",
@@ -1945,6 +1980,25 @@
       }
     }
   },
+  "hardcodedText": {
+    "free": "Free",
+    "dailyTokens": "Daily Tokens",
+    "models": "Models",
+    "sortBy": "Sort by",
+    "searchProviders": "Search providers...",
+    "showing": "Showing",
+    "providers": "providers",
+    "alphabetical": "Alphabetical",
+    "popularity": "Popularity",
+    "chat": "Chat",
+    "vision": "Vision",
+    "code": "Code",
+    "analysis": "Analysis",
+    "multimodal": "Multimodal",
+    "embeddings": "Embeddings",
+    "openSource": "Open Source",
+    "moe": "MoE"
+  },
   "careers": {
     "pageTitle": "Careers - OpenRouter",
     "hero": {
@@ -2143,6 +2197,7 @@
     }
   },
   "support": {
+    "pageTitle": "Support - OpenRouter",
     "title": "Hello, how can I help you?",
     "subtitle": "Get the support you need to succeed with OpenRouter. Browse our help center, raise a ticket, or explore our documentation to find answers quickly.",
     "raiseTicket": {
@@ -2166,15 +2221,38 @@
         },
         "howToStart": {
           "question": "How do I get started with OpenRouter?",
-          "answer": "Create an account and add credits on the Credits page. Credits are used for LLM inference.\n\nUse the chat room or create API keys and start using the API. See our quickstart guide."
+          "answer": "Create an account and add credits on the Credits page. Credits are used for LLM inference.\n\nUse the chat room or create API keys and start using the API. See our quickstart guide.",
+          "customContent": {
+            "paragraph1": "Create an account and add credits on the",
+            "creditsLink": "Credits",
+            "paragraph2": "page. Credits are used for LLM inference.",
+            "paragraph3": "Use the chat room or create API keys and start using the API. See our",
+            "quickstartLink": "quickstart",
+            "paragraph4": "guide."
+          }
         },
         "howToGetSupport": {
           "question": "How do I get support?",
-          "answer": "Join our community Discord and ask in the #help forum.\n\nFor billing and account questions, email support@openrouter.ai."
+          "answer": "Join our community Discord and ask in the #help forum.\n\nFor billing and account questions, email support@openrouter.ai.",
+          "customContent": {
+            "paragraph1": "Join our community",
+            "discordLink": "Discord",
+            "paragraph2": "and ask in the #help forum.",
+            "paragraph3": "For billing and account questions, email",
+            "supportEmail": "support@openrouter.ai"
+          }
         },
         "howBilled": {
           "question": "How do I get billed for my usage on OpenRouter?",
-          "answer": "Pricing is per model and may differ for prompt/completion, images, and reasoning tokens. See the model page for details.\n\nWe compute cost from provider token usage and deduct it from your credits. Review your history in Activity.\n\nInclude usage: {include: true} in requests to receive usage data in the response. We pass through provider pricing; we charge a small fee when purchasing credits."
+          "answer": "Pricing is per model and may differ for prompt/completion, images, and reasoning tokens. See the model page for details.\n\nWe compute cost from provider token usage and deduct it from your credits. Review your history in Activity.\n\nInclude usage: {include: true} in requests to receive usage data in the response. We pass through provider pricing; we charge a small fee when purchasing credits.",
+          "customContent": {
+            "paragraph1": "Pricing is per model and may differ for prompt/completion, images, and reasoning tokens. See the model page for details.",
+            "paragraph2": "We compute cost from provider token usage and deduct it from your credits. Review your history in",
+            "activityLink": "Activity",
+            "paragraph3": "Include",
+            "usageCode": "usage: {include: true}",
+            "paragraph4": "in requests to receive usage data in the response. We pass through provider pricing; we charge a small fee when purchasing credits."
+          }
         }
       },
       "pricingAndFees": {
@@ -2192,27 +2270,98 @@
         "title": "Models and Providers",
         "whatModels": {
           "question": "What LLM models does OpenRouter support?",
-          "answer": "Access a wide variety of models, including frontier models. See the models browser or the models API."
+          "answer": "Access a wide variety of models, including frontier models. See the models browser or the models API.",
+          "customContent": {
+            "paragraph1": "Access a wide variety of models, including frontier models. See the",
+            "modelsBrowserLink": "models browser",
+            "paragraph2": "or the",
+            "modelsApiLink": "models API"
+          }
         },
         "howFrequent": {
           "question": "How frequently are new models added?",
-          "answer": "We add models regularly, often in partnership with labs. If something's missing, reach out on Discord."
+          "answer": "We add models regularly, often in partnership with labs. If something's missing, reach out on Discord.",
+          "customContent": {
+            "paragraph1": "We add models regularly, often in partnership with labs. If something's missing, reach out on",
+            "discordLink": "Discord"
+          }
         },
         "whatVariants": {
           "question": "What are model variants?",
-          "answer": "Variants are suffixes that modify behavior. Static variants are available on specific models, listed in the models API:\n\n• :free – free model with low rate limits\n• :extended – longer context length\n• :thinking – reasoning by default\n\nDynamic variants can be used on all models:\n\n• :online – attach web results to the prompt\n• :nitro – optimize for faster throughput\n• :floor – prioritize lowest price"
+          "answer": "Variants are suffixes that modify behavior. Static variants are available on specific models, listed in the models API:\n\n• :free – free model with low rate limits\n• :extended – longer context length\n• :thinking – reasoning by default\n\nDynamic variants can be used on all models:\n\n• :online – attach web results to the prompt\n• :nitro – optimize for faster throughput\n• :floor – prioritize lowest price",
+          "customContent": {
+            "paragraph1": "Variants are suffixes that modify behavior. Static variants are available on specific models, listed in the models API:",
+            "staticVariants": {
+              "free": {
+                "code": ":free",
+                "description": "– free model with low rate limits"
+              },
+              "extended": {
+                "code": ":extended",
+                "description": "– longer context length"
+              },
+              "thinking": {
+                "code": ":thinking",
+                "description": "– reasoning by default"
+              }
+            },
+            "paragraph2": "Dynamic variants can be used on all models:",
+            "dynamicVariants": {
+              "online": {
+                "code": ":online",
+                "description": "– attach web results to the prompt"
+              },
+              "nitro": {
+                "code": ":nitro",
+                "description": "– optimize for faster throughput"
+              },
+              "floor": {
+                "code": ":floor",
+                "description": "– prioritize lowest price"
+              }
+            },
+            "staticVariantsIntro": "Variants are suffixes that modify behavior. Static variants are available on specific models, listed in the models API:",
+            "freeVariant": ":free",
+            "freeVariantDesc": "– free model with low rate limits",
+            "extendedVariant": ":extended",
+            "extendedVariantDesc": "– longer context length",
+            "thinkingVariant": ":thinking",
+            "thinkingVariantDesc": "– reasoning by default",
+            "dynamicVariantsIntro": "Dynamic variants can be used on all models:",
+            "onlineVariant": ":online",
+            "onlineVariantDesc": "– attach web results to the prompt",
+            "nitroVariant": ":nitro",
+            "nitroVariantDesc": "– optimize for faster throughput",
+            "floorVariant": ":floor",
+            "floorVariantDesc": "– prioritize lowest price"
+          }
         },
         "inferenceProvider": {
           "question": "I am an inference provider, how can I get listed on OpenRouter?",
-          "answer": "See provider requirements. For contact, email is best."
+          "answer": "See provider requirements. For contact, email is best.",
+          "customContent": {
+            "paragraph1": "See",
+            "providerRequirementsLink": "provider requirements",
+            "paragraph2": "For contact, email is best."
+          }
         },
         "expectedLatency": {
           "question": "What is the expected latency/response time for different models?",
-          "answer": "Model pages show latency and throughput by provider. Use :nitro to route to faster providers."
+          "answer": "Model pages show latency and throughput by provider. Use :nitro to route to faster providers.",
+          "customContent": {
+            "paragraph1": "Model pages show latency and throughput by provider. Use",
+            "nitroCode": ":nitro",
+            "paragraph2": "to route to faster providers."
+          }
         },
         "modelFallback": {
           "question": "How does model fallback work if a provider is unavailable?",
-          "answer": "OpenRouter automatically falls back to the next provider on errors. Configure provider routing in documentation."
+          "answer": "OpenRouter automatically falls back to the next provider on errors. Configure provider routing in documentation.",
+          "customContent": {
+            "paragraph1": "OpenRouter automatically falls back to the next provider on errors. Configure provider routing in",
+            "documentationLink": "documentation",
+            "period": "."
+          }
         }
       },
       "apiTechnical": {
@@ -2223,23 +2372,51 @@
         },
         "rateLimits": {
           "question": "How are rate limits calculated?",
-          "answer": "Free model rate limits depend on your purchased credits. See details in the rate limits documentation."
+          "answer": "Free model rate limits depend on your purchased credits. See details in the rate limits documentation.",
+          "customContent": {
+            "paragraph1": "Free model rate limits depend on your purchased credits. See details in the",
+            "rateLimitsDocsLink": "rate limits documentation",
+            "period": "."
+          }
         },
         "apiEndpoints": {
           "question": "What API endpoints are available?",
-          "answer": "We implement OpenAI-compatible /completions and /chat/completions, plus /api/v1/models. See the API docs."
+          "answer": "We implement OpenAI-compatible /completions and /chat/completions, plus /api/v1/models. See the API docs.",
+          "customContent": {
+            "paragraph1": "We implement OpenAI-compatible",
+            "completionsEndpoint": "/completions",
+            "paragraph2": "and",
+            "chatCompletionsEndpoint": "/chat/completions",
+            "paragraph3": ", plus",
+            "modelsEndpoint": "/api/v1/models",
+            "paragraph4": ". See the",
+            "apiDocsLink": "API docs"
+          }
         },
         "supportedFormats": {
           "question": "What are the supported formats?",
-          "answer": "Text and images are supported. Images can be URLs or base64. PDF and other file types are coming soon."
+          "answer": "Text and images are supported. Images can be URLs or base64. PDF and other file types are coming soon.",
+          "customContent": {
+            "paragraph1": "Text and images are supported. Images can be URLs or",
+            "base64Text": "base64",
+            "paragraph2": ". PDF and other file types are coming soon."
+          }
         },
         "howStreaming": {
           "question": "How does streaming work?",
-          "answer": "Streaming uses SSE for real-time token delivery. Set stream: true."
+          "answer": "Streaming uses SSE for real-time token delivery. Set stream: true.",
+          "customContent": {
+            "paragraph1": "Streaming uses SSE for real-time token delivery. Set",
+            "streamCode": "stream: true"
+          }
         },
         "sdkSupport": {
           "question": "What SDK support is available?",
-          "answer": "OpenRouter is a drop-in replacement for OpenAI; most OpenAI SDKs work. See SDK docs."
+          "answer": "OpenRouter is a drop-in replacement for OpenAI; most OpenAI SDKs work. See SDK docs.",
+          "customContent": {
+            "paragraph1": "OpenRouter is a drop-in replacement for OpenAI; most OpenAI SDKs work. See",
+            "sdkDocsLink": "SDK docs"
+          }
         }
       },
       "privacyAndData": {
@@ -2247,15 +2424,29 @@
         "subtitle": "See our Terms of Service and Privacy Policy.",
         "whatDataLogged": {
           "question": "What data is logged during API use?",
-          "answer": "We log basic request metadata (timestamps, model, token counts). Prompts and completions are not logged by default.\n\nYou can opt in to log prompts/completions for a small discount via privacy settings."
+          "answer": "We log basic request metadata (timestamps, model, token counts). Prompts and completions are not logged by default.\n\nYou can opt in to log prompts/completions for a small discount via privacy settings.",
+          "customContent": {
+            "paragraph1": "We log basic request metadata (timestamps, model, token counts). Prompts and completions are not logged by default.",
+            "paragraph2": "You can opt in to log prompts/completions for a small discount via",
+            "privacySettingsLink": "privacy settings"
+          }
         },
         "chatroomData": {
           "question": "What data is logged during Chatroom use?",
-          "answer": "Conversations are stored locally on your device and do not sync across devices. You can export/import conversations from chatroom settings."
+          "answer": "Conversations are stored locally on your device and do not sync across devices. You can export/import conversations from chatroom settings.",
+          "customContent": {
+            "paragraph1": "Conversations are stored locally on your device and do not sync across devices. You can export/import conversations from",
+            "chatroomSettingsLink": "chatroom settings"
+          }
         },
         "thirdPartySharing": {
           "question": "What third-party sharing occurs?",
-          "answer": "Requests are proxied to model providers. We aim to avoid provider logging or training by default; routing respects your privacy settings. If no providers match, the request will error."
+          "answer": "Requests are proxied to model providers. We aim to avoid provider logging or training by default; routing respects your privacy settings. If no providers match, the request will error.",
+          "customContent": {
+            "paragraph1": "Requests are proxied to model providers. We aim to avoid provider logging or training by default; routing respects your",
+            "privacySettingsText": "privacy settings",
+            "paragraph2": ". If no providers match, the request will error."
+          }
         }
       },
       "creditAndBilling": {
@@ -2290,7 +2481,11 @@
         },
         "paymentMethods": {
           "question": "What payment methods are accepted?",
-          "answer": "Major credit cards, AliPay, and USDC crypto. PayPal is in progress. For other methods, reach out on Discord."
+          "answer": "Major credit cards, AliPay, and USDC crypto. PayPal is in progress. For other methods, reach out on Discord.",
+          "customContent": {
+            "paragraph1": "Major credit cards, AliPay, and USDC crypto. PayPal is in progress. For other methods, reach out on",
+            "discordLink": "Discord"
+          }
         },
         "howMakeMoney": {
           "question": "How does OpenRouter make money?",
@@ -2301,11 +2496,19 @@
         "title": "Account Management",
         "deleteAccount": {
           "question": "How can I delete my account?",
-          "answer": "Go to Settings → Manage Account → Security tab to delete your account.\n\nNote: unused credits will be lost and cannot be reclaimed if you delete and later recreate your account."
+          "answer": "Go to Settings → Manage Account → Security tab to delete your account.\n\nNote: unused credits will be lost and cannot be reclaimed if you delete and later recreate your account.",
+          "customContent": {
+            "paragraph1": "Go to Settings → Manage Account → Security tab to delete your account.",
+            "paragraph2": "Note: unused credits will be lost and cannot be reclaimed if you delete and later recreate your account."
+          }
         },
         "teamAccess": {
           "question": "How does team access work?",
-          "answer": "See our organization management documentation."
+          "answer": "See our organization management documentation.",
+          "customContent": {
+            "paragraph1": "See our",
+            "orgManagementDocsLink": "organization management documentation"
+          }
         },
         "analytics": {
           "question": "What analytics are available?",
@@ -2313,7 +2516,11 @@
         },
         "contactSupport": {
           "question": "How can I contact support?",
-          "answer": "For account and billing questions, email support@openrouter.ai."
+          "answer": "For account and billing questions, email support@openrouter.ai.",
+          "customContent": {
+            "paragraph1": "For account and billing questions, email",
+            "supportEmail": "support@openrouter.ai"
+          }
         }
       }
     },
@@ -2385,7 +2592,301 @@
       "spawn": {
         "title": "Spawn",
         "description": "Deploy any AI coding agent on any cloud provider with a single command. No Terraform, no YAML — just pick an agent and a cloud."
+      },
+      "worksWithOpenRouter": {
+        "title": "Works with OpenRouter",
+        "subtitle": "Discover apps and tools compatible with OpenRouter",
+        "addApp": "Want to add your app?",
+        "submitPR": "Submit a PR",
+        "optimize": "Want to optimize it?",
+        "oauthDocs": "See our OAuth docs",
+        "categories": {
+          "coding": "coding",
+          "productivity": "productivity",
+          "research": "research",
+          "chat": "chat",
+          "creative": "creative"
+        },
+        "apps": {
+          "maximAI": {
+            "name": "Maxim AI",
+            "description": "Maxim is an agent simulation, evaluation, and observability platform that empowers modern AI teams to deploy agents with quality, reliability, and speed."
+          },
+          "agentZero": {
+            "name": "Agent Zero",
+            "description": "Build autonomous AI agents effortlessly."
+          },
+          "aiAssistWorks": {
+            "name": "AiAssistWorks",
+            "description": "AI for Google Sheets™, Slides™ & Docs™. Fill, clean, and categorize 100k+ rows with simple text commands—no complex formulas needed. Create charts, pivot tables, and write content using 100+ AI models."
+          },
+          "aider": {
+            "name": "Aider",
+            "description": "AI pair programming in your terminal that lets you work with LLMs to build on your existing codebase."
+          },
+          "libreChat": {
+            "name": "LibreChat",
+            "description": "An open-source chat application for all your AI conversations, compatible with any AI provider."
+          },
+          "chatbox": {
+            "name": "Chatbox",
+            "description": "Your Ultimate AI Copilot on the Desktop. Chatbox is a desktop client for ChatGPT, Claude and other LLMs, available on Windows, Mac, Linux, iOS, and Android."
+          },
+          "cline": {
+            "name": "Cline",
+            "description": "Autonomous coding agent right in your IDE."
+          },
+          "sillyTavern": {
+            "name": "SillyTavern",
+            "description": "A local-first LLM frontend for power users, supporting chat, character cards, and multiple AI providers."
+          }
+        }
       }
+    }
+  },
+  "worksWithOpenRouter": {
+    "title": "Works with OpenRouter",
+    "subtitle": "Discover apps and tools compatible with OpenRouter",
+    "addApp": "Want to add your app?",
+    "submitPR": "Submit a PR",
+    "optimize": "Want to optimize it?",
+    "oauthDocs": "See our OAuth docs",
+    "categories": {
+      "coding": "coding",
+      "productivity": "productivity",
+      "research": "research",
+      "chat": "chat",
+      "creative": "creative"
+    },
+    "apps": {
+      "maximAI": {
+        "name": "Maxim AI",
+        "description": "Maxim is an agent simulation, evaluation, and observability platform that empowers modern AI teams to deploy agents with quality, reliability, and speed."
+      },
+      "agentZero": {
+        "name": "Agent Zero",
+        "description": "Build autonomous AI agents effortlessly."
+      },
+      "aiAssistWorks": {
+        "name": "AiAssistWorks",
+        "description": "AI for Google Sheets™, Slides™ & Docs™. Fill, clean, and categorize 100k+ rows with simple text commands—no complex formulas needed. Create charts, pivot tables, and write content using 100+ AI models."
+      },
+      "aider": {
+        "name": "Aider",
+        "description": "AI pair programming in your terminal that lets you work with LLMs to build on your existing codebase."
+      },
+      "libreChat": {
+        "name": "LibreChat",
+        "description": "An open-source chat application for all your AI conversations, compatible with any AI provider."
+      },
+      "chatbox": {
+        "name": "Chatbox",
+        "description": "Your Ultimate AI Copilot on the Desktop. Chatbox is a desktop client for ChatGPT, Claude and other LLMs, available on Windows, Mac, Linux, iOS, and Android."
+      },
+      "cline": {
+        "name": "Cline",
+        "description": "Autonomous coding agent right in your IDE."
+      },
+      "sillyTavern": {
+        "name": "SillyTavern",
+        "description": "A local-first LLM frontend for power users, supporting chat, character cards, and multiple AI providers."
+      }
+    }
+  },
+  "enterprise": {
+    "hero": {
+      "title": "Focus on your customers, not your infrastructure",
+      "subtitle": "Unified access to 300+ AI models with zero operational overhead",
+      "oneApiLabel": "One API, one bill, every AI provider",
+      "contactSales": "Contact Sales",
+      "providerCta": "Provider looking to list models?"
+    },
+    "featuresComparison": {
+      "title": "Stop managing complexity. Start shipping features.",
+      "billingBad": "Managing 5+ provider relationships",
+      "billingGood": "Single API, single contract, unified billing",
+      "retryBad": "Building custom retry logic",
+      "retryGood": "Automatic failover between providers",
+      "capacityBad": "Capacity and rate limits",
+      "capacityGood": "Fail over into our capacity when your limits are hit",
+      "switchingBad": "Maintaining separate code for each new model",
+      "switchingGood": "Zero switching cost between models",
+      "privacyBad": "Data retention and privacy concerns",
+      "privacyGood": "A secure, privacy first platform with single click ZDR",
+      "complianceBad": "Manage compliance with each provider",
+      "complianceGood": "A single GDPR compatible, SOC-2 compliant partner with SLAs"
+    },
+    "fromPocToProd": {
+      "title": "From Proof-of-Concept to Production",
+      "enterprisePerformanceTitle": "Enterprise-Grade Performance",
+      "enterprisePerformanceDesc": "Edge deployed, with automatic failover for best-in-class uptime.",
+      "highRateLimitsTitle": "High Rate Limits",
+      "highRateLimitsDesc": "Billions of requests and trillions of tokens, every week.",
+      "highRateLimitsLink": "View stats →",
+      "automaticFailoverTitle": "Automatic Failover",
+      "automaticFailoverDesc": "With 50+ cloud providers at your back.",
+      "automaticFailoverLink": "Learn More →",
+      "enterprisePerfCardTitle": "Enterprise Performance",
+      "enterprisePerfCardDesc": "Deployed globally at the edge, with minimal latency.",
+      "unifiedBillingTitle": "Unified Billing",
+      "unifiedBillingDesc": "Deposit credits on OpenRouter and use them anywhere.",
+      "compliancePrivacyTitle": "Compliance & Privacy",
+      "compliancePrivacyDesc": "ZDR support. GDPR compliance. EU region locking.",
+      "compliancePrivacyLink": "Learn More →",
+      "zeroLoggingTitle": "Zero-Logging Default",
+      "zeroLoggingDesc": "Route to providers that protect your data.",
+      "unifiedReportingTitle": "Unified Reporting",
+      "unifiedReportingDesc": "View and export all API requests across all users.",
+      "orgSsoTitle": "Organization Support with SSO",
+      "orgSsoDesc": "Multiple users with global preferences to enforce policies.",
+      "spendMgmtTitle": "Spend Management",
+      "spendMgmtDesc": "Programmatic API key management for enterprise control.",
+      "byocTitle": "Bring your own capacity for the most flexible setup",
+      "byocUseCreditsTitle": "✓ Use AWS/GCP/Azure Credits",
+      "byocUseCreditsDesc": "Apply your existing cloud credits to AI workloads",
+      "byocRateLimitTitle": "✓ Rate Limit Enhancement",
+      "byocRateLimitDesc": "Best-in-industry throughput combining your limits + ours"
+    },
+    "infrastructure": {
+      "title": "Enterprise-Grade AI Infrastructure",
+      "subtitle": "Advanced features for observability, cost control, and data governance.",
+      "observabilityTitle": "LLM Observability",
+      "observabilityDesc": "Broadcast traces to Langfuse, Datadog, Braintrust, and more. Monitor token usage, costs, and latency across all your AI requests.",
+      "costMgmtTitle": "Cost Management",
+      "costMgmtDesc": "Set per-key credit limits with automatic daily, weekly, or monthly resets. Track usage in real-time and prevent unexpected spending.",
+      "zdrTitle": "Zero Data Retention",
+      "zdrDesc": "Route requests exclusively to providers with zero data retention policies. Your prompts are never logged or used for training."
+    },
+    "agreements": {
+      "title": "Enterprise Agreements",
+      "subtitle": "An enterprise agreement gives you access to our full suite of support resources.",
+      "enterpriseSupportTitle": "Enterprise Support",
+      "prioritySupportTitle": "Priority Support Channels",
+      "prioritySupportDesc": "Direct access to our team for real-time support",
+      "dedicatedEngineerTitle": "Dedicated Engineering Contact",
+      "dedicatedEngineerDesc": "An on-call engineer is available for setup and debugging",
+      "dpaTitle": "Data Protection & Privacy Agreements",
+      "dpaDesc": "We can provide ours, or review yours.",
+      "slaTitle": "SLAs",
+      "slaDesc": "OpenRouter is committed to being accretive to your uptime.",
+      "technicalResourcesTitle": "Technical Resources",
+      "quickstartTitle": "Enterprise Quickstart",
+      "quickstartDesc": "Get your organization up and running with OpenRouter",
+      "quickstartLink": "Learn more",
+      "apiDocsTitle": "API Documentation",
+      "apiDocsDesc": "Comprehensive guides and reference documentation",
+      "apiDocsLink": "Learn more",
+      "routingGuideTitle": "Provider Routing Guide",
+      "routingGuideDesc": "Learn how to optimize routing for your use case",
+      "routingGuideLink": "Learn more",
+      "integrationsTitle": "Integration Examples",
+      "integrationsDesc": "Code samples for popular frameworks and languages",
+      "integrationsLink": "Learn more"
+    },
+    "billing": {
+      "title": "Simple Setup & Billing",
+      "subtitle": "Flexible payment options and transparent pricing for enterprise procurement.",
+      "paymentOptionsTitle": "Payment Options",
+      "creditCardTitle": "Credit Card",
+      "creditCardDesc": "Instant setup with major credit cards",
+      "invoicedTitle": "Invoiced Billing",
+      "invoicedDesc": "Buy credits in bulk for discounted fees",
+      "creditLinesTitle": "Credit Lines",
+      "creditLinesDesc": "Keep running, even if your account goes negative",
+      "transparentPricingTitle": "Transparent Pricing",
+      "noMarkup": "No markup: OpenRouter pricing always matches provider pricing",
+      "configurablePayments": "Configurable payment and top-up settings",
+      "noLongTermContracts": "No long-term contracts required",
+      "byocSaaS": "Bring your own capacity and use OpenRouter as SaaS",
+      "vatCompliance": "International VAT compliance",
+      "invoicingReporting": "Invoicing & detailed usage reporting",
+      "pricingLink": "Learn more →"
+    },
+    "cta": {
+      "title": "Ready to transform how you build with AI?",
+      "subtitle": "Join thousands of companies already building with OpenRouter.",
+      "contactSalesTitle": "Contact Sales",
+      "contactSalesDesc": "Speak with our enterprise team",
+      "contactSalesButton": "Get In Touch",
+      "getStartedTitle": "Get Started",
+      "getStartedDesc": "Start with just a credit card. Upgrade when ready.",
+      "getStartedButton": "Create an API Key"
+    }
+  },
+  "sdkPage": {
+    "hero": {
+      "title": "One SDK for 300+ AI Models",
+      "subtitle": "Access any LLM with streaming, tool calling, and agentic workflows built in. Start simple, add complexity when you need it.",
+      "getApiKey": "Get API Key",
+      "viewDocs": "View Docs"
+    },
+    "languages": {
+      "typescript": "TypeScript",
+      "python": "Python",
+      "go": "Go",
+      "java": "Java"
+    },
+    "copyFeedback": "Copied to clipboard!",
+    "features": {
+      "flexibleResults": {
+        "title": "Flexible Results",
+        "description": "Stream, extract, and process the same response concurrently. No need to choose upfront."
+      },
+      "builtInStreaming": {
+        "title": "Built-In Streaming",
+        "description": "Streaming works out of the box. Custom events and transforms without the boilerplate."
+      },
+      "isolatedTools": {
+        "title": "Isolated Tools",
+        "description": "Tools run separately from model calls. Clean boundaries, no tangled logic."
+      },
+      "agenticWorkflows": {
+        "title": "Agentic Workflows",
+        "description": "Tools can modify the next request. Build complex agents as small, testable pieces."
+      },
+      "scalesLinearly": {
+        "title": "Scales Linearly",
+        "description": "Lightweight and modular. Small API that grows with you, no rewrites required."
+      },
+      "dropInReady": {
+        "title": "Drop-In Ready",
+        "description": "Works with existing AI SDKs. Migrate incrementally with full type safety."
+      }
+    },
+    "codeExamples": {
+      "title": "Simple, Powerful API",
+      "subtitle": "Get started in minutes. TypeScript and Python SDKs available now.",
+      "examples": {
+        "basic": "Basic",
+        "streaming": "Streaming",
+        "toolCalling": "Tool Calling"
+      },
+      "languages": {
+        "typescript": "typescript",
+        "python": "python"
+      },
+      "copied": "Copied!",
+      "copy": "Copy"
+    },
+    "gettingStarted": {
+      "install": {
+        "title": "Install",
+        "description": "Add the SDK to your project. TypeScript and Python available today."
+      },
+      "callModel": {
+        "title": "Call Any Model",
+        "description": "Access 300+ models through one interface. Stream, extract, or batch results."
+      },
+      "shipScale": {
+        "title": "Ship & Scale",
+        "description": "Go from prototype to production. The same API works at any scale."
+      }
+    },
+    "cta": {
+      "title": "Start Building Today",
+      "subtitle": "Get your API key and ship your first AI feature in minutes.",
+      "getApiKey": "Get API Key",
+      "viewDocs": "View Docs"
     }
   }
 }

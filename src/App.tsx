@@ -28,6 +28,9 @@ import PrivacyPage from "./pages/PrivacyPage";
 import SupportPage from "./pages/SupportPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import LabsPage from "./pages/LabsPage";
+import WorksWithOpenRouterPage from "./pages/WorksWithOpenRouterPage";
+import EnterprisePage from "./pages/EnterprisePage";
+import SDKPage from "./pages/SDKPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -53,6 +56,9 @@ function App() {
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/labs" element={<LabsPage />} />
+          <Route path="/works-with-openrouter" element={<WorksWithOpenRouterPage />} />
+          <Route path="/enterprise" element={<EnterprisePage />} />
+          <Route path="/sdk" element={<SDKPage />} />
 
           <Route path="/app" element={<AppPage />} />
           <Route path="/activity" element={<ActivityPage />} />

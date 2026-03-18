@@ -17,32 +17,36 @@ export default function RankingsPage() {
         <Navbar />
       </div>
 
-      <div className="p-4 lg:p-8 space-y-6 max-w-6xl mx-auto">
-        <div className="space-y-2">
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-foreground">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 max-w-6xl mx-auto">
+        <div className="space-y-1 sm:space-y-2">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-foreground">
             {t("nav.rankings", "AI Model Rankings")}
           </h1>
-          <p className="text-gray-600 dark:text-muted-foreground text-sm lg:text-base">
+          <p className="text-gray-600 dark:text-muted-foreground text-sm sm:text-base">
             {t("explore.rankings.description", "Based on real usage data from millions of users accessing models through OpenRouter.")}
           </p>
         </div>
 
         <Card className="border-0 shadow-none bg-white dark:bg-background">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-gray-900 dark:text-foreground">
+          <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
+            <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-foreground">
               {t("features.models", "Top Models")}
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="space-y-6">
-            <AIModelChart />
-            <Leaderboard/>
+          <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6">
+            <div className="overflow-x-auto">
+              <AIModelChart />
+            </div>
+            <div className="overflow-x-auto">
+              <Leaderboard/>
+            </div>
           </CardContent>
         </Card>
 
         <Card className="border-0 shadow-none bg-white dark:bg-background">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-gray-900 dark:text-foreground">
+          <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
+            <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-foreground">
               {t("globalRanking.marketShare.title", "Market Share")}
             </CardTitle>
             <p className="text-sm text-gray-600 dark:text-muted-foreground">
@@ -50,8 +54,10 @@ export default function RankingsPage() {
             </p>
           </CardHeader>
 
-          <CardContent>
-            <MarketShareChart />
+          <CardContent className="px-4 sm:px-6">
+            <div className="overflow-x-auto">
+              <MarketShareChart />
+            </div>
           </CardContent>
         </Card>
       </div>

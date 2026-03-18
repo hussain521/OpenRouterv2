@@ -851,13 +851,13 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="ml-2 rounded-lg bg-primary p-1.5 xs:p-2 text-primary-foreground transition-colors duration-200 hover:bg-primary/90 lg:hidden"
+            className="ml-2 rounded-lg bg-primary p-2.5 text-primary-foreground transition-colors duration-200 hover:bg-primary/90 lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label={t("common.toggleMenu")}
           >
             {isMenuOpen ? (
-              <FiX className="h-4 xs:h-5 w-4 xs:w-5" />
+              <FiX className="h-5 w-5" />
             ) : (
-              <FiMenu className="h-4 xs:h-5 w-4 xs:w-5" />
+              <FiMenu className="h-5 w-5" />
             )}
           </button>
         </div>

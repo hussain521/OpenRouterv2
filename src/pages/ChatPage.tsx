@@ -25,22 +25,28 @@ export default function ChatPage() {
       </div>
 
       {/* Main layout under navbar */}
-      <div className="relative flex h-[calc(100vh-72px)] bg-white dark:bg-black">
+      <div className="relative flex h-[calc(100vh-72px)] bg-white dark:bg-black overflow-hidden">
         {/* Content row under top control bar */}
-        <div className="flex h-full w-full pt-12">
+        <div className="flex h-full w-full pt-8 sm:pt-12">
           {/* Sidebar */}
           <ChatSidebar isOpen={isSidebarOpen} onToggle={handleToggleSidebar} />
 
           {/* Main content area */}
-          <main className="flex min-w-0 flex-1 flex-col items-center rounded-tl-lg bg-[#F5F5FB] shadow-sm dark:bg-neutral-900 px-3 pb-2 pt-3 md:px-6">
+          <main className="flex min-w-0 flex-1 flex-col items-center rounded-tl-lg bg-[#F5F5FB] shadow-sm dark:bg-neutral-900 px-2 sm:px-3 pb-2 pt-2 sm:pt-3 md:px-6">
             {/* Preset model sections */}
-            <PresetModelSections />
+            <div className="w-full max-w-4xl">
+              <PresetModelSections />
+            </div>
 
             {/* Suggestions carousel */}
-            <SuggestionsCarousel />
+            <div className="w-full max-w-4xl">
+              <SuggestionsCarousel />
+            </div>
 
             {/* Chat input bar */}
-            <ChatInputBar />
+            <div className="w-full max-w-4xl">
+              <ChatInputBar />
+            </div>
           </main>
         </div>
       </div>
