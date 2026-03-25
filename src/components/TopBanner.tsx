@@ -19,7 +19,7 @@ export default function TopBanner() {
         <button
           onClick={() => setIsVisible(false)}
           className="hover:text-green-900 dark:hover:text-green-100 p-1 flex-shrink-0"
-          aria-label="Close banner"
+          aria-label={t('common.closeBanner')}
         >
           <FiX className="h-4 w-4" />
         </button>

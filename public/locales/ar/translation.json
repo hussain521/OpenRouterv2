@@ -118,6 +118,7 @@
     "submit": "إرسال",
     "continue": "متابعة",
     "or": "أو",
+    "and": "و",
     "by": "بواسطة",
     "viewAll": "عرض الكل",
     "name": "الاسم",
@@ -144,7 +145,10 @@
     "toggleMenu": "تبديل القائمة",
     "pagination": "ترقيم الصفحات",
     "aiProviderLogo": "شعار مزود الذكاء الاصطناعي",
-    "popular": "شائع"
+    "popular": "شائع",
+    "free": "مجاني",
+    "closeBanner": "إغلاق اللافتة",
+    "copyModelId": "نسخ معرف النموذج"
   },
   "footer": {
     "copyright": "© 2026 OpenRouter. جميع الحقوق محفوظة.",

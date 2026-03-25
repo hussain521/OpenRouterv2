@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { FaBuilding } from "react-icons/fa";
 import {
   BarChart,
@@ -145,7 +143,6 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 
 export function MarketShareChart() {
   const { t } = useTranslation();
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const itemsToShow = 10;
   const left = marketShareData.slice(0, Math.ceil(itemsToShow / 2));

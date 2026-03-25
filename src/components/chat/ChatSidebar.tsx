@@ -12,9 +12,10 @@ import {
 interface ChatSidebarProps {
   isOpen: boolean;
   onToggle: () => void;
+  onNewChat?: () => void;
 }
 
-export function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
+export function ChatSidebar({ isOpen, onToggle, onNewChat }: ChatSidebarProps) {
   const { t } = useTranslation();
 
   return (
@@ -38,18 +39,20 @@ export function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
         <Button
           variant="outline"
           size="sm"
+          onClick={onNewChat}
           className="h-8 rounded-full border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900"
         >
           <MessageSquare className="mr-1 h-4 w-4" />
-          {t("chatPage.newChat")}
+          {t("chatPage.newChat", "New Chat")}
         </Button>
         <Button
           variant="outline"
           size="sm"
+          onClick={() => console.log('Add model clicked')}
           className="h-8 rounded-full border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900"
         >
           <Plus className="mr-1 h-4 w-4" />
-          {t("chatPage.addModel")}
+          {t("chatPage.addModel", "Add Model")}
         </Button>
       </div>
 

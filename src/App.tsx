@@ -31,6 +31,7 @@ import LabsPage from "./pages/LabsPage";
 import WorksWithOpenRouterPage from "./pages/WorksWithOpenRouterPage";
 import EnterprisePage from "./pages/EnterprisePage";
 import SDKPage from "./pages/SDKPage";
+import TranslationTestPage from "./pages/TranslationTestPage";
 
 function App() {
   const { i18n } = useTranslation();
@@ -74,6 +75,7 @@ function App() {
           <Route path="/settings/byok" element={<BYOKPage />} />
           <Route path="/routing" element={<RoutingPage />} />
           <Route path="/settings/routing" element={<RoutingPage />} />
+          <Route path="/translation-test" element={<TranslationTestPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <ScrollToTop />

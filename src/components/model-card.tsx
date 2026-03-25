@@ -19,7 +19,7 @@ export default function ModelCard({ model }: ModelCardProps) {
   const { t } = useTranslation();
 
   const formatPrice = (input: number, output: number) => {
-    if (input === 0 && output === 0) return "Free";
+    if (input === 0 && output === 0) return t('common.free');
     if (input < 1) return `$${input.toFixed(3)}`;
     return `$${input.toFixed(2)}`;
   };
@@ -79,7 +79,7 @@ export default function ModelCard({ model }: ModelCardProps) {
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Copy model id: {model.modelId}</p>
+                      <p>{t('common.copyModelId')}: {model.modelId}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>

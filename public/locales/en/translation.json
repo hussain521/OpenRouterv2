@@ -120,6 +120,7 @@
     "submit": "Submit",
     "continue": "Continue",
     "or": "or",
+    "and": "and",
     "by": "by",
     "viewAll": "View all",
     "new": "New",
@@ -149,6 +150,9 @@
     "pagination": "pagination",
     "aiProviderLogo": "AI Provider Logo",
     "popular": "Popular",
+    "free": "Free",
+    "closeBanner": "Close banner",
+    "copyModelId": "Copy model id",
     "pagination": {
       "previous": "Previous",
       "next": "Next"
