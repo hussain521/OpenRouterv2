@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { FiBox } from "react-icons/fi";
@@ -9,8 +9,11 @@ import { FiTag } from "react-icons/fi";
 import { FiDollarSign } from "react-icons/fi";
 import { FiLayers } from "react-icons/fi";
 import { FiSliders } from "react-icons/fi";
+import { FiServer } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 
+import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useModels } from "@/context/ModelsContext";
 
@@ -21,19 +24,33 @@ interface ModelsSidebarProps {
 
 export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebarProps) {
   const { t } = useTranslation();
-  const { filters, toggleFilter, updateFilter, resetFilters } = useModels();
+  const { models, filters, toggleFilter, updateFilter, resetFilters } = useModels();
   const [inputOpen, setInputOpen] = useState(true);
   const [contextOpen, setContextOpen] = useState(true);
   const [outputOpen, setOutputOpen] = useState(false);
   const [pricingOpen, setPricingOpen] = useState(false);
   const [seriesOpen, setSeriesOpen] = useState(false);
+  const [providersOpen, setProvidersOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [parametersOpen, setParametersOpen] = useState(false);
+  const [distillableOpen, setDistillableOpen] = useState(false);
+  const [providerSearch, setProviderSearch] = useState("");
 
   const handleContextRangeChange = (value: number[]) => {
     const minContext = 4000 + (value[0] / 100) * (1048576 - 4000);
     updateFilter('contextRange', [Math.floor(minContext), 1048576]);
   };
+
+  const providers = useMemo(() => {
+    const allProviders = models.map((model) => model.provider);
+    const uniqueProviders = [...new Set(allProviders)].sort();
+    if (!providerSearch) {
+      return uniqueProviders;
+    }
+    return uniqueProviders.filter((provider) =>
+      provider.toLowerCase().includes(providerSearch.toLowerCase())
+    );
+  }, [models, providerSearch]);
 
   // Check if any filters are active
   const hasActiveFilters =
@@ -43,8 +60,10 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
     filters.contextRange[0] !== 4000 || filters.contextRange[1] !== 1048576 ||
     filters.pricingTiers.length > 0 ||
     filters.series.length > 0 ||
+    filters.providers.length > 0 ||
     filters.categories.length > 0 ||
-    filters.parameters.length > 0;
+    filters.parameters.length > 0 ||
+    filters.distillable;
 
   // Close sidebar on Escape key press
   useEffect(() => {
@@ -77,7 +96,7 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
       
       <aside className={`
         w-[260px] border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-black
-        flex flex-col h-[calc(100vh-64px)] fixed top-[64px] left-0 overflow-hidden z-50
+        flex flex-col h-[calc(100vh-64px)] fixed top-[64px] left-0 overflow-hidden z-40
         transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         lg:flex
@@ -393,6 +412,49 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
           )}
         </div>
 
+        {/* Providers */}
+        <div className="mb-6">
+          <button
+            onClick={() => setProvidersOpen(!providersOpen)}
+            className="flex items-center justify-between w-full font-medium text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <FiServer />
+              {t("modelsSidebar.providersTitle", "Providers")}
+            </div>
+            {providersOpen ? <FiChevronDown /> : <FiChevronRight />}
+          </button>
+          {providersOpen && (
+            <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">
+              <div className="relative">
+                <FiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-muted-foreground h-3.5 w-3.5" />
+                <Input
+                  placeholder={t("modelsSidebar.searchProviders", "Search providers...")}
+                  value={providerSearch}
+                  onChange={(e) => setProviderSearch(e.target.value)}
+                  className="w-full h-8 pl-8 text-xs dark:bg-gray-900 dark:border-gray-700"
+                />
+              </div>
+              <div className="max-h-40 overflow-y-auto scrollbar-hide pt-2">
+                {providers.map((provider) => (
+                  <label
+                    key={provider}
+                  className="flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={filters.providers.includes(provider)}
+                    onChange={() => toggleFilter("providers", provider)}
+                    className="rounded border-gray-300"
+                  />
+                    {provider}
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Categories */}
 
         <div className="mb-6">
@@ -410,13 +472,28 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
 
           {categoriesOpen && (
             <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.academia")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.finance")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.health")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.legal")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.marketing")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.coding")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.categories.roleplay")}</div>
+              {[
+                "academia",
+                "finance",
+                "health",
+                "legal",
+                "marketing",
+                "coding",
+                "roleplay",
+              ].map((category) => (
+                <label
+                  key={category}
+                  className="flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={filters.categories.includes(category)}
+                    onChange={() => toggleFilter("categories", category)}
+                    className="rounded border-gray-300"
+                  />
+                  {t(`modelsSidebar.categories.${category}`)}
+                </label>
+              ))}
             </div>
           )}
         </div>
@@ -438,30 +515,60 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
 
           {parametersOpen && (
             <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.temperature")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.topP")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.topK")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.maxTokens")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.frequencyPenalty")}</div>
-              <div className="hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">{t("modelsSidebar.parameters.presencePenalty")}</div>
+              {[
+                "temperature",
+                "topP",
+                "topK",
+                "maxTokens",
+                "frequencyPenalty",
+                "presencePenalty",
+              ].map((param) => (
+                <label
+                  key={param}
+                  className="flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={filters.parameters.includes(param)}
+                    onChange={() => toggleFilter("parameters", param)}
+                    className="rounded border-gray-300"
+                  />
+                  {t(`modelsSidebar.parameters.${param}`)}
+                </label>
+              ))}
             </div>
           )}
         </div>
 
         {/* Distillable */}
 
-        <div className="mt-4">
-          <button className="flex items-center justify-between w-full text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+        <div className="mb-6">
+           <button
+            onClick={() => setDistillableOpen(!distillableOpen)}
+            className="flex items-center justify-between w-full font-medium text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+          >
             <div className="flex items-center gap-2">
               <FiCode />
-              {t("modelsSidebar.distillable")}
+              {t("modelsSidebar.distillable", "Distillable")}
               <span className="text-xs bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">
                 {t("common.new")}
               </span>
             </div>
-
-            <FiChevronRight />
+            {distillableOpen ? <FiChevronDown /> : <FiChevronRight />}
           </button>
+          {distillableOpen && (
+            <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">
+              <label className="flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={!!filters.distillable}
+                  onChange={() => updateFilter('distillable', !filters.distillable)}
+                  className="rounded border-gray-300"
+                />
+                {t("modelsSidebar.distillable", "Distillable")}
+              </label>
+            </div>
+          )}
         </div>
       </div>
     </aside>

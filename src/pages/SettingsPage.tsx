@@ -154,7 +154,22 @@ export default function SettingsPage() {
         ) : isPluginsPage ? (
           <PluginsSettingsContent />
         ) : isObservabilityPage ? (
-          <ObservabilitySettingsContent onSelectDestination={(destination) => setObservabilityDestination(destination)} />
+          <ObservabilitySettingsContent
+            onSelectDestination={(destination) => {
+              if (destination) {
+                setObservabilityDestination({
+                  name: t(
+                    `hardcodedStrings.destinations.${destination.nameKey}`,
+                    destination.nameKey
+                  ),
+                  iconBg: destination.iconBg,
+                  iconEmoji: destination.iconEmoji,
+                });
+              } else {
+                setObservabilityDestination(null);
+              }
+            }}
+          />
         ) : (
           <div className="space-y-4 text-sm text-gray-600">
             <p>

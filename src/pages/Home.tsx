@@ -26,7 +26,27 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Preload key pages after a short delay to improve navigation performance.
+    const timer = setTimeout(() => {
+      // Preload all common pages to make navigation feel instant
+      import("@/pages/models-page");
+      import("@/pages/ChatPage");
+      import("@/pages/RankingsPage");
+      import("@/pages/AppPage");
+      import("@/pages/PricingPage");
+      import("@/pages/AboutPage");
+      import("@/pages/ProvidersPage");
+      import("@/pages/SupportPage");
+      import("@/pages/EnterprisePage");
+      import("@/pages/SDKPage");
+      import("@/pages/SettingsPage");
+    }, 1500); // 1.5-second delay
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (

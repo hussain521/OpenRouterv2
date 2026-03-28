@@ -1,5 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslation } from "react-i18next"
+import { useState } from "react"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 const rankingKeys = [
   "openClaw",
@@ -12,6 +21,11 @@ const rankingKeys = [
   "cline",
   "isekaiZero",
   "rooCode",
+  "dummy1",
+  "dummy2",
+  "dummy3",
+  "dummy4",
+  "dummy5",
 ]
 
 function RankingRow({ item, rank }: { item: { name: string; desc: string; tokens: string }; rank: number }) {
@@ -41,8 +55,22 @@ function RankingRow({ item, rank }: { item: { name: string; desc: string; tokens
 
 export function GlobalRanking() {
   const { t } = useTranslation()
-  const left = rankingKeys.slice(0, 5)
-  const right = rankingKeys.slice(5, 10)
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10
+  const totalPages = Math.ceil(rankingKeys.length / itemsPerPage)
+
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentRankingKeys = rankingKeys.slice(startIndex, endIndex)
+
+  const left = currentRankingKeys.slice(0, 5)
+  const right = currentRankingKeys.slice(5, 10)
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page)
+    }
+  }
 
   return (
     <Card className="rounded-2xl mt-10 border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
@@ -69,7 +97,7 @@ export function GlobalRanking() {
                   desc: t(`globalRanking.items.${key}.desc`),
                   tokens: t(`globalRanking.items.${key}.tokens`),
                 }}
-                rank={index + 1}
+                rank={startIndex + index + 1}
               />
             ))}
           </div>
@@ -83,26 +111,59 @@ export function GlobalRanking() {
                   desc: t(`globalRanking.items.${key}.desc`),
                   tokens: t(`globalRanking.items.${key}.tokens`),
                 }}
-                rank={index + 6}
+                rank={startIndex + index + 6}
               />
             ))}
           </div>
         </div>
 
         {/* pagination */}
-        <div className="flex justify-center items-center gap-6 mt-8 text-sm">
-          <button className="px-3 py-1 border border-gray-200 dark:border-gray-700 rounded text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
-            ‹
-          </button>
-
-          <span className="text-gray-500 dark:text-gray-400">
-            {t("globalRanking.pagination")}
-          </span>
-
-          <button className="px-3 py-1 border border-gray-200 dark:border-gray-700 rounded text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
-            ›
-          </button>
-        </div>
+        {totalPages > 1 && (
+          <Pagination className="mt-8">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handlePageChange(currentPage - 1)
+                  }}
+                  className={
+                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                  }
+                />
+              </PaginationItem>
+              {[...Array(totalPages)].map((_, i) => (
+                <PaginationItem key={i}>
+                  <PaginationLink
+                    href="#"
+                    isActive={i + 1 === currentPage}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handlePageChange(i + 1)
+                    }}
+                  >
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handlePageChange(currentPage + 1)
+                  }}
+                  className={
+                    currentPage === totalPages
+                      ? "pointer-events-none opacity-50"
+                      : ""
+                  }
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        )}
       </CardContent>
     </Card>
   )

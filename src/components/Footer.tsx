@@ -26,14 +26,29 @@ export default function Footer() {
               {t("footer.product.title")}
             </h3>
             <ul className="space-y-2 xs:space-y-3 text-gray-600 dark:text-muted-foreground">
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.product.chat")}
+              <li>
+                <Link
+                  to="/chat"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.product.chat")}
+                </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.product.rankings")}
+              <li>
+                <Link
+                  to="/rankings"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.product.rankings")}
+                </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.product.models")}
+              <li>
+                <Link
+                  to="/models"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.product.models")}
+                </Link>
               </li>
               <li>
                 <Link
@@ -84,8 +99,13 @@ export default function Footer() {
                   {t("footer.company.about")}
                 </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.company.announcements")}
+              <li>
+                <Link
+                  to="/#announcements"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.company.announcements")}
+                </Link>
               </li>
               <li>
                 <Link
@@ -124,8 +144,15 @@ export default function Footer() {
                   {t("footer.company.support")}
                 </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.company.stateOfAI")}
+              <li>
+                <a
+                  href="https://openrouter.ai/reports/state-of-ai-2024"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.company.stateOfAI")}
+                </a>
               </li>
               <li>
                 <Link
@@ -144,11 +171,25 @@ export default function Footer() {
               {t("footer.developer.title")}
             </h3>
             <ul className="space-y-2 xs:space-y-3 text-gray-600 dark:text-muted-foreground">
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.developer.documentation")}
+              <li>
+                <a
+                  href="https://docs.openrouter.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.developer.documentation")}
+                </a>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.developer.apiReference")}
+              <li>
+                <a
+                  href="https://docs.openrouter.ai/api-reference"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.developer.apiReference")}
+                </a>
               </li>
               <li>
                 <Link
@@ -158,8 +199,15 @@ export default function Footer() {
                   {t("footer.developer.sdk")}
                 </Link>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.developer.status")}
+              <li>
+                <a
+                  href="https://status.openrouter.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.developer.status")}
+                </a>
               </li>
             </ul>
           </div>
@@ -170,20 +218,55 @@ export default function Footer() {
               {t("footer.connect.title")}
             </h3>
             <ul className="space-y-2 xs:space-y-3 text-gray-600 dark:text-muted-foreground">
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.connect.discord")}
+              <li>
+                <a
+                  href="https://discord.gg/openrouter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.connect.discord")}
+                </a>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.connect.github")}
+              <li>
+                <a
+                  href="https://github.com/openrouter-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.connect.github")}
+                </a>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.connect.linkedin")}
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/openrouter-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.connect.linkedin")}
+                </a>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.connect.x")}
+              <li>
+                <a
+                  href="https://x.com/openrouterai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.connect.x")}
+                </a>
               </li>
-              <li className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm">
-                {t("footer.connect.youtube")}
+              <li>
+                <a
+                  href="https://www.youtube.com/@OpenRouterAI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-foreground cursor-pointer transition-colors duration-200 text-sm block"
+                >
+                  {t("footer.connect.youtube")}
+                </a>
               </li>
             </ul>
           </div>

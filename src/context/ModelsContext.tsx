@@ -18,7 +18,10 @@ const mockModels: Model[] = [
     series: "gpt4",
     categories: ["coding", "academia"],
     parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "premium"
+    pricingTier: "premium",
+    distillable: true,
+    throughput: 150,
+    latency: 250
   },
   {
     id: 2,
@@ -36,7 +39,10 @@ const mockModels: Model[] = [
     series: "claude3",
     categories: ["academia", "legal"],
     parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "premium"
+    pricingTier: "premium",
+    distillable: true,
+    throughput: 120,
+    latency: 300
   },
   {
     id: 3,
@@ -54,7 +60,10 @@ const mockModels: Model[] = [
     series: "geminiPro",
     categories: ["coding", "marketing"],
     parameters: ["temperature", "topK", "maxTokens"],
-    pricingTier: "affordable"
+    pricingTier: "affordable",
+    distillable: false,
+    throughput: 300,
+    latency: 150
   },
   {
     id: 4,
@@ -72,7 +81,10 @@ const mockModels: Model[] = [
     series: "llama3",
     categories: ["coding", "academia"],
     parameters: ["temperature", "topP", "topK"],
-    pricingTier: "affordable"
+    pricingTier: "affordable",
+    distillable: true,
+    throughput: 100,
+    latency: 400
   },
   {
     id: 5,
@@ -90,7 +102,10 @@ const mockModels: Model[] = [
     series: "mistral",
     categories: ["coding", "finance"],
     parameters: ["temperature", "topP"],
-    pricingTier: "mid-range"
+    pricingTier: "mid-range",
+    distillable: false,
+    throughput: 80,
+    latency: 500
   },
   {
     id: 6,
@@ -108,7 +123,10 @@ const mockModels: Model[] = [
     series: "deepseek",
     categories: ["coding", "academia"],
     parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "affordable"
+    pricingTier: "affordable",
+    distillable: false,
+    throughput: 200,
+    latency: 200
   },
   {
     id: 7,
@@ -126,7 +144,10 @@ const mockModels: Model[] = [
     series: "qwen",
     categories: ["coding", "academia"],
     parameters: ["temperature", "topP", "topK"],
-    pricingTier: "free"
+    pricingTier: "free",
+    distillable: true,
+    throughput: 250,
+    latency: 180
   },
   {
     id: 8,
@@ -144,7 +165,10 @@ const mockModels: Model[] = [
     series: "command",
     categories: ["marketing", "finance"],
     parameters: ["temperature", "maxTokens"],
-    pricingTier: "premium"
+    pricingTier: "premium",
+    distillable: false,
+    throughput: 90,
+    latency: 450
   }
 ];
 
@@ -165,6 +189,9 @@ export interface Model {
   categories: string[];
   parameters: string[];
   pricingTier: "free" | "affordable" | "mid-range" | "premium";
+  distillable: boolean;
+  throughput: number;
+  latency: number;
 }
 
 export interface FilterState {
@@ -176,6 +203,8 @@ export interface FilterState {
   series: string[];
   categories: string[];
   parameters: string[];
+  distillable: boolean;
+  providers: string[];
 }
 
 export interface ModelsContextType {
@@ -185,7 +214,7 @@ export interface ModelsContextType {
   sortBy: string;
   setSearchQuery: (query: string) => void;
   setSortBy: (sortBy: string) => void;
-  updateFilter: (key: keyof FilterState, value: string[] | [number, number] | string) => void;
+  updateFilter: (key: keyof FilterState, value: string[] | [number, number] | string | boolean) => void;
   resetFilters: () => void;
   toggleFilter: (key: keyof FilterState, value: string) => void;
 }
@@ -198,7 +227,9 @@ const defaultFilters: FilterState = {
   pricingTiers: [],
   series: [],
   categories: [],
-  parameters: []
+  parameters: [],
+  distillable: false,
+  providers: []
 };
 
 const ModelsContext = createContext<ModelsContextType | undefined>(undefined);
@@ -268,6 +299,18 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
       );
     }
 
+    // Apply providers filter
+    if (filters.providers.length > 0) {
+      filtered = filtered.filter(model =>
+        filters.providers.includes(model.provider)
+      );
+    }
+
+    // Apply distillable filter
+    if (filters.distillable) {
+      filtered = filtered.filter(model => model.distillable);
+    }
+
     // Apply sorting
     return [...filtered].sort((a, b) => {
       switch (sortBy) {
@@ -279,6 +322,10 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
           return (b.inputPrice + b.outputPrice) - (a.inputPrice + a.outputPrice);
         case "context-high-low":
           return b.context - a.context;
+        case "throughput-high-low":
+          return b.throughput - a.throughput;
+        case "latency-low-high":
+          return a.latency - b.latency;
         case "top-weekly": {
           const aTokens = parseFloat(a.weeklyTokens.replace(/[BM]/g, '')) * (a.weeklyTokens.includes('B') ? 1000 : 1);
           const bTokens = parseFloat(b.weeklyTokens.replace(/[BM]/g, '')) * (b.weeklyTokens.includes('B') ? 1000 : 1);
@@ -299,7 +346,7 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
     setFilters(prev => ({ ...prev, searchQuery: query }));
   };
 
-  const updateFilter = (key: keyof FilterState, value: string[] | [number, number] | string) => {
+  const updateFilter = (key: keyof FilterState, value: string[] | [number, number] | string | boolean) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 

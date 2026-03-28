@@ -1,0 +1,142 @@
+[
+  {
+    "rank": 1,
+    "name": "minimax_m2_5",
+    "company": "minimax",
+    "tokens": "2.01T",
+    "change": "+23%"
+  },
+  {
+    "rank": 2,
+    "name": "step_3_5_flash_free",
+    "company": "stepfun",
+    "tokens": "1.07T",
+    "change": "+112%"
+  },
+  {
+    "rank": 3,
+    "name": "gemini_3_flash_preview",
+    "company": "google",
+    "tokens": "994B",
+    "change": "-8%"
+  },
+  {
+    "rank": 4,
+    "name": "deepseek_v3_2",
+    "company": "deepseek",
+    "tokens": "939B",
+    "change": "+23%"
+  },
+  {
+    "rank": 5,
+    "name": "claude_sonnet_4_6",
+    "company": "anthropic",
+    "tokens": "794B",
+    "change": "+16%"
+  },
+  {
+    "rank": 6,
+    "name": "claude_opus_4_6",
+    "company": "anthropic",
+    "tokens": "769B",
+    "change": "+7%"
+  },
+  {
+    "rank": 7,
+    "name": "kimi_k2_5",
+    "company": "moonshotai",
+    "tokens": "568B",
+    "change": "-34%"
+  },
+  {
+    "rank": 8,
+    "name": "gemini_2_5_flash",
+    "company": "google",
+    "tokens": "540B",
+    "change": "+4%"
+  },
+  {
+    "rank": 9,
+    "name": "grok_4_1_fast",
+    "company": "x-ai",
+    "tokens": "534B",
+    "change": "-10%"
+  },
+  {
+    "rank": 10,
+    "name": "gpt_oss_120b",
+    "company": "openai",
+    "tokens": "517B",
+    "change": "+36%"
+  },
+  {
+    "rank": 11,
+    "name": "gpt_4_turbo",
+    "company": "openai",
+    "tokens": "489B",
+    "change": "+15%"
+  },
+  {
+    "rank": 12,
+    "name": "claude_haiku_3_5",
+    "company": "anthropic",
+    "tokens": "467B",
+    "change": "+8%"
+  },
+  {
+    "rank": 13,
+    "name": "llama_3_1_70b",
+    "company": "meta",
+    "tokens": "445B",
+    "change": "+22%"
+  },
+  {
+    "rank": 14,
+    "name": "mixtral_8x7b",
+    "company": "mistral",
+    "tokens": "398B",
+    "change": "-5%"
+  },
+  {
+    "rank": 15,
+    "name": "yi_large",
+    "company": "yi",
+    "tokens": "374B",
+    "change": "+19%"
+  },
+  {
+    "rank": 16,
+    "name": "command_r_plus",
+    "company": "cohere",
+    "tokens": "352B",
+    "change": "+12%"
+  },
+  {
+    "rank": 17,
+    "name": "qwen_2_5_72b",
+    "company": "alibaba",
+    "tokens": "329B",
+    "change": "+7%"
+  },
+  {
+    "rank": 18,
+    "name": "phi_3_5_medium",
+    "company": "microsoft",
+    "tokens": "307B",
+    "change": "-3%"
+  },
+  {
+    "rank": 19,
+    "name": "gemma_2_27b",
+    "company": "google",
+    "tokens": "285B",
+    "change": "+14%"
+  },
+  {
+    "rank": 20,
+    "name": "solar_10_7b",
+    "company": "upstage",
+    "tokens": "263B",
+    "change": "+9%"
+  }
+]

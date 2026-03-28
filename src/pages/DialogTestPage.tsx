@@ -13,9 +13,11 @@ import {
 } from "@/components/dialogs";
 import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 import { CreateManagementKeyDialog } from "@/components/CreateManagementKeyDialog";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export function DialogTestPage() {
   const { t } = useTranslation();
+  usePageTitle(t("dialogs.test.title"));
   const [dialogs, setDialogs] = useState({
     billing: false,
     organization: false,

@@ -26,7 +26,11 @@
     "searchResults": {
       "noResults": "No results found for \"{{query}}\"",
       "tryAnother": "Try searching for another model"
-    }
+    },
+    "userMenu": "User Menu",
+    "github": "GitHub",
+    "google": "Google",
+    "meta": "Meta"
   },
   "hero": {
     "title": "Welcome to OpenRouter",
@@ -1102,7 +1106,9 @@
   "pagination": {
     "previous": "Previous",
     "next": "Next",
-    "morePages": "More pages"
+    "morePages": "More pages",
+    "goToPreviousPage": "Go to previous page",
+    "goToNextPage": "Go to next page"
   },
   "dataTable": {
     "empty": "(empty)"
@@ -1449,12 +1455,38 @@
         "name": "Roo Code",
         "desc": "A whole dev team of AI agents",
         "tokens": "17.6B tokens"
+      },
+      "dummy1": {
+        "name": "Dummy App 1",
+        "desc": "Description for Dummy App 1",
+        "tokens": "100B tokens"
+      },
+      "dummy2": {
+        "name": "Dummy App 2",
+        "desc": "Description for Dummy App 2",
+        "tokens": "90B tokens"
+      },
+      "dummy3": {
+        "name": "Dummy App 3",
+        "desc": "Description for Dummy App 3",
+        "tokens": "80B tokens"
+      },
+      "dummy4": {
+        "name": "Dummy App 4",
+        "desc": "Description for Dummy App 4",
+        "tokens": "70B tokens"
+      },
+      "dummy5": {
+        "name": "Dummy App 5",
+        "desc": "Description for Dummy App 5",
+        "tokens": "60B tokens"
       }
     },
 
     "marketShare": {
       "title": "Market Share",
       "subtitle": "Compare OpenRouter token share by model author",
+      "share": "Share",
       "companies": {
         "google": "Google",
         "anthropic": "Anthropic",
@@ -1465,7 +1497,32 @@
         "mistralai": "Mistral AI",
         "microsoft": "Microsoft",
         "x-ai": "xAI",
-        "others": "Others"
+        "others": "Others",
+        "minimax": "Minimax"
+      }
+    },
+    "leaderboard": {
+      "models": {
+        "minimax_m2_5": "MiniMax M2.5",
+        "gpt_4o": "GPT-4o",
+        "claude_3_5_sonnet": "Claude 3.5 Sonnet",
+        "gemini_1_5_pro": "Gemini 1.5 Pro",
+        "command_r_plus": "Command R+",
+        "llama_3_1_70b": "Llama 3.1 70B",
+        "qwen_2_72b_instruct": "Qwen 2 72B Instruct",
+        "mixtral_8x22b": "Mixtral 8x22B",
+        "dbrx_instruct": "DBRX Instruct",
+        "wizardlm_2_8x22b": "WizardLM-2 8x22B"
+      }
+    },
+    "aiModelChart": {
+      "dates": {
+        "jan": "Jan",
+        "feb": "Feb",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "May",
+        "jun": "Jun"
       }
     }
   },
@@ -2892,5 +2949,8 @@
       "getApiKey": "Get API Key",
       "viewDocs": "View Docs"
     }
+  },
+  "translationTest": {
+    "title": "Translation Test"
   }
 }

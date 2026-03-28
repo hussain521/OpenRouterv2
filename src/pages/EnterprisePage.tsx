@@ -16,7 +16,7 @@ import EnterpriseCTA from "@/components/enterprise/EnterpriseCTA";
 export default function EnterprisePage() {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  usePageTitle("Enterprise - OpenRouter");
+  usePageTitle(t("footer.product.enterprise"));
 
   useEffect(() => {
     const handleScroll = () => {

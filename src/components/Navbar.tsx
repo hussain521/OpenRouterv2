@@ -14,7 +14,6 @@ import {
   FiAlertCircle,
   FiMonitor,
   FiGlobe,
-  FiCpu,
 } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -41,10 +40,8 @@ import {
   Beaker,
   MessageSquare,
   Grid3X3,
-  Zap,
-  BarChart,
-  Calendar,
   AppWindow,
+  LogOut,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -95,13 +92,22 @@ function SignInCard({
 
         {/* Social buttons */}
         <div className="mt-6 grid grid-cols-3 gap-3">
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent">
+          <button
+            aria-label={t("nav.github")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent"
+          >
             <FiGithub className="h-4 w-4" />
           </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent">
+          <button
+            aria-label={t("nav.google")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent"
+          >
             <FcGoogle className="h-4 w-4" />
           </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent">
+          <button
+            aria-label={t("nav.meta")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-border bg-white dark:bg-secondary text-[13px] text-gray-700 dark:text-secondary-foreground hover:bg-gray-50 dark:hover:bg-accent"
+          >
             <span className="text-base">🦊</span>
           </button>
         </div>
@@ -204,13 +210,22 @@ function SignUpCard({
 
         {/* Social buttons */}
         <div className="mt-6 grid grid-cols-3 gap-3">
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <button
+            aria-label={t("nav.github")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
             <FiGithub className="h-4 w-4" />
           </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <button
+            aria-label={t("nav.google")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
             <FcGoogle className="h-4 w-4" />
           </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <button
+            aria-label={t("nav.meta")}
+            className="flex h-10 items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-[13px] text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
             <span className="text-base">🦊</span>
           </button>
         </div>
@@ -364,8 +379,7 @@ export default function Navbar() {
   }, [i18n.language]);
 
   // Map routes to icons
-  const getPageIcon = () => {
-    const pathname = location.pathname;
+  const getPageIcon = (pathname: string) => {
     
     // Home page
     if (pathname === '/') return <Home className="h-4 w-4" />;
@@ -517,9 +531,16 @@ export default function Navbar() {
 
   const closeAuth = () => setAuthOpen(false);
 
+  const profileMenuItems = [
+    { path: "/activity", label: "nav.activity", default: "Activity" },
+    { path: "/logs", label: "nav.logs", default: "Logs" },
+    { path: "/credits", label: "nav.credits", default: "Credits" },
+    { path: "/settings", label: "nav.settings", default: "Settings" },
+  ];
+
   return (
     <>
-      <div className="relative z-20 w-full bg-white dark:bg-background border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+      <div className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
         <div className="flex items-center justify-between px-3 xs:px-4 py-3 xs:py-4 sm:px-6 lg:px-8 xl:px-10">
           {/* Logo + Search */}
           <div className="flex flex-1 items-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6">
@@ -678,6 +699,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setIsProfileOpen((prev) => !prev)}
+                  aria-label={t("nav.userMenu")}
                   className="flex items-center gap-1 xl:gap-1.5 rounded-full border border-border bg-background px-1.5 xl:px-2 py-1 shadow-sm hover:bg-muted transition-colors duration-200"
                 >
                   {/* Dropdown Arrow in the middle */}
@@ -690,7 +712,7 @@ export default function Navbar() {
                   </div>
                   {/* Current Page Icon - hidden on very small screens */}
                   <div className="hidden sm:flex items-center justify-center text-muted-foreground">
-                    {getPageIcon()}
+                    {getPageIcon(location.pathname)}
                   </div>
 
                   {/* User Avatar on the right */}
@@ -703,51 +725,31 @@ export default function Navbar() {
 
                 {isProfileOpen && (
                   <div className="absolute ltr:right-0 rtl:left-0 mt-2 w-48 rounded-xl border border-border bg-card py-2 text-sm text-card-foreground shadow-lg animate-fade-in">
+                    {profileMenuItems.map((item) => (
+                      <button
+                        key={item.path}
+                        className="flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors duration-200 hover:bg-muted"
+                        onClick={() => {
+                          setIsProfileOpen(false);
+                          navigate(item.path);
+                        }}
+                      >
+                        <span className="text-muted-foreground">
+                          {getPageIcon(item.path)}
+                        </span>
+                        <span>{t(item.label, item.default)}</span>
+                      </button>
+                    ))}
                     <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
-                      onClick={() => {
-                        setIsProfileOpen(false);
-                        navigate("/activity");
-                      }}
-                    >
-                      {t("nav.activity", "Activity")}
-                    </button>
-                    <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
-                      onClick={() => {
-                        setIsProfileOpen(false);
-                        navigate("/logs");
-                      }}
-                    >
-                      {t("nav.logs")}
-                    </button>
-                    <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
-                      onClick={() => {
-                        setIsProfileOpen(false);
-                        navigate("/credits");
-                      }}
-                    >
-                      {t("nav.credits", "Credits")}
-                    </button>
-                    <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-muted transition-colors duration-200"
-                      onClick={() => {
-                        setIsProfileOpen(false);
-                        navigate("/settings");
-                      }}
-                    >
-                      {t("nav.settings", "Settings")}
-                    </button>
-                    <button
-                      className="block w-full px-4 py-2.5 text-left hover:bg-destructive/10 text-destructive transition-colors duration-200"
+                      className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-destructive transition-colors duration-200 hover:bg-destructive/10"
                       onClick={() => {
                         setIsSignedIn(false);
                         setIsProfileOpen(false);
                         localStorage.removeItem("isSignedIn");
                       }}
                     >
-                      {t("nav.signOut", "Sign Out")}
+                      <LogOut className="h-4 w-4" />
+                      <span>{t("nav.signOut", "Sign Out")}</span>
                     </button>
                     <div className="mt-1 flex flex-col gap-2 border-t border-border px-4 pb-1 pt-2">
                       {/* Language Toggle */}
@@ -793,6 +795,7 @@ export default function Navbar() {
                                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                                 : "border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                             }`}
+                            aria-label={t("nav.lightMode")}
                             title={t("nav.lightMode")}
                           >
                             <FiSun className="h-3.5 w-3.5" />
@@ -805,6 +808,7 @@ export default function Navbar() {
                                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                                 : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                             }`}
+                            aria-label={t("nav.systemDefault")}
                             title={t("nav.systemDefault")}
                           >
                             <FiMonitor className="h-3.5 w-3.5" />
@@ -817,6 +821,7 @@ export default function Navbar() {
                                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                                 : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                             }`}
+                            aria-label={t("nav.darkMode")}
                             title={t("nav.darkMode")}
                           >
                             <FiMoon className="h-3.5 w-3.5" />
@@ -947,51 +952,31 @@ export default function Navbar() {
                   </span>
                 </div>
                 
+                {profileMenuItems.map((item) => (
+                  <button
+                    key={item.path}
+                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left font-medium text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      navigate(item.path);
+                    }}
+                  >
+                    <span className="text-muted-foreground">
+                      {getPageIcon(item.path)}
+                    </span>
+                    <span>{t(item.label, item.default)}</span>
+                  </button>
+                ))}
                 <button
-                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    navigate("/activity");
-                  }}
-                >
-                  {t("nav.activity", "Activity")}
-                </button>
-                <button
-                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    navigate("/logs");
-                  }}
-                >
-                  {t("nav.logs")}
-                </button>
-                <button
-                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    navigate("/credits");
-                  }}
-                >
-                  {t("nav.credits", "Credits")}
-                </button>
-                <button
-                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200 text-left"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    navigate("/settings");
-                  }}
-                >
-                  {t("nav.settings", "Settings")}
-                </button>
-                <button
-                  className="block w-full rounded-lg px-3 py-2.5 font-medium text-destructive hover:bg-destructive/10 transition-colors duration-200 text-left"
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left font-medium text-destructive transition-colors duration-200 hover:bg-destructive/10"
                   onClick={() => {
                     setIsSignedIn(false);
                     setIsMenuOpen(false);
                     localStorage.removeItem("isSignedIn");
                   }}
                 >
-                  {t("nav.signOut", "Sign Out")}
+                  <LogOut className="h-4 w-4" />
+                  <span>{t("nav.signOut", "Sign Out")}</span>
                 </button>
 
                 {/* Theme and Language Controls for Mobile */}
@@ -1040,6 +1025,7 @@ export default function Navbar() {
                             ? "border-primary bg-primary text-primary-foreground shadow-sm"
                             : "border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
+                        aria-label={t("nav.lightMode")}
                         title={t("nav.lightMode")}
                       >
                         <FiSun className="h-4 w-4" />
@@ -1052,6 +1038,7 @@ export default function Navbar() {
                             ? "border-primary bg-primary text-primary-foreground shadow-sm"
                             : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                         }`}
+                        aria-label={t("nav.systemDefault")}
                         title={t("nav.systemDefault")}
                       >
                         <FiMonitor className="h-4 w-4" />
@@ -1064,6 +1051,7 @@ export default function Navbar() {
                             ? "border-primary bg-primary text-primary-foreground shadow-sm"
                             : "border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                         }`}
+                        aria-label={t("nav.darkMode")}
                         title={t("nav.darkMode")}
                       >
                         <FiMoon className="h-4 w-4" />
@@ -1098,7 +1086,7 @@ export default function Navbar() {
 
       {/* Auth Dialog with blurred background */}
       {authOpen && (
-        <div className="fixed inset-0 z-40 flex items-start justify-center bg-black/60 backdrop-blur-sm px-4 pt-16 sm:pt-24">
+        <div className="fixed h-full inset-0 z-40 flex items-start justify-center bg-background px-4 pt-16 sm:pt-24">
           {/* backdrop click to close */}
           <button
             type="button"

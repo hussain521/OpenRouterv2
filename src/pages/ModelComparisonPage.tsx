@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import { type Model } from "@/context/ModelsContext";
 import { ModelSelectionDialog } from "@/components/model-comparison/ModelSelectionDialog";
 import { ComparisonCards } from "@/components/model-comparison/ComparisonCards";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ModelComparisonPage() {
   const { t } = useTranslation();
+  usePageTitle(t("modelComparison.title"));
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleModelSelect = (model: Model) => {

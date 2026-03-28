@@ -23,9 +23,11 @@ import ModelCard from "@/components/model-card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useModels } from "@/context/ModelsContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ModelsPage() {
   const { t } = useTranslation();
+  usePageTitle(t("modelsPage.models"));
   const navigate = useNavigate();
   const { filteredModels, filters, sortBy, setSearchQuery, setSortBy } = useModels();
   const [viewMode, setViewMode] = useState<"card" | "table">("card");

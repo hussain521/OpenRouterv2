@@ -3,9 +3,11 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function SDKPage() {
   const { t } = useTranslation();
+  usePageTitle(t('footer.developer.sdk'));
   const [activeLanguage, setActiveLanguage] = useState('TypeScript');
   const [copied, setCopied] = useState(false);
   const [activeExample, setActiveExample] = useState('Basic');

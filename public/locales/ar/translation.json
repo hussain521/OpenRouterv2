@@ -26,7 +26,11 @@
     "searchResults": {
       "noResults": "لا توجد نتائج للبحث \"{{query}}\"",
       "tryAnother": "جرب البحث عن نموذج آخر"
-    }
+    },
+    "userMenu": "قائمة المستخدم",
+    "github": "جيت هب",
+    "google": "جوجل",
+    "meta": "ميتا"
   },
   "hero": {
     "title": "مرحباً بك في OpenRouter",
@@ -1074,7 +1078,9 @@
   "pagination": {
     "previous": "السابق",
     "next": "التالي",
-    "morePages": "المزيد من الصفحات"
+    "morePages": "المزيد من الصفحات",
+    "goToPreviousPage": "اذهب إلى الصفحة السابقة",
+    "goToNextPage": "اذهب إلى الصفحة التالية"
   },
   "dataTable": {
     "empty": "(فارغ)"
@@ -1422,12 +1428,38 @@
         "name": "Roo Code",
         "desc": "فريق تطوير كامل من وكلاء الذكاء الاصطناعي",
         "tokens": "17.6 مليار توكن"
+      },
+      "dummy1": {
+        "name": "تطبيق وهمي 1",
+        "desc": "وصف للتطبيق الوهمي 1",
+        "tokens": "100 مليار توكن"
+      },
+      "dummy2": {
+        "name": "تطبيق وهمي 2",
+        "desc": "وصف للتطبيق الوهمي 2",
+        "tokens": "90 مليار توكن"
+      },
+      "dummy3": {
+        "name": "تطبيق وهمي 3",
+        "desc": "وصف للتطبيق الوهمي 3",
+        "tokens": "80 مليار توكن"
+      },
+      "dummy4": {
+        "name": "تطبيق وهمي 4",
+        "desc": "وصف للتطبيق الوهمي 4",
+        "tokens": "70 مليار توكن"
+      },
+      "dummy5": {
+        "name": "تطبيق وهمي 5",
+        "desc": "وصف للتطبيق الوهمي 5",
+        "tokens": "60 مليار توكن"
       }
     },
 
     "marketShare": {
       "title": "حصة السوق",
       "subtitle": "مقارنة حصة الرموز في OpenRouter حسب مؤلف النموذج",
+      "share": "حصة",
       "companies": {
         "google": "جوجل",
         "anthropic": "أنثروبيك",
@@ -1438,13 +1470,38 @@
         "mistralai": "ميسترال إيه آي",
         "microsoft": "مايكروسوفت",
         "x-ai": "إكس إيه آي",
-        "others": "آخرون"
+        "others": "آخرون",
+        "minimax": "مينيماكس"
       },
       "cta": {
         "title": "مستعد للبدء؟",
         "subtitle": "انضم إلى آلاف المطورين الذين يبنون مع OpenRouter",
         "signUpFree": "سجل مجاناً",
         "contactSales": "تواصل مع المبيعات"
+      }
+    },
+    "leaderboard": {
+      "models": {
+        "minimax_m2_5": "MiniMax M2.5",
+        "gpt_4o": "GPT-4o",
+        "claude_3_5_sonnet": "Claude 3.5 Sonnet",
+        "gemini_1_5_pro": "Gemini 1.5 Pro",
+        "command_r_plus": "Command R+",
+        "llama_3_1_70b": "Llama 3.1 70B",
+        "qwen_2_72b_instruct": "Qwen 2 72B Instruct",
+        "mixtral_8x22b": "Mixtral 8x22B",
+        "dbrx_instruct": "DBRX Instruct",
+        "wizardlm_2_8x22b": "WizardLM-2 8x22B"
+      }
+    },
+    "aiModelChart": {
+      "dates": {
+        "jan": "يناير",
+        "feb": "فبراير",
+        "mar": "مارس",
+        "apr": "أبريل",
+        "may": "مايو",
+        "jun": "يونيو"
       }
     }
   },
@@ -2854,5 +2911,8 @@
       "pricingLabel": "/مليون رمز",
       "tokensLabel": "الرموز"
     }
+  },
+  "translationTest": {
+    "title": "صفحة اختبار الترجمة"
   }
 }

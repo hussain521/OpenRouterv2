@@ -1,0 +1,82 @@
+[
+  {
+    "rank": 1,
+    "name": "google",
+    "tokens": "731B",
+    "percentage": "34.8%",
+    "tokensNumeric": 731,
+    "color": "#FF6B6B"
+  },
+  {
+    "rank": 2,
+    "name": "anthropic",
+    "tokens": "422B",
+    "percentage": "20.1%",
+    "tokensNumeric": 422,
+    "color": "#4ECDC4"
+  },
+  {
+    "rank": 3,
+    "name": "openai",
+    "tokens": "403B",
+    "percentage": "19.2%",
+    "tokensNumeric": 403,
+    "color": "#45B7D1"
+  },
+  {
+    "rank": 4,
+    "name": "deepseek",
+    "tokens": "252B",
+    "percentage": "12.0%",
+    "tokensNumeric": 252,
+    "color": "#96CEB4"
+  },
+  {
+    "rank": 5,
+    "name": "meta-llama",
+    "tokens": "106B",
+    "percentage": "5.0%",
+    "tokensNumeric": 106,
+    "color": "#FFEAA7"
+  },
+  {
+    "rank": 6,
+    "name": "qwen",
+    "tokens": "61.2B",
+    "percentage": "2.9%",
+    "tokensNumeric": 61.2,
+    "color": "#DDA0DD"
+  },
+  {
+    "rank": 7,
+    "name": "mistralai",
+    "tokens": "52.8B",
+    "percentage": "2.5%",
+    "tokensNumeric": 52.8,
+    "color": "#98D8C8"
+  },
+  {
+    "rank": 8,
+    "name": "microsoft",
+    "tokens": "13.6B",
+    "percentage": "0.6%",
+    "tokensNumeric": 13.6,
+    "color": "#F7DC6F"
+  },
+  {
+    "rank": 9,
+    "name": "x-ai",
+    "tokens": "12.8B",
+    "percentage": "0.6%",
+    "tokensNumeric": 12.8,
+    "color": "#BB8FCE"
+  },
+  {
+    "rank": 10,
+    "name": "others",
+    "tokens": "46.7B",
+    "percentage": "2.2%",
+    "tokensNumeric": 46.7,
+    "color": "#F1948A"
+  }
+]

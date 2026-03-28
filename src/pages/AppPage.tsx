@@ -1,49 +1,10 @@
 import Navbar from "@/components/Navbar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GlobalRanking } from "@/components/GlobalRanking";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
-
-function RankCard({ title, data }: any) {
-  const { t } = useTranslation();
-
-  return (
-    <Card className="rounded-2xl dark:bg-gray-900 dark:border-gray-800">
-      <CardHeader className="flex flex-row justify-between items-center">
-        <CardTitle className="text-lg dark:text-white">{title}</CardTitle>
-
-        <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-          {t("appRanking.viewAll")} →
-        </button>
-      </CardHeader>
-
-      <CardContent className="space-y-6">
-        {data.map((item: any, index: number) => (
-          <div key={index} className="flex items-start justify-between gap-4 p-3 -mx-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
-            <div className="flex items-start gap-4">
-              <span className="text-sm text-muted-foreground w-4">
-                {index + 1}.
-              </span>
-
-              <div className="w-10 h-10 rounded-lg bg-muted dark:bg-gray-800"></div>
-
-              <div>
-                <p className="font-medium dark:text-white">{t(item.name)}</p>
-
-                <p className="text-sm text-muted-foreground dark:text-gray-400">{t(item.desc)}</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium dark:text-gray-300">{t(item.tokens)}</span>
-              <span className="text-muted-foreground dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </div>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
+import { PopularAppsSection } from "@/components/app-ranking/PopularAppsSection";
+import { RankCard } from "@/components/app-ranking/RankCard";
+import { TrendingAppsSection } from "@/components/app-ranking/TrendingAppsSection";
 
 export default function AppPage() {
   const { t } = useTranslation();
@@ -177,69 +138,9 @@ export default function AppPage() {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 space-y-8 sm:space-y-10 lg:space-y-12 dark:bg-gray-950">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">{t("appRanking.title")}</h1>
 
-        {/* Most Popular */}
-        <div>
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
-            {t("appRanking.mostPopular")}
-          </h2>
+        <PopularAppsSection apps={popularApps} />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {popularApps.map((app, i) => (
-              <Card key={i} className={`rounded-2xl border ${app.borderColor} group transition-all hover:shadow-lg dark:bg-gray-900 dark:hover:shadow-2xl`}>
-                <CardContent className="p-4 sm:p-6 space-y-2 sm:space-y-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted dark:bg-gray-800 rounded-xl"></div>
-
-                  <h3 className={`font-semibold text-base sm:text-lg transition-colors text-gray-900 dark:text-white ${
-                    app.borderColor === 'border-blue-500' ? 'group-hover:text-blue-500 dark:group-hover:text-blue-400' :
-                    app.borderColor === 'border-purple-500' ? 'group-hover:text-purple-500 dark:group-hover:text-purple-400' :
-                    app.borderColor === 'border-green-500' ? 'group-hover:text-green-500 dark:group-hover:text-green-400' :
-                    app.borderColor === 'border-orange-500' ? 'group-hover:text-orange-500 dark:group-hover:text-orange-400' : ''
-                  }`}>{t(app.name)}</h3>
-
-                  <p className="text-xs sm:text-sm text-muted-foreground dark:text-gray-400">{t(app.desc)}</p>
-
-                  <p className="text-xs sm:text-sm text-muted-foreground dark:text-gray-400">
-                    {t(app.tokens)}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Trending */}
-        <div>
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
-            {t("appRanking.trending")}
-          </h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {trendingApps.map((app, i) => (
-              <Card key={i} className={`rounded-xl border ${app.borderColor} group transition-all hover:shadow-lg dark:bg-gray-900 dark:hover:shadow-2xl`}>
-                <CardContent className="p-3 sm:p-4 space-y-2 sm:space-y-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted dark:bg-gray-800 rounded-lg"></div>
-
-                  <h4 className={`text-xs sm:text-sm font-semibold transition-colors text-gray-900 dark:text-white ${
-                    app.borderColor === 'border-blue-500' ? 'group-hover:text-blue-500 dark:group-hover:text-blue-400' :
-                    app.borderColor === 'border-red-500' ? 'group-hover:text-red-500 dark:group-hover:text-red-400' :
-                    app.borderColor === 'border-yellow-500' ? 'group-hover:text-yellow-500 dark:group-hover:text-yellow-400' :
-                    app.borderColor === 'border-pink-500' ? 'group-hover:text-pink-500 dark:group-hover:text-pink-400' :
-                    app.borderColor === 'border-indigo-500' ? 'group-hover:text-indigo-500 dark:group-hover:text-indigo-400' :
-                    app.borderColor === 'border-teal-500' ? 'group-hover:text-teal-500 dark:group-hover:text-teal-400' : ''
-                  }`}>{t(app.name)}</h4>
-
-                  <div className="flex justify-between text-[10px] sm:text-xs text-muted-foreground dark:text-gray-400">
-                    <span>{t(app.tokens)}</span>
-
-                    <span className="text-green-500 dark:text-green-400 font-medium">
-                      {t(app.growth)}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        <TrendingAppsSection apps={trendingApps} />
 
         {/* Rankings */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">

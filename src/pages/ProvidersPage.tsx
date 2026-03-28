@@ -17,8 +17,6 @@ import {
   Search,
   MessageSquareText,
   Image,
-  AudioLines,
-  Video,
   FileText,
   Binary,
   ArrowRight,
@@ -27,7 +25,7 @@ import {
 const ProvidersPage: React.FC = () => {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  usePageTitle("Providers");
+  usePageTitle(t("footer.product.providers"));
 
   useEffect(() => {
     const handleScroll = () => {

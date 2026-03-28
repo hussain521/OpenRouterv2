@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const TranslationTestPage: React.FC = () => {
   const { t, i18n } = useTranslation();
+  usePageTitle(t('translationTest.title'));
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);

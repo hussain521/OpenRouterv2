@@ -70,8 +70,8 @@ const PaginationPrevious = ({
   const { t } = useTranslation()
   return (
     <PaginationLink
-      aria-label={t("pagination.previous")}
-      className={cn("gap-1 pl-2.5", className)}
+      aria-label={t("pagination.goToPreviousPage")}
+      className={cn("gap-2 pl-2.5", className)}
       {...props}
     >
       <ChevronLeft className="h-4 w-4" />
@@ -88,8 +88,8 @@ const PaginationNext = ({
   const { t } = useTranslation()
   return (
     <PaginationLink
-      aria-label={t("pagination.next")}
-      className={cn("gap-1 pr-2.5", className)}
+      aria-label={t("pagination.goToNextPage")}
+      className={cn("gap-2 pr-2.5", className)}
       {...props}
     >
       <span>{t("pagination.next")}</span>
