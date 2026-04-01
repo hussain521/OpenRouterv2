@@ -1,26 +1,41 @@
-const User = require('../models/User');
-const Usage = require('../models/Usage');
+import { User } from '../models/index.mjs';
 
-const getUserBalance = async (req, res) => {
+// Get User Balance
+export const getUserBalance = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    if (user) {
-      res.json({ balance: user.balance });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    // req.user is populated by the authenticateToken middleware
+    const user = await User.findById(req.user.id).select('balance');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
+    res.status(200).json({ balance: user.balance });
   } catch (error) {
+    console.error('Error fetching user balance:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-const getUserUsage = async (req, res) => {
+// Deposit Balance
+export const depositBalance = async (req, res) => {
+  const { amount } = req.body;
+
+  if (!amount || typeof amount !== 'number' || amount <= 0) {
+    return res.status(400).json({ message: 'Invalid deposit amount' });
+  }
+
   try {
-    const usage = await Usage.find({ user: req.user._id }).populate('model', 'name');
-    res.json(usage);
+    // req.user is populated by the authenticateToken middleware
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    user.balance += amount;
+    await user.save();
+
+    res.status(200).json({ message: 'Deposit successful', balance: user.balance });
   } catch (error) {
+    console.error('Error depositing balance:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-module.exports = { getUserBalance, getUserUsage };

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ProviderSchema = new mongoose.Schema({
   user: {
@@ -24,4 +24,4 @@ const ProviderSchema = new mongoose.Schema({
 
 const Provider = mongoose.model('Provider', ProviderSchema);
 
-module.exports = Provider;
+export default Provider;

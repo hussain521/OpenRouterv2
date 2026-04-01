@@ -1,177 +1,7 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext, useState, useMemo, useEffect } from "react";
+import { API_BASE_URL } from "../lib/utils"; // Corrected path
 
-// Mock model data - in a real app this would come from an API
-const mockModels: Model[] = [
-  {
-    id: 1,
-    name: "GPT-4o",
-    modelId: "openai/gpt-4o",
-    provider: "OpenAI",
-    weeklyTokens: "1.2B",
-    inputPrice: 5.00,
-    outputPrice: 15.00,
-    context: 128000,
-    released: new Date("2024-05-13"),
-    favicon: "openai",
-    inputModalities: ["text", "image"],
-    outputModalities: ["text"],
-    series: "gpt4",
-    categories: ["coding", "academia"],
-    parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "premium",
-    distillable: true,
-    throughput: 150,
-    latency: 250
-  },
-  {
-    id: 2,
-    name: "Claude 3.5 Sonnet",
-    modelId: "anthropic/claude-3.5-sonnet",
-    provider: "Anthropic",
-    weeklyTokens: "2.8B",
-    inputPrice: 3.00,
-    outputPrice: 15.00,
-    context: 200000,
-    released: new Date("2024-06-20"),
-    favicon: "anthropic",
-    inputModalities: ["text", "image"],
-    outputModalities: ["text"],
-    series: "claude3",
-    categories: ["academia", "legal"],
-    parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "premium",
-    distillable: true,
-    throughput: 120,
-    latency: 300
-  },
-  {
-    id: 3,
-    name: "Gemini 2.0 Flash",
-    modelId: "google/gemini-2.0-flash",
-    provider: "Google",
-    weeklyTokens: "1.5B",
-    inputPrice: 0.10,
-    outputPrice: 0.40,
-    context: 1048576,
-    released: new Date("2024-12-11"),
-    favicon: "google",
-    inputModalities: ["text", "image", "video"],
-    outputModalities: ["text"],
-    series: "geminiPro",
-    categories: ["coding", "marketing"],
-    parameters: ["temperature", "topK", "maxTokens"],
-    pricingTier: "affordable",
-    distillable: false,
-    throughput: 300,
-    latency: 150
-  },
-  {
-    id: 4,
-    name: "Llama 3.1 405B",
-    modelId: "meta/llama-3.1-405b",
-    provider: "Meta",
-    weeklyTokens: "850M",
-    inputPrice: 0.80,
-    outputPrice: 0.80,
-    context: 131072,
-    released: new Date("2024-07-23"),
-    favicon: "meta",
-    inputModalities: ["text"],
-    outputModalities: ["text"],
-    series: "llama3",
-    categories: ["coding", "academia"],
-    parameters: ["temperature", "topP", "topK"],
-    pricingTier: "affordable",
-    distillable: true,
-    throughput: 100,
-    latency: 400
-  },
-  {
-    id: 5,
-    name: "Mistral Large 2",
-    modelId: "mistral/mistral-large-2",
-    provider: "Mistral",
-    weeklyTokens: "420M",
-    inputPrice: 2.00,
-    outputPrice: 6.00,
-    context: 131072,
-    released: new Date("2024-07-24"),
-    favicon: "mistral",
-    inputModalities: ["text"],
-    outputModalities: ["text"],
-    series: "mistral",
-    categories: ["coding", "finance"],
-    parameters: ["temperature", "topP"],
-    pricingTier: "mid-range",
-    distillable: false,
-    throughput: 80,
-    latency: 500
-  },
-  {
-    id: 6,
-    name: "DeepSeek V3",
-    modelId: "deepseek/deepseek-v3",
-    provider: "DeepSeek",
-    weeklyTokens: "1.1B",
-    inputPrice: 0.27,
-    outputPrice: 1.10,
-    context: 64000,
-    released: new Date("2024-12-26"),
-    favicon: "deepseek",
-    inputModalities: ["text"],
-    outputModalities: ["text"],
-    series: "deepseek",
-    categories: ["coding", "academia"],
-    parameters: ["temperature", "topP", "maxTokens"],
-    pricingTier: "affordable",
-    distillable: false,
-    throughput: 200,
-    latency: 200
-  },
-  {
-    id: 7,
-    name: "Qwen3.5-9B",
-    modelId: "qwen/qwen3.5-9b",
-    provider: "Qwen",
-    weeklyTokens: "906M",
-    inputPrice: 0.10,
-    outputPrice: 0.15,
-    context: 262144,
-    released: new Date("2026-03-10"),
-    favicon: "qwen",
-    inputModalities: ["text"],
-    outputModalities: ["text"],
-    series: "qwen",
-    categories: ["coding", "academia"],
-    parameters: ["temperature", "topP", "topK"],
-    pricingTier: "free",
-    distillable: true,
-    throughput: 250,
-    latency: 180
-  },
-  {
-    id: 8,
-    name: "Command R+",
-    modelId: "cohere/command-r-plus",
-    provider: "Cohere",
-    weeklyTokens: "380M",
-    inputPrice: 2.50,
-    outputPrice: 10.00,
-    context: 128000,
-    released: new Date("2024-03-27"),
-    favicon: "cohere",
-    inputModalities: ["text"],
-    outputModalities: ["text"],
-    series: "command",
-    categories: ["marketing", "finance"],
-    parameters: ["temperature", "maxTokens"],
-    pricingTier: "premium",
-    distillable: false,
-    throughput: 90,
-    latency: 450
-  }
-];
-
+// Define the Model interface (ensure it matches backend structure if possible)
 export interface Model {
   id: number;
   name: string;
@@ -181,7 +11,7 @@ export interface Model {
   inputPrice: number;
   outputPrice: number;
   context: number;
-  released: Date;
+  released: string; // API might return string, handle parsing if needed
   favicon: string;
   inputModalities: string[];
   outputModalities: string[];
@@ -217,6 +47,8 @@ export interface ModelsContextType {
   updateFilter: (key: keyof FilterState, value: string[] | [number, number] | string | boolean) => void;
   resetFilters: () => void;
   toggleFilter: (key: keyof FilterState, value: string) => void;
+  loading: boolean; // Add loading state
+  error: string | null; // Add error state
 }
 
 const defaultFilters: FilterState = {
@@ -235,9 +67,39 @@ const defaultFilters: FilterState = {
 const ModelsContext = createContext<ModelsContextType | undefined>(undefined);
 
 export function ModelsProvider({ children }: { children: React.ReactNode }) {
-  const [models] = useState<Model[]>(mockModels);
+  const [models, setModels] = useState<Model[]>([]); // Initialize with empty array
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState<string | null>(null); // Error state
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [sortBy, setSortBy] = useState("most-popular");
+
+  // Fetch models from API on component mount
+  useEffect(() => {
+    const fetchModels = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch(`${API_BASE_URL}/api/models`); // Use the imported base URL
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: Model[] = await response.json();
+        // Ensure released date is parsed correctly if it's a string from API
+        const processedData = data.map(model => ({
+          ...model,
+          released: typeof model.released === 'string' ? model.released : new Date(model.released).toISOString().split('T')[0] // Keep as string or parse to Date if needed
+        }));
+        setModels(processedData);
+      } catch (err: unknown) { // Changed 'any' to 'unknown' for better type safety
+        console.error("Failed to fetch models:", err);
+        setError("Failed to load models. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchModels();
+  }, []); // Empty dependency array means this runs once on mount
 
   // Filter and sort models using useMemo for better performance
   const filteredModels = useMemo(() => {
@@ -315,7 +177,8 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
     return [...filtered].sort((a, b) => {
       switch (sortBy) {
         case "newest":
-          return b.released.getTime() - a.released.getTime();
+          // Assuming 'released' is a string 'YYYY-MM-DD', parse it for comparison
+          return new Date(b.released).getTime() - new Date(a.released).getTime();
         case "pricing-low-high":
           return (a.inputPrice + a.outputPrice) - (b.inputPrice + b.outputPrice);
         case "pricing-high-low":
@@ -373,7 +236,9 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
     setSortBy,
     updateFilter,
     resetFilters,
-    toggleFilter
+    toggleFilter,
+    loading, // Include loading state
+    error // Include error state
   };
 
   return (

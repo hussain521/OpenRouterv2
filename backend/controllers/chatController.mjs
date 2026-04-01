@@ -1,4 +1,4 @@
-import { User, Provider, Model, Usage } from '../models/index.js';
+import { User, Provider, Model, Usage } from '../models/index.mjs';
 import axios from 'axios';
 import jwt from 'jsonwebtoken'; // Needed for token verification if not already handled by middleware
 

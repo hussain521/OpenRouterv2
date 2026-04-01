@@ -1,4 +1,3 @@
- 
 import "./App.css";
 import { lazy, Suspense } from "react";
 import { ViewProvider } from "./context/ViewContext";
@@ -7,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { getBackendStatus } from "./lib/utils"; // Import the function
 
 const Home = lazy(() => import("./pages/Home"));
 const ActivityPage = lazy(() => import("./pages/ActivityPage"));
@@ -41,6 +41,8 @@ function App() {
   useEffect(() => {
     // Set document direction based on language
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    // Test backend connection
+    getBackendStatus();
   }, [i18n.language]);
   
   return (

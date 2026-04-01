@@ -1,6 +1,6 @@
-const Model = require('../models/Model');
-const Provider = require('../models/Provider');
-const axios = require('axios');
+import Model from '../models/Model.mjs';
+import Provider from '../models/Provider.mjs';
+import axios from 'axios';
 
 const getModels = async (req, res) => {
   try {
@@ -53,4 +53,4 @@ const syncModels = async (req, res) => {
   }
 };
 
-module.exports = { getModels, syncModels };
+export { getModels, syncModels };
