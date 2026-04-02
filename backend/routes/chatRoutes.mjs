@@ -1,10 +1,12 @@
 import express from 'express';
-import { chatCompletion } from '../controllers/chatController.mjs'; // Updated path
-import { authenticateToken } from '../middleware/authMiddleware.mjs'; // Updated path
+import { chatCompletion } from '../controllers/chatController.mjs';
+import authMiddleware from '../middleware/authMiddleware.mjs';
 
 const router = express.Router();
 
-// Protect this route with authentication
-router.post('/completions', authenticateToken, chatCompletion);
+// @route   POST /api/chat/completions
+// @desc    Send chat completion request to a provider
+// @access  Private
+router.post('/completions', authMiddleware, chatCompletion);
 
 export default router;

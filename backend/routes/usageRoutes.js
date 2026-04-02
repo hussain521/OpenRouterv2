@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { chatCompletion } = require('../controllers/chatController');
+const { getUsageLogs } = require('../controllers/usageController');
 const authMiddleware = require('../middleware/authMiddleware');
 
-router.post('/completions', authMiddleware, chatCompletion);
+router.get('/', authMiddleware, getUsageLogs);
 
 module.exports = router;

@@ -1,59 +1,92 @@
-import { User } from '../models/index.mjs'; // Updated path
-import bcrypt from 'bcryptjs'; // Assuming bcryptjs is installed for password hashing
+import { User } from '../models/index.mjs';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-// Register User
+// @desc    Register user
+// @route   POST /api/auth/register
+// @access  Public
 export const register = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
-    // Check if user already exists
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+    // Check if user exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists' });
     }
+
+    // Create new user
+    user = new User({
+      username,
+      email,
+      password,
+    });
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    user.password = await bcrypt.hash(password, salt);
 
-    // Create new user
-    const newUser = new User({
-      username,
-      password: hashedPassword,
-      balance: 0, // Default balance
-    });
+    await user.save();
 
-    await newUser.save();
+    // Create and return JWT
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
 
-    // In a real application, you would generate and return a JWT here
-    res.status(201).json({ message: 'User registered successfully' });
-  } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).json({ message: 'Server error' });
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 };
 
-// Login User
+// @desc    Login user
+// @route   POST /api/auth/login
+// @access  Public
 export const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    // Find user by username
-    const user = await User.findOne({ username });
+    // Check if user exists
+    let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    // Compare password
+    // Validate password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    // In a real application, you would generate and return a JWT here
-    res.status(200).json({ message: 'Login successful', userId: user._id, balance: user.balance });
-  } catch (error) {
-    console.error('Error logging in user:', error);
-    res.status(500).json({ message: 'Server error' });
+    // Create and return JWT
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 };

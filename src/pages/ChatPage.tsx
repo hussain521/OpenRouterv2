@@ -6,6 +6,7 @@ import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { PresetModelSections } from "@/components/chat/PresetModelSections";
 import { SuggestionsCarousel } from "@/components/chat/SuggestionsCarousel";
 import { ChatInputBar } from "@/components/chat/ChatInputBar";
+import { API_BASE_URL } from "@/lib/utils"; // Import API_BASE_URL
 
 interface Message {
   id: string;
@@ -51,17 +52,51 @@ export default function ChatPage() {
     setInputMessage("");
     setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      // Retrieve token from local storage or context (assuming it exists)
+      const token = localStorage.getItem("authToken"); // Placeholder for token retrieval
+
+      const response = await fetch(`${API_BASE_URL}/api/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include auth token
+        },
+        body: JSON.stringify({
+          model: selectedModel,
+          messages: [{ role: "user", content: inputMessage }],
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
       const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: `I received your message: "${inputMessage}". This is a simulated response from the ${selectedModel} model.`,
+        id: data.id || Date.now().toString(), // Use ID from response if available
+        content: data.choices[0]?.message?.content || "No response content.",
         role: 'assistant',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, aiMessage]);
+
+    } catch (error) {
+      console.error("Error sending message:", error);
+        // Display error message to the user
+        // Type assertion to access error.message safely
+        const errorMessage: Message = {
+          id: Date.now().toString(),
+          content: `Error: ${error instanceof Error ? error.message : 'Failed to send message.'}`,
+          role: 'assistant',
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage]);
+      } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const handleNewChat = () => {

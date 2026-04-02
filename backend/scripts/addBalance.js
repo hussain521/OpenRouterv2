@@ -1,53 +1,41 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { User } from '../models/index.js';
+const mongoose = require('mongoose');
+const User = require('../models/User');
+require('dotenv').config();
 
-dotenv.config();
+const addBalanceToUser = async (userId, amount) => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB Connected for script.');
-  } catch (error) {
-    console.error('Error connecting to MongoDB for script:', error.message);
-    process.exit(1);
-  }
-};
+        const user = await User.findById(userId);
 
-const addBalanceToUser = async (username, amount) => {
-  if (!username || !amount || typeof amount !== 'number' || amount <= 0) {
-    console.error('Invalid input: Please provide a valid username and a positive numeric amount.');
-    return;
-  }
+        if (!user) {
+            console.error('User not found.');
+            return;
+        }
 
-  try {
-    await connectDB();
+        user.balance += amount;
+        await user.save();
 
-    const user = await User.findOne({ username });
-    if (!user) {
-      console.error(`User with username "${username}" not found.`);
-      return;
+        console.log(`Successfully added ${amount} to user ${userId}. New balance: ${user.balance}`);
+    } catch (err) {
+        console.error('Error adding balance:', err);
+    } finally {
+        mongoose.disconnect();
     }
-
-    user.balance += amount;
-    await user.save();
-
-    console.log(`Successfully added ${amount} to user "${username}". New balance: ${user.balance}`);
-  } catch (error) {
-    console.error(`Error adding balance to user "${username}":`, error);
-  } finally {
-    mongoose.disconnect(); // Disconnect after operation
-  }
 };
 
 // Example usage:
-// node backend/scripts/addBalance.js JohnDoe 100
-const args = process.argv.slice(2); // Get command line arguments
-const username = args[0];
-const amount = parseFloat(args[1]);
+// To run this script: node backend/scripts/addBalance.js <userId> <amount>
+// e.g., node backend/scripts/addBalance.js 65a7b2d5a7c8a5a3a7d9f0e1 100
 
-if (username && !isNaN(amount)) {
-  addBalanceToUser(username, amount);
-} else {
-  console.log('Usage: node backend/scripts/addBalance.js <username> <amount>');
+const args = process.argv.slice(2);
+if (args.length !== 2) {
+    console.log('Usage: node backend/scripts/addBalance.js <userId> <amount>');
+    process.exit(1);
 }
+
+const [userId, amount] = args;
+addBalanceToUser(userId, parseFloat(amount));

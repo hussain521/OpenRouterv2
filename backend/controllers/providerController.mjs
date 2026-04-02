@@ -1,65 +1,65 @@
-import { Model } from '../models/index.mjs';
-import Provider from '../models/Provider.mjs';
+import { Provider, Model } from '../models/index.mjs';
 
-// Add a new provider
+// @desc    Add a new provider
+// @route   POST /api/providers
+// @access  Private
 export const addProvider = async (req, res) => {
   const { name, baseUrl, apiKey } = req.body;
 
-  if (!name || !baseUrl || !apiKey) {
-    return res.status(400).json({ message: 'Please provide name, baseUrl, and apiKey' });
-  }
-
   try {
-    const existingProvider = await Provider.findOne({ name });
-    if (existingProvider) {
-      return res.status(400).json({ message: 'Provider with this name already exists' });
+    // Check if provider already exists
+    let provider = await Provider.findOne({ name });
+    if (provider) {
+      return res.status(400).json({ msg: 'Provider already exists' });
     }
 
-    const newProvider = new Provider({
+    // Create new provider
+    provider = new Provider({
       name,
       baseUrl,
       apiKey,
     });
 
-    await newProvider.save();
-    res.status(201).json({ message: 'Provider added successfully', provider: newProvider });
-  } catch (error) {
-    console.error('Error adding provider:', error);
-    res.status(500).json({ message: 'Server error' });
+    await provider.save();
+    res.json(provider);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 };
 
-// List all providers
-export const listProviders = async (req, res) => {
+// @desc    Get all providers
+// @route   GET /api/providers
+// @access  Private
+export const getProviders = async (req, res) => {
   try {
     const providers = await Provider.find().populate('models', 'name'); // Populate with model names
-    res.status(200).json(providers);
-  } catch (error) {
-    console.error('Error listing providers:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json(providers);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 };
 
-// Delete a provider by ID
+// @desc    Delete a provider
+// @route   DELETE /api/providers/:id
+// @access  Private
 export const deleteProvider = async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const provider = await Provider.findById(id);
+    const provider = await Provider.findById(req.params.id);
+
     if (!provider) {
-      return res.status(404).json({ message: 'Provider not found' });
+      return res.status(404).json({ msg: 'Provider not found' });
     }
 
-    // Before deleting the provider, we should also consider deleting associated models
-    // and potentially usage logs, or at least disassociating them.
-    // For simplicity here, we'll just remove the provider.
-    // In a real-world scenario, you'd want a more robust cleanup strategy.
-    await Model.deleteMany({ provider: id }); // Remove associated models
-    await provider.deleteOne(); // Use deleteOne() for Mongoose v6+
+    // Before deleting the provider, we should also delete associated models
+    await Model.deleteMany({ provider: req.params.id });
 
-    res.status(200).json({ message: 'Provider deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting provider:', error);
-    res.status(500).json({ message: 'Server error' });
+    await Provider.findByIdAndDelete(req.params.id);
+
+    res.json({ msg: 'Provider removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 };

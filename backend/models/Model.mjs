@@ -1,30 +1,24 @@
 import mongoose from 'mongoose';
 
-const ModelSchema = new mongoose.Schema({
+const modelSchema = new mongoose.Schema({
   provider: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'Provider',
+    required: true,
   },
   name: {
     type: String,
     required: true,
+    trim: true,
   },
-  pricingPer1kPrompt: {
-    type: Number,
+  pricing: {
+    type: Object, // e.g., { prompt: 0.0001, completion: 0.0002 }
     required: true,
   },
-  pricingPer1kCompletion: {
-    type: Number,
-    required: true,
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
-  contextLength: {
-    type: Number,
-  },
-}, {
-  timestamps: true,
 });
 
-const Model = mongoose.model('Model', ModelSchema);
-
-export default Model;
+export default mongoose.model('Model', modelSchema);
