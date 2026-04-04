@@ -7,22 +7,28 @@ export default function FeaturedAgents() {
   
   const agents = [
     {
-      image: "/OpenAI.svg",
+      image: "/images/agents/gpt4.png",
       logo: "/OpenAI.svg",
-      name: t("featuredAgents.openai.name"),
-      description: t("featuredAgents.openai.description"),
+      name: "GPT-4 Agent",
+      description: "An agent powered by GPT-4, capable of complex reasoning and task completion.",
     },
     {
-      image: "/Meta.png",
+      image: "/images/agents/gemini.png",
       logo: "/GoogleGemini.svg",
-      name: t("featuredAgents.gemini.name"),
-      description: t("featuredAgents.gemini.description"),
+      name: "Gemini Agent",
+      description: "An agent leveraging Gemini's multimodal capabilities for advanced understanding.",
     },
     {
-      image: "/Meta.png",
+      image: "/images/agents/llama3.png",
       logo: "/Meta.png",
-      name: t("featuredAgents.meta.name"),
-      description: t("featuredAgents.meta.description"),
+      name: "Llama 3 Agent",
+      description: "An agent built on Meta's Llama 3, offering strong performance and efficiency.",
+    },
+    {
+      image: "/images/agents/claude3.png",
+      logo: "/Anthropic.svg",
+      name: "Claude 3 Agent",
+      description: "An agent utilizing Claude 3 for sophisticated dialogue and content generation.",
     },
   ];
 

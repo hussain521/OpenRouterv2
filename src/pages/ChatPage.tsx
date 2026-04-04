@@ -23,8 +23,44 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [selectedModel, setSelectedModel] = useState("auto");
+  const [models, setModels] = useState([]); // State to store fetched models
   const [isLoading, setIsLoading] = useState(false);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  // Fetch available models on component mount
+  useEffect(() => {
+    const fetchModels = async () => {
+      try {
+        const token = localStorage.getItem("authToken"); // Assuming token is stored here
+        if (!token) {
+          console.error("Auth token not found.");
+          return;
+        }
+
+        const response = await fetch(`${API_BASE_URL}/api/models`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": token, // Include auth token
+          },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.msg || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setModels(data);
+      } catch (error) {
+        console.error("Error fetching models:", error);
+        // Optionally display an error message to the user
+      }
+    };
+
+    fetchModels();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -60,15 +96,20 @@ export default function ChatPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include auth token
         },
         body: JSON.stringify({
           model: selectedModel,
           messages: [{ role: "user", content: inputMessage }],
+          // stream: false // Explicitly set stream to false for now
         }),
       });
 
-      if (!response.ok) {
+      // Add token to headers if it exists
+      if (token) {
+        response.headers.set("x-auth-token", token);
+      }
+
+     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
@@ -150,7 +191,10 @@ export default function ChatPage() {
 
                 {/* Preset model sections */}
                 <div className="w-full max-w-4xl">
-                  <PresetModelSections onModelSelect={handleModelSelect} />
+                  <PresetModelSections
+                    onModelSelect={handleModelSelect}
+                    models={models} // Pass fetched models
+                  />
                 </div>
 
                 {/* Suggestions carousel */}

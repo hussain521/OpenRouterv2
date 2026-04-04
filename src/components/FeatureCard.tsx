@@ -19,7 +19,7 @@ export default function FeatureCard({
   return (
     <Card className="group rounded-2xl border bg-white dark:bg-black px-0 pt-0 hover:border-indigo-600 dark:hover:border-indigo-400 cursor-pointer transition-all duration-300 overflow-hidden">
       {/* Image Top Section */}
-      <div className="h-40 sm:h-48 md:h-56 overflow-hidden border-b dark:border-gray-700">
+      <div className="h-40 sm:h-45 md:h-50 overflow-hidden border-b dark:border-gray-700">
         <img
           src={image}
           alt={title}
@@ -28,7 +28,7 @@ export default function FeatureCard({
       </div>
 
       {/* Content */}
-      <CardContent className="px-4 md:px-6 py-4 md:py-6">
+      <CardContent className="px-4 md:px-6 ">
         <h3 className="text-lg md:text-xl font-semibold text-gray-600 dark:text-gray-300 transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {title}
         </h3>

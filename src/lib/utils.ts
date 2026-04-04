@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = 'http://localhost:5000'; // Assuming backend runs on port 5000
+export const API_BASE_URL = 'http://localhost:5000'; // Backend is running on port 5000
 
 // Function to make a GET request to the backend
 export const getBackendStatus = async () => {

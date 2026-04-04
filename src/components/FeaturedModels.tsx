@@ -8,25 +8,32 @@ export default function FeaturedModels() {
   const models = [
     {
       logo: "/OpenAI.svg",
-      name: t("featuredModels.models.claudeOpus.name"),
-      provider: t("featuredModels.models.claudeOpus.provider"),
+      name: "GPT-4",
+      provider: "OpenAI",
       badge: t("common.new"),
-      tokens: "555.8B",
-      trend: "+102.39%",
-    },
-    {
-      logo: "/GoogleGemini.svg",
-      name: t("featuredModels.models.geminiPro.name"),
-      provider: t("featuredModels.models.geminiPro.provider"),
-      tokens: "446.9B",
+      tokens: "128k",
       trend: "+5.24%",
     },
     {
+      logo: "/GoogleGemini.svg",
+      name: "Gemini 1.5 Pro",
+      provider: "Google",
+      tokens: "1M",
+      trend: "+10.5%",
+    },
+    {
+      logo: "/Meta.png",
+      name: "Llama 3",
+      provider: "Meta",
+      tokens: "400k",
+      trend: "+8.1%",
+    },
+    {
       logo: "/GoogleVertex.svg",
-      name: t("featuredModels.models.vertexAI.name"),
-      provider: t("featuredModels.models.vertexAI.provider"),
-      tokens: "178.7B",
-      trend: "-8.84%",
+      name: "Claude 3 Opus",
+      provider: "Anthropic",
+      tokens: "200k",
+      trend: "+12.39%",
     },
   ];
 

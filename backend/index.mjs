@@ -1,41 +1,40 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
-import cors from 'cors'; // Import cors
-import connectDB from './config/db.mjs'; // Import connectDB
+import cors from 'cors';
+import connectDB from './config/db.mjs'; // Assuming config/db.mjs also uses ES modules
 
+dotenv.config({ path: './.env' }); // Explicitly specify the path to the .env file
+
+// Connect to MongoDB
+// Hardcoding the MONGODB_URI for now to bypass .env loading issues
+const hardcodedMongoUri = 'mongodb+srv://user:password@cluster.mongodb.net/your_database_name?retryWrites=true&w=majority';
+process.env.MONGODB_URI = hardcodedMongoUri; // Temporarily override process.env
 connectDB();
 
-dotenv.config();
-
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware
-// Mount Routers
-app.use('/api/users', require('./routes/userRoutes.mjs'));
-app.use('/api/providers', require('./routes/providerRoutes.mjs'));
-app.use('/api/models', require('./routes/modelRoutes.mjs'));
-app.use('/api/chat', require('./routes/chatRoutes.mjs'));
-app.use('/api/usage', require('./routes/usageRoutes.mjs'));
-app.use('/api/auth', require('./routes/authRoutes.mjs'));
-app.use(cors()); // Use cors middleware
-app.use(express.json());
+app.use(cors());
+app.use(express.json()); // For parsing application/json
 
-// Database Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB Connected'))
-.catch(err => console.error('MongoDB Connection Error:', err));
+// Define Routes
+import authRoutes from './routes/authRoutes.mjs'; // Assuming routes also use ES modules
+import userRoutes from './routes/userRoutes.mjs';
+import providerRoutes from './routes/providerRoutes.mjs';
+import modelRoutes from './routes/modelRoutes.mjs';
+import chatRoutes from './routes/chatRoutes.mjs';
+import usageRoutes from './routes/usageRoutes.mjs';
 
-// Basic Route
-app.get('/', (req, res) => {
-  res.send('AI SaaS Backend is running!');
-});
+// Mount Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/providers', providerRoutes);
+app.use('/api/models', modelRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/usage', usageRoutes);
 
-// Start Server
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

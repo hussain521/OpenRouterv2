@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import i18n from "@/lib/i18n";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface RankItem {
@@ -14,20 +16,33 @@ interface RankCardProps {
 
 export function RankCard({ title, data }: RankCardProps) {
   const { t } = useTranslation();
-
+  const isRTL = () => {
+    return i18n.dir() === "rtl";
+  };
   return (
     <Card className="rounded-2xl">
       <CardHeader className="flex flex-row justify-between items-center">
         <CardTitle className="text-lg">{title}</CardTitle>
 
         <button className="text-sm text-blue-600 hover:underline">
-          {t("appRanking.viewAll")} →
+          <div className="flex justify-center items-center gap-2">
+          
+            {t("appRanking.viewAll")}
+            {isRTL() ? (
+              <ArrowRight size={16} className="rotate-180" />
+            ) : (
+              <ArrowRight size={16} />
+            )}
+          </div>
         </button>
       </CardHeader>
 
       <CardContent className="space-y-6">
         {data.map((item, index) => (
-          <div key={index} className="flex items-start justify-between gap-4 p-3 -mx-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
+          <div
+            key={index}
+            className="flex items-start justify-between gap-4 p-3 -mx-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+          >
             <div className="flex items-start gap-4">
               <span className="text-sm text-muted-foreground w-4">
                 {index + 1}.
@@ -44,7 +59,9 @@ export function RankCard({ title, data }: RankCardProps) {
 
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium">{t(item.tokens)}</span>
-              <span className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              <span className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                →
+              </span>
             </div>
           </div>
         ))}
