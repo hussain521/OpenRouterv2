@@ -33,7 +33,8 @@ export default function ChatPage() {
       try {
         const token = localStorage.getItem("authToken"); // Assuming token is stored here
         if (!token) {
-          console.error("Auth token not found.");
+          console.error("Auth token not found. Please log in to fetch models.");
+          // Optionally, you could redirect to a login page or show a modal
           return;
         }
 
@@ -55,6 +56,7 @@ export default function ChatPage() {
       } catch (error) {
         console.error("Error fetching models:", error);
         // Optionally display an error message to the user
+        // For example: setErrorMessage("Failed to load models. Please try again later.");
       }
     };
 
@@ -96,6 +98,8 @@ export default function ChatPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Add token to headers if it exists
+          ...(token && { "x-auth-token": token }),
         },
         body: JSON.stringify({
           model: selectedModel,
@@ -103,11 +107,6 @@ export default function ChatPage() {
           // stream: false // Explicitly set stream to false for now
         }),
       });
-
-      // Add token to headers if it exists
-      if (token) {
-        response.headers.set("x-auth-token", token);
-      }
 
      if (!response.ok) {
         const errorData = await response.json();

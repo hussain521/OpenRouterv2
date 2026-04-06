@@ -3,12 +3,12 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.mjs'; // Assuming config/db.mjs also uses ES modules
 
-dotenv.config({ path: './.env' }); // Explicitly specify the path to the .env file
+dotenv.config(); // Load environment variables from .env file
+
+// Set MONGODB_URL if it's not already defined (e.g., if .env is not loaded correctly)
+process.env.MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/openrouter';
 
 // Connect to MongoDB
-// Hardcoding the MONGODB_URI for now to bypass .env loading issues
-const hardcodedMongoUri = 'mongodb+srv://user:password@cluster.mongodb.net/your_database_name?retryWrites=true&w=majority';
-process.env.MONGODB_URI = hardcodedMongoUri; // Temporarily override process.env
 connectDB();
 
 const app = express();
@@ -26,6 +26,11 @@ import chatRoutes from './routes/chatRoutes.mjs';
 import usageRoutes from './routes/usageRoutes.mjs';
 
 // Mount Routes
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'none'; connect-src 'self' http://localhost:5000");
+  next();
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/providers', providerRoutes);
