@@ -44,15 +44,21 @@ export function SignInCard({ onClose, onSignedIn, onSwitchToSignUp }: SignInCard
 
         {/* Social buttons */}
         <div className="mt-6 grid grid-cols-3 gap-3">
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50">
-            <FiGithub className="h-4 w-4" />
-          </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50">
-            <FcGoogle className="h-4 w-4" />
-          </button>
-          <button className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50">
-            <span className="text-base">🦊</span>
-          </button>
+        	<button
+        		className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50"
+        		onClick={() => window.location.href = '/api/auth/social/github'}
+        	>
+        		<FiGithub className="h-4 w-4" />
+        	</button>
+        	<button
+        		className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50"
+        		onClick={() => window.location.href = '/api/auth/social/google'}
+        	>
+        		<FcGoogle className="h-4 w-4" />
+        	</button>
+        	<button className="flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50">
+        		<span className="text-base">🦊</span>
+        	</button>
         </div>
 
         {/* Or divider */}

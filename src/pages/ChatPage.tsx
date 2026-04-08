@@ -7,6 +7,7 @@ import { PresetModelSections } from "@/components/chat/PresetModelSections";
 import { SuggestionsCarousel } from "@/components/chat/SuggestionsCarousel";
 import { ChatInputBar } from "@/components/chat/ChatInputBar";
 import { API_BASE_URL } from "@/lib/utils"; // Import API_BASE_URL
+import { useAuth } from "@/context/AuthContext"; // Import useAuth
 
 interface Message {
   id: string;
@@ -18,7 +19,8 @@ interface Message {
 export default function ChatPage() {
   const { t } = useTranslation();
   usePageTitle(t("nav.chat"));
-
+  const { authToken } = useAuth(); // Get authToken from AuthContext at the top level
+ 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
@@ -91,15 +93,15 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      // Retrieve token from local storage or context (assuming it exists)
-      const token = localStorage.getItem("authToken"); // Placeholder for token retrieval
+      // Retrieve token from local storage or context (using AuthContext)
+      // const { authToken } = useAuth(); // Get token from AuthContext - This line was moved to the top level
 
       const response = await fetch(`${API_BASE_URL}/api/chat/completions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           // Add token to headers if it exists
-          ...(token && { "x-auth-token": token }),
+          ...(authToken && { "x-auth-token": authToken }), // Use authToken from the top-level hook
         },
         body: JSON.stringify({
           model: selectedModel,

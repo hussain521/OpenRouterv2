@@ -16,6 +16,32 @@ export const getUserBalance = async (req, res) => {
   }
 };
 
+// @desc    Deposit balance to user account
+// @route   POST /api/users/deposit
+// @access  Private
+export const depositBalance = async (req, res) => {
+  const { amount } = req.body;
+
+  if (!amount || isNaN(amount) || amount <= 0) {
+    return res.status(400).json({ msg: 'Invalid deposit amount' });
+  }
+
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    user.balance += parseFloat(amount);
+    await user.save();
+
+    res.json({ msg: 'Balance deposited successfully', balance: user.balance });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
 // @desc    Get user usage logs
 // @route   GET /api/users/usage
 // @access  Private

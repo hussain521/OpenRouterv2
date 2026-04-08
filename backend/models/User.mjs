@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  googleId: {
+    type: String,
+    required: false,
+  },
+  githubId: {
+    type: String,
+    required: false,
+  },
   balance: {
     type: Number,
     default: 0,

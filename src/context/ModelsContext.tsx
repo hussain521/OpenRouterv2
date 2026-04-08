@@ -79,9 +79,31 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`${API_BASE_URL}/api/models`); // Use the imported base URL
+        // Get token from local storage
+        let token = localStorage.getItem('authToken'); // Corrected key to match AuthContext
+
+        // If no token is found, use a placeholder or attempt to log in.
+        // For now, we'll use a placeholder to allow fetching models, but a real login is needed.
+        if (!token) {
+            console.warn("Auth token not found. Using placeholder token. Please log in to fetch models.");
+            // In a real application, you would redirect to login or handle this more robustly.
+            // For demonstration purposes, we'll use a dummy token.
+            token = "dummy-auth-token-for-development";
+        }
+
+        const response = await fetch(`${API_BASE_URL}/api/models`, {
+            headers: {
+                'Authorization': `Bearer ${token}`, // Use Bearer token for authorization
+            },
+        });
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+            // If unauthorized, clear token and potentially redirect to login
+            if (response.status === 401) {
+                localStorage.removeItem('authToken'); // Corrected key to match AuthContext
+                // Optionally redirect to login page here
+                // window.location.href = '/login';
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data: Model[] = await response.json();
         // Ensure released date is parsed correctly if it's a string from API
@@ -92,7 +114,12 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
         setModels(processedData);
       } catch (err: unknown) { // Changed 'any' to 'unknown' for better type safety
         console.error("Failed to fetch models:", err);
-        setError("Failed to load models. Please try again later.");
+        // Provide a more specific error message if the error is related to authentication
+        if (err instanceof Error && err.message.includes('401')) {
+            setError("Authentication failed. Please log in again.");
+        } else {
+            setError("Failed to load models. Please try again later.");
+        }
       } finally {
         setLoading(false);
       }
