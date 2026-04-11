@@ -47,14 +47,12 @@ function App() {
   }, [i18n.language]);
   
   return (
-    <ModelsProvider>
-      <ViewProvider>
-        {/* Wrap the Routes with AuthProvider */}
-        <AuthProvider>
+    <AuthProvider>
+      <ModelsProvider>
+        <ViewProvider>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* Route to handle social login callback */}
               <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/models" element={<ModelsPage />} />
               <Route path="/compare" element={<ModelComparisonPage />} />
@@ -89,10 +87,10 @@ function App() {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>
-        </AuthProvider>
-        <ScrollToTop />
-      </ViewProvider>
-    </ModelsProvider>
+          <ScrollToTop />
+        </ViewProvider>
+      </ModelsProvider>
+    </AuthProvider>
   );
 }
 
@@ -101,26 +99,24 @@ const AuthCallback = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const { onSignedIn, setAuthToken } = useAuth(); // Use the hook to get onSignedIn and setAuthToken
+  const { onSignedIn, onSignedOut } = useAuth();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const token = params.get('token');
+    const token = params.get("token");
 
-    if (token) {
-      // Store the token (e.g., in localStorage or cookies)
-      localStorage.setItem('authToken', token);
-      setAuthToken(token); // Set the token in the context
-      onSignedIn(); // Trigger the onSignedIn callback
-      navigate('/'); // Redirect to home page
-    } else {
-      // Handle error: no token found
-      console.error('Authentication token not found.');
-      navigate('/login'); // Redirect to login page or show an error message
+    if (token?.trim()) {
+      onSignedIn(token);
+      navigate("/", { replace: true });
+      return;
     }
-  }, [location, navigate, onSignedIn, setAuthToken]); // Add dependencies
 
-  return <div>{t('auth.processing')}...</div>; // Or a loading spinner
+    onSignedOut();
+    console.error("Authentication token not found.");
+    navigate("/", { replace: true });
+  }, [location.search, navigate, onSignedIn, onSignedOut]);
+
+  return <div>{t("auth.processing")}...</div>;
 };
 
 export default App;

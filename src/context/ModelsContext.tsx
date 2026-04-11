@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
-import { API_BASE_URL } from "../lib/utils"; // Corrected path
+import { API_BASE_URL } from "../lib/utils";
+import { useAuth } from "./AuthContext";
 
 // Define the Model interface (ensure it matches backend structure if possible)
 export interface Model {
@@ -51,6 +52,33 @@ export interface ModelsContextType {
   error: string | null; // Add error state
 }
 
+const PLACEHOLDER_TOKENS = new Set([
+  "placeholder-token",
+  "mock-token",
+  "fake-token",
+  "dummy-token",
+  "undefined",
+  "null",
+]);
+
+const normalizeAuthToken = (token: string | null | undefined): string | null => {
+  if (typeof token !== "string") {
+    return null;
+  }
+
+  const normalizedToken = token.trim();
+
+  if (!normalizedToken) {
+    return null;
+  }
+
+  if (PLACEHOLDER_TOKENS.has(normalizedToken.toLowerCase())) {
+    return null;
+  }
+
+  return normalizedToken;
+};
+
 const defaultFilters: FilterState = {
   searchQuery: "",
   inputModalities: [],
@@ -67,66 +95,83 @@ const defaultFilters: FilterState = {
 const ModelsContext = createContext<ModelsContextType | undefined>(undefined);
 
 export function ModelsProvider({ children }: { children: React.ReactNode }) {
-  const [models, setModels] = useState<Model[]>([]); // Initialize with empty array
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState<string | null>(null); // Error state
+  const { authToken, isAuthenticated, onSignedOut } = useAuth();
+  const [models, setModels] = useState<Model[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [sortBy, setSortBy] = useState("most-popular");
 
-  // Fetch models from API on component mount
   useEffect(() => {
+    const normalizedToken = normalizeAuthToken(authToken);
+
+    if (!isAuthenticated || !normalizedToken) {
+      setModels([]);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+
+    const abortController = new AbortController();
+
     const fetchModels = async () => {
       try {
         setLoading(true);
         setError(null);
-        // Get token from local storage
-        let token = localStorage.getItem('authToken'); // Corrected key to match AuthContext
-
-        // If no token is found, use a placeholder or attempt to log in.
-        // For now, we'll use a placeholder to allow fetching models, but a real login is needed.
-        if (!token) {
-            console.warn("Auth token not found. Using placeholder token. Please log in to fetch models.");
-            // In a real application, you would redirect to login or handle this more robustly.
-            // For demonstration purposes, we'll use a dummy token.
-            token = "dummy-auth-token-for-development";
-        }
 
         const response = await fetch(`${API_BASE_URL}/api/models`, {
-            headers: {
-                'Authorization': `Bearer ${token}`, // Use Bearer token for authorization
-            },
+          headers: {
+            Authorization: `Bearer ${normalizedToken}`,
+          },
+          signal: abortController.signal,
         });
+
         if (!response.ok) {
-            // If unauthorized, clear token and potentially redirect to login
-            if (response.status === 401) {
-                localStorage.removeItem('authToken'); // Corrected key to match AuthContext
-                // Optionally redirect to login page here
-                // window.location.href = '/login';
-            }
-            throw new Error(`HTTP error! status: ${response.status}`);
+          if (response.status === 401) {
+            setModels([]);
+            onSignedOut();
+            throw new Error("Authentication failed. Please log in again.");
+          }
+
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const data: Model[] = await response.json();
-        // Ensure released date is parsed correctly if it's a string from API
-        const processedData = data.map(model => ({
+        const processedData = data.map((model) => ({
           ...model,
-          released: typeof model.released === 'string' ? model.released : new Date(model.released).toISOString().split('T')[0] // Keep as string or parse to Date if needed
+          released:
+            typeof model.released === "string"
+              ? model.released
+              : new Date(model.released).toISOString().split("T")[0],
         }));
+
         setModels(processedData);
-      } catch (err: unknown) { // Changed 'any' to 'unknown' for better type safety
+      } catch (err: unknown) {
+        if (err instanceof DOMException && err.name === "AbortError") {
+          return;
+        }
+
         console.error("Failed to fetch models:", err);
-        // Provide a more specific error message if the error is related to authentication
-        if (err instanceof Error && err.message.includes('401')) {
-            setError("Authentication failed. Please log in again.");
+        setModels([]);
+
+        if (err instanceof Error && err.message.includes("Authentication failed")) {
+          setError("Authentication failed. Please log in again.");
         } else {
-            setError("Failed to load models. Please try again later.");
+          setError("Failed to load models. Please try again later.");
         }
       } finally {
-        setLoading(false);
+        if (!abortController.signal.aborted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchModels();
-  }, []); // Empty dependency array means this runs once on mount
+
+    return () => {
+      abortController.abort();
+    };
+  }, [authToken, isAuthenticated, onSignedOut]);
 
   // Filter and sort models using useMemo for better performance
   const filteredModels = useMemo(() => {
@@ -264,8 +309,8 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
     updateFilter,
     resetFilters,
     toggleFilter,
-    loading, // Include loading state
-    error // Include error state
+    loading,
+    error
   };
 
   return (

@@ -38,9 +38,23 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
   const [distillableOpen, setDistillableOpen] = useState(false);
   const [providerSearch, setProviderSearch] = useState("");
 
+  const contextSliderValue = useMemo(() => {
+    const [minContext] = filters.contextRange;
+    const normalizedValue = ((minContext - 4000) / (1048576 - 4000)) * 100;
+
+    if (!Number.isFinite(normalizedValue)) {
+      return [0];
+    }
+
+    return [Math.min(100, Math.max(0, Math.round(normalizedValue)))];
+  }, [filters.contextRange]);
+
   const handleContextRangeChange = (value: number[]) => {
-    const minContext = 4000 + (value[0] / 100) * (1048576 - 4000);
-    updateFilter('contextRange', [Math.floor(minContext), 1048576]);
+    const [nextValue = 0] = value;
+    const clampedValue = Math.min(100, Math.max(0, nextValue));
+    const minContext = 4000 + (clampedValue / 100) * (1048576 - 4000);
+
+    updateFilter("contextRange", [Math.floor(minContext), 1048576]);
   };
 
   const providers = useMemo(() => {
@@ -291,7 +305,7 @@ const isRTL = () => {
           {contextOpen && (
             <div className="mt-4 px-2">
               <Slider
-                defaultValue={[10]}
+                value={contextSliderValue}
                 max={100}
                 step={1}
                 onValueChange={handleContextRangeChange}

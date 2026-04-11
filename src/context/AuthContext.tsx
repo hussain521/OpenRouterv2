@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  onSignedIn: () => void;
+  onSignedIn: (token?: string | null) => void;
   onSignedOut: () => void;
   authToken: string | null;
   setAuthToken: (token: string | null) => void;
@@ -11,33 +11,92 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const PLACEHOLDER_TOKENS = new Set([
+  'placeholder-token',
+  'mock-token',
+  'fake-token',
+  'dummy-token',
+  'undefined',
+  'null',
+]);
+
+const normalizeAuthToken = (token: string | null | undefined): string | null => {
+  if (typeof token !== 'string') {
+    return null;
+  }
+
+  const normalizedToken = token.trim();
+
+  if (!normalizedToken) {
+    return null;
+  }
+
+  if (PLACEHOLDER_TOKENS.has(normalizedToken.toLowerCase())) {
+    return null;
+  }
+
+  return normalizedToken;
+};
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authToken, setAuthToken] = useState<string | null>(null);
+  const [authTokenState, setAuthTokenState] = useState<string | null>(() => {
+    const storedToken = localStorage.getItem('authToken');
+    const normalizedToken = normalizeAuthToken(storedToken);
 
-  const onSignedIn = () => {
-    setIsAuthenticated(true);
-    // In a real app, you'd likely get the token from the backend response or cookies
-    // and set it here. For now, we'll assume it's handled elsewhere or passed in.
-  };
-
-  const onSignedOut = () => {
-    setIsAuthenticated(false);
-    setAuthToken(null);
-    localStorage.removeItem('authToken'); // Clear token from storage
-  };
-
-  // Initialize auth state from localStorage if token exists
-  React.useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      setAuthToken(token);
-      setIsAuthenticated(true);
+    if (!normalizedToken && storedToken) {
+      localStorage.removeItem('authToken');
     }
+
+    return normalizedToken;
+  });
+
+  const setAuthToken = useCallback((token: string | null) => {
+    const normalizedToken = normalizeAuthToken(token);
+
+    setAuthTokenState(normalizedToken);
+
+    if (normalizedToken) {
+      localStorage.setItem('authToken', normalizedToken);
+      return;
+    }
+
+    localStorage.removeItem('authToken');
   }, []);
 
+  const onSignedIn = useCallback((token?: string | null) => {
+    if (typeof token !== 'undefined') {
+      setAuthToken(token);
+      return;
+    }
+
+    setAuthTokenState((currentToken) => {
+      const normalizedCurrentToken = normalizeAuthToken(currentToken);
+
+      if (!normalizedCurrentToken) {
+        localStorage.removeItem('authToken');
+        return null;
+      }
+
+      localStorage.setItem('authToken', normalizedCurrentToken);
+      return normalizedCurrentToken;
+    });
+  }, [setAuthToken]);
+
+  const onSignedOut = useCallback(() => {
+    setAuthTokenState(null);
+    localStorage.removeItem('authToken');
+  }, []);
+
+  const value = useMemo(() => ({
+    isAuthenticated: Boolean(authTokenState),
+    onSignedIn,
+    onSignedOut,
+    authToken: authTokenState,
+    setAuthToken,
+  }), [authTokenState, onSignedIn, onSignedOut, setAuthToken]);
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, onSignedIn, onSignedOut, authToken, setAuthToken }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

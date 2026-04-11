@@ -6,8 +6,8 @@ import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { PresetModelSections } from "@/components/chat/PresetModelSections";
 import { SuggestionsCarousel } from "@/components/chat/SuggestionsCarousel";
 import { ChatInputBar } from "@/components/chat/ChatInputBar";
-import { API_BASE_URL } from "@/lib/utils"; // Import API_BASE_URL
-import { useAuth } from "@/context/AuthContext"; // Import useAuth
+import { API_BASE_URL } from "@/lib/utils";
+import { useAuth } from "@/context/AuthContext";
 
 interface Message {
   id: string;
@@ -16,57 +16,107 @@ interface Message {
   timestamp: Date;
 }
 
+interface ChatModel {
+  _id: string;
+  name: string;
+  provider: {
+    _id: string;
+    name: string;
+  };
+  pricing: {
+    prompt: number;
+    completion: number;
+  };
+}
+
+const PLACEHOLDER_TOKENS = new Set([
+  "placeholder-token",
+  "mock-token",
+  "fake-token",
+  "dummy-token",
+  "undefined",
+  "null",
+]);
+
+const normalizeAuthToken = (token: string | null | undefined): string | null => {
+  if (typeof token !== "string") {
+    return null;
+  }
+
+  const normalizedToken = token.trim();
+
+  if (!normalizedToken) {
+    return null;
+  }
+
+  if (PLACEHOLDER_TOKENS.has(normalizedToken.toLowerCase())) {
+    return null;
+  }
+
+  return normalizedToken;
+};
+
 export default function ChatPage() {
   const { t } = useTranslation();
   usePageTitle(t("nav.chat"));
-  const { authToken } = useAuth(); // Get authToken from AuthContext at the top level
- 
+  const { authToken, isAuthenticated, onSignedOut } = useAuth();
+  const normalizedToken = normalizeAuthToken(authToken);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [selectedModel, setSelectedModel] = useState("auto");
-  const [models, setModels] = useState([]); // State to store fetched models
+  const [models, setModels] = useState<ChatModel[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  // Fetch available models on component mount
   useEffect(() => {
+    if (!isAuthenticated || !normalizedToken) {
+      setModels([]);
+      return;
+    }
+
+    const abortController = new AbortController();
+
     const fetchModels = async () => {
       try {
-        const token = localStorage.getItem("authToken"); // Assuming token is stored here
-        if (!token) {
-          console.error("Auth token not found. Please log in to fetch models.");
-          // Optionally, you could redirect to a login page or show a modal
-          return;
-        }
-
         const response = await fetch(`${API_BASE_URL}/api/models`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "x-auth-token": token, // Include auth token
+            Authorization: `Bearer ${normalizedToken}`,
           },
+          signal: abortController.signal,
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.msg || `HTTP error! status: ${response.status}`);
+          if (response.status === 401) {
+            onSignedOut();
+          }
+
+          throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        setModels(data);
+        setModels(Array.isArray(data) ? data : []);
       } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
         console.error("Error fetching models:", error);
-        // Optionally display an error message to the user
-        // For example: setErrorMessage("Failed to load models. Please try again later.");
+        setModels([]);
       }
     };
 
     fetchModels();
-  }, []); // Empty dependency array ensures this runs only once on mount
 
+    return () => {
+      abortController.abort();
+    };
+  }, [isAuthenticated, normalizedToken, onSignedOut]);
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     const container = messagesContainerRef.current;
     if (container) {
@@ -79,11 +129,26 @@ export default function ChatPage() {
   };
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    const trimmedMessage = inputMessage.trim();
+
+    if (!trimmedMessage || isLoading) {
+      return;
+    }
+
+    if (!normalizedToken || !isAuthenticated) {
+      const authErrorMessage: Message = {
+        id: Date.now().toString(),
+        content: "Error: Please sign in before sending messages.",
+        role: 'assistant',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, authErrorMessage]);
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: inputMessage,
+      content: trimmedMessage,
       role: 'user',
       timestamp: new Date()
     };
@@ -93,33 +158,60 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      // Retrieve token from local storage or context (using AuthContext)
-      // const { authToken } = useAuth(); // Get token from AuthContext - This line was moved to the top level
-
       const response = await fetch(`${API_BASE_URL}/api/chat/completions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Add token to headers if it exists
-          ...(authToken && { "x-auth-token": authToken }), // Use authToken from the top-level hook
+          Authorization: `Bearer ${normalizedToken}`,
         },
         body: JSON.stringify({
           model: selectedModel,
-          messages: [{ role: "user", content: inputMessage }],
-          // stream: false // Explicitly set stream to false for now
+          messages: [{ role: "user", content: trimmedMessage }],
         }),
       });
 
-     if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+      let data: Record<string, unknown> | null = null;
+
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
       }
 
-      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 401) {
+          onSignedOut();
+        }
+
+        const errorMessage =
+          (typeof data?.msg === "string" && data.msg) ||
+          (typeof data?.message === "string" && data.message) ||
+          `HTTP error! status: ${response.status}`;
+
+        throw new Error(errorMessage);
+      }
+
+      const choices = Array.isArray(data?.choices) ? data.choices : [];
+      const firstChoice = choices[0];
+      const firstChoiceContent =
+        typeof firstChoice === "object" &&
+        firstChoice !== null &&
+        "message" in firstChoice &&
+        typeof firstChoice.message === "object" &&
+        firstChoice.message !== null &&
+        "content" in firstChoice.message &&
+        typeof firstChoice.message.content === "string"
+          ? firstChoice.message.content
+          : null;
+
+      const assistantContent =
+        (typeof data?.response === "string" && data.response) ||
+        firstChoiceContent ||
+        "No response content.";
 
       const aiMessage: Message = {
-        id: data.id || Date.now().toString(), // Use ID from response if available
-        content: data.choices[0]?.message?.content || "No response content.",
+        id: (typeof data?.id === "string" && data.id) || Date.now().toString(),
+        content: assistantContent,
         role: 'assistant',
         timestamp: new Date()
       };
@@ -127,16 +219,14 @@ export default function ChatPage() {
 
     } catch (error) {
       console.error("Error sending message:", error);
-        // Display error message to the user
-        // Type assertion to access error.message safely
-        const errorMessage: Message = {
-          id: Date.now().toString(),
-          content: `Error: ${error instanceof Error ? error.message : 'Failed to send message.'}`,
-          role: 'assistant',
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, errorMessage]);
-      } finally {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        content: `Error: ${error instanceof Error ? error.message : 'Failed to send message.'}`,
+        role: 'assistant',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
     }
   };
