@@ -48,6 +48,7 @@ import { Input } from "@/components/ui/input";
 import { API_BASE_URL } from "@/lib/utils";
 import { useTheme } from "@/context/ThemeContext";
 import { useModels } from "@/context/ModelsContext";
+import { useAuth } from "@/context/AuthContext";
 
 type AuthMode = "signin" | "signup";
 
@@ -496,11 +497,8 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { themePreference, isSystemDarkMode, setThemePreference } = useTheme();
   const { models, setSearchQuery: setModelsSearchQuery, filters } = useModels();
+  const { isAuthenticated, onSignedIn, onSignedOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(() => {
-    // Check if user is signed in from localStorage
-    return localStorage.getItem('isSignedIn') === 'true';
-  });
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
@@ -839,7 +837,7 @@ export default function Navbar() {
               {t("nav.docs")}
             </a>
 
-            {!isSignedIn ? (
+            {!isAuthenticated ? (
               <Button
                 className="rounded-full bg-primary px-4 xl:px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200 ml-2"
                 onClick={() => openAuth("signin")}
@@ -895,9 +893,8 @@ export default function Navbar() {
                     <button
                       className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-destructive transition-colors duration-200 hover:bg-destructive/10"
                       onClick={() => {
-                        setIsSignedIn(false);
+                        onSignedOut();
                         setIsProfileOpen(false);
-                        localStorage.removeItem("isSignedIn");
                       }}
                     >
                       <LogOut className="h-4 w-4" />
@@ -1084,7 +1081,7 @@ export default function Navbar() {
               {t("nav.docs")}
             </a>
             
-            {!isSignedIn ? (
+            {!isAuthenticated ? (
               <Button
                 className="mt-3 rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
                 onClick={() => openAuth("signin")}
@@ -1122,9 +1119,8 @@ export default function Navbar() {
                 <button
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left font-medium text-destructive transition-colors duration-200 hover:bg-destructive/10"
                   onClick={() => {
-                    setIsSignedIn(false);
+                    onSignedOut();
                     setIsMenuOpen(false);
-                    localStorage.removeItem("isSignedIn");
                   }}
                 >
                   <LogOut className="h-4 w-4" />
@@ -1251,13 +1247,13 @@ export default function Navbar() {
             {authMode === "signin" ? (
               <SignInCard
                 onClose={closeAuth}
-                onSignedIn={() => setIsSignedIn(true)}
+                onSignedIn={onSignedIn}
                 onSwitchToSignUp={() => setAuthMode("signup")}
               />
             ) : (
               <SignUpCard
                 onClose={closeAuth}
-                onSignedUp={() => setIsSignedIn(true)}
+                onSignedUp={onSignedIn}
                 onSwitchToSignIn={() => setAuthMode("signin")}
               />
             )}

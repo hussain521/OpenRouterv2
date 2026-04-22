@@ -13,9 +13,17 @@ interface ChatSidebarProps {
   isOpen: boolean;
   onToggle: () => void;
   onNewChat?: () => void;
+  onAddModel?: () => void;
+  isAddingModel?: boolean;
 }
 
-export function ChatSidebar({ isOpen, onToggle, onNewChat }: ChatSidebarProps) {
+export function ChatSidebar({
+  isOpen,
+  onToggle,
+  onNewChat,
+  onAddModel,
+  isAddingModel = false,
+}: ChatSidebarProps) {
   const { t } = useTranslation();
 
   return (
@@ -48,11 +56,14 @@ export function ChatSidebar({ isOpen, onToggle, onNewChat }: ChatSidebarProps) {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => console.log('Add model clicked')}
-          className="h-8 rounded-full border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900"
+          onClick={onAddModel}
+          disabled={isAddingModel}
+          className="h-8 rounded-full border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-700 dark:bg-black dark:text-gray-100 dark:hover:bg-gray-900"
         >
           <Plus className="mr-1 h-4 w-4" />
-          {t("chatPage.addModel", "Add Model")}
+          {isAddingModel
+            ? t("chatPage.addingModel", "Adding...")
+            : t("chatPage.addModel", "Add Model")}
         </Button>
       </div>
 
