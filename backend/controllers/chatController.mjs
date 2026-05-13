@@ -82,7 +82,16 @@ export const chatCompletion = async (req, res) => {
       return res.status(400).json({ msg: 'Insufficient balance' });
     }
 
-    const providerRequestUrl = `${provider.baseUrl}/v1/chat/completions`;
+    const normalizedProviderBaseUrl = typeof provider.baseUrl === 'string' ? provider.baseUrl.trim() : '';
+
+    if (!normalizedProviderBaseUrl) {
+      return res.status(400).json({ msg: 'Provider base URL is not configured' });
+    }
+
+    const providerRequestUrl = normalizedProviderBaseUrl.replace(/\/+$/, '').endsWith('/v1')
+      ? `${normalizedProviderBaseUrl.replace(/\/+$/, '')}/chat/completions`
+      : `${normalizedProviderBaseUrl.replace(/\/+$/, '')}/v1/chat/completions`;
+
     const providerRequestBody = {
       model: model.name,
       messages,
@@ -171,13 +180,15 @@ export const chatCompletion = async (req, res) => {
     console.error('Chat Completion Error:', err.message);
     if (err.response) {
       res.status(err.response.status).json({
-        msg: `Provider error: ${err.response.data.error?.message || err.response.data.message || 'Unknown provider error'}`,
+        msg: `Provider error: ${err.response.data?.error?.message || err.response.data?.message || 'Unknown provider error'}`,
         providerError: err.response.data,
       });
     } else if (err.request) {
       res.status(503).json({ msg: 'Service Unavailable: No response from provider.' });
     } else {
-      res.status(500).send('Server Error');
+      res.status(500).json({
+        msg: err instanceof Error && err.message ? err.message : 'Server Error',
+      });
     }
   }
 };

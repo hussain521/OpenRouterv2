@@ -6,7 +6,7 @@ import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { PresetModelSections } from "@/components/chat/PresetModelSections";
 import { SuggestionsCarousel } from "@/components/chat/SuggestionsCarousel";
 import { ChatInputBar } from "@/components/chat/ChatInputBar";
-import { API_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL, getBackendStatus } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import {
   Dialog,
@@ -86,6 +86,38 @@ const normalizeAuthToken = (token: string | null | undefined): string | null => 
   return normalizedToken;
 };
 
+const readResponseBody = async (response: Response): Promise<unknown> => {
+  const responseText = await response.text();
+
+  if (!responseText) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(responseText) as unknown;
+  } catch {
+    return responseText;
+  }
+};
+
+const getResponseErrorMessage = (data: unknown, response: Response): string => {
+  if (typeof data === "object" && data !== null) {
+    if ("msg" in data && typeof data.msg === "string" && data.msg) {
+      return data.msg;
+    }
+
+    if ("message" in data && typeof data.message === "string" && data.message) {
+      return data.message;
+    }
+  }
+
+  if (typeof data === "string" && data.trim()) {
+    return data;
+  }
+
+  return `HTTP error! status: ${response.status}`;
+};
+
 export default function ChatPage() {
   const { t } = useTranslation();
   usePageTitle(t("nav.chat"));
@@ -124,9 +156,16 @@ export default function ChatPage() {
       ? selectedModel
       : models[0]?.name ?? null;
   const [isLoading, setIsLoading] = useState(false);
+  const [isBackendReachable, setIsBackendReachable] = useState<boolean | null>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   const fetchModels = async (signal?: AbortSignal) => {
+    if (isBackendReachable === false) {
+      setModels([]);
+      setModelsError("Backend is offline. Start the API server to load chat models.");
+      return [] as ChatModel[];
+    }
+
     if (!isAuthenticated || !normalizedToken) {
       setModels([]);
       setModelsError("Sign in to load available chat models.");
@@ -145,14 +184,14 @@ export default function ChatPage() {
         signal,
       });
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
+        throw new Error(getResponseErrorMessage(data, response));
       }
 
       const fetchedModels = Array.isArray(data) ? data : [];
@@ -180,6 +219,12 @@ export default function ChatPage() {
   };
 
   const fetchProviders = async (signal?: AbortSignal) => {
+    if (isBackendReachable === false) {
+      setProviders([]);
+      setProvidersError("Backend is offline. Start the API server to load providers.");
+      return [] as ChatProvider[];
+    }
+
     if (!isAuthenticated || !normalizedToken) {
       setProviders([]);
       setProvidersError("Sign in to load available providers.");
@@ -198,14 +243,14 @@ export default function ChatPage() {
         signal,
       });
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
+        throw new Error(getResponseErrorMessage(data, response));
       }
 
       const fetchedProviders = Array.isArray(data) ? (data as ChatProvider[]) : [];
@@ -247,6 +292,40 @@ export default function ChatPage() {
   };
 
   useEffect(() => {
+    let isMounted = true;
+
+    const checkBackendStatus = async () => {
+      const status = await getBackendStatus();
+
+      if (!isMounted) {
+        return;
+      }
+
+      const backendIsReachable = status !== null;
+      setIsBackendReachable(backendIsReachable);
+
+      if (!backendIsReachable) {
+        setModels([]);
+        setProviders([]);
+        if (isAuthenticated && normalizedToken) {
+          setModelsError("Backend is offline. Start the API server to load chat models.");
+          setProvidersError("Backend is offline. Start the API server to load providers.");
+        }
+      }
+    };
+
+    checkBackendStatus();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isAuthenticated, normalizedToken]);
+
+  useEffect(() => {
+    if (isBackendReachable !== true) {
+      return;
+    }
+
     const abortController = new AbortController();
     fetchModels(abortController.signal);
     fetchProviders(abortController.signal);
@@ -254,7 +333,7 @@ export default function ChatPage() {
     return () => {
       abortController.abort();
     };
-  }, [isAuthenticated, normalizedToken, onSignedOut]);
+  }, [isAuthenticated, normalizedToken, onSignedOut, isBackendReachable]);
 
   useEffect(() => {
     const container = messagesContainerRef.current;
@@ -303,6 +382,17 @@ export default function ChatPage() {
       return;
     }
 
+    if (isBackendReachable === false) {
+      const backendErrorMessage: Message = {
+        id: Date.now().toString(),
+        content: "Error: Backend is offline. Start the API server before sending messages.",
+        role: 'assistant',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, backendErrorMessage]);
+      return;
+    }
+
     if (!resolvedModel) {
       const modelErrorMessage: Message = {
         id: Date.now().toString(),
@@ -341,25 +431,18 @@ export default function ChatPage() {
         }),
       });
 
-      let data: Record<string, unknown> | null = null;
-
-      try {
-        data = await response.json();
-      } catch {
-        data = null;
-      }
+      const rawData = await readResponseBody(response);
+      const data =
+        typeof rawData === "object" && rawData !== null
+          ? (rawData as Record<string, unknown>)
+          : null;
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        const errorMessage =
-          (typeof data?.msg === "string" && data.msg) ||
-          (typeof data?.message === "string" && data.message) ||
-          `HTTP error! status: ${response.status}`;
-
-        throw new Error(errorMessage);
+        throw new Error(getResponseErrorMessage(rawData, response));
       }
 
       const choices = Array.isArray(data?.choices) ? data.choices : [];
@@ -437,6 +520,17 @@ export default function ChatPage() {
 
     setModelsError(null);
     setProvidersError(null);
+
+    const backendStatus = await getBackendStatus();
+    const backendIsReachable = backendStatus !== null;
+    setIsBackendReachable(backendIsReachable);
+
+    if (!backendIsReachable) {
+      setProviders([]);
+      setProvidersError("Backend is offline. Start the API server to load providers.");
+      return;
+    }
+
     const fetchedProviders = await fetchProviders();
     const defaultProviderId = fetchedProviders[0]?._id ?? "";
 
@@ -493,14 +587,18 @@ export default function ChatPage() {
         }),
       });
 
-      const data = await response.json();
+      const rawData = await readResponseBody(response);
+      const data =
+        typeof rawData === "object" && rawData !== null
+          ? (rawData as Record<string, unknown>)
+          : null;
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
+        throw new Error(getResponseErrorMessage(rawData, response));
       }
 
       const fetchedProviders = await fetchProviders();
@@ -556,14 +654,14 @@ export default function ChatPage() {
         },
       );
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
+        throw new Error(getResponseErrorMessage(data, response));
       }
 
       await Promise.all([fetchModels(), fetchProviders()]);
@@ -636,14 +734,14 @@ export default function ChatPage() {
         }),
       });
 
-      const data = await response.json();
+      const data = await readResponseBody(response);
 
       if (!response.ok) {
         if (response.status === 401) {
           onSignedOut();
         }
 
-        throw new Error(data.msg || data.message || `HTTP error! status: ${response.status}`);
+        throw new Error(getResponseErrorMessage(data, response));
       }
 
       await Promise.all([fetchModels(), fetchProviders()]);
