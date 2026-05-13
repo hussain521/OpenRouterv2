@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -646,140 +646,149 @@ interface ChartDataItem {
   [key: string]: number | string;
 }
 
-// Custom Tooltip Component
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: Array<{
-    payload: ChartDataItem;
-  }>;
-  setHoveredData: (data: ChartDataItem | null) => void;
+interface HoverEntry {
+  key: string;
+  value: number;
 }
 
-const CustomTooltip = ({ active, payload, setHoveredData }: CustomTooltipProps) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload;
-    setHoveredData(data);
-  } else {
-    setHoveredData(null);
-  }
-  return null;
-};
+const BAR_SERIES = [
+  { dataKey: "openai", fill: "#10b981" },
+  { dataKey: "anthropic", fill: "#3b82f6" },
+  { dataKey: "meta", fill: "#8b5cf6" },
+  { dataKey: "gemini", fill: "#f59e0b" },
+  { dataKey: "cohere", fill: "#ef4444" },
+  { dataKey: "mistral", fill: "#06b6d4" },
+  { dataKey: "nvidia", fill: "#84cc16" },
+  { dataKey: "minimax", fill: "#60a5fa" },
+  { dataKey: "step", fill: "#34d399" },
+  { dataKey: "perplexity", fill: "#f97316" },
+  { dataKey: "huggingface", fill: "#eab308" },
+  { dataKey: "xai", fill: "#14b8a6" },
+  { dataKey: "stability", fill: "#f43f5e" },
+  { dataKey: "inflection", fill: "#8b5cf6" },
+  { dataKey: "together", fill: "#22d3ee" },
+  { dataKey: "replicate", fill: "#a3a3a3" },
+  { dataKey: "fireworks", fill: "#fb923c" },
+  { dataKey: "groq", fill: "#4ade80" },
+  { dataKey: "deepseek", fill: "#1e40af" },
+  { dataKey: "alibaba", fill: "#dc2626" },
+  { dataKey: "baidu", fill: "#7c3aed" },
+  { dataKey: "yandex", fill: "#059669" },
+  { dataKey: "tencent", fill: "#ea580c" },
+  { dataKey: "bytedance", fill: "#ff6b35" },
+  { dataKey: "amazon", fill: "#ff9500" },
+  { dataKey: "microsoft", fill: "#00bcf2" },
+  { dataKey: "google", fill: "#4285f4" },
+  { dataKey: "apple", fill: "#007aff" },
+  { dataKey: "intel", fill: "#0071c5" },
+  { dataKey: "samsung", fill: "#1428a0" },
+  { dataKey: "ibm", fill: "#1261fe" },
+  { dataKey: "oracle", fill: "#f80000" },
+  { dataKey: "salesforce", fill: "#00a1e0" },
+  { dataKey: "adobe", fill: "#ff0000" },
+  { dataKey: "shopify", fill: "#95bf47" },
+  { dataKey: "others", fill: "#ec4899" },
+] as const;
+
+const HoverPanel = memo(function HoverPanel({ hoveredData }: { hoveredData: ChartDataItem }) {
+  const topEntries = useMemo<HoverEntry[]>(
+    () =>
+      Object.entries(hoveredData)
+        .filter(([key, value]) => key !== "date" && key !== "index" && typeof value === "number")
+        .map(([key, value]) => ({ key, value }))
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 6),
+    [hoveredData],
+  );
+
+  return (
+    <div className="fixed top-20 right-6 w-48 max-h-60 z-50 opacity-80 hover:opacity-100 transition-all duration-300 animate-in fade-in-0 slide-in-from-top-2">
+      <div className="w-full bg-black/80 border border-gray-700/30 rounded-md backdrop-blur-sm shadow-lg">
+        <div className="p-2">
+          <div className="flex items-center gap-2 mb-2 border-b border-gray-700/50 pb-1">
+            <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+            <span className="text-xs text-gray-300 font-medium">{hoveredData.date}</span>
+          </div>
+
+          <div
+            className="max-h-40 overflow-y-auto"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            <div className="space-y-1">
+              {topEntries.map(({ key, value }) => (
+                <div
+                  key={key}
+                  className="flex items-center justify-between py-1 px-2 bg-gray-800/20 rounded-sm hover:bg-gray-700/30 transition-colors"
+                >
+                  <span className="text-gray-400 text-xs truncate capitalize">{key}</span>
+                  <span className="text-white text-xs font-semibold ml-1">{value.toFixed(1)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 export function AIModelChart() {
   const [hoveredData, setHoveredData] = useState<ChartDataItem | null>(null);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setHoveredData(null);
-  };
+  }, []);
+
+  const handleMouseMove = useCallback((state: { activePayload?: Array<{ payload: ChartDataItem }> }) => {
+    const nextData = state.activePayload?.[0]?.payload ?? null;
+    setHoveredData((current) => (current === nextData ? current : nextData));
+  }, []);
+
+  const bars = useMemo(
+    () =>
+      BAR_SERIES.map(({ dataKey, fill }) => (
+        <Bar key={dataKey} dataKey={dataKey} stackId="a" fill={fill} />
+      )),
+    [],
+  );
 
   return (
-    <div className="h-[350px] w-full relative" onMouseLeave={handleMouseLeave}>
-      <div className="h-full w-full">
-        <ResponsiveContainer width="100%" height="100%">
+    <div className="relative h-[350px] w-full min-w-0" onMouseLeave={handleMouseLeave}>
+      <div className="h-full w-full min-w-0 min-h-0">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
           <BarChart
             data={data}
             barGap={-1}
             barCategoryGap={-1}
             maxBarSize={50}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
-          <XAxis
-            dataKey="date"
-            axisLine={false}
-            tickLine={false}
-            className="text-xs fill-gray-600 dark:fill-gray-300"
-            tick={{ fill: 'currentColor' }}
-          />
+            <XAxis
+              dataKey="date"
+              axisLine={false}
+              tickLine={false}
+              className="text-xs fill-gray-600 dark:fill-gray-300"
+              tick={{ fill: "currentColor" }}
+            />
 
-          <YAxis
-            axisLine={false}
-            tickLine={false}
-            className="text-xs fill-gray-600 dark:fill-gray-300"
-            tick={{ fill: 'currentColor' }}
-          />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              className="text-xs fill-gray-600 dark:fill-gray-300"
+              tick={{ fill: "currentColor" }}
+            />
 
-          <Bar
-            dataKey="openai"
-            stackId="a"
-            fill="#10b981"
-          />
-          <Tooltip content={<CustomTooltip setHoveredData={setHoveredData} />} />
-          <Bar dataKey="anthropic" stackId="a" fill="#3b82f6" />
-          <Bar dataKey="meta" stackId="a" fill="#8b5cf6" />
-          <Bar dataKey="gemini" stackId="a" fill="#f59e0b" />
-          <Bar dataKey="cohere" stackId="a" fill="#ef4444" />
-          <Bar dataKey="mistral" stackId="a" fill="#06b6d4" />
-          <Bar dataKey="nvidia" stackId="a" fill="#84cc16" />
-          <Bar dataKey="minimax" stackId="a" fill="#60a5fa" />
-          <Bar dataKey="step" stackId="a" fill="#34d399" />
-          <Bar dataKey="perplexity" stackId="a" fill="#f97316" />
-          <Bar dataKey="huggingface" stackId="a" fill="#eab308" />
-          <Bar dataKey="xai" stackId="a" fill="#14b8a6" />
-          <Bar dataKey="stability" stackId="a" fill="#f43f5e" />
-          <Bar dataKey="inflection" stackId="a" fill="#8b5cf6" />
-          <Bar dataKey="together" stackId="a" fill="#22d3ee" />
-          <Bar dataKey="replicate" stackId="a" fill="#a3a3a3" />
-          <Bar dataKey="fireworks" stackId="a" fill="#fb923c" />
-          <Bar dataKey="groq" stackId="a" fill="#4ade80" />
-          <Bar dataKey="deepseek" stackId="a" fill="#1e40af" />
-          <Bar dataKey="alibaba" stackId="a" fill="#dc2626" />
-          <Bar dataKey="baidu" stackId="a" fill="#7c3aed" />
-          <Bar dataKey="yandex" stackId="a" fill="#059669" />
-          <Bar dataKey="tencent" stackId="a" fill="#ea580c" />
-          <Bar dataKey="bytedance" stackId="a" fill="#ff6b35" />
-          <Bar dataKey="amazon" stackId="a" fill="#ff9500" />
-          <Bar dataKey="microsoft" stackId="a" fill="#00bcf2" />
-          <Bar dataKey="google" stackId="a" fill="#4285f4" />
-          <Bar dataKey="apple" stackId="a" fill="#007aff" />
-          <Bar dataKey="intel" stackId="a" fill="#0071c5" />
-          <Bar dataKey="samsung" stackId="a" fill="#1428a0" />
-          <Bar dataKey="ibm" stackId="a" fill="#1261fe" />
-          <Bar dataKey="oracle" stackId="a" fill="#f80000" />
-          <Bar dataKey="salesforce" stackId="a" fill="#00a1e0" />
-          <Bar dataKey="adobe" stackId="a" fill="#ff0000" />
-          <Bar dataKey="shopify" stackId="a" fill="#95bf47" />
-          <Bar
-            dataKey="others"
-            stackId="a"
-            fill="#ec4899"
-          />
-        </BarChart>
-      </ResponsiveContainer>
+            <Tooltip cursor={false} content={null} />
+            {bars}
+          </BarChart>
+        </ResponsiveContainer>
       </div>
-      
-      {/* منطقة عرض البيانات المخفية في الزاوية */}
-      {hoveredData && (
-        <div className="fixed top-20 right-6 w-48 max-h-60 z-50 opacity-80 hover:opacity-100 transition-all duration-300 animate-in fade-in-0 slide-in-from-top-2">
-          <div className="w-full bg-black/80 border border-gray-700/30 rounded-md backdrop-blur-sm shadow-lg">
-            <div className="p-2">
-              <div className="flex items-center gap-2 mb-2 border-b border-gray-700/50 pb-1">
-                <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-                <span className="text-xs text-gray-300 font-medium">{hoveredData.date}</span>
-              </div>
-              
-              <div className="max-h-40 overflow-y-auto" style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none'
-              }}>
-                <div className="space-y-1">
-                  {Object.entries(hoveredData)
-                    .filter(([key]) => key !== 'date' && key !== 'index')
-                    .sort(([,a], [,b]) => (b as number) - (a as number))
-                    .slice(0, 6) // عرض أهم 6 عناصر فقط
-                    .map(([key, value]) => (
-                      <div
-                        key={key}
-                        className="flex items-center justify-between py-1 px-2 bg-gray-800/20 rounded-sm hover:bg-gray-700/30 transition-colors"
-                      >
-                        <span className="text-gray-400 text-xs truncate capitalize">{key}</span>
-                        <span className="text-white text-xs font-semibold ml-1">{(value as number).toFixed(1)}</span>
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
+      {hoveredData ? <HoverPanel hoveredData={hoveredData} /> : null}
     </div>
   );
 }

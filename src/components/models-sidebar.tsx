@@ -16,6 +16,8 @@ import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useModels } from "@/context/ModelsContext";
+import { ArrowRight } from "lucide-react";
+import i18n from "@/lib/i18n";
 
 interface ModelsSidebarProps {
   isOpen?: boolean;
@@ -36,9 +38,23 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
   const [distillableOpen, setDistillableOpen] = useState(false);
   const [providerSearch, setProviderSearch] = useState("");
 
+  const contextSliderValue = useMemo(() => {
+    const [minContext] = filters.contextRange;
+    const normalizedValue = ((minContext - 4000) / (1048576 - 4000)) * 100;
+
+    if (!Number.isFinite(normalizedValue)) {
+      return [0];
+    }
+
+    return [Math.min(100, Math.max(0, Math.round(normalizedValue)))];
+  }, [filters.contextRange]);
+
   const handleContextRangeChange = (value: number[]) => {
-    const minContext = 4000 + (value[0] / 100) * (1048576 - 4000);
-    updateFilter('contextRange', [Math.floor(minContext), 1048576]);
+    const [nextValue = 0] = value;
+    const clampedValue = Math.min(100, Math.max(0, nextValue));
+    const minContext = 4000 + (clampedValue / 100) * (1048576 - 4000);
+
+    updateFilter("contextRange", [Math.floor(minContext), 1048576]);
   };
 
   const providers = useMemo(() => {
@@ -64,7 +80,9 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
     filters.categories.length > 0 ||
     filters.parameters.length > 0 ||
     filters.distillable;
-
+const isRTL = () => {
+  return i18n.dir() === "rtl";
+};
   // Close sidebar on Escape key press
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -122,10 +140,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
                 : "text-gray-400 dark:text-gray-600 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 cursor-not-allowed"
             }`}
           >
-            {t("modelsSidebar.clearFilters", "Clear All Filters")}
+            {t("modelsSidebar.clearFilters")}
             {hasActiveFilters && (
-              <span className="ml-2 text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1.5 py-0.5 rounded-full">
-                Active
+              <span className="mx-2 text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1.5 py-0.5 rounded-full">
+               
+                  {t("active")}
               </span>
             )}
           </button>
@@ -143,7 +162,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.inputModalities")}
             </div>
 
-            {inputOpen ? <FiChevronDown /> : <FiChevronRight />}
+           {inputOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {inputOpen && (
@@ -215,7 +238,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.outputModalities")}
             </div>
 
-            {outputOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {outputOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {outputOpen && (
@@ -268,13 +295,17 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.contextLength")}
             </div>
 
-            {contextOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {contextOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {contextOpen && (
             <div className="mt-4 px-2">
               <Slider
-                defaultValue={[10]}
+                value={contextSliderValue}
                 max={100}
                 step={1}
                 onValueChange={handleContextRangeChange}
@@ -301,7 +332,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.promptPricing")}
             </div>
 
-            {pricingOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {pricingOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {pricingOpen && (
@@ -358,7 +393,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.seriesTitle")}
             </div>
 
-            {seriesOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {seriesOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {seriesOpen && (
@@ -420,16 +459,20 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
           >
             <div className="flex items-center gap-2">
               <FiServer />
-              {t("modelsSidebar.providersTitle", "Providers")}
+              {t("modelsSidebar.providersTitle")}
             </div>
-            {providersOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {providersOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
           {providersOpen && (
             <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">
               <div className="relative">
                 <FiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-muted-foreground h-3.5 w-3.5" />
                 <Input
-                  placeholder={t("modelsSidebar.searchProviders", "Search providers...")}
+                  placeholder={t("modelsSidebar.searchProviders" )}
                   value={providerSearch}
                   onChange={(e) => setProviderSearch(e.target.value)}
                   className="w-full h-8 pl-8 text-xs dark:bg-gray-900 dark:border-gray-700"
@@ -467,7 +510,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.categoriesTitle")}
             </div>
 
-            {categoriesOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {categoriesOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {categoriesOpen && (
@@ -510,7 +557,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
               {t("modelsSidebar.supportedParameters")}
             </div>
 
-            {parametersOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {parametersOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
 
           {parametersOpen && (
@@ -554,7 +605,11 @@ export default function ModelsSidebar({ isOpen = false, onClose }: ModelsSidebar
                 {t("common.new")}
               </span>
             </div>
-            {distillableOpen ? <FiChevronDown /> : <FiChevronRight />}
+            {distillableOpen ? (
+  <FiChevronDown />
+) : (
+  <ArrowRight size={16} className={isRTL() ? "rotate-180" : ""} />
+)}
           </button>
           {distillableOpen && (
             <div className="mt-3 ml-6 space-y-2 text-gray-500 dark:text-gray-400">

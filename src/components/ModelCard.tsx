@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
 interface ModelCardProps {
-  logo: string;
+  logo: React.ReactNode;
   name: string;
   provider: string;
   badge?: string;
@@ -27,11 +27,7 @@ export default function ModelCard({
         {/* Top Info */}
         <div className="flex items-start gap-2 sm:gap-3 lg:gap-4">
           <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gray-100 dark:bg-muted flex items-center justify-center flex-shrink-0">
-            <img
-              src={logo}
-              alt={name}
-              className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 object-contain transition-transform duration-300 group-hover:rotate-45"
-            />
+            {logo}
           </div>
 
           <div className="flex-1 min-w-0">

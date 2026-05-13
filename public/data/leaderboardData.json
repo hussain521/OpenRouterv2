@@ -1,5 +1,40 @@
 [
   {
+    "rank": 21,
+    "name": "gpt_4o",
+    "company": "openai",
+    "tokens": "241B",
+    "change": "+10%"
+  },
+  {
+    "rank": 22,
+    "name": "claude_3_5_sonnet",
+    "company": "anthropic",
+    "tokens": "219B",
+    "change": "+5%"
+  },
+  {
+    "rank": 23,
+    "name": "gemini_1.5_pro",
+    "company": "google",
+    "tokens": "197B",
+    "change": "+15%"
+  },
+  {
+    "rank": 24,
+    "name": "llama_3_70b",
+    "company": "meta",
+    "tokens": "175B",
+    "change": "+18%"
+  },
+  {
+    "rank": 25,
+    "name": "mixtral_8x22b",
+    "company": "mistral",
+    "tokens": "153B",
+    "change": "+7%"
+  },
+  {
     "rank": 1,
     "name": "minimax_m2_5",
     "company": "minimax",

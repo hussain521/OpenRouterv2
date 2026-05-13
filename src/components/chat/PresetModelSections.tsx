@@ -1,52 +1,63 @@
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 
-const presetSections = [
-  { titleKey: "chatPage.flagshipModels", id: "flagship" },
-  { titleKey: "chatPage.bestRoleplayModels", id: "roleplay" },
-  { titleKey: "chatPage.bestCodingModels", id: "coding" },
-  { titleKey: "chatPage.reasoningModels", id: "reasoning" },
-];
+interface Model {
+  _id: string;
+  name: string;
+  provider: {
+    _id: string;
+    name: string;
+  };
+  pricing: {
+    prompt: number;
+    completion: number;
+  };
+}
 
 interface PresetModelSectionsProps {
   onModelSelect?: (model: string) => void;
+  models?: Model[]; // Add models prop
 }
 
-export function PresetModelSections({ onModelSelect }: PresetModelSectionsProps) {
+export function PresetModelSections({ onModelSelect, models }: PresetModelSectionsProps) {
   const { t } = useTranslation();
 
-  const handleCardClick = (sectionId: string) => {
+  const handleCardClick = (modelName: string) => {
     if (onModelSelect) {
-      onModelSelect(sectionId);
+      onModelSelect(modelName);
     }
   };
 
   return (
     <div className="grid w-full max-w-4xl grid-cols-1 gap-2.5 md:grid-cols-2">
-      {presetSections.map((section) => (
-        <Card
-          key={section.titleKey}
-          onClick={() => handleCardClick(section.id)}
-          className="h-24 rounded-2xl border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer dark:border-gray-800 dark:bg-black dark:hover:bg-gray-950"
-        >
-          <CardContent className="flex h-full flex-col justify-between px-4 py-3.5">
-            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-              {t(section.titleKey, section.titleKey.replace('chatPage.', '').replace(/([A-Z])/g, ' $1'))}
-            </div>
-            <div className="flex justify-end gap-1.5">
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-[10px] font-semibold text-blue-600 dark:bg-blue-900/40 dark:text-blue-300">
-                A
-              </span>
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-50 text-[10px] font-semibold text-amber-600 dark:bg-amber-900/40 dark:text-amber-300">
-                M
-              </span>
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[10px] font-semibold text-white dark:bg-slate-100 dark:text-slate-900">
-                ●
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
+      {/* Display fetched models */}
+      {models && models.length > 0 && (
+        <div className="col-span-full mt-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {t("chatPage.availableModels", "Available Models")}
+          </h3>
+          <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+            {models.map((model) => (
+              <Card
+                key={model._id}
+                onClick={() => handleCardClick(model.name)} // Use model.name for selection
+                className="h-24 rounded-2xl border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer dark:border-gray-800 dark:bg-black dark:hover:bg-gray-950"
+              >
+                <CardContent className="flex h-full flex-col justify-between px-4 py-3.5">
+                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    {model.name} {/* Display model name */}
+                  </div>
+                  <div className="flex justify-end gap-1.5">
+                    <span className="text-xs text-gray-600 dark:text-gray-400">
+                      {model.provider.name} {/* Display provider name */}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

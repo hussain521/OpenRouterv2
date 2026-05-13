@@ -1,3 +1,4 @@
+import i18n from "@/lib/i18n";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -13,7 +14,9 @@ export default function SectionHeader({
   viewAll = false,
 }: SectionHeaderProps) {
   const { t } = useTranslation();
-  
+  const isRTL = () => {
+  return i18n.dir() === "rtl";
+};
   return (
     <div className="flex flex-col sm:flex-row items-start justify-between mb-6 md:mb-8 gap-3">
       <div>
@@ -28,7 +31,8 @@ export default function SectionHeader({
       {viewAll && (
         <button className="flex items-center gap-1 text-xs md:text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition whitespace-nowrap">
           {t("common.viewAll")}
-          <ArrowRight size={16} />
+          {isRTL() ? <ArrowRight size={16} className="rotate-180" /> : <ArrowRight size={16} />}
+          
         </button>
       )}
     </div>

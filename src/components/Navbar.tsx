@@ -45,8 +45,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { API_BASE_URL } from "@/lib/utils";
 import { useTheme } from "@/context/ThemeContext";
 import { useModels } from "@/context/ModelsContext";
+import { useAuth } from "@/context/AuthContext";
 
 type AuthMode = "signin" | "signup";
 
@@ -56,18 +58,69 @@ function SignInCard({
   onSwitchToSignUp,
 }: {
   onClose: () => void;
-  onSignedIn: () => void;
+  onSignedIn: (token?: string | null) => void;
   onSwitchToSignUp: () => void;
 }) {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    localStorage.setItem('isSignedIn', 'true');
-    onSignedIn();
-    onClose();
+
+    const normalizedEmail = email.trim().toLowerCase();
+    const normalizedPassword = password.trim();
+
+    if (!normalizedEmail || !normalizedPassword) {
+      setErrorMessage("Please enter your email and password.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: normalizedEmail,
+          password: normalizedPassword,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        const message =
+          typeof data?.msg === "string" && data.msg.trim()
+            ? data.msg
+            : "Unable to sign in. Please check your credentials.";
+        setErrorMessage(message);
+        return;
+      }
+
+      const token =
+        typeof data?.token === "string" && data.token.trim() ? data.token : null;
+
+      if (!token) {
+        setErrorMessage("Authentication token was not returned by the server.");
+        return;
+      }
+
+      localStorage.setItem("isSignedIn", "true");
+      localStorage.setItem("authToken", token);
+      onSignedIn(token);
+      onClose();
+    } catch {
+      setErrorMessage("Unable to connect to the server. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,14 +184,36 @@ function SignInCard({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="h-11 rounded-lg border border-gray-200 dark:border-border bg-[#F9FAFB] dark:bg-input text-[13px] dark:text-foreground placeholder:text-gray-400 dark:placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary"
+              autoComplete="email"
+              disabled={isSubmitting}
             />
           </div>
 
+          <div className="space-y-1.5">
+            <label className="text-[13px] font-medium text-gray-700 dark:text-foreground">
+              {t("signUp.passwordLabel")}
+            </label>
+            <Input
+              type="password"
+              placeholder={t("signUp.passwordPlaceholder")}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-11 rounded-lg border border-gray-200 dark:border-border bg-[#F9FAFB] dark:bg-input text-[13px] dark:text-foreground placeholder:text-gray-400 dark:placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary"
+              autoComplete="current-password"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          {errorMessage ? (
+            <p className="text-[12px] font-medium text-red-500">{errorMessage}</p>
+          ) : null}
+
           <Button
             type="submit"
-            className="mt-1.5 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA]"
+            className="mt-1.5 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA] disabled:cursor-not-allowed disabled:opacity-70"
+            disabled={isSubmitting}
           >
-            {t("common.continue")}
+            {isSubmitting ? "Signing in..." : t("common.continue")}
             <span className="ml-2 text-[15px] leading-none">▸</span>
           </Button>
         </form>
@@ -171,7 +246,7 @@ function SignUpCard({
   onSwitchToSignIn,
 }: {
   onClose: () => void;
-  onSignedUp: () => void;
+  onSignedUp: (token?: string | null) => void;
   onSwitchToSignIn: () => void;
 }) {
   const { t } = useTranslation();
@@ -179,13 +254,80 @@ function SignUpCard({
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || password.length < 8 || !acceptedTerms) return;
-    localStorage.setItem('isSignedIn', 'true');
-    onSignedUp();
-    onClose();
+
+    const normalizedEmail = email.trim().toLowerCase();
+    const normalizedPassword = password.trim();
+    const derivedUsername = normalizedEmail.split("@")[0]?.trim();
+
+    if (!normalizedEmail || !normalizedPassword) {
+      setErrorMessage("Please enter your email and password.");
+      return;
+    }
+
+    if (normalizedPassword.length < 8) {
+      setErrorMessage(t("signUp.passwordError"));
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setErrorMessage("Please accept the terms and privacy policy to continue.");
+      return;
+    }
+
+    if (!derivedUsername) {
+      setErrorMessage("A valid email address is required.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: derivedUsername,
+          email: normalizedEmail,
+          password: normalizedPassword,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        const message =
+          typeof data?.msg === "string" && data.msg.trim()
+            ? data.msg
+            : "Unable to create your account right now.";
+        setErrorMessage(message);
+        return;
+      }
+
+      const token =
+        typeof data?.token === "string" && data.token.trim() ? data.token : null;
+
+      if (!token) {
+        setErrorMessage("Authentication token was not returned by the server.");
+        return;
+      }
+
+      localStorage.setItem("isSignedIn", "true");
+      localStorage.setItem("authToken", token);
+      onSignedUp(token);
+      onClose();
+    } catch {
+      setErrorMessage("Unable to connect to the server. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -248,6 +390,8 @@ function SignUpCard({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="h-11 rounded-lg border border-gray-200 dark:border-gray-600 bg-[#F9FAFB] dark:bg-gray-700 text-[13px] dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#6366F1]"
+              autoComplete="email"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -262,12 +406,15 @@ function SignUpCard({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-11 rounded-lg border border-gray-200 dark:border-gray-600 bg-[#F9FAFB] dark:bg-gray-700 text-[13px] dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#6366F1] pr-10"
+                autoComplete="new-password"
+                disabled={isSubmitting}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200 disabled:cursor-not-allowed disabled:opacity-60"
                 aria-label={showPassword ? t("signUp.hidePassword") : t("signUp.showPassword")}
+                disabled={isSubmitting}
               >
                 {showPassword ? (
                   <FiEyeOff className="h-4 w-4" />
@@ -291,6 +438,7 @@ function SignUpCard({
               className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#6366F1] focus:ring-[#6366F1]"
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
+              disabled={isSubmitting}
             />
             <label
               htmlFor="signup-terms"
@@ -314,11 +462,16 @@ function SignUpCard({
             </label>
           </div>
 
+          {errorMessage ? (
+            <p className="text-[12px] font-medium text-red-500">{errorMessage}</p>
+          ) : null}
+
           <Button
             type="submit"
-            className="mt-2 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA]"
+            className="mt-2 h-11 w-full rounded-full bg-[#4F46E5] text-[14px] font-medium hover:bg-[#4338CA] disabled:cursor-not-allowed disabled:opacity-70"
+            disabled={isSubmitting}
           >
-            {t("common.continue")}
+            {isSubmitting ? "Creating account..." : t("common.continue")}
             <span className="ml-2 text-[15px] leading-none">▸</span>
           </Button>
         </form>
@@ -344,11 +497,8 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const { themePreference, isSystemDarkMode, setThemePreference } = useTheme();
   const { models, setSearchQuery: setModelsSearchQuery, filters } = useModels();
+  const { isAuthenticated, onSignedIn, onSignedOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(() => {
-    // Check if user is signed in from localStorage
-    return localStorage.getItem('isSignedIn') === 'true';
-  });
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
@@ -687,7 +837,7 @@ export default function Navbar() {
               {t("nav.docs")}
             </a>
 
-            {!isSignedIn ? (
+            {!isAuthenticated ? (
               <Button
                 className="rounded-full bg-primary px-4 xl:px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200 ml-2"
                 onClick={() => openAuth("signin")}
@@ -743,9 +893,8 @@ export default function Navbar() {
                     <button
                       className="flex w-full items-center gap-3 px-4 py-2.5 text-left text-destructive transition-colors duration-200 hover:bg-destructive/10"
                       onClick={() => {
-                        setIsSignedIn(false);
+                        onSignedOut();
                         setIsProfileOpen(false);
-                        localStorage.removeItem("isSignedIn");
                       }}
                     >
                       <LogOut className="h-4 w-4" />
@@ -932,7 +1081,7 @@ export default function Navbar() {
               {t("nav.docs")}
             </a>
             
-            {!isSignedIn ? (
+            {!isAuthenticated ? (
               <Button
                 className="mt-3 rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
                 onClick={() => openAuth("signin")}
@@ -970,9 +1119,8 @@ export default function Navbar() {
                 <button
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left font-medium text-destructive transition-colors duration-200 hover:bg-destructive/10"
                   onClick={() => {
-                    setIsSignedIn(false);
+                    onSignedOut();
                     setIsMenuOpen(false);
-                    localStorage.removeItem("isSignedIn");
                   }}
                 >
                   <LogOut className="h-4 w-4" />
@@ -1099,13 +1247,13 @@ export default function Navbar() {
             {authMode === "signin" ? (
               <SignInCard
                 onClose={closeAuth}
-                onSignedIn={() => setIsSignedIn(true)}
+                onSignedIn={onSignedIn}
                 onSwitchToSignUp={() => setAuthMode("signup")}
               />
             ) : (
               <SignUpCard
                 onClose={closeAuth}
-                onSignedUp={() => setIsSignedIn(true)}
+                onSignedUp={onSignedIn}
                 onSwitchToSignIn={() => setAuthMode("signin")}
               />
             )}

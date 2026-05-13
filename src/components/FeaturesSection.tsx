@@ -6,28 +6,28 @@ export default function FeaturesSection() {
   
   const features = [
     {
-      image: "/GoogleVertex.svg",
-      title: t("features.oneApi.title"),
-      description: t("features.oneApi.description"),
-      linkText: t("features.oneApi.linkText"),
+      image: "/images/features/single-api.png",
+      title: "Unified API",
+      description: "Access all models through a single, consistent API.",
+      linkText: "Learn More",
     },
     {
-      image: "/Meta.png",
-      title: t("features.availability.title"),
-      description: t("features.availability.description"),
-      linkText: t("features.availability.linkText"),
+      image: "/images/features/high-availability.png",
+      title: "High Availability",
+      description: "Ensure your applications are always available with our robust infrastructure.",
+      linkText: "Discover",
     },
     {
-      image: "/images/performance.png",
-      title: t("features.performance.title"),
-      description: t("features.performance.description"),
-      linkText: t("features.performance.linkText"),
+      image: "/images/features/performance.png",
+      title: "Top Performance",
+      description: "Experience lightning-fast response times for all your AI needs.",
+      linkText: "See Benchmarks",
     },
     {
-      image: "/images/security.png",
-      title: t("features.dataPolicies.title"),
-      description: t("features.dataPolicies.description"),
-      linkText: t("features.dataPolicies.linkText"),
+      image: "/images/features/data-privacy.png",
+      title: "Data Privacy & Security",
+      description: "Your data is yours. We ensure top-tier security and privacy.",
+      linkText: "Our Policies",
     },
   ];
 

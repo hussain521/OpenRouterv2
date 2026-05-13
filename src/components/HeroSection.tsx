@@ -25,7 +25,7 @@ export default function HeroSection() {
   return (
     <section className="py-8 sm:py-12 lg:py-16 xl:py-18">
       <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 dark:text-foreground leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold tracking-tight text-gray-900 dark:text-foreground leading-tight">
           {t("hero.unifiedInterface")}
         </h1>
 

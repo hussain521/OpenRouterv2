@@ -1,4 +1,6 @@
 {
+    "active": " Active",
+
   "nav": {
     "home": "Home",
     "activity": "Activity",
@@ -711,7 +713,19 @@
       "openReportFeedback": "Open Report Feedback Dialog"
     }
   },
+ 
   "logsPage": {
+        "providers": {
+      "openai": "OpenAI",
+      "anthropic": "Anthropic",
+      "google": "Google"
+    },
+    "models": {
+      "gpt4": "GPT-4",
+      "gpt35": "GPT-3.5",
+      "claude": "Claude",
+      "gemini": "Gemini"
+    },
     "columns": {
       "id": "ID",
       "timestamp": "Timestamp",
@@ -721,11 +735,25 @@
       "cost": "Cost",
       "method": "Method",
       "actions": "Actions",
+      
+      
+       
+       
+      
+            "timestampTooltip": "The time when the request was made",
       "providerModel": "Provider/Model",
+      "providerModelTooltip": "The provider and model used for this request",
       "app": "App",
+      "appTooltip": "The application that made this request",
       "tokens": "Tokens",
+      "tokensTooltip": "Total number of tokens processed",
+      "costTooltip": "The cost of this request in USD",
       "speed": "Speed",
-      "finish": "Finish"
+      "speedTooltip": "Processing speed in tokens per second",
+      "finish": "Finish",
+      "finishTooltip": "How the request finished (stop, length, timeout)",
+      "actionsTooltip": "Available actions for this log entry"
+    
     },
     "filters": {
       "dates": "Dates",
@@ -776,21 +804,7 @@
     "reportFeedback": "Report Feedback",
     "export": "Export",
     "emptyMessage": "No logs to display",
-    "columns": {
-      "timestampTooltip": "The time when the request was made",
-      "providerModel": "Provider/Model",
-      "providerModelTooltip": "The provider and model used for this request",
-      "app": "App",
-      "appTooltip": "The application that made this request",
-      "tokens": "Tokens",
-      "tokensTooltip": "Total number of tokens processed",
-      "costTooltip": "The cost of this request in USD",
-      "speed": "Speed",
-      "speedTooltip": "Processing speed in tokens per second",
-      "finish": "Finish",
-      "finishTooltip": "How the request finished (stop, length, timeout)",
-      "actionsTooltip": "Available actions for this log entry"
-    },
+ 
     "app": "App",
     "key": "Key",
     "finish": {
@@ -1268,6 +1282,9 @@
   },
 
   "modelsSidebar": {
+    "clearFilters": "Clear filters",
+    "searchProviders": "Search providers...",
+    "providersTitle": "Providers",
     "inputModalities": "Input Modalities",
     "outputModalities": "Output Modalities",
     "contextLength": "Context length",
@@ -1332,6 +1349,8 @@
   "modelsPage": {
     "models": "Models",
     "compare": "Compare",
+    "filter": "Filter",
+    "noModelsFound": "No models found",
     "modelsCount": "{{count}} models",
     "sortOptions": {
       "mostPopular": "Most Popular",
@@ -1377,19 +1396,6 @@
     "dataCollectionLabel": "Data Collection"
   },
 
-  "logsPage": {
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google"
-    },
-    "models": {
-      "gpt4": "GPT-4",
-      "gpt35": "GPT-3.5",
-      "claude": "Claude",
-      "gemini": "Gemini"
-    }
-  },
 
   "creditsPage": {
     "transactions": {

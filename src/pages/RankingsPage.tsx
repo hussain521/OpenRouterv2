@@ -17,12 +17,12 @@ export default function RankingsPage() {
         <Navbar />
       </div>
 
-      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 max-w-6xl mx-auto">
+      <main className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 max-w-6xl mx-auto">
         <div className="space-y-1 sm:space-y-2">
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-foreground">
             {t("nav.rankings", "AI Model Rankings")}
           </h1>
-          <p className="text-gray-600 dark:text-muted-foreground text-sm sm:text-base">
+          <p className="text-gray-700 dark:text-muted-foreground text-sm sm:text-base">
             {t("explore.rankings.description", "Based on real usage data from millions of users accessing models through OpenRouter.")}
           </p>
         </div>
@@ -35,10 +35,10 @@ export default function RankingsPage() {
           </CardHeader>
 
           <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6">
-            <div className="overflow-x-auto">
+            <div className="min-w-0 overflow-x-auto">
               <AIModelChart />
             </div>
-            <div className="overflow-x-auto">
+            <div className="min-w-0 overflow-x-auto">
               <Leaderboard/>
             </div>
           </CardContent>
@@ -49,18 +49,18 @@ export default function RankingsPage() {
             <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-foreground">
               {t("globalRanking.marketShare.title", "Market Share")}
             </CardTitle>
-            <p className="text-sm text-gray-600 dark:text-muted-foreground">
+            <p className="text-sm text-gray-700 dark:text-muted-foreground">
               {t("globalRanking.marketShare.subtitle", "Compare OpenRouter token share by model author")}
             </p>
           </CardHeader>
 
           <CardContent className="px-4 sm:px-6">
-            <div className="overflow-x-auto">
+            <div className="min-w-0 overflow-x-auto">
               <MarketShareChart />
             </div>
           </CardContent>
         </Card>
-      </div>
+      </main>
 
       <Footer />
     </div>

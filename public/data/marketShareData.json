@@ -1,5 +1,21 @@
 [
   {
+    "rank": 11,
+    "name": "cohere",
+    "tokens": "30.1B",
+    "percentage": "1.4%",
+    "tokensNumeric": 30.1,
+    "color": "#A9DFBF"
+  },
+  {
+    "rank": 12,
+    "name": "deepmind",
+    "tokens": "25.5B",
+    "percentage": "1.2%",
+    "tokensNumeric": 25.5,
+    "color": "#F5B7B1"
+  },
+  {
     "rank": 1,
     "name": "google",
     "tokens": "731B",
